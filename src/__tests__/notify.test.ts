@@ -144,6 +144,12 @@ describe("buildMessage", () => {
     expect(buildMessage("2026-03-09", ["ai-cli", "ai-cli-en"], BASE_URL)).toBe("");
   });
 
+  it("versions section links with the run timestamp to defeat the Pages cache", () => {
+    const highlights: Highlights = { vi: { "ai-cli": ["Một thay đổi"] }, en: {} };
+    const msg = buildMessage("2026-03-09", ["ai-cli"], BASE_URL, highlights, "2026-03-09T06:32:21.202Z");
+    expect(msg).toContain(`${BASE_URL}/?v=2026-03-09T06%3A32%3A21.202Z#2026-03-09/ai-cli`);
+  });
+
   it("drops whole highlights from the end to fit the length cap", () => {
     const long = "Đây là một câu tin rất dài để chiếm chỗ trong tin nhắn Telegram. ".repeat(3);
     const highlights: Highlights = {

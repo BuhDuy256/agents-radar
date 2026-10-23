@@ -329,6 +329,12 @@ const LABELS = {
 };
 const PUBLISHED = new Set(Object.keys(LABELS));
 
+// GitHub Pages serves static files with `Cache-Control: max-age=600`. After a
+// re-run, a Telegram link opened within that window would otherwise show the
+// previous digest (page, manifest and report all cached). Version every fetch
+// per page load so the browser and the CDN always read the deployed files.
+const CACHE_BUST = Date.now();
+
 // ── Theme ──
 const htmlEl = document.documentElement;
 const themeBtn = document.getElementById('themeBtn');
@@ -413,7 +419,7 @@ async function buildSearchIndex(dates) {
     while (cursor < tasks.length) {
       const { date, report } = tasks[cursor++];
       try {
-        const res = await fetch(`./digests/${date}/${report}.md`);
+        const res = await fetch(`./digests/${date}/${report}.md?v=${CACHE_BUST}`, { cache: 'no-store' });
         if (res.ok) chunks.get(date).push(await res.text());
       } catch {
         /* ignore — missing report just won't be searchable */
@@ -502,7 +508,7 @@ async function loadReport(date, report, push = true) {
     // stalling the error behind three retries and backoff.
     for (let attempt = 0; ; attempt++) {
       try {
-        res = await fetch(`./digests/${date}/${report}.md`);
+        res = await fetch(`./digests/${date}/${report}.md?v=${CACHE_BUST}`, { cache: 'no-store' });
         if (res.ok || (res.status < 500 && res.status !== 429) || attempt >= 2) break;
       } catch (netErr) {
         if (attempt >= 2) throw netErr;
@@ -644,7 +650,7 @@ window.addEventListener('popstate', () => {
 // ── Init ──
 (async () => {
   try {
-    const res = await fetch('./manifest.json');
+    const res = await fetch(`./manifest.json?v=${CACHE_BUST}`, { cache: 'no-store' });
     if (!res.ok) throw new Error('manifest.json not found');
     const data = await res.json();
     // Drop archived report ids even if the committed manifest still lists them.

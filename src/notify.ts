@@ -81,8 +81,12 @@ export function buildMessage(
   reports: string[],
   pagesUrl?: string,
   highlights?: Highlights | LegacyHighlights | null,
+  cacheKey?: string,
 ): string {
   const PAGES_URL = (pagesUrl ?? process.env["PAGES_URL"] ?? PAGES_URL_DEFAULT).replace(/\/$/, "");
+  // A versioned document URL defeats the 10-minute Pages cache: the reader
+  // opens the digest produced by *this* run, not the one cached earlier.
+  const baseUrl = cacheKey ? `${PAGES_URL}/?v=${encodeURIComponent(cacheKey)}` : `${PAGES_URL}/`;
   const viHighlights = highlights?.vi ?? {};
   const enHighlights = highlights?.en ?? {};
   // Old files may carry a `zh` key; it is deliberately ignored — Vietnamese is
@@ -105,7 +109,7 @@ export function buildMessage(
       [
         s.title,
         ...s.items.map((item) => `• ${escapeHtml(item)}`),
-        `<a href="${PAGES_URL}/#${date}/${s.id}">${NOTIFY_READ_MORE.vi}</a>`,
+        `<a href="${baseUrl}#${date}/${s.id}">${NOTIFY_READ_MORE.vi}</a>`,
       ].join("\n"),
     );
     return [header, ...blocks].join("\n\n");
@@ -135,11 +139,12 @@ async function main(): Promise<void> {
     return;
   }
 
-  const { dates } = JSON.parse(fs.readFileSync("manifest.json", "utf-8")) as {
+  const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf-8")) as {
+    generated?: string;
     dates: { date: string; reports: string[] }[];
   };
 
-  const latest = dates?.[0];
+  const latest = manifest.dates?.[0];
   if (!latest) {
     console.log("[notify] manifest is empty — skipping.");
     return;
@@ -165,7 +170,7 @@ async function main(): Promise<void> {
     }
   }
 
-  const text = buildMessage(date, reports, undefined, highlights);
+  const text = buildMessage(date, reports, undefined, highlights, manifest.generated);
   if (!text) {
     console.log(`[notify] No usable highlights for ${date} — skipping.`);
     return;
