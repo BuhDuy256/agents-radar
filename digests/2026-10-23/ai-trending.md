@@ -1,94 +1,111 @@
 # AI 开源趋势日报 2026-10-23
 
-> 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-10-23 01:05 UTC
+> 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-10-23 02:46 UTC
 
 ---
 
-# **AI 开源趋势报告 – 2026-10-23**
+# AI 开源趋势报告 — 2026-10-23
+
+## 1. 今日亮点
+
+今天的趋势与话题数据显示，AI 开源生态正围绕**智能体基础设施与上下文工程**深度整合，而非原始模型发布。最大的单一信号是 `cloudflare/security-audit-skill`（今日 +2,979）——一个编码智能体*技能*，而非模型或框架——这凸显出可复用、可验证的智能体能力已成为竞争的基本单元。第二个集群是**智能体记忆与 Token 经济**，以 `headroomlabs-ai/headroom`（工具输出压缩）和 `thedotmack/claude-mem`（跨会话持久上下文）为代表。值得注意的是，81 个 AI 话题仓库中有三个是"反臃肿"智能体，它们主张最好的代码/Token 就是从未产生的那些（`ponytail` 今日 +1,948），反映出对成本与上下文纪律的日益成熟的关注。检索领域也在分化：除了经典 RAG 引擎之外，"无向量"方案（`PageIndex`、`graphify`、`LEANN`）正作为向量存储的一等替代方案崭露头角。
 
 ---
 
-## **步骤 1：筛选与 AI 相关的仓库**
-从原始数据中，我们剔除了非 AI 项目（如 PHP 核心、Minecraft 启动器、通用 Web 框架）。仅保留具有明确 AI/ML 聚焦方向的仓库——特别是那些与大语言模型（LLM）、智能体（agents）、检索增强生成（RAG）、向量数据库或 AI 工作流相关的项目。
+## 2. 分类热门项目
 
----
+### 🔧 AI 基础设施
 
-## **步骤 2 与 3：分类与分析**
-
----
-
-### **1. 今日亮点**
-
-开源 AI 生态系统正迎来以**智能体为中心的工具链**爆发式增长，尤其体现在**本地优先、自托管的 AI 工作流**上。像 *DietrichGebert/ponytail* 和 *morluto/rea* 这样的项目，通过让开发者以极低的开销构建高效、低摩擦的编码智能体而迅速走红。与此同时，**RAG 与知识管理系统**也在快速演进，*Graphify-Labs/graphify* 引入了无需向量存储的确定性、可解释知识图谱——这标志着向透明性与性能的新范式转变。*affaan-m/ECC* 与 *thedotmack/claude-mem* 的兴起，反映出社区对智能体记忆、安全性和技能编排的日益增长需求。总体来看，社区关注点正从模型访问转向**智能体的智能水平、持久性与可组合性**。
-
----
-
-### **2. 各类别顶级项目**
-
-#### 🔧 AI 基础设施
-
-| 项目 | 语言 | 星标数（总计 / 今日） | 摘要 |
+| 项目 | 语言 | 星标（总数 / 今日） | 摘要 |
 | :--- | :--- | ---: | :--- |
-| [ollama/ollama](https://github.com/ollama/ollama) | Go | 184,342 | 轻量级本地 LLM 运行器，支持 Kimi、Qwen、GLM、Gemma 等模型。其快速普及反映了对可访问、设备端推理的强大需求。 |
-| [huggingface/transformers](https://github.com/huggingface/transformers) | Python | 168,002 | 部署和微调前沿大模型的行业标准框架，覆盖文本、视觉与音频领域。持续作为 AI 开发栈的核心支柱。 |
-| [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | Python | 148,294 | 领先的智能体工程平台，支持工具调用、记忆管理与 RAG 集成，构建复杂工作流。企业级 AI 应用的核心基础设施。 |
-| [fastapi/fastapi](https://github.com/fastapi/fastapi) | Python | 101 (+101 今日) | 高性能 API 框架，非常适合服务 LLM 接口。因其速度与与 AI 服务的易集成性，正在获得大量新星标。 |
+| [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | JavaScript | 0 (+2,979) | 一个编码智能体技能，运行多阶段安全审计，产出经独立验证、机器可读的发现结果。它是今日增长最快的单一 AI 仓库，标志着企业级*智能体技能*——而非模型——才是当前开发者兴奋的焦点。 |
+| [ollama/ollama](https://github.com/ollama/ollama) | Go | 184,348 | Kimi、GLM、MiniMax、DeepSeek、gpt-oss、Qwen、Gemma 等模型事实上的本地运行器。其庞大的基数印证了本地优先推理仍是开放模型开发者的默认入口。 |
+| [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) | TypeScript | 38,185 | 面向智能体与生成式 UI 的前端技术栈，覆盖 React、Angular、移动端与 Slack，并是 AG-UI 协议的治理者。它作为将智能体接入用户界面的新兴标准层而具有重要意义。 |
+| [headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom) | Python | 77,574 | 在工具输出、日志、文件和 RAG 分块到达 LLM 之前进行压缩——编码智能体减少 20% Token，JSON 减少 60–95%，答案保持一致。以库、代理和 MCP 服务器形式提供，直接针对智能体上下文成本。 |
+| [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | Python | 148,297 | 长期存在的智能体工程平台。其持续高排名表明，尽管涌现了一批更轻量的替代方案，生态仍以其抽象为标准化基础。 |
+| [langgenius/dify](https://github.com/langgenius/dify) | Python | 159,295 | 在同一协作工作空间中构建智能体工作流与 RAG 管道，支持丰富的模型与工具，可云端、VPC 或自托管部署。它仍是该集合中最完整的从原型到生产的平台。 |
+| [0xPlaygrounds/rig](https://github.com/0xPlaygrounds/rig) | Rust | 8,946 | 用于构建模块化、可扩展 LLM 应用的 Rust 工具包。它代表了在 Python 之外推动类型化、高性能智能体后端的小而真实的趋势。 |
 
-#### 🤖 AI 智能体 / 工作流
+### 🤖 AI 智能体 / 工作流
 
-| 项目 | 语言 | 星标数（总计 / 今日） | 摘要 |
+| 项目 | 语言 | 星标（总数 / 今日） | 摘要 |
 | :--- | :--- | ---: | :--- |
-| [morluto/rea](https://github.com/morluto/rea) | TypeScript | 366,343 | 强大的智能体枢纽，优化技能、直觉、记忆与安全性——被 Claude Code、Codex、Cursor 等广泛采用。正成为基础工具包。 |
-| [affaan-m/ECC](https://github.com/affaan-m/ECC) | JavaScript | 286,548 | 面向 AI 智能体的性能优化系统，内置安全机制，研究驱动设计，并支持多提供商。当前增长最快的智能体框架。 |
-| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | JavaScript | 173,495 (+1,948 今日) | 让智能体“像最懒的资深开发者一样思考”——代码最少，效果最大。凭借开发者幽默感与真实实用性实现病毒式传播。 |
-| [Career-Ops-HQ/career-ops](https://github.com/career-ops-hq/career-ops) | JavaScript | 76,616 | 开源的 AI 求职代理，自动评分职位、定制简历并追踪申请状态——可在命令行工具中本地运行。垂直领域智能体应用的典范。 |
-| [zhayujie/CowAgent](https://github.com/zhayujie/CowAgent) | Python | 47,509 | 轻量且可扩展的个人 AI 助手，支持多智能体、多模型与多通道。一行安装即可快速原型开发。 |
+| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | Python | 256,277 | "与你共同成长的智能体"，来自一家以开放模型工作闻名的实验室。它以总星标数领跑 ai-agent 话题，是今日头条级通用智能体。 |
+| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | JavaScript | 173,638 (+1,948) | 让你的 AI 智能体"像房间里最懒的资深开发者那样思考"——最好的代码就是你从未写过的代码。其单日 1,948 星是反过度工程智能体运动最强的动能信号。 |
+| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | Python | 101,046 | 赋予智能体对整个互联网的视野——通过一个 CLI 以零 API 费用读取和搜索 Twitter、Reddit、YouTube、GitHub、Bilibili 和小红书。它反映出对廉价、广泛智能体感知能力的强烈需求。 |
+| [HKUDS/nanobot](https://github.com/HKUDS/nanobot) | Python | 49,288 | 一个超轻量、自托管的 Python 个人智能体框架，具备 WebUI、工具、记忆、MCP、多智能体工作流和聊天应用。其流行显示出"小型自托管"智能体对重量级框架的反向趋势。 |
+| [codewhale-hq/Codewhale](https://github.com/codewhale-hq/Codewhale) | Rust | 41,111 | 一个用 Rust 编写的开源终端智能体，兼容任意提供商或模型。它加入了日益壮大的 Rust 智能体阵营，瞄准速度与提供商中立性。 |
+| [esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix) | Go | 35,934 | 一个用于复杂软件工程任务的可靠编码智能体。它表明经过推理调优的编码智能体仍是一个独特、高价值的垂直领域。 |
+| [career-ops-hq/career-ops](https://github.com/career-ops-hq/career-ops) | JavaScript | 76,636 | 一个开源 AI 求职智能体，扫描招聘板、根据你的简历对职位进行 1–5 打分、定制 ATS 友好简历，并在你的编码 CLI 中本地追踪申请。它是垂直化、默认隐私智能体的一个清晰范例。 |
+| [affaan-m/ECC](https://github.com/affaan-m/ECC) | JavaScript | 286,589 | 一个"智能体框架性能优化系统"，在 Claude Code、Codex、Opencode、Cursor 等之上添加技能、本能、记忆、安全与研究优先的开发方式。其极高的星标数证实框架调优已成为一门独立学科。 |
 
-#### 📦 AI 应用
+### 📦 AI 应用
 
-| 项目 | 语言 | 星标数（总计 / 今日） | 摘要 |
+| 项目 | 语言 | 星标（总数 / 今日） | 摘要 |
 | :--- | :--- | ---: | :--- |
-| [harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | Python | 134,249 | 利用 AI 与工作流引擎将话题自动转化为高清短视频。展现了生成式内容自动化的发展趋势。 |
-| [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | Python | 66,892 | 基于 LLM 的股票分析系统，整合多源数据、新闻与决策仪表盘。真实的金融智能体应用场景。 |
-| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | Python | 66,012 | 将文档自动转换为带动画、图表与旁白的原生 PowerPoint 演示文稿。显示了对 AI 驱动生产力工具的需求持续上升。 |
+| [CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio) | TypeScript | 52,894 | 一个 AI 生产力工作室，具备智能聊天、自主智能体和 300+ 助手，提供对前沿 LLM 的统一访问。它仍是希望用一个桌面枢纽跨多模型的用户的首选。 |
+| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | Python | 66,086 | 将文档或主题转化为原生 PowerPoint 演示文稿，包含真实形状、转场、动画、图表和音频旁白。它表明文档到交付物的生成是一个持久、高流量的应用类别。 |
+| [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | Python | 66,897 | 一个 LLM 驱动的多市场股票分析系统，具备多源数据、实时新闻、仪表盘、警报和零成本定时运行。金融持续是 LLM 智能体最拥挤的垂直领域。 |
+| [HKUDS/Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) | Python | 36,346 | 来自 HKUDS 团队的"个人交易智能体"。它与股票分析项目同时出现，表明领域专用交易智能体正快速聚集。 |
+| [harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | Python | 134,275 | 通过自动化 AI 工作流从主题或关键词生成高清短视频。它持续是星标最高的终端用户生成式媒体工具之一。 |
+| [Mintplex-Labs/anything-llm](https://github.com/Mintplex-Labs/anything-llm) | JavaScript | 67,462 | 一个你完全拥有的本地优先智能体体验，定位于对抗"租用智能"。它将隐私叙事与完整智能体技术栈配对。 |
+| [meilisearch/meilisearch](https://github.com/meilisearch/meilisearch) | Rust | 59,639 | 一个极速搜索 API，为网站和应用带来 AI 驱动的混合搜索。它正日益成为 AI 功能的轻量检索前端。 |
 
-#### 🧠 大语言模型 / 训练
+### 🧠 LLM / 训练
 
-| 项目 | 语言 | 星标数（总计 / 今日） | 摘要 |
+| 项目 | 语言 | 星标（总数 / 今日） | 摘要 |
 | :--- | :--- | ---: | :--- |
-| [open-compass/opencompass](https://github.com/open-compass/opencompass) | Python | 7,536 | 开源的 LLM 评估平台，支持超过 100 个模型在 100+ 数据集上的评测。对下一代模型基准测试至关重要。 |
-| [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm) | Python | 4,786 | 在 Apple Silicon 上构建小型 vLLM + Qwen 的系统级教程。适合工程师学习 LLM 推理。 |
-| [Picovoice/picollm](https://github.com/Picovoice/picollm) | Python | 318 | 通过 X-Bit 量化实现在设备端的 LLM 推理——以超低延迟推动边缘 AI 发展。 |
+| [huggingface/transformers](https://github.com/huggingface/transformers) | Python | 168,002 | 面向最先进文本、视觉、音频和多模态模型的模型定义框架。它仍是推理与训练的经典基础。 |
+| [pytorch/pytorch](https://github.com/pytorch/pytorch) | Python | 104,986 | Python 中的张量与动态神经网络，具备强大的 GPU 加速。它仍是本报告中几乎所有其他项目的默认训练基座。 |
+| [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow) | C++ | 201,190 | 面向所有人的原始开源机器学习框架。它的持续存在反映的是庞大的安装基数而非新动能。 |
+| [open-compass/opencompass](https://github.com/open-compass/opencompass) | Python | 7,536 | 一个 LLM 评估平台，覆盖 OpenAI、Anthropic、Gemini、Qwen、GLM、DeepSeek 等，横跨 100+ 数据集。随着模型选择成倍增加，评估正成为一等关切。 |
+| [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm) | Python | 4,786 | 通过在 Apple Silicon 上构建一个微型 vLLM 加 Qwen，教授 LLM 推理系统内部原理。它标志着面向端侧推理的结构化系统工程教育的出现。 |
+| [Picovoice/picollm](https://github.com/Picovoice/picollm) | Python | 318 | 由 X-bit 量化驱动的端侧 LLM 推理。虽小但值得注意，因为边缘推理工具正日趋成熟。 |
+| [0xPlaygrounds/rig](https://github.com/0xPlaygrounds/rig) | Rust | 8,946 | 在 Rust 中构建模块化、可扩展的 LLM 应用。作为以 Python 为中心的 LLM 技术栈的类型化替代方案，值得关注。 |
 
-#### 🔍 RAG / 知识管理
+### 🔍 RAG / 知识
 
-| 项目 | 语言 | 星标数（总计 / 今日） | 摘要 |
+| 项目 | 语言 | 星标（总数 / 今日） | 摘要 |
 | :--- | :--- | ---: | :--- |
-| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | Python | 132,963 (+1,408 今日) | 通过确定性 AST 解析，将代码库与文档转化为可查询的知识图谱——无需向量存储。可解释 RAG 的突破性进展。 |
-| [infiniflow/ragflow](https://github.com/infiniflow/ragflow) | Go | 92,673 | 领先的开源 RAG 引擎，融合检索与智能体能力。已在生产环境中用于上下文丰富的 LLM 交互。 |
-| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | TypeScript | 102,340 | 智能体跨会话持久化记忆——通过 AI 压缩上下文，仅注入相关部分。解决长期记忆的关键难题。 |
-| [headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom) | Python | 77,563 | 在输入 LLM 前压缩工具输出、日志与 RAG 块——相同回答下可减少 60–95% 的 token 消耗。关键的效率提升。 |
-| [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) | Python | 86,054 | 专为 LLM 设计的开源网页爬虫，将任意网站转化为干净、适配 LLM 的 Markdown 内容。实现知识更新的关键组件。 |
+| [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | TypeScript | 194,337 | 通过将网站转化为 LLM 就绪内容，为智能体注入网络数据。它是该集合中星标最高的纯数据获取项目，也是默认的摄取层。 |
+| [infiniflow/ragflow](https://github.com/infiniflow/ragflow) | Go | 92,681 | 一个领先的开源 RAG 引擎，融合检索与智能体能力，形成 LLM 的上下文层。它锚定了"完整 RAG 引擎"细分领域。 |
+| [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) | Python | 86,061 | 一个开源爬虫，将任意网站转化为干净、LLM 就绪的 Markdown，可自托管或通过云服务。爬取仍是最高流量的 RAG 输入管道。 |
+| [mem0ai/mem0](https://github.com/mem0ai/mem0) | Python | 67,665 | 即插即用的记忆基础设施，为智能体提供为生产构建的持久上下文。记忆现已被视为核心管道，而非一项功能。 |
+| [run-llama/llama_index](https://github.com/run-llama/llama_index) | Python | 52,627 | 自我定位为 AI 的文档处理平台。它仍是标准的摄取与索引工具包。 |
+| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | TypeScript | 102,345 | 捕捉智能体所做的一切，用 AI 压缩，并将相关上下文重新注入未来会话，覆盖 Claude Code、Codex、Gemini、Hermes、Copilot 等。它直接解决跨会话失忆问题。 |
+| [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex) | Python | 39,499 | 面向*无向量*、基于推理的 RAG 的文档索引。它是嵌入优先检索的一个显著挑战者。 |
+| [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG) | Python | 40,274 | 一个 EMNLP2025 的简单快速检索增强生成方法。它让轻量 RAG 研究路线保持商业相关性。 |
+| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | Python | 133,062 (+1,408) | 使用本地确定性 AST 解析，将任意代码库、文档、SQL schema、配置和 PDF 转化为可查询的知识图谱——每条边都有解释，无需向量存储。其单日 1,408 星使其成为结构化、可解释检索最清晰的动能信号。 |
+| [milvus-io/milvus](https://github.com/milvus-io/milvus) | Go | 46,453 | 一个高性能云原生向量数据库，用于可扩展的 ANN 搜索。它仍是参考级大规模向量存储。 |
+| [meilisearch/meilisearch](https://github.com/meilisearch/meilisearch) | Rust | 59,639 | 通过快速搜索 API 为网站和应用带来 AI 驱动的混合搜索。它架起经典搜索与向量检索之间的桥梁。 |
+| [StarTrail-org/LEANN](https://github.com/StarTrail-org/LEANN) | Python | 13,058 | MLSys2026 最佳论文工作，在个人设备上实现快速、准确、100% 私密的 RAG，节省 97% 存储。它瞄准检索的隐私加效率端。 |
 
 ---
 
-### **3. 趋势信号分析**
+## 3. 趋势信号分析
 
-今日数据揭示了一项**范式转变：从以智能体为中心、自托管的 AI 开发模式**。最显著的增长并非来自模型权重本身，而是**赋能更智能、持久且安全的 AI 智能体的工具链**——这一点在 *morluto/rea*、*affaan-m/ECC* 与 *thedotmack/claude-mem* 的迅猛上升中尤为明显。这些项目解决了核心痛点：记忆留存、技能编排与安全性——正是迈向生产级 AI 系统的关键。
+**什么正在获得爆发式关注。** 今日最清晰的动能属于**智能体技能与上下文经济工具**，而非模型。`cloudflare/security-audit-skill`（+2,979）和 `ponytail`（+1,948）都是*塑造行为*的产物——一个编码可验证的审计流程，另一个编码克制。`graphify`（+1,408）将同样的逻辑应用于检索：确定性、可解释的结构，而非黑箱向量存储。这三者表明社区的注意力已从"用哪个模型"转向"如何让智能体更便宜、更可验证、更不浪费"。
 
-一个值得关注的新方向是**无向量、确定性的知识表示**，以 *Graphify-Labs/graphify* 为代表。通过用可解释的、基于抽象语法树（AST）的知识图谱替代向量嵌入，该方法实现了完全透明与可复现性——对担心黑箱 RAG 系统的开发者极具吸引力。这可能构成对纯向量数据库主导地位的反趋势。
+**正在出现的新技术栈与方向。** 三个首次出现或新近突出的方向引人注目。第一，**Token 压缩作为基础设施**：`headroom`（编码智能体节省 20%，JSON 节省 60–95%）将上下文预算视为一个工程问题，并配有专用层。第二，**无向量 / 结构化检索**：`PageIndex`、`graphify` 和 `LEANN` 各自拒绝或弱化嵌入，转而采用基于推理或基于图的索引。第三，**Rust 智能体工具**：`Codewhale` 和 `rig` 加入了对 Python 主导地位发起挑战的类型化后端浪潮。持久记忆（`claude-mem`、`mem0`）补全了一个连贯的"智能体连续性"技术栈。
 
-这一势头与近期发布的先进大模型所强调的**智能体能力**（如 Claude 3.5 Sonnet、Gemini 2.0）高度契合，其中长上下文推理与工具使用为核心。开源社区正全力追赶，提供内存、技能、压缩与检索等基础设施，使这些高级模型能在真实工作流中落地。结果是**技术栈的转移**：从以模型为中心，转向以智能体与基础设施为中心的开发模式。
+**与 LLM 发布及行业事件的关联。** 这波工具浪潮是对不断多元化的模型格局的理性回应——`ollama` 的 Kimi、GLM、MiniMax、DeepSeek、gpt-oss、Qwen 和 Gemma 名单意味着开发者必须保持模型无关，这解释了提供商中立框架（`ECC`、`Codewhale`）和评估平台（`opencompass`）的流行。与此同时，`LEANN` 的 MLSys2026 最佳论文和 `LightRAG` 的 EMNLP2025 标签表明，从研究到仓库的延迟现已以天计，而 `tiny-llm` 作为推理系统教学仓库的出现，表明人才管道正围绕端侧服务重建。整体图景：一个日益成熟的生态，在商品化的模型层之上优化成本、记忆与可验证性。
+
+---
+
+## 4. 社区热点
+
+- **[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)** — 今日涨幅最快（+2,979）。一家重要厂商发布*可验证*的智能体技能，为企业智能体采用树立了模板；关注"机器可读的发现结果"如何成为一种契约模式。
+- **[headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom) 与 [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)** — 智能体上下文经济（压缩 + 持久记忆）是当下最具防御性的基础设施细分领域，有具体的 Token 节省数字来支撑采用。
+- **[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) 与 [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex)** — 无向量/结构化检索论题正获得可信的势头；开发者应测试基于图和推理的索引是否在自己的语料上胜过嵌入。
+- **[DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) 与 [affaan-m/ECC](https://github.com/affaan-m/ECC)** — 框架优化与"反过度工程"提示正成为被命名、被共享的学科；两者都值得作为可复用的智能体行为模式加以研究。
+- **[HKUDS/nanobot](https://github.com/HKUDS/nanobot) 与 [codewhale-hq/Codewhale](https://github.com/codewhale-hq/Codewhale)** — 轻量、自托管、提供商中立的智能体（Python 与 Rust）代表了对抗重量级平台的反向趋势，是希望完全掌控的构建者的最佳切入点。
 
 ---
 
-### **4. 社区热点**
-
-- **[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)** — 可解释、确定性 RAG 的突破。开发者应探索其基于 AST 的知识图谱，以构建可审计、本地优先的 AI 系统。
-- **[morluto/rea](https://github.com/morluto/rea)** — 增速最快的智能体枢纽。正成为性能、安全与多工具集成的标准，适合构建稳健的 AI 智能体团队。
-- **[infiniflow/ragflow](https://github.com/infiniflow/ragflow)** — 生产就绪的 RAG 与智能体融合引擎。企业用户选择高精度、可扩展检索系统的首选。
-- **[ollama/ollama](https://github.com/ollama/ollama)** — 本地 LLM 部署的首选。随着对前沿模型支持的持续扩展，仍对注重隐私、离线运行的 AI 工作负载至关重要。
-- **[hedron-ai/Headroom](https://github.com/headroomlabs-ai/headroom)** — 大规模的 token 压缩方案。对降低智能体管道的成本与延迟至关重要，尤其适用于高频编程智能体。
-
----
-*本日报由 [agents-radar](https://github.com/duanyytop/agents-radar) 自动生成。*
+规则：
+- 仅输出译文。不要前言、不要解释、不要用 Markdown 围栏包裹整个输出。
+- 严格保留 Markdown 结构：标题、表格（包括列对齐行）、列表、引用块、粗体/斜体、水平分隔线、emoji。
+- URL、链接目标、代码段、代码块、数字和日期保持原样。
+- 项目名称、仓库 slug、用户名、版本标签、文件路径和 API/配置标识符保持原始形式——不要翻译它们。
+- 类似 #12345 的 issue/PR 引用及其链接文本保持原样。
+- 使用自然的技术中文，采用中文开发者通讯的语域——而非逐字直译。
