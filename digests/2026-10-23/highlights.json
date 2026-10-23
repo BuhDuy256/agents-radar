@@ -1,118 +1,118 @@
 {
   "vi": {
     "ai-cli": [
-      "Công cụ AI CLI bước vào giai đoạn tăng cường và tin cậy",
-      "Claude Code sửa lỗi thoát sandbox trong v2.1.309",
-      "OpenCode vá gói CVE Bun 1.4.4",
-      "Copilot CLI giờ tuân thủ cờ sandbox",
-      "Cả 7 công cụ hội tụ về vòng lặp agent, MCP hooks",
-      "Lỗi agent im lặng giờ là nhóm phàn nàn hàng đầu"
+      "Các công cụ AI CLI hội tụ về sandboxing và MCP",
+      "Lỗ hổng mô hình quyền và lỗi thành công giả âm thầm hoành hành",
+      "Windows vẫn là nền tảng yếu nhất: rò rỉ, lỗi ACL",
+      "Claude Code và Gemini CLI phát hành bản vá bảo mật sandbox",
+      "Nợ tương thích tăng khi Desktop và IDE tụt lại so với CLI",
+      "Thúc đẩy liên công cụ về quan sát chi phí và liên tục phiên"
     ],
     "ai-agents": [
-      "OpenClaw đạt 500 issue và 500 PR trong một ngày",
-      "OpenClaw v2026.10.6 buộc nâng cấp runtime Node",
-      "Sự cố chứng chỉ TLS thúc đẩy bản vá bắt buộc",
-      "Bot clawsweeper phân loại tồn đọng issue OpenClaw",
-      "Lỗi sleep/wake trên Windows và macOS vẫn tồn tại",
-      "Lỗi quyền khôi phục sau khởi động được sửa trong PR"
+      "OpenClaw: 500 issue và 500 PR trong 24 giờ",
+      "OpenClaw phát hành v2026.10.6, yêu cầu runtime Node đã vá",
+      "Chặn khởi động plugin đứng đầu sự chú ý cộng đồng (#160959)",
+      "Suy thoái khởi động Windows ảnh hưởng dòng phát hành OpenClaw",
+      "OpenClaw mang nợ suy thoái lớn qua 5 dự án",
+      "Lỗi vòng lặp crash nghiêm trọng vẫn chưa có PR sửa"
     ],
     "ai-infra": [
-      "LiteLLM v1.107.0 bị chuỗi cung ứng đánh cắp thông tin xác thực",
-      "vLLM PD disaggregation cho thấy rò rỉ KV giữa các request",
-      "Lỗi thay thế âm thầm MXFP4 SwiGLU thành SiTU trong SGLang",
-      "llama.cpp báo cáo sụp đổ giải mã ngữ cảnh dài",
-      "AMD ROCm MI355X đạt hỗ trợ hạng nhất",
-      "Không có bản phát hành lớn nào trong cả sáu dự án hạ tầng"
+      "LiteLLM 1.107.0 bị xâm phạm chuỗi cung ứng",
+      "vLLM hỏng KV âm thầm dưới PD disaggregation",
+      "Mô hình lai ngữ cảnh dài sụp đổ ở 80K+ token",
+      "Công việc khởi động ROCm, Intel XPU, Qualcomm Hexagon hoàn tất",
+      "Hopper và Blackwell hấp thụ hầu hết tối ưu CUDA",
+      "SGLang dẫn đầu 9 suy thoái xếp hạng cùng CI tracker"
     ],
     "ai-trending": [
-      "cloudflare/security-audit-skill tăng +2.979 sao",
-      "DietrichGebert/ponytail tăng +1.948 nhờ kiềm chế",
-      "Graphify-Labs/graphify đẩy đồ thị không vector store",
-      "Anthropic ra mắt knowledge-work-plugins (+303)",
-      "Công cụ agent và skill thống trị GitHub trending",
-      "ECC harness hợp nhất Claude Code, Codex, Cursor"
+      "Agent giờ được tối ưu cho ngữ cảnh và hiệu quả token",
+      "Kỹ năng coding-agent nổi lên như định dạng phân phối mới",
+      "cloudflare/security-audit-skill đạt 2.979 sao",
+      "Vectorless và graph RAG chiếm lĩnh không gian truy xuất",
+      "affaan-m/ECC đạt 286.670 sao như agent harness",
+      "Gần như mọi repo thịnh hành nhắm Claude Code hoặc Codex"
     ],
     "ai-hn": [
-      "DeepInfer đứng đầu HN với 2.333 điểm và 888 bình luận",
-      "NVIDIA OpenShell runtime an toàn cho đội agent gây tranh cãi",
-      "OpenAI 'Patch the Planet' công bố phối hợp gây tranh luận",
-      "Mô hình âm thanh Mistral Voxtral 3 đạt 768 điểm",
-      "Công trình xác minh hình thức của Anthropic khơi dậy thảo luận",
-      "Economist: 'AI compute là dầu mỏ mới'"
+      "Anthropic: LLM khiến xác minh hình thức khả thi",
+      "Runtime NVIDIA OpenShell nhắm đội agent",
+      "Claude Duet đứng đầu thread với 550 điểm, 515 bình luận",
+      "DeepSeek DeepInfer đạt 2.333 điểm, 888 bình luận",
+      "Người hoài nghi chấm điểm tin cậy LLM khơi tranh luận phương pháp",
+      "Khảo sát: hầu hết người Mỹ xem AI là xấu cho xã hội"
     ],
     "ai-arxiv": [
-      "Bài báo sửa lỗi Softmax Collapse và Softmax Cancellation",
-      "Embedding n-gram bit thấp giảm chi phí bộ nhớ LM",
-      "Kiểm toán chọn lọc quyết định AI thu hút quan tâm",
-      "Đề xuất chia sẻ KV cho kiến trúc vòng lặp",
-      "Nghiên cứu gán tín dụng giả trong agentic RL",
-      "Bài báo kiểm toán sử dụng dataset T2I thể hiện trách nhiệm"
+      "Bản sửa mới cho lỗi số softmax và cross-entropy",
+      "Embedding n-gram bit thấp giảm nút thắt bộ nhớ LM",
+      "Từ chối nhận biết chi phí và kiểm toán chọn lọc được chú ý",
+      "Công cụ tuân thủ EU AI Act vào pipeline nghiên cứu",
+      "Hiệu quả suy luận lúc kiểm thử qua cắt tỉa suy nghĩ",
+      "Benchmark agentic mở rộng sang lập kế hoạch thị giác và an toàn"
     ],
     "ai-community": [
-      "Điểm tin cậy của LLM là chuỗi, không phải xác suất",
-      "Anthropic chạy 30.000 agent giải bài toán",
-      "Phòng chống prompt-injection thống trị thảo luận kiến trúc agent",
-      "Dev.to: vòng lặp thử lại âm thầm đốt ngân sách token",
-      "Lobste.rs: malware Turing-complete trong PyTorch backward",
-      "Mistral phát hành mô hình nền tảng chuỗi thời gian"
+      "Tin cậy LLM như văn bản, không phải xác suất hiệu chỉnh",
+      "Phát hiện DNA kiểu CRISPR của Claude thất bại mười lần chạy lại",
+      "Anthropic chạy 30.000 agent đồng thời ở quy mô lớn",
+      "Dev vật lộn với lỗi workflow âm thầm và gọi trùng lặp",
+      "Mã độc khai thác backward-pass PyTorch gây tranh luận",
+      "Mô hình nền tảng chuỗi thời gian và unikernel trên Lobste.rs"
     ]
   },
   "en": {
     "ai-cli": [
-      "AI CLI tools enter hardening-and-trust phase",
-      "Claude Code fixes sandbox escapes in v2.1.309",
-      "OpenCode patches Bun 1.4.4 CVE bundle",
-      "Copilot CLI now honors sandbox flags",
-      "All 7 tools converge on agent loops, MCP hooks",
-      "Silent agent failures now top complaint class"
+      "AI CLI tools converge on sandboxing and MCP",
+      "Permission-model gaps and silent false-success plague tools",
+      "Windows remains weakest platform: leaks, ACL failures",
+      "Claude Code and Gemini CLI ship sandbox security fixes",
+      "Parity debt grows as Desktop and IDE lag CLI",
+      "Cross-tool push for cost observability and session continuity"
     ],
     "ai-agents": [
-      "OpenClaw hits 500 issues and 500 PRs in a day",
-      "OpenClaw v2026.10.6 forces Node runtime upgrade",
-      "TLS certificate compromise drives mandatory patch",
-      "clawsweeper bot triages OpenClaw issue backlog",
-      "Windows and macOS sleep/wake regressions persist",
-      "restart-recovery authority bugs fixed in PRs"
+      "OpenClaw: 500 issues and 500 PRs in 24 hours",
+      "OpenClaw ships v2026.10.6, requires patched Node runtime",
+      "Plugin startup blocking tops community attention (#160959)",
+      "Windows startup regressions hit OpenClaw release line",
+      "OpenClaw carries big regression debt across 5 projects",
+      "High-severity crash-loop bugs still lack fix PRs"
     ],
     "ai-infra": [
-      "LiteLLM v1.107.0 hit by credential-stealer supply chain",
-      "vLLM PD disaggregation shows cross-request KV leakage",
-      "SGLang silent MXFP4 SwiGLU to SiTU substitution bug",
-      "llama.cpp long-context decode collapse reported",
-      "AMD ROCm MI355X crosses into first-class support",
-      "No major releases across all six infra projects"
+      "LiteLLM 1.107.0 hit by supply-chain compromise",
+      "vLLM silent KV corruption under PD disaggregation",
+      "Long-context hybrid models collapse at 80K+ tokens",
+      "ROCm, Intel XPU, Qualcomm Hexagon bring-up work lands",
+      "Hopper and Blackwell absorb most CUDA optimization",
+      "SGLang leads 9 ranked regressions plus CI tracker"
     ],
     "ai-trending": [
-      "cloudflare/security-audit-skill gains +2,979 stars",
-      "DietrichGebert/ponytail adds +1,948 for restraint",
-      "Graphify-Labs/graphify pushes no-vector-store graphs",
-      "Anthropic launches knowledge-work-plugins (+303)",
-      "Agent tooling and skills dominate GitHub trending",
-      "ECC harness unifies Claude Code, Codex, Cursor"
+      "Agents now optimized for context and token efficiency",
+      "Coding-agent skills emerge as new distribution format",
+      "cloudflare/security-audit-skill gains 2,979 stars",
+      "Vectorless and graph RAG colonize retrieval space",
+      "affaan-m/ECC hits 286,670 stars as agent harness",
+      "Nearly every trending repo targets Claude Code or Codex"
     ],
     "ai-hn": [
-      "DeepInfer tops HN with 2,333 points and 888 comments",
-      "NVIDIA OpenShell safe runtime for agent fleets draws fire",
-      "OpenAI 'Patch the Planet' coordinated disclosure debated",
-      "Mistral Voxtral 3 audio model scores 768 points",
-      "Anthropic formal verification work sparks discussion",
-      "Economist: 'AI compute is the new oil'"
+      "Anthropic: LLMs make formal verification feasible",
+      "NVIDIA OpenShell runtime targets agent fleets",
+      "Claude Duet tops thread with 550 points, 515 comments",
+      "DeepSeek DeepInfer hits 2,333 points, 888 comments",
+      "LLM confidence-scoring skeptics spark methodology debate",
+      "Poll: most Americans view AI as bad for society"
     ],
     "ai-arxiv": [
-      "Paper fixes Softmax Collapse and Softmax Cancellation bugs",
-      "Low-bit n-gram embeddings shrink LM memory costs",
-      "Selective auditing of AI decisions gains traction",
-      "KV-sharing proposed for looped architectures",
-      "Counterfeit-credit assignment in agentic RL studied",
-      "T2I dataset-use auditing paper signals accountability"
+      "New fix for softmax and cross-entropy numerical bugs",
+      "Low-bit n-gram embeddings cut LM memory bottlenecks",
+      "Cost-aware abstention and selective auditing gain traction",
+      "EU AI Act compliance tooling enters research pipeline",
+      "Test-time reasoning efficiency via thought pruning",
+      "Agentic benchmarks expand to visual planning and safety"
     ],
     "ai-community": [
-      "LLM confidence scores are strings, not probabilities",
-      "Anthropic runs 30,000 agents on math problems",
-      "Prompt-injection defenses dominate agent architecture talk",
-      "Dev.to: retry loops silently burn token budget",
-      "Lobste.rs: Turing-complete malware in PyTorch backward",
-      "Mistral ships time-series foundation models"
+      "LLM confidence as text, not calibrated probability",
+      "Claude CRISPR-like DNA finding fails ten reruns",
+      "Anthropic runs 30,000 concurrent agents at scale",
+      "Devs battle silent workflow failures and duplicate calls",
+      "PyTorch backward-pass malware exploit sparks debate",
+      "Time-series foundation models and unikernels on Lobste.rs"
     ]
   }
 }

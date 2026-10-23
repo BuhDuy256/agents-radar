@@ -1,14 +1,16 @@
 # Xu hướng mã nguồn mở AI 2026-10-23
 
-> Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-10-23 05:33 UTC
+> Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-10-23 05:49 UTC
 
 ---
 
-# Báo cáo Xu hướng Mã nguồn Mở AI — 2026-10-23
+# Báo cáo Xu hướng AI Mã nguồn mở — 2026-10-23
+
+---
 
 ## 1. Điểm nổi bật hôm nay
 
-Hệ sinh thái mã nguồn mở AI hôm nay bị chi phối áp đảo bởi **công cụ agent và "skills" dành cho nhà phát triển**. Sự bùng nổ lớn nhất là **cloudflare/security-audit-skill** (+2,979 sao), một skill cho coding-agent dùng để kiểm tra bảo mật có thể xác minh bằng máy, cho thấy doanh nghiệp giờ muốn đầu ra của agent *có thể kiểm toán, xác định trước* thay vì chỉ sinh nội dung thô. **DietrichGebert/ponytail** (+1,948) nắm bắt xu hướng ngược lại: agent được tối ưu cho sự *tiết chế* ("code tốt nhất là code bạn không bao giờ viết"), chống lại việc sinh quá nhiều. **Graphify-Labs/graphify** (+1,408) thúc đẩy cách tiếp cận đồ thị tri thức "không vector store" để hiểu codebase, thách thức trực tiếp dòng chính RAG. Trong khi đó, **Anthropic** bước vào không gian plugin cho công việc tri thức với **knowledge-work-plugins** (+303), chính thức hóa mô hình phân phối "skill/plugin" cho Claude Cowork.
+Dữ liệu trending trên GitHub hôm nay cho thấy một sự chuyển dịch rõ rệt từ "xây dựng mô hình AI" sang **tối ưu cách các agent tiêu thụ và lưu trữ ngữ cảnh**. Chủ đề thống trị duy nhất là hiệu quả token và bộ nhớ: các dự án như `headroom`, `graphify` và `claude-mem` đều giải quyết cùng một vấn đề — agent lãng phí token vào ngữ cảnh không liên quan, và người thắng cuộc là những ai nén, lập chỉ mục hoặc lưu trữ nó một cách thông minh. Trong khi đó, `cloudflare/security-audit-skill` (+2.979) và `DietrichGebert/ponytail` (+1.948) cho thấy sức hút bùng nổ của **"skill" cho coding-agent** như một định dạng phân phối mới — những gói năng lực mỏng, có thể kết hợp thay vì các framework đồ sộ. Danh mục RAG đang âm thầm bị chiếm lĩnh bởi các phương pháp truy xuất "không vector" và dựa trên đồ thị (`PageIndex`, `graphify`, `LEANN`), báo hiệu rằng kỷ nguyên vector-store đang chín muồi chứ không phải kết thúc. Đáng chú ý, gần như mọi repo trending đều là *skill, harness hoặc lớp ngữ cảnh* cho Claude Code / Codex / Cursor — IDE agent giờ đây đã trở thành nền tảng chính.
 
 ---
 
@@ -18,95 +20,84 @@ Hệ sinh thái mã nguồn mở AI hôm nay bị chi phối áp đảo bởi **
 
 | Dự án | Ngôn ngữ | Sao (tổng / hôm nay) | Tóm tắt |
 | :--- | :--- | ---: | :--- |
-| [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | JavaScript | 0 (+2,979) | Một skill cho coding-agent dùng để kiểm tra bảo mật đa giai đoạn, tạo ra các phát hiện có thể xác minh độc lập và đọc được bằng máy. Mức tăng +2,979 hôm nay cho thấy doanh nghiệp đang ưu tiên đầu ra agent có thể xác minh hơn là năng lực thô. |
-| [affaan-m/ECC](https://github.com/affaan-m/ECC) | JavaScript | 286,664 | Hệ thống tối ưu "harness" cho agent, bao gồm skills, instincts, memory và security trên Claude Code, Codex, Cursor và nhiều công cụ khác. Khả năng tương thích đa harness khiến nó trở thành ứng viên chuẩn hóa việc tinh chỉnh hiệu suất agent. |
-| [headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom) | Python | 77,584 | Nén đầu ra công cụ, log, tệp và chunk RAG trước khi chúng đến LLM — giảm 20%–95% token mà vẫn giữ nguyên câu trả lời. Áp lực chi phí token biến đây thành tiện ích đòn bẩy cao cho agent trong môi trường production. |
-| [0xPlaygrounds/rig](https://github.com/0xPlaygrounds/rig) | Rust | 8,947 | Framework Rust để xây dựng ứng dụng LLM dạng module, có thể mở rộng. Phản ánh xu hướng dịch chuyển đều đặn của việc xây dựng ứng dụng LLM sang các ngôn ngữ hệ thống vì hiệu năng và an toàn. |
-| [meilisearch/meilisearch](https://github.com/meilisearch/meilisearch) | Rust | 59,639 | API công cụ tìm kiếm cực nhanh mang tìm kiếm hybrid do AI hỗ trợ đến các trang web và ứng dụng. Tìm kiếm hybrid (từ khóa + vector) đang trở thành kỳ vọng mặc định cho các ứng dụng hướng AI. |
+| [affaan-m/ECC](https://github.com/affaan-m/ECC) | JavaScript | 286.670 | Hệ thống tối ưu hiệu năng agent harness, bổ sung skill, instinct, bộ nhớ và bảo mật cho Claude Code, Codex, Cursor và nhiều công cụ khác. Số sao khổng lồ cho thấy tối ưu ở cấp harness đã trở thành mối quan tâm hàng đầu của lập trình viên. |
+| [ollama/ollama](https://github.com/ollama/ollama) | Go | 184.366 | Trình chạy mô hình cục bộ thực tế, hiện hỗ trợ Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen và Gemma. Vẫn là điểm khởi đầu cho suy luận tự lưu trữ và là thước đo cho việc tiếp nhận mô hình trọng số mở. |
+| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | JavaScript | 173.841 (+1.948) | Plugin khiến AI agent "suy nghĩ như một senior dev lười nhất", ưu tiên code tối giản. Mức +1.948 hôm nay là một trong những tín hiệu đà tăng mạnh nhất trong ngày cho công cụ hành vi agent. |
+| [esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix) | Go | 35.938 | Coding agent đáng tin cậy được xây dựng riêng cho các tác vụ kỹ thuật phần mềm phức tạp. Đại diện cho thị trường ngách "agent tinh chỉnh suy luận" đang nổi lên bằng Go. |
+| [can1357/oh-my-pi](https://github.com/can1357/oh-my-pi) | TypeScript | 36.312 | Coding agent tích hợp trực tiếp IDE, do Stencil Labs xây dựng. Làm nổi bật xu hướng agent được phát hành dưới dạng IDE-native thay vì CLI độc lập. |
+| [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm) | Python | 4.787 | Dự án giảng dạy xây dựng một stack suy luận vLLM + Qwen nhỏ gọn trên Apple Silicon cho kỹ sư hệ thống. Có giá trị như một trong số ít hướng dẫn thực hành phục vụ LLM trên phần cứng cục bộ. |
+| [Picovoice/picollm](https://github.com/Picovoice/picollm) | Python | 318 | Suy luận LLM trên thiết bị nhờ lượng tử hóa X-bit. Một tín hiệu nhỏ nhưng mang tính chiến lược cho suy luận biên/riêng tư. |
 
-### 🤖 AI Agents / Workflows
+### 🤖 AI Agent / Quy trình công việc
 
 | Dự án | Ngôn ngữ | Sao (tổng / hôm nay) | Tóm tắt |
 | :--- | :--- | ---: | :--- |
-| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | JavaScript | 173,820 (+1,948) | Khiến AI agent "suy nghĩ như một senior dev lười nhất", ưu tiên code tối giản. Mức tăng +1,948 là tín hiệu mạnh cho thấy các đội đang chống lại việc agent làm quá phức tạp bằng các ràng buộc về prompt/hành vi. |
-| [morluto/rea](https://github.com/morluto/rea) | TypeScript | 367,726 | Dịch ngược mọi thứ bằng agent, từ hành vi ứng dụng xuống đến binary gốc. Đứng đầu chủ đề LLM theo số sao thô; dịch ngược bằng agent là một ngách bảo mật tấn công/phòng thủ đang trưởng thành nhanh chóng. |
-| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | Python | 256,304 | "Agent lớn lên cùng bạn" — một agent bền bỉ, tự cải thiện từ một phòng lab mô hình nổi tiếng. Các framework agent do lab hậu thuẫn ngày càng cạnh tranh với các harness cộng đồng. |
-| [browser-use/browser-use](https://github.com/browser-use/browser-use) | Python | 118,914 | Thư viện Python mã nguồn mở cho AI browser agent, kèm cloud được host với trình duyệt stealth. Tự động hóa trình duyệt vẫn là năng lực agent giá trị nhất, giờ đã được sản phẩm hóa. |
-| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | Python | 101,095 | Cho agent quyền đọc/tìm kiếm trên Twitter, Reddit, YouTube, GitHub, Bilibili và — một CLI, không phí API. Truy cập dữ liệu miễn phí cho agent là bước mở khóa lớn cho quy trình nghiên cứu tự động. |
-| [zhayujie/CowAgent](https://github.com/zhayujie/CowAgent) | Python | 47,512 | Trợ lý AI cá nhân mã nguồn mở và harness agent với memory, tools, skills, hỗ trợ đa agent. Cài đặt một dòng giúp hạ thấp rào cản áp dụng agent tự host. |
-| [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) | TypeScript | 38,186 | Ngăn xếp frontend cho agent và giao diện sinh (React, Angular, Mobile, Slack), đồng thời là đơn vị tạo ra AG-UI Protocol. UX cho agent đang hội tụ quanh các framework frontend, lặp lại thời kỳ ứng dụng web. |
-| [esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix) | Go | 35,936 | Coding agent đáng tin cậy cho các tác vụ kỹ thuật phần mềm phức tạp, viết bằng Go. Coding agent bằng ngôn ngữ biên dịch phản ánh nhu cầu ngày càng tăng về khả năng triển khai và tốc độ. |
+| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | Python | 256.307 | "Agent phát triển cùng bạn", từ đội ngũ đứng sau dòng mô hình Hermes. Số sao đứng đầu danh sách khiến nó trở thành framework agent mở hàng đầu hiện tại. |
+| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | Python | 101.101 | Cho agent con mắt khắp Twitter, Reddit, YouTube, GitHub, Bilibili và XiaoHongShu qua một CLI duy nhất với chi phí API bằng không. Một giải pháp thực dụng cho vấn đề truy cập dữ liệu của agent. |
+| [career-ops-hq/career-ops](https://github.com/career-ops-hq/career-ops) | JavaScript | 76.657 | Agent tìm việc AI quét các bảng tin, chấm điểm vị trí dựa trên CV của bạn và tùy chỉnh CV thân thiện với ATS. Chạy cục bộ trong Claude Code/Codex — một ví dụ mạnh mẽ về agent theo ngành dọc. |
+| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | Python | 66.211 | Biến tài liệu hoặc chủ đề thành bộ PowerPoint gốc với shape, biểu đồ, thuyết minh và template tùy chỉnh thật. Một trong những công cụ "agent tạo ra sản phẩm thật" thiết thực nhất đang trending hôm nay. |
+| [CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio) | TypeScript | 52.899 | Studio năng suất AI cung cấp chat thông minh, agent tự trị và hơn 300 trợ lý trên các LLM tiên tiến. Một workspace agent hướng người tiêu dùng đã trưởng thành. |
+| [HKUDS/nanobot](https://github.com/HKUDS/nanobot) | Python | 49.289 | Framework agent cá nhân tự lưu trữ, siêu nhẹ với WebUI, công cụ, bộ nhớ, MCP và quy trình đa agent. Phản ánh nhu cầu về lõi agent tối giản, dễ tùy biến. |
+| [zhayujie/CowAgent](https://github.com/zhayujie/CowAgent) | Python | 47.512 | Trợ lý AI cá nhân và agent harness biết lập kế hoạch, chạy công cụ/skill và tự tiến hóa với bộ nhớ. Đa mô hình, đa kênh, cài đặt một dòng lệnh. |
+| [Codewhale](https://github.com/codewhale-hq/Codewhale) | Rust | 41.111 | Agent gốc terminal viết bằng Rust hỗ trợ mọi nhà cung cấp hoặc mô hình. Đáng chú ý là một trong số ít agent Rust có nhiều sao, gợi ý về runtime agent ưu tiên hiệu năng. |
 
 ### 📦 Ứng dụng AI
 
 | Dự án | Ngôn ngữ | Sao (tổng / hôm nay) | Tóm tắt |
 | :--- | :--- | ---: | :--- |
-| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | Python | 133,207 (+1,408) | Biến bất kỳ codebase, tài liệu, schema SQL, config và PDF thành đồ thị tri thức có thể truy vấn thông qua một skill cho Claude Code, Cursor, Codex, Gemini CLI. Cách phân tích AST xác định và định hướng "không vector store" đang tăng nhanh (+1,408 hôm nay). |
-| [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Python | 0 (+303) | Repo plugin mã nguồn mở chính thức của Anthropic dành cho người làm công việc tri thức sử dụng Claude Cowork. Phân phối plugin của bên thứ nhất cho thấy nhà cung cấp đang chính thức hóa một hệ sinh thái ứng dụng cho agent của mình. |
-| [career-ops-hq/career-ops](https://github.com/career-ops-hq/career-ops) | JavaScript | 76,655 | Agent tìm việc AI mã nguồn mở, quét các bảng tin, chấm điểm việc làm theo CV và tùy chỉnh resume. Chạy cục bộ trong coding CLI, cho thấy các agent chuyên ngành đang chuyển sang hình thức CLI-first. |
-| [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | Python | 66,908 | Hệ thống phân tích cổ phiếu đa thị trường do LLM điều khiển, với dữ liệu thị trường, tin tức, dashboard và lập lịch miễn phí. Tài chính vẫn là ngành dọc đông đúc nhất cho ứng dụng agent LLM. |
-| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | Python | 66,198 | Biến tài liệu hoặc chủ đề thành bộ PowerPoint gốc với shape, biểu đồ, animation và thuyết minh thật. Đầu ra định dạng gốc (không phải ảnh) là điểm khác biệt cho môi trường doanh nghiệp. |
-| [CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio) | TypeScript | 52,898 | Studio năng suất AI với chat, agent tự động và hơn 300 trợ lý truy cập các LLM tiên tiến. Các ứng dụng khách tổng hợp vẫn là điểm vào lưu lượng cao cho quy trình đa mô hình. |
-| [HKUDS/nanobot](https://github.com/HKUDS/nanobot) | Python | 49,290 | Framework agent AI cá nhân siêu nhẹ, tự host, với WebUI, tools, memory, MCP và quy trình đa agent. Tự host nhẹ là câu trả lời cho lo ngại về chi phí và quyền riêng tư. |
-| [agentscope-ai/QwenPaw](https://github.com/agentscope-ai/QwenPaw) | Python | 35,969 | Trợ lý AI cá nhân có thể triển khai cục bộ hoặc trên cloud, hỗ trợ nhiều ứng dụng chat. Phân phối gốc qua ứng dụng chat phản ánh nơi người dùng không chuyên thực sự ở. |
+| [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | JavaScript | 0 (+2.979 hôm nay) | Skill cho coding-agent dùng để kiểm tra bảo mật đa giai đoạn với kết quả được xác minh độc lập, đọc được bằng máy. Mức +2.979 là mức tăng trong ngày lớn nhất hôm nay và cho thấy các nhà cung cấp doanh nghiệp đang phát hành skill agent trực tiếp. |
+| [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Python | 0 (+303 hôm nay) | Kho plugin mã nguồn mở của Anthropic cho nhân viên tri thức dùng Claude Cowork. Việc phân phối plugin agent bên thứ nhất là một tín hiệu nền tảng quan trọng. |
+| [harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | Python | 134.330 | Tạo video ngắn HD từ một chủ đề hoặc từ khóa qua quy trình AI tự động. Một mục yêu thích lâu dài trong ngành truyền thông sáng tạo. |
+| [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | Python | 66.909 | Hệ thống phân tích chứng khoán đa thị trường bằng LLM với tin tức trực tiếp, dashboard và thông báo theo lịch miễn phí. Minh họa cho sự bùng nổ agent ngành tài chính. |
+| [HKUDS/Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) | Python | 36.355 | Agent giao dịch cá nhân từ phòng thí nghiệm HKUDS. Thuộc một cụm agent tài chính đang cùng trending. |
+| [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor) | Python | 42.207 | Gia sư cá nhân hóa suốt đời nhờ LLM. Đại diện cho sự hiện diện ngày càng tăng của agent trong ngành giáo dục. |
 
 ### 🧠 LLM / Huấn luyện
 
 | Dự án | Ngôn ngữ | Sao (tổng / hôm nay) | Tóm tắt |
 | :--- | :--- | ---: | :--- |
-| [huggingface/transformers](https://github.com/huggingface/transformers) | Python | 168,010 | Framework định nghĩa mô hình cho các mô hình văn bản, thị giác, âm thanh và đa phương thức tiên tiến trong cả suy luận lẫn huấn luyện. Vẫn là trung tâm hấp dẫn của hệ sinh thái. |
-| [ollama/ollama](https://github.com/ollama/ollama) | Go | 184,364 | Chạy nhanh Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma và các mô hình khác. Runtime suy luận cục bộ được ưa chuộng, giờ bao phủ cả mô hình mở tiên tiến Trung Quốc lẫn phương Tây. |
-| [open-compass/opencompass](https://github.com/open-compass/opencompass) | Python | 7,537 | Nền tảng đánh giá LLM bao phủ OpenAI, Anthropic, Gemini, Qwen, GLM, DeepSeek trên hơn 100 bộ dữ liệu. Đánh giá nghiêm ngặt đang trở thành điểm nghẽn khi số lượng mô hình bùng nổ. |
-| [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm) | Python | 4,787 | Dự án học qua xây dựng cho hệ thống suy luận LLM trên Apple Silicon (tiny vLLM + Qwen). Các ngăn xếp suy luận mang tính giáo dục đang phát triển khi kỹ sư hệ thống bước vào AI. |
-| [Picovoice/picollm](https://github.com/Picovoice/picollm) | Python | 318 | Suy luận LLM trên thiết bị nhờ lượng tử hóa X-bit. Suy luận trên thiết bị tiếp tục đẩy về phía dấu chân nhỏ hơn, hiệu quả hơn. |
-| [thinkwee/AgentsMeetRL](https://github.com/thinkwee/AgentsMeetRL) | HTML | 1,865 | Awesome-list cho Agentic RL. Sự hội tụ của agent và học tăng cường là một biên giới nghiên cứu mới nổi. |
-| [thinkwee/AwesomeOPD](https://github.com/thinkwee/AwesomeOPD) | — | 879 | Awesome-list cho On-Policy Distillation. Chưng cất đang thu hút lại sự chú ý như một con đường rẻ để có mô hình nhỏ có năng lực. |
+| [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow) | C++ | 201.193 | Framework ML mở lâu đời. Vẫn là điểm tham chiếu cho ML sản xuất bất chấp sự chuyển dịch sang PyTorch thời kỳ LLM. |
+| [huggingface/transformers](https://github.com/huggingface/transformers) | Python | 168.010 | Framework định nghĩa mô hình cho các mô hình văn bản, thị giác, âm thanh và đa phương thức tiên tiến. Vẫn là trung tâm chung cho trọng số và kiến trúc mô hình. |
+| [pytorch/pytorch](https://github.com/pytorch/pytorch) | Python | 104.993 | Tensor và mạng nơ-ron động với tăng tốc GPU mạnh mẽ. Nền tảng huấn luyện mặc định cho gần như mọi công việc LLM mở. |
+| [open-compass/opencompass](https://github.com/open-compass/opencompass) | Python | 7.537 | Nền tảng đánh giá LLM bao gồm OpenAI, Anthropic, Gemini, Qwen, GLM và DeepSeek trên hơn 100 bộ dữ liệu. Đánh giá ngày càng là nút thắt khi phát hành, khiến nó có tầm quan trọng chiến lược. |
+| [thinkwee/AgentsMeetRL](https://github.com/thinkwee/AgentsMeetRL) | HTML | 1.865 | Awesome-list về học tăng cường cho agent. Báo hiệu RL cho agent đang trở thành một phân ngành nghiên cứu riêng biệt. |
+| [datamllab/OpenEBFM](https://github.com/datamllab/OpenEBFM) | Python | 129 | Mã nguồn mở để huấn luyện và mở rộng mô hình nền tảng dựa trên năng lượng. Một hướng huấn luyện mới lạ, đáng theo dõi. |
+| [llm-jp/awesome-japanese-llm](https://github.com/llm-jp/awesome-japanese-llm) | TypeScript | 1.442 | Tổng quan về các LLM tiếng Nhật. Phản ánh sự phát triển tiếp tục của hệ sinh thái mô hình chủ quyền/phi tiếng Anh. |
 
 ### 🔍 RAG / Tri thức
 
 | Dự án | Ngôn ngữ | Sao (tổng / hôm nay) | Tóm tắt |
 | :--- | :--- | ---: | :--- |
-| [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | Python | 142,749 | Hơn 100 AI Agent, Agent Skills và ứng dụng RAG, tất cả đều miễn phí và mã nguồn mở. Một trung tâm khám phá lưu lượng cao cho các triển khai thực tế, dễ sao chép. |
-| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | TypeScript | 102,361 | Ngữ cảnh bền vững xuyên phiên cho mọi agent — thu thập, nén và tái đưa ngữ cảnh liên quan vào các phiên sau. Hoạt động với Claude Code, Codex, Gemini, Hermes và nhiều công cụ khác. Memory đa harness đang trở thành điều kiện tối thiểu. |
-| [infiniflow/ragflow](https://github.com/infiniflow/ragflow) | Go | 92,690 | Engine RAG mã nguồn mở hàng đầu, kết hợp retrieval-augmented generation với năng lực agent. RAG và agent đang rõ ràng hợp nhất thành một "lớp ngữ cảnh" duy nhất. |
-| [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) | Python | 86,065 | Web crawler mã nguồn mở biến bất kỳ trang nào thành Markdown sạch, sẵn sàng cho LLM, kèm cloud tùy chọn. Thu thập dữ liệu vẫn là điểm nghẽn kém hấp dẫn cho chất lượng RAG. |
-| [mem0ai/mem0](https://github.com/mem0ai/mem0) | Python | 67,671 | Lớp memory cho AI agent — hạ tầng ngữ cảnh bền vững cắm là chạy cho production. Memory đang hội tụ thành một danh mục hạ tầng riêng biệt. |
-| [run-llama/llama_index](https://github.com/run-llama/llama_index) | Python | 52,629 | Nền tảng xử lý tài liệu cho AI. Vẫn là framework chuẩn mực cho pipeline RAG hướng tài liệu. |
-| [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG) | Python | 40,279 | Triển khai bài báo EMNLP 2025: retrieval-augmented generation đơn giản và nhanh. RAG nhẹ được hậu thuẫn học thuật tiếp tục thu hút áp dụng. |
-| [topoteretes/cognee](https://github.com/topoteretes/cognee) | Python | 32,682 | Nền tảng memory AI mã nguồn mở cung cấp cho agent memory dài hạn bền vững với mô hình nhỏ, miễn phí. Memory dùng mô hình nhỏ là giải pháp tiết kiệm chi phí thay cho cách tiếp cận ngữ cảnh lớn. |
-
-*Hạ tầng RAG/tri thức đáng chú ý khác:* [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex) (39,506) — đánh chỉ mục tài liệu dựa trên suy luận, không dùng vector; [volcengine/OpenViking](https://github.com/volcengine/OpenViking) (40,623) — cơ sở dữ liệu ngữ cảnh tự tiến hóa hợp nhất memory, RAG và skills; [qdrant/qdrant](https://github.com/qdrant/qdrant) (35,198), [weaviate/weaviate](https://github.com/weaviate/weaviate) (16,905), [lancedb/lancedb](https://github.com/lancedb/lancedb) (11,746) và [alibaba/zvec](https://github.com/alibaba/zvec) (16,138) — lớp cơ sở dữ liệu vector đang mở rộng sang các dạng nhúng, in-process và cloud-native; [NirDiamant/RAG_Techniques](https://github.com/NirDiamant/RAG_Techniques) (29,977) — hướng dẫn kỹ thuật RAG nâng cao; [StarTrail-org/LEANN](https://github.com/StarTrail-org/LEANN) (13,058) — tiết kiệm 97% lưu trữ cho RAG riêng tư trên thiết bị.
+| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | Python | 133.226 (+1.408) | Biến mọi codebase, tài liệu, schema SQL, cấu hình và PDF thành đồ thị tri thức có thể truy vấn bằng phân tích AST cục bộ tất định — không cần vector store. Mức +1.408 hôm nay đánh dấu truy xuất dựa trên đồ thị, có thể giải thích, như một đối thủ thực sự của embedding. |
+| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | TypeScript | 102.364 | Ngữ cảnh liên phiên bền vững cho agent, nén hoạt động phiên và tái đưa bộ nhớ liên quan vào. Hoạt động trên Claude Code, OpenClaw, Codex, Gemini và Copilot — lưu trữ ngữ cảnh giờ là mối quan tâm đa nhà cung cấp. |
+| [headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom) | Python | 77.588 | Nén đầu ra công cụ, log, tệp và đoạn RAG trước khi chúng đến LLM — tiết kiệm 60-95% token trên JSON với câu trả lời tương đương. Phát hành dưới dạng thư viện, proxy và MCP server; thuần túy là bài toán kinh tế token. |
+| [mem0ai/mem0](https://github.com/mem0ai/mem0) | Python | 67.671 | Lớp bộ nhớ cắm-vào-dùng-ngay cho AI agent và ứng dụng. Một trong những hạ tầng bộ nhớ được thiết lập nhất, nay định vị cho môi trường sản xuất. |
+| [infiniflow/ragflow](https://github.com/infiniflow/ragflow) | Go | 92.694 | Engine RAG mã nguồn mở hàng đầu kết hợp truy xuất với năng lực agent để tạo thành lớp ngữ cảnh vượt trội. Một trụ cột nặng ký của danh mục RAG. |
+| [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex) | Python | 39.508 | Chỉ mục tài liệu cho RAG không vector, dựa trên suy luận. Thuộc làn sóng chống vector-store đang hiện rõ cùng với graphify và LEANN. |
+| [volcengine/OpenViking](https://github.com/volcengine/OpenViking) | Python | 40.625 | Cơ sở dữ liệu ngữ cảnh tự tiến hóa hợp nhất bộ nhớ agent, RAG tri thức và skill. Sự tham gia của Volcengine báo hiệu cạnh tranh đám mây lớn trong không gian lớp ngữ cảnh. |
+| [StarTrail-org/LEANN](https://github.com/StarTrail-org/LEANN) | Python | 13.058 | Hệ thống RAG đạt giải best-paper MLSys 2026, tiết kiệm 97% dung lượng lưu trữ cho truy xuất trên thiết bị hoàn toàn riêng tư. Sự công nhận học thuật cộng với hiệu quả cực cao khiến nó nổi bật. |
 
 ---
 
 ## 3. Phân tích tín hiệu xu hướng
 
-**Agent skills và harness là danh mục bùng nổ.** Năm trong số chín repo đang thịnh hành hôm nay và nhiều dự án dẫn đầu chủ đề là *công cụ* agent chứ không phải mô hình: security-audit-skill, ponytail, graphify, ECC, browser-use và repo plugin của Anthropic. Sự chú ý của cộng đồng đã rõ ràng chuyển từ "mô hình nào" sang "làm sao để agent đáng tin cậy, có thể kiểm toán và rẻ". Đáng chú ý, hai trong ba dự án tăng trưởng mạnh nhất hôm nay — security-audit-skill của Cloudflare và ponytail — đều nói về việc *ràng buộc* hành vi agent (phát hiện có thể xác minh; viết ít code hơn), gợi ý một giai đoạn trưởng thành sau cơn hype năng lực thô của các chu kỳ trước.
+**Lớp ngữ cảnh là chiến trường.** Ba trong số các dự án có đà tăng mạnh nhất hôm nay — `graphify` (+1.408), `headroom` và `claude-mem` — không phải là mô hình hay thậm chí agent; chúng là *trình quản lý ngữ cảnh*. Cộng đồng đã nhận thức rằng việc nhồi nhét ngữ cảnh ngây thơ là không bền vững, và giờ đang cạnh tranh về tỷ lệ nén (headroom giảm 60-95% JSON), tính bền vững (claude-mem) và khả năng giải thích (graphify với "mọi cạnh đều được giải thích").
 
-**Hướng đi mới: truy xuất không vector store và memory cho agent.** Định hướng "phân tích AST xác định cục bộ, mọi cạnh đều được giải thích, không vector store" của Graphify tấn công trực tiếp vào chính thống RAG, được PageIndex hưởng ứng với "RAG không vector, dựa trên suy luận". Đồng thời, hạ tầng memory (claude-mem, mem0, cognee, OpenViking) đang hội tụ thành danh mục riêng, và khả năng tương thích đa harness (Claude Code, Codex, Cursor, Gemini CLI) giờ là điểm bán tiêu chuẩn chứ không còn là điểm khác biệt.
+**"Skill" là định dạng phân phối mới.** `cloudflare/security-audit-skill` (+2.979) và `anthropics/knowledge-work-plugins` cho thấy các nhà cung cấp giờ phát hành *năng lực* thay vì framework. Một skill thì nhỏ, có thể kiểm toán và cài vào agent hiện có — một đơn vị phân phối về cơ bản khác với thư viện hay ứng dụng. Hãy kỳ vọng điều này trở thành cách tiếp cận thị trường chủ đạo cho công cụ AI đến năm 2027.
 
-**Tín hiệu ngăn xếp công nghệ.** Rust xuất hiện lặp lại trong hạ tầng (rig, qdrant, lancedb, meilisearch, Codewhale), và Go chiếm ưu thế trong công cụ vector/tìm kiếm (ollama, ragflow, milvus, weaviate). Các dự án tập trung vào thiết bị và lượng tử hóa (picollm, LEANN, tiny-llm) cho thấy áp lực tiếp tục lên chi phí suy luận và quyền riêng tư. Sự hiện diện rộng rãi của DeepSeek, Qwen, GLM, Kimi và MiniMax trong danh sách mô hình của ollama xác nhận các mô hình mở Trung Quốc giờ là công dân hạng nhất trong công cụ phương Tây.
+**Truy xuất không vector và đồ thị đang lên ngôi.** `PageIndex` ("RAG không vector, dựa trên suy luận"), `graphify` ("không vector store") và `LEANN` đều từ chối mô hình thuần embedding để chuyển sang suy luận, đồ thị hoặc chỉ mục nén cực mạnh. Đây là phản ứng trực tiếp trước tính mờ đục và chi phí của vector store, và nó đến với sự hậu thuẫn học thuật (best paper MLSys của LEANN).
+
+**Tín hiệu về stack.** Rust xuất hiện ngày càng nhiều trong các agent nghiêm túc (`Codewhale`), trong khi Go thống trị hạ tầng phục vụ agent và vector (`ollama`, `ragflow`, `DeepSeek-Reasonix`). Các ngành dọc tài chính, giáo dục và nghề nghiệp đang tụ lại rõ rệt (ba repo tài chính/giáo dục của HKUDS), gợi ý rằng agent ngành dọc là làn sóng tiếp theo khi các harness ngang đã đông đúc.
 
 ---
 
 ## 4. Điểm nóng cộng đồng
 
-- **[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)** — Dự án tăng mạnh nhất trong ngày (+2,979). Các phát hiện kiểm toán đọc được bằng máy, xác minh độc lập là mẫu hình cho đầu ra agent đáng tin cậy trong môi trường được quản lý/doanh nghiệp; dự đoán sẽ có nhiều dự án bắt chước.
-- **[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)** — Thách thức mạnh nhất đối với RAG dùng vector store (+1,408). Đồ thị codebase xác định, có thể giải thích hấp dẫn cho tuân thủ và gỡ lỗi; đáng theo dõi liệu "không vector store" có trở thành một phong trào thực sự.
-- **[headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom)** — Nén token (tiết kiệm 20%–95%) kém hấp dẫn nhưng tấn công trực tiếp vào chi phí vận hành lớn nhất của agent production. Đòn bẩy thực tế cao cho bất kỳ ai triển khai ở quy mô lớn.
-- **[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) & [mem0ai/mem0](https://github.com/mem0ai/mem0)** — Memory cho agent đang kết tinh thành một lớp hạ tầng riêng biệt. Ngữ cảnh bền vững xuyên phiên, xuyên harness đang trở thành kỳ vọng cơ bản, không còn là tính năng.
-- **[Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)** — Truy cập miễn phí API vào Twitter, Reddit, YouTube và nhiều nguồn khác giúp hạ mạnh chi phí cho agent nghiên cứu tự động. Cần theo dõi cả rủi ro về điều khoản dịch vụ và độ tin cậy bên cạnh tiện ích rõ ràng.
-
----
-
-Quy tắc:
-- Chỉ xuất bản bản dịch. Không mở đầu, không giải thích, không rào markdown quanh toàn bộ đầu ra.
-- Giữ nguyên cấu trúc Markdown: tiêu đề, bảng (bao gồm hàng căn chỉnh cột), danh sách, blockquote, in đậm/in nghiêng, đường kẻ ngang, emoji.
-- Giữ nguyên URL, đích liên kết, code span, code block, số và ngày tháng.
-- Giữ nguyên tên dự án, slug repo, tên người dùng, thẻ phiên bản, đường dẫn tệp và định danh API/config — không dịch chúng.
-- Các tham chiếu issue/PR như #12345 và văn bản liên kết của chúng giữ nguyên.
-- Dùng tiếng Việt tự nhiên, theo văn phong bản tin dành cho nhà phát triển Việt Nam — rõ ràng và trực tiếp, không dịch từng chữ.
-- Ưu tiên từ đơn giản và câu ng
+- **`headroom` và kinh tế token** — Khi phiên agent ngày càng dài, token đầu vào chiếm ưu thế về chi phí. Một thư viện/proxy cắt 60-95% token JSON với câu trả lời tương đương có thể triển khai ngay và giảm trực tiếp hóa đơn; mọi đội agent nên đo điểm chuẩn với nó.
+- **`graphify` + `PageIndex` (truy xuất không vector)** — Đây là lựa chọn kiến trúc đáng tin cậy thay cho pipeline embedding, với phân tích AST cục bộ và các cạnh có thể giải thích. Đáng để thử nghiệm nếu RAG của bạn gặp trích dẫn ảo giác hoặc phình dung lượng lưu trữ.
+- **`claude-mem` và bộ nhớ liên phiên** — Bộ nhớ bền vững không phụ thuộc nhà cung cấp, hoạt động trên Claude Code, Codex, Gemini và Copilot là một thắng lợi hiếm hoi về khả năng tương tác; hãy theo dõi nó trở thành lớp chuẩn thực tế.
+- **"Skill" agent như một định dạng (`cloudflare/security-audit-skill`, `anthropics/knowledge-work-plugins`)** — Với việc cả Cloudflare và Anthropic cùng phát hành skill bên thứ nhất trong cùng một ngày, lập trình viên nên học cách viết và kiểm toán skill ngay bây giờ, trước khi định dạng này bị đóng băng.
+- **`career-ops` và agent tài chính (`Vibe-Trading`, `daily_stock_analysis`)** — Các agent ngành dọc, cục bộ, có con người trong vòng lặp đang chứng minh khả năng sinh lời. Đây là các mẫu để áp dụng stack agent vào một lĩnh vực giá trị cao duy nhất.
 
 ---
 *Bản tin này được tạo tự động bởi [agents-radar](https://github.com/BuhDuy256/agents-radar) tự động tạo.*
