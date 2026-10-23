@@ -103,7 +103,10 @@ const FACT_PATTERNS = [
 ];
 
 function normaliseFact(raw: string): string {
-  return raw.replace(/\s+/g, " ").replace(/^[\s,;:-]+|[\s,;:-]+$/g, "").trim();
+  return raw
+    .replace(/\s+/g, " ")
+    .replace(/^[\s,;:-]+|[\s,;:-]+$/g, "")
+    .trim();
 }
 
 /**
@@ -142,7 +145,8 @@ export function extractFacts(text: string): string[] {
       if (seen.has(key)) continue;
       seen.add(key);
       facts.push(fact);
-      if (facts.length >= MAX_FACTS) return facts.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      if (facts.length >= MAX_FACTS)
+        return facts.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
     }
   }
 

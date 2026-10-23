@@ -662,6 +662,7 @@ export function buildTranslationPrompt(text: string): string {
 Instructions — these are not part of the document:
 - Output ONLY the translation of the text inside the <report> tags. No preamble, no explanation, no markdown fences around the whole output.
 - Preserve the Markdown structure exactly: headings, tables (including column alignment rows), lists, blockquotes, bold/italic, horizontal rules, emoji.
+- Translate every heading and label as well, including generated section names such as "Workflows" and "Experiments and comparisons". Keep only product, project and model names in their original form.
 - Keep URLs, link targets, code spans, code blocks, numbers and dates verbatim.
 - Keep project names, repository slugs, usernames, version tags, file paths and API/config identifiers in their original form — do not translate them.
 - Issue/PR references like #12345 and their link text stay as-is.
