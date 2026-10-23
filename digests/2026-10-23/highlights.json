@@ -13,8 +13,7 @@
     "ai-hn": [
       "Anthropic cho biết Claude và Theorem tạo chứng minh bảo mật mức assembly RISC-V trên 123 thư viện mã nguồn mở, tìm ra lỗi lâu năm.",
       "NVIDIA phát hành OpenShell, runtime sandbox Apache 2.0 thực thi quyền truy cập tệp, API và thông tin xác thực của agent ở mức kernel với thay đổi chính sách được xác minh hình thức.",
-      "Mistral ra mắt Voxtral 3, SDK voice agent kết hợp speech-to-text và TTS thời gian thực trong hơn 50 ngôn ngữ với biến thể Mini 4B phiên âm giá $0.0035/phút.",
-      "Thử nghiệm 12 mô hình AI cho thấy 29 trong 35 câu trả lời cho prompt 'ý kiến gây tranh cãi nhất của con người' chia sẻ cùng ý tưởng: trung thành nhóm hơn sự thật."
+      "Mistral ra mắt Voxtral 3, SDK voice agent kết hợp speech-to-text và TTS thời gian thực trong hơn 50 ngôn ngữ với biến thể Mini 4B phiên âm giá $0.0035/phút."
     ],
     "ai-community": [
       "Anthropic cho biết 26% công việc R&D mô hình đo được đạt tự chủ AL4 vào tháng 8/2026, tăng từ dưới 1% hồi tháng 2, với ~1/47.000 quyết định agent bị chặn.",
@@ -36,8 +35,7 @@
     "ai-hn": [
       "Anthropic says Claude and Theorem produced RISC-V assembly-level security proofs across 123 open-source libraries, finding long-standing bugs along the way.",
       "NVIDIA released OpenShell, an Apache 2.0 sandboxed runtime enforcing agent file, API, and credential access at the kernel level with formally verified policy changes.",
-      "Mistral launched Voxtral 3, a voice agent SDK pairing real-time speech-to-text and TTS models in 50+ languages with the 4B Mini transcribe variant at $0.0035/min.",
-      "A test of 12 AI models found 29 of 35 answers to a 'most controversial opinion of humans' prompt shared the same idea: group loyalty over truth."
+      "Mistral launched Voxtral 3, a voice agent SDK pairing real-time speech-to-text and TTS models in 50+ languages with the 4B Mini transcribe variant at $0.0035/min."
     ],
     "ai-community": [
       "Anthropic says 26% of measured model R&D work reached AL4 autonomy by August 2026, up from under 1% in February, with ~1 in 47,000 agent decisions blocked.",
