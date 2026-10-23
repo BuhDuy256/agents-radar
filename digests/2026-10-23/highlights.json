@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.309 sửa lỗi khởi động sandbox trên macOS/Linux khiến tệp chạy ngoài sandbox trước mỗi lệnh Bash.",
+      "OpenAI Codex rust-v0.164.0 thêm mười ô /presets được đánh số và đối số /model cùng /permissions nội tuyến.",
+      "Gemini CLI nightly v0.67.0 sửa siêu dữ liệu lượng token mỗi lượt và chữ ký suy nghĩ thiếu ở các lượt gọi công cụ."
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill thêm kỹ năng kiểm tra bảo mật nhiều giai đoạn cho tác nhân lập trình với phát hiện được xác minh độc lập.",
+      "DietrichGebert/ponytail hướng tác nhân tới giải pháp tối giản thay vì thêm mã, đạt 1.948 sao hôm nay.",
+      "Graphify-Labs/graphify biến mã nguồn, tài liệu và PDF thành đồ thị tri thức truy vấn được qua kỹ năng /graphify."
+    ],
+    "ai-web": [
+      "Anthropic đã trao chuẩn Agent Skills cho Agentic AI Foundation thuộc Linux Foundation, giúp nó trung lập về nhà cung cấp.",
+      "Anthropic ra mắt OSS Scanner, công cụ quét lỗ hổng miễn phí tự nguyện, và tìm hơn 29.000 lỗ hổng tiềm năng.",
+      "Anthropic nói Claude đã chứng minh thuộc tính bảo mật ở mức hợp ngữ RISC-V trong hơn 100 thư viện mã nguồn mở."
+    ],
+    "ai-hn": [
+      "Anthropic mở danh sách chờ cho Claude Duet, tác nhân Opus 5.5 chủ động với hơn 6.000 kết nối, cho người dùng Pro và Max tại Mỹ.",
+      "Mistral phát hành Voxtral 3, mô hình giọng nói cùng SDK tác nhân thoại hỗ trợ hơn 50 ngôn ngữ, bản Mini phiên âm giá 0,0035 USD mỗi phút.",
+      "OpenAI công bố openai, CLI chính thức cho REST API của mình dành cho hình ảnh, tệp, lô và giọng nói."
+    ],
+    "ai-community": [
+      "First User Audit là Agent Skill mã nguồn mở mô phỏng bốn nhân vật người dùng mới để tìm rào cản làm quen kèm bằng chứng trình duyệt.",
+      "Danh sách kiểm tra bảo mật MCP gồm 24 điểm khi nối tác nhân với công cụ thật, gồm injection, SSRF và khóa giới hạn phạm vi.",
+      "Ở nhiệt độ 0, llama.cpp tạo đầu ra tham lam khác nhau ở 41 trong 100 bài gsm8k khi gom lô đồng thời."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.309 fixes macOS/Linux sandbox startup files running outside the sandbox before each Bash command.",
+      "OpenAI Codex rust-v0.164.0 adds ten numbered /presets slots and inline /model and /permissions arguments.",
+      "Gemini CLI nightly v0.67.0 fixes per-turn token usage metadata and missing thought signatures on tool-call turns."
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill adds a multi-phase security audit skill to coding agents with independently verified findings.",
+      "DietrichGebert/ponytail steers agents toward minimal solutions instead of extra code, gaining 1,948 stars today.",
+      "Graphify-Labs/graphify turns codebases, docs and PDFs into a queryable knowledge graph via a /graphify skill."
+    ],
+    "ai-web": [
+      "Anthropic donated the Agent Skills standard to the Agentic AI Foundation under the Linux Foundation, making it vendor-neutral.",
+      "Anthropic launched OSS Scanner, a free opt-in vulnerability scanner, and found over 29,000 candidate vulnerabilities.",
+      "Anthropic says Claude proved security properties at RISC-V assembly level in over 100 open-source libraries."
+    ],
+    "ai-hn": [
+      "Anthropic opened a waitlist for Claude Duet, a proactive Opus 5.5 agent with 6,000+ connectors, for US Pro and Max users.",
+      "Mistral released Voxtral 3, speech models plus a voice agent SDK covering 50+ languages, with Mini transcription at $0.0035 per minute.",
+      "OpenAI published openai, an official CLI for its REST API for images, files, batches and speech."
+    ],
+    "ai-community": [
+      "First User Audit is an open-source Agent Skill that simulates four first-time-user personas to find onboarding blockers with browser evidence.",
+      "An MCP security checklist covers 24 points for wiring agents to real tools, including injection, SSRF and scoped keys.",
+      "At temperature 0, llama.cpp produced different greedy output on 41 of 100 gsm8k problems under concurrent batching."
+    ]
+  }
+}

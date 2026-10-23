@@ -1,0 +1,79 @@
+{
+  "https://docs.github.com/en/copilot/get-started/plans": [
+    "1,000 A selection of models Copilot Pro+ $39 USD per month",
+    "2000 completions per month on Copilot Free",
+    "3,900 Access to premium models Copilot Max $100 USD per month Base: 10,000 Priority access to pr",
+    "access to premium models Copilot Business $19 USD per granted seat per month Total per user pe",
+    "Access to premium models Copilot Enterprise $39 USD per granted seat per month Total per user pe",
+    "and usage beyond the pool is charged at $0.01 USD per AI credit",
+    "Auto model selection only Copilot Pro $10 USD per month",
+    "Business $19 USD 1,900 Copilot Enterprise $39 USD",
+    "Credits per user per month Copilot Business $19 USD",
+    "Pro $10 USD 1,000 500 1,500 Copilot Pro+ $39 USD",
+    "Pro+ $39 USD 3,900 3,100 7,000 Copilot Max $100 USD",
+    "Total monthly AI credits Copilot Pro $10 USD"
+  ],
+  "https://river.ai/pricing": [
+    "1M tokens",
+    "prices · Checkpoint storage billed at $0.10 / GB / month Inference Call open models th"
+  ],
+  "https://learn.chatgpt.com/docs/pricing": [
+    "1.25 credits per minute",
+    "a few focused coding sessions each week. $20 /month Get Plus Codex on the web, in the",
+    "Business plan *2+ users, billed annually. $25 per user per month when billed monthly",
+    "Codex capabilities on quick coding tasks. $0 /month Get Free GPT-6 Luna at Standard sp",
+    "Get Pro Everything in Plus and: Plans at $100",
+    "Go Use Codex for lightweight coding tasks. $8 /month Get Go GPT-6 Luna at Standard spee",
+    "in Plus and: Plans at $100, $200, or $500 USD per month Ultrafast mode access on Pro $500",
+    "into your startup or growing business. $20 / user / month* Get Business Access ChatGP",
+    "Pro Everything in Plus and: Plans at $100, $200",
+    "the Pro plan that fits your usage. From $100 /month Get Pro Everything in Plus and: Pl",
+    "uses your existing Codex usage budget at $0.05 per minute"
+  ],
+  "https://code.claude.com/docs/en/costs": [
+    "14 requests",
+    "310.2k tokens",
+    "49k tokens per request",
+    "940.0k cache read, 50.0k cache write ($0.55",
+    "deployments, the average cost is around $13 per developer per active day and $150-250 pe",
+    "page in the Claude Console . Total cost: $0.55",
+    "per month, with costs remaining below $30 per active day for 90% of users",
+    "so the next session’s total cost starts at $0."
+  ],
+  "https://api-docs.deepseek.com/quick_start/pricing/": [
+    "(2) 1M INPUT TOKENS (CACHE HIT) OFF-PEAK $0.003",
+    "(CACHE HIT) OFF-PEAK $0.003 $0.022 PEAK $0.006",
+    "(CACHE MISS) OFF-PEAK $0.15 $0.66 PEAK $0.3",
+    "(CACHE MISS) OFF-PEAK $0.15 $0.66 PEAK $0.3 $1.32",
+    "$0.3 $1.32 1M OUTPUT TOKENS OFF-PEAK $0.6 $1.98",
+    "$0.75 Fetch Per 1,000 successful requests $0.75",
+    "1M INPUT TOKENS (CACHE HIT) OFF-PEAK $0.003 $0.022",
+    "1M INPUT TOKENS (CACHE MISS) OFF-PEAK $0.15",
+    "1M INPUT TOKENS (CACHE MISS) OFF-PEAK $0.15 $0.66",
+    "1M OUTPUT TOKENS OFF-PEAK $0.6 $1.98 PEAK $1.2",
+    "1M tokens",
+    "HIT) OFF-PEAK $0.003 $0.022 PEAK $0.006 $0.044",
+    "MAX OUTPUT MAXIMUM: 384K FEATURES Json Output ✓ ✓ Tool Calls ✓ ✓ Respo",
+    "OUTPUT TOKENS OFF-PEAK $0.6 $1.98 PEAK $1.2 $3.96",
+    "PEAK $0.3 $1.32 1M OUTPUT TOKENS OFF-PEAK $0.6",
+    "Price Search Per 1,000 successful requests $0.75"
+  ],
+  "https://claude.com/pricing": [
+    "$100 Per seat / month if billed annually. $125",
+    "$20 Per seat / month if billed annually. $25",
+    "20 seat",
+    "access at high traffic times $100 to $200/month in API credits to build on the Cla",
+    "by default Mix and match seat types Up to $500 per month in pooled API credits † Enterprise",
+    "Claude features, plus more usage than Pro* $20 Per seat / month if billed annually",
+    "Context window More information Up to 1M varies by model Up to 1M varies b",
+    "discount ( $200 billed up front). $20",
+    "month with annual subscription discount ( $200",
+    "people who work with Claude all day From $100 Per month Try Claude Everything in Pro, plus",
+    "Priority access at high traffic times $100",
+    "Pro Claude Code included For everyday work $17 Per month with annual subscription discount",
+    "seat 5x more usage than standard seats* $100 Per seat / month if billed annually",
+    "Seat price + usage at API rates US$20/seat/month, billed annually, 20 seat min",
+    "Team & Enterprise API Free Try Claude $0",
+    "Yes Yes Yes New Monthly API credits † No No $100/month $200/month Priority access at high"
+  ]
+}
