@@ -1,46 +1,46 @@
 {
   "vi": {
     "ai-cli": [
-      "Claude Code v2.1.309 đã sửa lỗi macOS và Linux sandboxed Bash chạy các tệp khởi động shell bên ngoài sandbox trước mỗi lệnh.",
-      "Vấn đề được quan tâm nhất của Claude Code (#492, 46 bình luận) là rủi ro chuỗi cung ứng từ các skill cộng đồng đăng dưới anthropics/ mạo danh chính thức.",
-      "PR #1298 của Claude Code skill-creator giúp đánh giá trigger mang tính xác định và sửa select() trên Windows cho pipe subprocess."
+      "Claude Code v2.1.309 sửa hai lỗi liên quan đến thoát sandbox trên macOS và Linux.",
+      "Codex 0.164.0 thêm mười slot /presets được đánh số cho prompt tái sử dụng và tham số /model, /permissions nội tuyến.",
+      "Gemini CLI nightly sửa metadata lượng token mỗi lượt và chữ ký suy nghĩ trên mọi lượt gọi hàm."
     ],
     "ai-trending": [
-      "security-audit-skill của Cloudflare tăng 2.979 sao hôm nay nhờ skill kiểm toán bảo mật coding-agent đa giai đoạn với phát hiện máy đọc được.",
-      "Graphify biến codebase, tài liệu, schema SQL, cấu hình và PDF thành knowledge graph truy vấn được dưới dạng skill /graphify, thêm 1.408 sao hôm nay.",
-      "cloudflare/security-audit-skill và anthropics/knowledge-work-plugins là mục mới: skill kiểm toán agent kiểm chứng được và plugin công việc tri thức Claude Cowork."
+      "security-audit-skill của Cloudflare tăng 2.979 sao trong một ngày nhờ kiểm tra bảo mật dạng máy đọc được.",
+      "Graphify biến mã, schema SQL, cấu hình và PDF thành đồ thị tri thức truy vấn được, không cần vector store.",
+      "Ponytail khiến agent viết mã tối giản bằng cách lập luận như lập trình viên cấp cao tránh việc thừa."
     ],
     "ai-hn": [
-      "Anthropic cho biết Claude và Theorem tạo chứng minh bảo mật mức assembly RISC-V trên 123 thư viện mã nguồn mở, tìm ra lỗi lâu năm.",
-      "NVIDIA phát hành OpenShell, runtime sandbox Apache 2.0 thực thi quyền truy cập tệp, API và thông tin xác thực của agent ở mức kernel với thay đổi chính sách được xác minh hình thức.",
-      "Mistral ra mắt Voxtral 3, SDK voice agent kết hợp speech-to-text và TTS thời gian thực trong hơn 50 ngôn ngữ với biến thể Mini 4B phiên âm giá $0.0035/phút."
+      "Anthropic mở danh sách chờ Claude Duet, agent Opus 5.5 chủ động với hơn 6.000 connector cho Pro và Max tại Mỹ.",
+      "OpenAI phát hành CLI chính thức cho REST API, khác Codex CLI, cài qua Homebrew hoặc Go 1.26+.",
+      "Mistral ra mắt mô hình giọng nói Voxtral 3 và SDK voice agent hỗ trợ hơn 50 ngôn ngữ, tự triển khai từ EU."
     ],
     "ai-community": [
-      "Anthropic cho biết 26% công việc R&D mô hình đo được đạt tự chủ AL4 vào tháng 8/2026, tăng từ dưới 1% hồi tháng 2, với ~1/47.000 quyết định agent bị chặn.",
-      "Agent của Anthropic tìm thấy mảng lặp ART giống CRISPR trong DNA bacteriophage, nhưng mười lần chạy lại không tái phát hiện, cho thấy nút thắt là quỹ đạo điều tra.",
-      "Một tác giả đã xây dựng 15 skill agent kết hợp heuristic bốn giai đoạn Pólya và Clean Architecture để buộc AI coder dừng lại trước khi viết mã."
+      "Skill First User Audit mã nguồn mở chạy bốn persona người dùng lần đầu mô phỏng trên ứng dụng của bạn.",
+      "Danh sách kiểm tra trước phát hành MCP gồm 24 mục gắn cờ path traversal, thông tin xác thực tĩnh và prompt injection trong đầu ra công cụ.",
+      "Pólya SDLC Coder biến các heuristic năm 1945 của Pólya thành 15 skill agent tạm dừng để con người căn chỉnh trước khi viết mã."
     ]
   },
   "en": {
     "ai-cli": [
-      "Claude Code v2.1.309 fixed macOS and Linux sandboxed Bash running shell startup files outside the sandbox before each command.",
-      "Claude Code's highest-engagement issue (#492, 46 comments) is supply-chain risk from community skills published under anthropics/ impersonating official ones.",
-      "Claude Code skill-creator PR #1298 makes trigger evaluation deterministic and fixes Windows select() on subprocess pipes."
+      "Claude Code v2.1.309 fixes two sandbox escape-adjacent bugs on macOS and Linux.",
+      "Codex 0.164.0 adds ten numbered /presets slots for reusable prompts and inline /model and /permissions arguments.",
+      "Gemini CLI nightly fixes per-turn token usage metadata and thought signatures on all function-call turns."
     ],
     "ai-trending": [
-      "Cloudflare's security-audit-skill gained 2,979 stars today as a multi-phase coding-agent security audit skill with machine-readable findings.",
-      "Graphify turns codebases, docs, SQL schemas, configs, and PDFs into a queryable knowledge graph as a /graphify skill, adding 1,408 stars today.",
-      "cloudflare/security-audit-skill and anthropics/knowledge-work-plugins are new entries: a verifiable agent audit skill and Claude Cowork knowledge-work plugins."
+      "Cloudflare's security-audit-skill gained 2,979 stars in a day for verified machine-readable security audits.",
+      "Graphify turns code, SQL schemas, configs and PDFs into a queryable knowledge graph with no vector store.",
+      "Ponytail makes agents write minimal code by reasoning like a senior dev avoiding unnecessary work."
     ],
     "ai-hn": [
-      "Anthropic says Claude and Theorem produced RISC-V assembly-level security proofs across 123 open-source libraries, finding long-standing bugs along the way.",
-      "NVIDIA released OpenShell, an Apache 2.0 sandboxed runtime enforcing agent file, API, and credential access at the kernel level with formally verified policy changes.",
-      "Mistral launched Voxtral 3, a voice agent SDK pairing real-time speech-to-text and TTS models in 50+ languages with the 4B Mini transcribe variant at $0.0035/min."
+      "Anthropic opened a waitlist for Claude Duet, a proactive Opus 5.5 agent with 6,000+ connectors for US Pro and Max.",
+      "OpenAI released an official CLI for its REST API, distinct from Codex CLI, installable via Homebrew or Go 1.26+.",
+      "Mistral launched Voxtral 3 speech models and a voice agent SDK covering 50+ languages, self-deployable from the EU."
     ],
     "ai-community": [
-      "Anthropic says 26% of measured model R&D work reached AL4 autonomy by August 2026, up from under 1% in February, with ~1 in 47,000 agent decisions blocked.",
-      "Anthropic agents found a CRISPR-like ART repeat array in bacteriophage DNA, but ten reruns failed to rediscover it, showing the bottleneck is investigation trajectory.",
-      "A writer built 15 Pólya four-stage heuristic plus Clean Architecture agent skills to force an AI coder to pause before writing code."
+      "An open-source First User Audit skill runs four simulated first-time-user personas against your app.",
+      "A 24-item MCP pre-ship checklist flags path traversal, static credentials and prompt injection in tool output.",
+      "Pólya SDLC Coder turns Pólya's 1945 heuristics into 15 agent skills that pause for human alignment before coding."
     ]
   }
 }

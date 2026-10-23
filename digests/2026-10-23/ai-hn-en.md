@@ -1,72 +1,48 @@
 # Hacker News AI Community Digest 2026-10-23
 
-> Source: [Hacker News](https://news.ycombinator.com/) | 8 stories | Generated: 2026-10-23 06:31 UTC
+> Source: [Hacker News](https://news.ycombinator.com/) | 8 stories | Generated: 2026-10-23 07:42 UTC
 
 ---
 
-### Anthropic says LLMs can now produce formal software proofs at scale, verifying over 100 open-source libraries
+### Anthropic Opens Claude Duet Waitlist, a Proactive Agent Powered by Opus 5.5
+Anthropic announced a research preview of Claude Duet, an agent that briefs users each morning, takes on tasks, and pauses for approval on sensitive operations. It runs on Opus 5.5 and works with more than 6,000 connectors, the company says, reaching users through iOS, Android, and the web in one thread. Access is a waitlist limited to Pro and Max subscribers in the US, and Team and Enterprise plans are not included yet. The company states it may misread a thread or miscalibrate urgency, and background checks share the plan's usage limits. Full article content could not be retrieved.
+Source: [claude.com](https://claude.com/product/claude-duet) · [HN](https://news.ycombinator.com/item?id=50186037)
+550 points · 519 comments
 
-Anthropic reports that Claude, working with Theorem, proved security properties at the RISC-V assembly level across 123 real-world open-source libraries, showing their executable artifacts cannot crash for any input under 64 MB and any modeled Linux OS response and memory layout, under stated assumptions (single-threaded static binary, fixed memory budget, RISC-V 1 CPU, Linux OS). The approach converts existing fuzz test suites into a specification ("this test suite always passes") so the proof replaces open-ended fuzzing; Claude also found long-standing bugs during proof writing. A subset of proofs, along with the RISC-V and OS semantics, is being published for reuse, and Theorem is offering to run the pipeline for other open-source projects.
+### OpenAI Ships an Official CLI for Its REST API
+OpenAI released `openai`, its official command-line tool for calling the REST API from a terminal or shell script. Developers can generate images, upload and download files, submit batches, and inspect results without writing an application, with `--format json` or `jsonl` alongside `jq` for scripting. Installation is via prebuilt binaries, Homebrew, or Go 1.26 or later, and an API key is required. The docs distinguish it from Codex CLI: use `openai` for a specific API call or a script, and `codex` for a coding agent that edits a project. The README warns that error details and `--debug` logs can contain sensitive data.
+Source: [github.com](https://github.com/openai/openai-cli) · [HN](https://news.ycombinator.com/item?id=50191507)
+234 points · 110 comments
 
-Source: [anthropic.com](https://www.anthropic.com/research/formal-verification) · [HN](https://news.ycombinator.com/item?id=50202217)
-262 points · 146 comments
-
-### NVIDIA releases OpenShell, a sandboxed runtime for fleets of autonomous AI agents
-
-OpenShell is an Apache 2.0 runtime that gives agents file, package, API, and credential access under declared policy, enforced by kernel-level instrumentation on every file access, system call, and network connection, with credentials injected only for approved endpoints. Policy changes are checked with formal verification before approval to flag risky new access, such as reaching a new host with credentials or calling a new API method. It ships a CLI, gateway, sandboxes, policies, providers, and Kubernetes deployment via Helm, plus Python, TypeScript, Go, and Rust SDKs, and requires Linux, macOS on Apple Silicon, or Windows with WSL 2 (experimental), plus Docker, Podman, or host virtualization.
-
-Source: [github.com](https://github.com/NVIDIA/OpenShell) · [HN](https://news.ycombinator.com/item?id=50198675)
-358 points · 187 comments
-
-### Test of 12 AI models finds most gave the same "controversial" take on humans: group loyalty over truth
-
-ModelCompare asked 12 models from ten labs in three countries for their most controversial opinion of humans, three times each, and 29 of 35 answers were the same idea — that people adopt what their group believes and invent reasons afterward. Seven of the 12 models gave that take on all three attempts; others gave it in two or one of three, with a few different answers and one refusal (Grok 4.7, once). Each model also wrote a brief for a one-panel caricature of its take, all drawn by one image model, Nano Banana 2.1. The experiment was published 22 October 2026 and reports 68,057 reads.
-
-Source: [modelcompare.ai](https://www.modelcompare.ai/blog/ai-models-controversial-take-on-humans) · [HN](https://news.ycombinator.com/item?id=50197313)
-336 points · 369 comments
-
-### Mistral launches Voxtral 3 voice agent SDK with speech-to-text and TTS models in 50+ languages
-
-Voxtral 3 introduces a voice agent SDK that combines listening, reasoning, tool calling, and speaking into a single real-time streaming pipeline, alongside state-of-the-art speech-to-text and text-to-speech models. Voxtral Small Transcribe 3 supports 50+ languages with diarization, context biasing, and end-of-turn detection, while Voxtral Mini TTS 3 covers 35+ languages and 50+ dialects with emotion, pace, and emphasis adapted to context; the Mini transcribe variant is 4B parameters at $0.0035/min. Mistral reported benchmark results against Whisper, Scribe v2, and Gemini 3.5 Transcribe, and offers Pro Voice adaptation from 30 minutes of audio; it is available through Mistral's EU-hosted API or for self-deployment.
-
+### Mistral Launches Voxtral 3 Voice Agents With Speech Models in 50+ Languages
+Mistral introduced Voxtral 3, a family of speech-to-text and text-to-speech models plus a voice agent SDK that combines listening, reasoning, tool calling, and speaking in one real-time streaming pipeline. The company says Voxtral Small Transcribe 3 reaches state-of-the-art results in multilingual transcription, diarization, and context biasing across 50+ languages, while Voxtral Mini TTS 3 supports 35+ languages and 50+ dialects, with Pro Voice adaptation from 30 minutes of audio. Voxtral is available through Mistral's EU-hosted API or for self-deployment, which the company frames around data sovereignty and control over whether audio is retained. The Mini transcribe model runs at 4B parameters and $0.0035/min, per the company.
 Source: [mistral.ai](https://mistral.ai/news/voxtral-3/) · [HN](https://news.ycombinator.com/item?id=50168396)
 768 points · 200 comments
 
-### OpenAI models are coming to Google Cloud
+### Omnara Launches as a Self-Hostable Alternative to Managed Agent Platforms
+Omnara published an open-source, Apache 2.0 managed agent platform for running agents on any model and any machine with tools, secrets, permissions, and streaming built in. Its REST API, TypeScript SDK, and CLI launch agents from an `agent.yaml` config; a Postgres event log holds each agent's state so any worker can resume it after a crash. Agents run on connected machines through an outbound `omnarad` daemon, and self-hosting runs on Docker Compose, though local defaults are intentionally insecure. Cloud sign-in provides a model provider and sandbox pool, while self-hosted instances start with no models or machines until the user adds them.
+Source: [github.com](https://github.com/omnara-ai/omnara) · [HN](https://news.ycombinator.com/item?id=50183892)
+110 points · 34 comments
 
-The title and metadata confirm an OpenAI announcement that its models are coming to Google Cloud, published 2026-10-21.
+### Alter Launches Privileged Access Management for Multi-User AI Agents
+Alter (YC S25) launched a platform that puts credential storage, policy checks, per-agent identity, approvals, and audit logs on a single request path between agents and external APIs. Rather than sharing one over-scoped key across agents, each agent gets its own identity and scopes with default-deny rules, and sensitive calls wait for a named approver. The company says one SDK call handles storage, refresh, policy, and audit for 140 providers, with first-class LangChain, MCP, and AWS integrations. Alter lists an SOC 2 program in progress and a penetration test within the last 12 months, and says credentials live only in the vault.
+Source: [alterauth.com](https://alterauth.com/) · [HN](https://news.ycombinator.com/item?id=50176908)
+67 points · 44 comments
 
-Full article content could not be retrieved.
-
+### OpenAI Models Are Coming to Google Cloud
+OpenAI announced that its models are coming to Google Cloud, according to the post title. The post is dated October 21, 2026.
 Source: [openai.com](https://openai.com/index/openai-models-google-cloud/) · [HN](https://news.ycombinator.com/item?id=50180079)
 323 points · 145 comments
 
-### OpenAI posts "Patch the Planet" on coordinated disclosure as agents uncover vulnerabilities
+### Ask HN: If Models Are So Good, Why Not Launch 100 Companies?
+A Hacker News discussion poses the question of why OpenAI does not simply start 100 companies if the models are so good. The post is dated October 22, 2026.
+Source: [news.ycombinator.com](https://news.ycombinator.com/item?id=50200997) · [HN](https://news.ycombinator.com/item?id=50200997)
+92 points · 87 comments
 
-The title and metadata confirm an OpenAI post titled "Patch the Planet: global response coordination as agents uncover vulnerabilities," published 2026-10-21.
-
-Full article content could not be retrieved.
-
-Source: [openai.com](https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/) · [HN](https://news.ycombinator.com/item?id=50181175)
-265 points · 183 comments
-
-### OpenAI describes using thousands of AI agents to find new leads in biological data
-
-The title and metadata confirm an OpenAI post on scaling AI research with thousands of agents for complex biological data, published 2026-10-21.
-
-Full article content could not be retrieved.
-
-Source: [openai.com](https://openai.com/index/scaling-ai-research-for-complex-biological-data/) · [HN](https://news.ycombinator.com/item?id=50180752)
-156 points · 105 comments
-
-### The Economist argues AI compute is the new oil and needs a new market
-
-The title and metadata confirm a 2026-10-22 Economist finance-and-economics piece arguing that AI compute is the new oil and needs a new market.
-
-Full article content could not be retrieved.
-
-Source: [economist.com](https://www.economist.com/finance-and-economics/2026/10/22/ai-compute-is-the-new-oil-and-needs-a-new-market) · [HN](https://news.ycombinator.com/item?id=50202671)
-43 points · 45 comments
+### Same AI Request Reported as 8.5x More CO2 in Texas Than in Sweden
+A Berget release states that the same AI request emits 8.5 times more CO2 in Texas than in Sweden. The post is dated October 23, 2026.
+Source: [berget.ai](https://berget.ai/en/blog/per-request-co2-press-release) · [HN](https://news.ycombinator.com/item?id=50205229)
+54 points · 26 comments
 
 ---
 *This digest is auto-generated by [agents-radar](https://github.com/BuhDuy256/agents-radar).*
