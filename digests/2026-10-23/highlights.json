@@ -1,118 +1,70 @@
 {
   "vi": {
     "ai-cli": [
-      "Các công cụ AI CLI hội tụ về sandboxing và MCP",
-      "Lỗ hổng mô hình quyền và lỗi thành công giả âm thầm hoành hành",
-      "Windows vẫn là nền tảng yếu nhất: rò rỉ, lỗi ACL",
-      "Claude Code và Gemini CLI phát hành bản vá bảo mật sandbox",
-      "Nợ tương thích tăng khi Desktop và IDE tụt lại so với CLI",
-      "Thúc đẩy liên công cụ về quan sát chi phí và liên tục phiên"
-    ],
-    "ai-agents": [
-      "OpenClaw: 500 issue và 500 PR trong 24 giờ",
-      "OpenClaw phát hành v2026.10.6, yêu cầu runtime Node đã vá",
-      "Chặn khởi động plugin đứng đầu sự chú ý cộng đồng (#160959)",
-      "Suy thoái khởi động Windows ảnh hưởng dòng phát hành OpenClaw",
-      "OpenClaw mang nợ suy thoái lớn qua 5 dự án",
-      "Lỗi vòng lặp crash nghiêm trọng vẫn chưa có PR sửa"
-    ],
-    "ai-infra": [
-      "LiteLLM 1.107.0 bị xâm phạm chuỗi cung ứng",
-      "vLLM hỏng KV âm thầm dưới PD disaggregation",
-      "Mô hình lai ngữ cảnh dài sụp đổ ở 80K+ token",
-      "Công việc khởi động ROCm, Intel XPU, Qualcomm Hexagon hoàn tất",
-      "Hopper và Blackwell hấp thụ hầu hết tối ưu CUDA",
-      "SGLang dẫn đầu 9 suy thoái xếp hạng cùng CI tracker"
+      "Bản sửa Claude Code mcp-builder hỗ trợ mcp>=2.0.0 đã cập bến",
+      "skill-creator tách biệt đánh giá trigger sau báo cáo bỏ sót sai",
+      "OpenAI Codex, Gemini CLI, Copilot CLI đều được theo dõi trong digest",
+      "Pi và Qwen Code gia nhập bản tổng hợp hệ sinh thái 7 công cụ CLI",
+      "Repo Anthropic Skills thúc đẩy đóng góp kỹ năng từ cộng đồng",
+      "Lỗi Windows select() trong đánh giá trigger kỹ năng đã được sửa"
     ],
     "ai-trending": [
-      "Agent giờ được tối ưu cho ngữ cảnh và hiệu quả token",
-      "Kỹ năng coding-agent nổi lên như định dạng phân phối mới",
-      "cloudflare/security-audit-skill đạt 2.979 sao",
-      "Vectorless và graph RAG chiếm lĩnh không gian truy xuất",
-      "affaan-m/ECC đạt 286.670 sao như agent harness",
-      "Gần như mọi repo thịnh hành nhắm Claude Code hoặc Codex"
+      "cloudflare/security-audit-skill tăng vọt +2.979 sao hôm nay",
+      "ponytail đạt 173.872 sao, hướng agent viết ít mã hơn",
+      "graphify biến mã nguồn thành đồ thị tri thức không cần vector",
+      "claude-mem bổ sung bộ nhớ lâu dài xuyên phiên agent",
+      "Hệ thống tối ưu hóa ECC harness nay đạt 286.678 sao",
+      "Kỹ năng Graphify hỗ trợ Claude Code, Cursor, Codex, Gemini"
     ],
     "ai-hn": [
-      "Anthropic: LLM khiến xác minh hình thức khả thi",
-      "Runtime NVIDIA OpenShell nhắm đội agent",
-      "Claude Duet đứng đầu thread với 550 điểm, 515 bình luận",
-      "DeepSeek DeepInfer đạt 2.333 điểm, 888 bình luận",
-      "Người hoài nghi chấm điểm tin cậy LLM khơi tranh luận phương pháp",
-      "Khảo sát: hầu hết người Mỹ xem AI là xấu cho xã hội"
-    ],
-    "ai-arxiv": [
-      "Bản sửa mới cho lỗi số softmax và cross-entropy",
-      "Embedding n-gram bit thấp giảm nút thắt bộ nhớ LM",
-      "Từ chối nhận biết chi phí và kiểm toán chọn lọc được chú ý",
-      "Công cụ tuân thủ EU AI Act vào pipeline nghiên cứu",
-      "Hiệu quả suy luận lúc kiểm thử qua cắt tỉa suy nghĩ",
-      "Benchmark agentic mở rộng sang lập kế hoạch thị giác và an toàn"
+      "Claude chính thức xác minh 123 thư viện RISC-V ở quy mô lớn",
+      "Anthropic và Theorem tìm lỗi sống sót qua hàng nghìn tỷ lần kiểm thử",
+      "NVIDIA OpenShell cô lập hàng loạt agent AI tự hành",
+      "OpenShell thực thi chính sách cấp kernel trên tệp và syscall",
+      "Xác minh hình thức gắn cờ truy cập agent rủi ro trước khi phê duyệt",
+      "OpenShell phát hành SDK cho Python, TypeScript, Go, Rust"
     ],
     "ai-community": [
-      "Tin cậy LLM như văn bản, không phải xác suất hiệu chỉnh",
-      "Phát hiện DNA kiểu CRISPR của Claude thất bại mười lần chạy lại",
-      "Anthropic chạy 30.000 agent đồng thời ở quy mô lớn",
-      "Dev vật lộn với lỗi workflow âm thầm và gọi trùng lặp",
-      "Mã độc khai thác backward-pass PyTorch gây tranh luận",
-      "Mô hình nền tảng chuỗi thời gian và unikernel trên Lobste.rs"
+      "Anthropic vận hành 30.000 agent đồng thời trên nền tảng nội bộ",
+      "Tỷ lệ chặn 0,002%: 1 trong 47.000 quyết định agent bị dừng",
+      "26% công việc R&D mô hình đạt mức AL4 theo thang Epoch AI",
+      "Agent ART tìm thấy mảng DNA giống CRISPR, 10 lần chạy lại thất bại",
+      "950 phiên agent đốt 215,6 triệu token trong 21,5 giờ",
+      "Giám sát trước thực thi kèm quy trình leo thang cho người hàng tuần"
     ]
   },
   "en": {
     "ai-cli": [
-      "AI CLI tools converge on sandboxing and MCP",
-      "Permission-model gaps and silent false-success plague tools",
-      "Windows remains weakest platform: leaks, ACL failures",
-      "Claude Code and Gemini CLI ship sandbox security fixes",
-      "Parity debt grows as Desktop and IDE lag CLI",
-      "Cross-tool push for cost observability and session continuity"
-    ],
-    "ai-agents": [
-      "OpenClaw: 500 issues and 500 PRs in 24 hours",
-      "OpenClaw ships v2026.10.6, requires patched Node runtime",
-      "Plugin startup blocking tops community attention (#160959)",
-      "Windows startup regressions hit OpenClaw release line",
-      "OpenClaw carries big regression debt across 5 projects",
-      "High-severity crash-loop bugs still lack fix PRs"
-    ],
-    "ai-infra": [
-      "LiteLLM 1.107.0 hit by supply-chain compromise",
-      "vLLM silent KV corruption under PD disaggregation",
-      "Long-context hybrid models collapse at 80K+ tokens",
-      "ROCm, Intel XPU, Qualcomm Hexagon bring-up work lands",
-      "Hopper and Blackwell absorb most CUDA optimization",
-      "SGLang leads 9 ranked regressions plus CI tracker"
+      "Claude Code mcp-builder fix lands for mcp>=2.0.0 support",
+      "skill-creator isolates trigger evals after false-miss reports",
+      "OpenAI Codex, Gemini CLI, Copilot CLI all tracked in digest",
+      "Pi and Qwen Code join 7-tool CLI ecosystem roundup",
+      "Anthropic Skills repo drives community skill contributions",
+      "Windows select() failures fixed in skill trigger evaluation"
     ],
     "ai-trending": [
-      "Agents now optimized for context and token efficiency",
-      "Coding-agent skills emerge as new distribution format",
-      "cloudflare/security-audit-skill gains 2,979 stars",
-      "Vectorless and graph RAG colonize retrieval space",
-      "affaan-m/ECC hits 286,670 stars as agent harness",
-      "Nearly every trending repo targets Claude Code or Codex"
+      "cloudflare/security-audit-skill spikes +2,979 stars today",
+      "ponytail hits 173,872 stars, biases agents to write less code",
+      "graphify turns codebases into knowledge graphs without vectors",
+      "claude-mem adds persistent memory across agent sessions",
+      "ECC harness optimization system now at 286,678 stars",
+      "Graphify skill supports Claude Code, Cursor, Codex, Gemini"
     ],
     "ai-hn": [
-      "Anthropic: LLMs make formal verification feasible",
-      "NVIDIA OpenShell runtime targets agent fleets",
-      "Claude Duet tops thread with 550 points, 515 comments",
-      "DeepSeek DeepInfer hits 2,333 points, 888 comments",
-      "LLM confidence-scoring skeptics spark methodology debate",
-      "Poll: most Americans view AI as bad for society"
-    ],
-    "ai-arxiv": [
-      "New fix for softmax and cross-entropy numerical bugs",
-      "Low-bit n-gram embeddings cut LM memory bottlenecks",
-      "Cost-aware abstention and selective auditing gain traction",
-      "EU AI Act compliance tooling enters research pipeline",
-      "Test-time reasoning efficiency via thought pruning",
-      "Agentic benchmarks expand to visual planning and safety"
+      "Claude formally verifies 123 RISC-V libraries at scale",
+      "Anthropic and Theorem find bugs surviving trillions of test runs",
+      "NVIDIA OpenShell sandboxes fleets of autonomous AI agents",
+      "OpenShell enforces kernel-level policy on files and syscalls",
+      "Formal verification flags risky agent access before approval",
+      "OpenShell ships SDKs for Python, TypeScript, Go, Rust"
     ],
     "ai-community": [
-      "LLM confidence as text, not calibrated probability",
-      "Claude CRISPR-like DNA finding fails ten reruns",
-      "Anthropic runs 30,000 concurrent agents at scale",
-      "Devs battle silent workflow failures and duplicate calls",
-      "PyTorch backward-pass malware exploit sparks debate",
-      "Time-series foundation models and unikernels on Lobste.rs"
+      "Anthropic runs 30,000 concurrent agents on internal platform",
+      "0.002% block rate: 1 in 47,000 agent decisions stopped",
+      "26% of model R&D work measured at AL4 on Epoch AI scale",
+      "ART agent found CRISPR-like DNA array, 10 reruns failed",
+      "950 agent sessions burned 215.6M tokens in 21.5 hours",
+      "Pre-execution monitors plus weekly human escalation pipeline"
     ]
   }
 }
