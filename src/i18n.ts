@@ -67,6 +67,8 @@ export const WEB_REPORT = {
   generated: (utcStr: string, lang: Lang) =>
     lang === "en" ? `Generated: ${utcStr} UTC` : `Tạo lúc: ${utcStr} UTC`,
   sourcesHeader: t("Nguồn dữ liệu:", "Sources:"),
+  watchlistChanges: (count: number, lang: Lang) =>
+    lang === "en" ? `Watchlist changes: ${count}` : `Thay đổi watchlist: ${count}`,
   issueTitle: (dateStr: string, isFirstRun: boolean, lang: Lang) =>
     lang === "en"
       ? `🌐 Official AI Content Report ${dateStr}${isFirstRun ? " (First Crawl)" : ""}`
@@ -221,10 +223,10 @@ export const PUBLISHED_REPORT_FILES: readonly string[] = PUBLISHED_REPORTS.flatM
  */
 export const NOTIFY_SECTIONS: Record<string, Record<Lang, string>> = {
   "ai-cli": t("🛠 Công cụ AI", "🛠 AI tools"),
-  "ai-trending": t("⭐ Open-source đáng thử", "⭐ Open-source worth a look"),
-  "ai-hn": t("📰 Tin công nghệ", "📰 Tech news"),
   "ai-web": t("📢 Tin chính thức", "📢 Official news"),
+  "ai-hn": t("📰 Tin công nghệ", "📰 Tech news"),
   "ai-community": t("💬 Kinh nghiệm cộng đồng", "💬 Community lessons"),
+  "ai-trending": t("⭐ Open-source đáng thử", "⭐ Open-source worth a look"),
 };
 
 export const NOTIFY_TITLE = t("📡 Bản tin công nghệ", "📡 Tech digest");

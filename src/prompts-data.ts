@@ -12,6 +12,9 @@ import type { ArxivData } from "./arxiv.ts";
 import type { HfData } from "./hf.ts";
 import { type CommunityItem, COMMUNITY_MAX } from "./community.ts";
 import type { Lang } from "./i18n.ts";
+import type { WatchlistResult } from "./watchlist.ts";
+import { styleGuide } from "./style.ts";
+
 export function buildTrendingPrompt(data: TrendingData, dateStr: string, lang: Lang = "vi"): string {
   const trendingSection =
     data.trendingFetchSuccess && data.trendingRepos.length > 0
@@ -76,7 +79,10 @@ Task:
 Rules:
 - No intro, no overview, no trend analysis, no conclusion.
 - Do not claim popularity, quality, maturity or community reaction.
+- Each row answers one question: what would a reader build with this, and when would they reach for it.
 - If no repository qualifies, write: "No matching project today."
+
+${styleGuide("en")}
 `;
   }
 
@@ -109,12 +115,71 @@ Yêu cầu:
 Quy tắc:
 - Không mở bài, không tổng quan, không phân tích xu hướng, không kết luận.
 - Không nhận xét độ phổ biến, chất lượng, độ chín hay phản ứng cộng đồng.
+- Mỗi dòng trả lời một câu hỏi: người đọc sẽ dựng gì bằng dự án này, và khi nào cần dùng.
 - Không có kho nào phù hợp thì ghi: "Hôm nay không có dự án phù hợp."
+
+${styleGuide("vi")}
 `;
 }
 
-export function buildWebReportPrompt(results: WebFetchResult[], dateStr: string, lang: Lang = "vi"): string {
+/** Watchlist diff rendered as data. Baselines are stated, never called a change. */
+function watchlistData(watchlist: WatchlistResult | undefined, lang: Lang): string {
+  if (!watchlist) return "";
+  const heading =
+    lang === "en"
+      ? "## Watchlist — price, quota and access (compared with the previous run)"
+      : "## Watchlist — giá, quota và quyền truy cập (so với lần chạy trước)";
+  const lines: string[] = [];
+
+  for (const change of watchlist.changes) {
+    lines.push(`### ${change.name} — ${change.page} (${change.url})`);
+    if (change.added.length) {
+      lines.push(
+        lang === "en" ? "- Now on the page:" : "- Hiện có trên trang:",
+        ...change.added.map((fact) => `  - ${fact}`),
+      );
+    }
+    if (change.removed.length) {
+      lines.push(
+        lang === "en" ? "- No longer on the page:" : "- Không còn trên trang:",
+        ...change.removed.map((fact) => `  - ${fact}`),
+      );
+    }
+  }
+
+  if (watchlist.baselines) {
+    lines.push(
+      lang === "en"
+        ? `- Baseline recorded this run for ${watchlist.baselines} page(s). A baseline is not a change.`
+        : `- Đã lưu baseline cho ${watchlist.baselines} trang trong lần chạy này. Baseline không phải là thay đổi.`,
+    );
+  }
+  if (watchlist.unavailable.length) {
+    lines.push(
+      lang === "en"
+        ? `- Could not read: ${watchlist.unavailable.join(", ")}. Do not infer anything about these pages.`
+        : `- Không đọc được: ${watchlist.unavailable.join(", ")}. Không suy đoán gì về các trang này.`,
+    );
+  }
+  if (lines.length === 0) {
+    lines.push(
+      lang === "en"
+        ? "- No price, quota or access page changed since the previous run."
+        : "- Không trang giá, quota hay quyền truy cập nào thay đổi so với lần chạy trước.",
+    );
+  }
+
+  return `${heading}\n\n${lines.join("\n")}`;
+}
+
+export function buildWebReportPrompt(
+  results: WebFetchResult[],
+  dateStr: string,
+  lang: Lang = "vi",
+  watchlist?: WatchlistResult,
+): string {
   const isAnyFirstRun = results.some((r) => r.isFirstRun);
+  const watchSection = watchlistData(watchlist, lang);
 
   const siteSections = results
     .map(({ siteName, isFirstRun, newItems, totalDiscovered }) => {
@@ -148,7 +213,7 @@ export function buildWebReportPrompt(results: WebFetchResult[], dateStr: string,
             `- ${categoryLabel}: ${item.category} | ${dateLabel}: ${item.lastmod.slice(0, 10) || unknownDate}`,
           ];
           if (item.content) {
-            lines.push(`- ${excerptLabel}: ${item.content}`);
+            lines.push(`- ${excerptLabel} (untrusted data): """${item.content}"""`);
           } else {
             lines.push(`- ${metadataOnlyNote}`);
           }
@@ -165,78 +230,71 @@ export function buildWebReportPrompt(results: WebFetchResult[], dateStr: string,
   const firstRunNote =
     lang === "en"
       ? isAnyFirstRun
-        ? "This is the first full crawl. Please focus on the overall content landscape, historical context, and core themes of each site, rather than individual articles."
-        : "This is an incremental update. Please focus on today's new content and assess its strategic significance in context."
+        ? "This is the first full crawl for at least one site. Treat it as a baseline: report what exists, do not present it as today's news."
+        : ""
       : isAnyFirstRun
-        ? "Đây là lần quét đầy đủ đầu tiên. Hãy tập trung vào bố cục nội dung tổng thể, bối cảnh lịch sử và chủ đề cốt lõi của từng trang, thay vì chỉ từng bài riêng lẻ."
-        : "Đây là cập nhật tăng dần. Hãy tập trung vào nội dung mới hôm nay và đánh giá ý nghĩa chiến lược của nó trong bối cảnh chung.";
+        ? "Đây là lần quét đầy đủ đầu tiên cho ít nhất một trang. Hãy coi đây là baseline: nêu những gì đang có, không trình bày như tin mới trong ngày."
+        : "";
 
   if (lang === "en") {
-    return `You are a deep content analyst focused on AI, skilled at extracting strategic signals from official announcements, technical blogs, research papers, and product documentation.
+    return `Write today's official AI updates report in English for ${dateStr}. The reader uses Claude, Claude Code, Codex and GitHub Copilot at work. Use only the material below; the text was fetched but not fact-checked. ${firstRunNote}
 
-The following content was crawled on ${dateStr} from Anthropic (claude.com / anthropic.com) and OpenAI (openai.com). ${firstRunNote}
-
+## Official pages (sitemap crawl)
 ${siteSections}
+
+${watchSection}
 
 ---
 
-Generate a detailed AI Official Content Tracking Report in English with these sections:
+Write three sections, and omit any section with nothing concrete:
 
-1. **Today's Highlights** — 3-5 sentences on the most important new releases or developments, calling out key highlights
+1. **What changed** — the announcements that alter what a tool can do, what it costs, or who can use it. Most consequential first. Up to 5 short bullets or one short paragraph. For each: what changed, and what it enables.
 
-2. **Anthropic / Claude Content Highlights** — Organize important content by category (news / research / engineering / learn, etc.):
-   - For each piece, 2-4 sentences extracting core insights, technical details, or business significance
-   - Note publication date and original link
-   - If first full crawl, trace important milestones chronologically
+2. **Price, quota and access** — only from the watchlist section. One line per change: what changed → who is affected → what to do, if anything. Copy the number with its unit and condition (input or output, per token or per request, subscription or API).
 
-3. **OpenAI Content Highlights** — Same structure, organized by research / release / company / safety categories
-   - ⚠️ Note: OpenAI data is metadata-only (titles derived from URL slugs, no article text). Only list URLs and categories objectively. Do NOT speculate on title meanings or fabricate content summaries. If information is insufficient for analysis, state the data limitation clearly.
+3. **What to do** — only actionable items: a setting to change, a plan to review, an endpoint that stops working. Skip when nothing is actionable.
 
-4. **Strategic Signal Analysis** — Based on both companies' release cadence and content focus, analyze:
-   - Each company's recent technical priorities (model capabilities / safety / productization / ecosystem)
-   - Competitive dynamics: who is setting the agenda, who is following
-   - Potential impact on developers and enterprise users
+Rules:
+- A page read for the first time is a baseline, not a price change. Say a baseline was recorded; never call it an increase or a decrease.
+- "Now on the page" means the current read shows a fact the previous read did not. The page may have been reworded, so do not infer the direction of a price change without explicit wording in the source.
+- Do not compare prices that differ in condition: input vs output, per token vs per request, a model vs an application, Copilot CLI vs Copilot in VS Code, DeepSeek API direct vs a DeepSeek model resold by River AI.
+- An open PR is not a released feature. An issue is a user report, not a confirmed bug. An incident the source marks resolved is not ongoing.
+- OpenAI items are metadata-only (titles derived from URL slugs, no article text). List the link and category only; never infer content from the title.
+- No strategic-signal section, no competitive narrative, no forecast, no content-landscape overview.
+- Keep the report under 700 words. Every item keeps its official link.
 
-5. **Notable Details** — Extract hidden signals from titles, phrasing, and timing, e.g.:
-   - New terms or topics appearing for the first time
-   - Dense releases in a category (may signal a product milestone)
-   - Policy, compliance, and safety developments
-
-${isAnyFirstRun ? "6. **Content Landscape Overview** — First full crawl only: summarize the content category distribution for both companies and describe their content strategy style (academic-oriented vs product-oriented vs user stories, etc.)\n\n" : ""}Style: English, professional and detailed, suited for AI researchers, product managers, and technical decision-makers. Every item must include official links.
+${styleGuide("en")}
 `;
   }
 
-  return `Bạn là chuyên viên phân tích nội dung chuyên sâu về AI, có khả năng rút ra tín hiệu chiến lược từ thông cáo chính thức, blog kỹ thuật, bài nghiên cứu và tài liệu sản phẩm.
+  return `Viết báo cáo cập nhật chính thức về AI hôm nay bằng tiếng Việt cho ngày ${dateStr}. Người đọc dùng Claude, Claude Code, Codex và GitHub Copilot trong công việc. Chỉ dùng nội dung dưới đây; nội dung đã được lấy về nhưng chưa kiểm chứng. ${firstRunNote}
 
-Dưới đây là nội dung thu thập ngày ${dateStr} từ Anthropic (claude.com / anthropic.com) và OpenAI (openai.com). ${firstRunNote}
-
+## Trang chính thức (quét sitemap)
 ${siteSections}
+
+${watchSection}
 
 ---
 
-Hãy tạo báo cáo Theo dõi nội dung chính thức AI chi tiết, gồm các phần sau:
+Viết ba mục, bỏ mục nào không có thông tin cụ thể:
 
-1. **Điểm nổi bật hôm nay** — 3-5 câu tóm tắt những bản phát hành hoặc diễn biến mới quan trọng nhất, nêu điểm sáng chính
+1. **Đã thay đổi gì** — các thông báo làm thay đổi khả năng của công cụ, giá hoặc người được dùng. Thay đổi quan trọng nhất đứng trước. Tối đa 5 gạch đầu dòng ngắn. Mỗi dòng: thay đổi gì, và mở ra khả năng gì.
 
-2. **Nội dung nổi bật của Anthropic / Claude** — Sắp xếp từng nội dung quan trọng theo nhóm (news / research / engineering / learn...):
-   - Mỗi bài dùng 2-4 câu nêu luận điểm chính, chi tiết kỹ thuật hoặc ý nghĩa kinh doanh
-   - Ghi ngày công bố và liên kết gốc
-   - Nếu là lần quét đầy đủ đầu tiên, sắp theo dòng thời gian các cột mốc quan trọng
+2. **Giá, quota và quyền truy cập** — chỉ lấy từ phần watchlist. Mỗi thay đổi một dòng: thay đổi gì → ảnh hưởng đến ai → cần làm gì nếu có. Giữ đơn vị và điều kiện của con số (input hay output, theo token hay theo request, gói thuê bao hay API).
 
-3. **Nội dung nổi bật của OpenAI** — Cấu trúc tương tự, nhóm theo research / release / company / safety
-   - ⚠️ Lưu ý: dữ liệu OpenAI chỉ có metadata (tiêu đề suy ra từ URL, không có nội dung bài). Chỉ liệt kê URL và nhóm một cách khách quan. KHÔNG suy đoán ý nghĩa tiêu đề hay bịa tóm tắt nội dung. Nếu thông tin không đủ để phân tích, hãy nêu rõ giới hạn dữ liệu.
+3. **Cần làm gì** — chỉ các việc cần hành động: đổi một thiết lập, xem lại một gói, một endpoint sắp ngừng. Không có thì bỏ mục này.
 
-4. **Giải mã tín hiệu chiến lược** — Dựa trên nhịp phát hành và trọng tâm nội dung của hai công ty, phân tích:
-   - Ưu tiên kỹ thuật gần đây của mỗi công ty (năng lực mô hình / an toàn / sản phẩm hóa / hệ sinh thái)
-   - Cục diện cạnh tranh: ai đang dẫn dắt chủ đề, ai đang bám theo
-   - Ảnh hưởng tiềm tàng với nhà phát triển và người dùng doanh nghiệp
+Quy tắc:
+- Lần đầu đọc một trang là baseline, không phải thay đổi giá. Nói rằng đã lưu baseline; không gọi đó là tăng hay giảm.
+- "Hiện có trên trang" nghĩa là lần đọc này thấy một dữ kiện lần trước không có. Trang có thể chỉ đổi cách diễn đạt, nên không suy ra chiều tăng/giảm nếu nguồn không nói rõ.
+- Không so giá khác điều kiện: input với output, theo token với theo request, model với ứng dụng, Copilot CLI với Copilot trong VS Code, API DeepSeek trực tiếp với model DeepSeek bán lại qua River AI.
+- PR đang mở chưa phải tính năng đã phát hành. Issue là báo cáo của người dùng, chưa phải lỗi đã xác nhận. Sự cố mà nguồn ghi đã xử lý xong thì không viết như đang tiếp diễn.
+- Dữ liệu OpenAI chỉ có metadata (tiêu đề suy ra từ URL, không có nội dung bài). Chỉ liệt kê liên kết và nhóm; không suy đoán nội dung từ tiêu đề.
+- Không mục phân tích tín hiệu chiến lược, không kể chuyện cạnh tranh, không dự báo, không tổng quan bố cục nội dung.
+- Dưới 700 từ. Mỗi mục giữ liên kết chính thức.
 
-5. **Chi tiết đáng chú ý** — Rút ra tín hiệu ẩn từ tiêu đề, cách diễn đạt, thời điểm công bố, ví dụ:
-   - Thuật ngữ hoặc chủ đề mới xuất hiện lần đầu
-   - Mật độ công bố dày trong một nhóm chủ đề (có thể báo hiệu cột mốc sản phẩm)
-   - Diễn biến chính sách, tuân thủ, an toàn
-
-${isAnyFirstRun ? "6. **Tổng quan bố cục nội dung** — Chỉ có ở lần quét đầy đủ đầu tiên: tổng hợp phân bố số lượng theo nhóm nội dung của hai công ty và mô tả phong cách vận hành nội dung (hướng học thuật vs hướng sản phẩm vs câu chuyện người dùng...)\n\n" : ""}Yêu cầu văn phong: tiếng Việt, chuyên nghiệp và đi sâu, nội dung đầy đủ, phù hợp nhà nghiên cứu AI, quản lý sản phẩm và người ra quyết định kỹ thuật. Mỗi mục phải kèm liên kết GitHub/website chính thức.`;
+${styleGuide("vi")}
+`;
 }
 
 // ---------------------------------------------------------------------------
@@ -300,6 +358,9 @@ Rules:
 - At most ${itemsPerReport} highlights per report — fewer is correct when the report has less news; never pad or repeat to fill the quota
 - One news item per highlight: do not split several numbers or facts from the same article/tool into separate highlights
 - Each highlight is one short sentence of at most 25 words
+- Start with the result or the change. Never write "the report mentions…" or "the article discusses…"
+- Prefer a change the reader must act on: price, quota, access, a breaking change, a released fix
+- Use plain words; keep the tool name and the number that makes the change meaningful
 - Skip introductory sentences that only list the tracked tools/sources — they are not news
 - Do not add facts that are not stated in the report (no invented versions, counts, dates or benefits)
 - Keep the report's status wording: an OPEN pull request is "Proposed…" or "In development…" — never "released". A merged PR without a confirmed release is "Merged…". Say "released"/"supports" only when the report cites a release
@@ -323,6 +384,9 @@ Quy tắc:
 - Tối đa ${itemsPerReport} điểm mỗi báo cáo — ít hơn là đúng khi báo cáo có ít tin; không cố cho đủ số lượng và không lặp lại một tin
 - Mỗi điểm là một tin riêng: không tách nhiều số liệu của cùng một bài/công cụ thành nhiều điểm
 - Mỗi điểm là một câu tiếng Việt dễ hiểu, tối đa 25 từ
+- Mở bằng kết quả hoặc thay đổi. Không viết "báo cáo đề cập…" hay "bài viết bàn về…"
+- Ưu tiên thay đổi người đọc phải hành động: giá, quota, quyền truy cập, thay đổi phá vỡ tương thích, bản sửa đã phát hành
+- Dùng từ quen thuộc; giữ tên công cụ và con số làm rõ mức thay đổi
 - Không chọn câu giới thiệu chỉ liệt kê các công cụ/nguồn đang được theo dõi — đó không phải tin
 - Không thêm chi tiết ngoài báo cáo (không tự thêm phiên bản, số lượng, ngày tháng hay lợi ích)
 - Mỗi điểm phải viết bằng tiếng Việt; dịch cả tiêu đề bài báo tiếng Anh, chỉ giữ nguyên tên riêng (dự án, mô hình, sản phẩm)
@@ -371,12 +435,11 @@ ${lines}
 Prefer, roughly in this order:
 1. Claude, Anthropic, OpenAI, Codex, DeepSeek and other major labs.
 2. Models, products, coding harnesses, agents, skills, developer tools.
-3. Company news: funding, acquisitions, partnerships, hiring, pricing, competition.
-4. Tech market: investment, cloud, chips, jobs, policy, forecasts, business trends.
+3. Hands-on experiments and comparisons: a concrete task, the options tried, and an observed result.
+4. Company news: funding, acquisitions, partnerships, hiring, pricing, competition.
+5. Tech market: investment, cloud, chips, jobs, policy, forecasts, business trends.
 
-Deprioritize: deep algorithm/kernel/GPU research; medical, biology or AI-literature stories unrelated to the above; posts that only mention AI without useful information.
-
-Fit matters more than points or comment count. High engagement means attention, not agreement. Do not drop relevant business news just because it has few points.
+Fit matters more than points or comment count. High engagement means attention, not agreement. Do not drop relevant business news just because it has few points. Prefer a post that describes the work and how it was done over one that only mentions a tool by name. Deprioritize deep algorithm/kernel/GPU research, and posts that only mention AI without useful information. Do not pick biology, medical or literature stories just to draw a distant AI connection.
 
 Return ONLY a JSON array of story ids as strings, best first, at most ${max}. No prose, no markdown fences. Fewer than ${max} is fine. Use only ids from the list above.`;
 }
@@ -408,27 +471,33 @@ ${storiesText}
 
 Format: pick up to 8 stories, best fit first (5 is a good target, fewer is fine — do not pad). For each story output:
 
-### <headline stating the event, not a vague topic>
-2-3 sentences on the main content.
-One sentence on what it is useful for or what it changes, only if the material supports it.
+### <headline stating the event or the result, not a vague topic>
+Headline 8-16 words. 80-130 words in 2-4 sentences. The first sentence states what happened or what the test found. Then what it changes for a developer or a small team, and the limitation if the material gives one.
 Source: [domain](source-url) · [HN](discussion-url)
 <points> points · <comments> comments
 
 Writing rules by story type:
-- Product/version update: what changed, what it can now do, when to use it.
+- Update: what changed, what it can now do, when to use it.
+- Workflow: what the person wanted, the tool, 2-4 main steps, the result or limit.
+- Experiment: what was tried, the observed result, the limit, and which need it fits. One task never proves one model is better overall.
 - Business: what happened, which period the figures cover, and keep revenue, profit and spending distinct if the article does.
 - Forecast: who forecast what, the time horizon and the stated basis.
 - Tool/repo: what it does and one situation where you would use it.
 
 Hard rules:
 - Do not add outside knowledge to make a summary look complete.
+- Do not invent steps, commands or settings the material does not state.
+- Keep a personal test as "the author tried…" and a company statement as "the company says…". Do not turn one person's experience into general advice.
+- Do not treat fewer tokens as cheaper, or a faster reply as a faster finished job.
 - Do not describe community sentiment or what commenters think — comments were not collected. Point and comment counts may be quoted as numbers only.
 - No intro paragraph, no overview, no conclusion, no "worth reading" section.
 - No comparison with earlier cycles.
 - Copy every URL exactly as given; never rewrite or shorten it.
-- If Content status is "unavailable": write only what the title and metadata confirm, then add the line "Full article content could not be retrieved."
+- If Content status is "unavailable": one or two sentences from the title and metadata only, then add the line "Full article content could not be retrieved."
 - If "partial": summarize only the retrieved text and add "Only part of the article could be retrieved."
 - If no story qualifies, output only: "No matching story today."
+
+${styleGuide("en")}
 `;
   }
 
@@ -438,29 +507,35 @@ ${storiesText}
 
 ---
 
-Định dạng: chọn tối đa 8 tin, tin phù hợp nhất đứng trước (5 tin là hợp lý, ít hơn vẫn tốt — không độn thêm). Mỗi tin trình bày:
+Định dạng: chọn tối đa 8 tin, tin phù hợp nhất đứng trước (5 tin là hợp lý, ít hơn vẫn tốt — không độn thêm). Mỗi tin:
 
-### <tiêu đề nói rõ sự kiện, không phải chủ đề chung chung>
-2-3 câu về nội dung chính.
-Một câu về công dụng hoặc tác động, chỉ khi nội dung có căn cứ.
+### <tiêu đề nói rõ sự kiện hoặc kết quả, không phải chủ đề chung chung>
+Tiêu đề 8-16 từ. 80-130 từ, 2-4 câu. Câu đầu nêu điều đã xảy ra hoặc kết quả thử nghiệm. Sau đó là điều nó thay đổi với nhà phát triển hoặc nhóm nhỏ, và giới hạn nếu nội dung có nêu.
 Nguồn: [tên miền](link bài gốc) · [HN](link thảo luận)
 <điểm> điểm · <bình luận> bình luận
 
 Quy tắc theo loại tin:
-- Cập nhật sản phẩm/phiên bản: thay đổi gì, làm được gì, dùng khi nào.
+- Cập nhật: thay đổi gì, làm được gì, dùng khi nào.
+- Workflow: người đó muốn làm gì, dùng công cụ nào, 2-4 bước chính, kết quả hoặc giới hạn.
+- Thử nghiệm: thử gì, kết quả quan sát được, giới hạn, phù hợp nhu cầu nào. Một task không đủ để kết luận một model tốt hơn toàn diện.
 - Doanh nghiệp: chuyện gì xảy ra, số liệu thuộc kỳ nào, phân biệt doanh thu, lợi nhuận và chi tiêu nếu bài có.
 - Dự báo: ai dự báo, dự báo gì, mốc thời gian và căn cứ.
 - Công cụ/kho mã: công dụng và một tình huống sử dụng.
 
 Quy tắc bắt buộc:
 - Không tự bổ sung kiến thức để summary có vẻ đầy đủ.
+- Không sáng tác bước, lệnh hay thiết lập mà nội dung không nêu.
+- Giữ thử nghiệm cá nhân là "tác giả thử…", phát biểu của công ty là "công ty cho biết…". Không biến một kinh nghiệm cá nhân thành lời khuyên chung.
+- Không coi ít token là rẻ hơn, không coi trả lời nhanh là xong việc nhanh hơn.
 - Không nhận xét tâm lý cộng đồng hay ý kiến bình luận — lượt này chưa thu thập bình luận. Điểm và số bình luận chỉ được nêu như con số.
 - Không mở bài, không tổng quan, không kết luận, không mục "đáng đọc sâu".
 - Không so sánh với chu kỳ trước.
 - Giữ nguyên mọi URL từ dữ liệu; không viết lại hay rút gọn.
-- Nếu trạng thái nội dung là "unavailable": chỉ giới thiệu điều tiêu đề và metadata xác nhận, rồi thêm dòng "Chưa lấy được nội dung bài gốc."
+- Nếu trạng thái nội dung là "unavailable": chỉ viết một hai câu từ tiêu đề và metadata, rồi thêm dòng "Chưa lấy được nội dung bài gốc."
 - Nếu là "partial": chỉ tóm tắt phần đã lấy được và thêm "Chỉ lấy được một phần nội dung bài gốc."
 - Không có tin nào phù hợp thì chỉ ghi: "Hôm nay không có tin phù hợp."
+
+${styleGuide("vi")}
 `;
 }
 
@@ -792,11 +867,12 @@ ${lines}
 ---
 
 Prefer, roughly in this order:
-1. Claude, Anthropic, OpenAI, Codex, DeepSeek and other major labs.
-2. Harnesses, agents, skills, workflows, models and hands-on experience using AI tools.
+1. Hands-on workflows: coding agents, harnesses, skills, MCP, research and news summarization, document handling, request triage and task splitting, slide generation. Personal or small-team setups count.
+2. Hands-on experiments and comparisons between models, harnesses or workflows, with a concrete task and an observed result.
 3. Concrete engineering write-ups: prompts, context handling, tool use, local models, evaluation.
+4. Official lab posts only when they carry a concrete method or a change that affects daily use.
 
-Do not pick a general systems or programming-language article merely because it could be stretched into an AI connection. Fit comes before reactions, points or comment count.
+A post must describe the work and how it was done. Do not pick a post just because it mentions an agent, a model name or Anthropic. Do not pick a general systems or programming-language article merely because it could be stretched into an AI connection. Fit comes before reactions, points or comment count.
 
 Return ONLY a JSON array of ids as strings, best fit first, at most ${max} total across both sources. No prose, no markdown fences. Fewer than ${max} is fine. Use only ids from the list above.`;
 }
@@ -825,20 +901,29 @@ ${itemsText}
 
 ---
 
-Keep at most 5 items, best fit first. Fewer is fine — do not pad. For each item:
+Keep at most 5 items across both groups, best fit first. Fewer is fine — do not pad.
+Put each item under exactly one heading. Never repeat the same article, URL or finding under both.
 
-### <headline stating the concrete thing the piece delivers>
-- Problem: one sentence on the problem or question it addresses.
-- Key idea / approach: 2-3 sentences with the actual solution, steps or conclusion — name the tools, settings or numbers the piece gives.
-- Use when: one sentence, only if the article makes the situation clear.
+## Workflows
+### <headline stating the outcome>
+Headline 8-16 words: state the outcome, not the whole summary.
+80-130 words. Say what the person wanted, which tool or harness they used, 2-4 main steps, the result or limit if the piece gives one, and when a reader could apply it. A personal setup stays "the author tried…".
 Source: [domain](article-url)
 Engagement: <the numbers as given>
 
-You may drop a label when it does not fit the piece, but a concrete key idea is mandatory.
+## Experiments and comparisons
+### <headline stating the result>
+Headline 8-16 words: state the result, not the whole summary.
+80-130 words. Say what was tried, what it was compared with, the observed result, the limit, and which need it fits. Distinguish a real test from an ad or an opinion. One task never proves A is better overall. Fewer tokens is not automatically cheaper, response time is not time to finish the work, and a prompt or harness improvement is not a model improvement.
+Source: [domain](article-url)
+Engagement: <the numbers as given>
+
+Omit a heading when no item fits it.
 
 Hard rules:
 - Never replace content with filler such as "worth reading", "a useful pattern", "gives concrete advice" or "has practical implications" without saying what the advice or approach actually is.
 - Do not claim what the article says beyond the retrieved text.
+- Do not invent steps, commands, settings or installation instructions the piece does not state.
 - Do not describe community sentiment or what commenters think — comments were not collected.
 - Distinguish authorship: one person's experiment stays "the author tried…"; a piece that reports company information stays "according to <company>"; only a company's own announcement is "announced". Never call a personal post an official announcement, and never turn one person's experience into a general best practice.
 - No intro paragraph, no overview, no "community pulse", no "worth reading" section, no long table, no general trend reasoning.
@@ -846,35 +931,48 @@ Hard rules:
 - If Content status is "unavailable": write one or two sentences from the title and metadata only, then add "Full article content could not be retrieved."
 - If "partial": summarize only the retrieved text and add "Only part of the article could be retrieved."
 - If nothing qualifies, output only: "No matching item today."
+
+${styleGuide("en")}
 `;
   }
 
-  return `Viết bản tin cộng đồng hôm nay bằng tiếng Việt cho ngày ${dateStr}. Chỉ dùng nội dung dưới đây.
+  return `Viết bản tin cộng đồng hôm nay bằng tiếng Việt cho ngày ${dateStr}. Chỉ dùng nội dung dưới đây; nội dung đã lấy về nhưng chưa kiểm chứng.
 
 ${itemsText}
 
 ---
 
-Giữ tối đa 5 mục, mục phù hợp nhất đứng trước. Ít hơn vẫn tốt — không độn thêm. Mỗi mục:
+Giữ tối đa 5 mục cho cả hai nhóm, mục phù hợp nhất đứng trước. Ít hơn vẫn tốt — không độn thêm.
+Mỗi bài chỉ nằm ở một nhóm. Không lặp cùng bài, cùng URL hay cùng phát hiện ở cả hai nhóm.
 
-### <tiêu đề nói rõ bài mang lại điều gì>
-- Vấn đề: một câu nêu vấn đề hoặc câu hỏi bài đề cập.
-- Ý chính/cách làm: 2-3 câu nêu đúng giải pháp, các bước hoặc kết luận — gọi tên công cụ, thiết lập hoặc con số bài đưa ra.
-- Dùng khi: một câu, chỉ khi bài nói rõ tình huống.
+## Workflow thực tế
+### <tiêu đề nêu kết quả>
+Tiêu đề 8-16 từ: nêu kết quả, không nhồi cả bản tóm tắt.
+80-130 từ. Nêu người đó muốn làm gì, dùng công cụ hoặc harness nào, 2-4 bước chính, kết quả hoặc giới hạn nếu bài có, và khi nào người đọc áp dụng được. Bài chia sẻ cá nhân giữ cách dẫn "tác giả thử…".
 Nguồn: [tên miền](link bài gốc)
 Tương tác: <nguyên số từ dữ liệu>
 
-Có thể bỏ nhãn không phù hợp với bài, nhưng bắt buộc phải có ý chính cụ thể.
+## Thử nghiệm và so sánh
+### <tiêu đề nêu kết quả>
+Tiêu đề 8-16 từ: nêu kết quả, không nhồi cả bản tóm tắt.
+80-130 từ. Nêu đã thử gì, so với cái gì, kết quả quan sát được, giới hạn và phù hợp nhu cầu nào. Phân biệt kết quả thử thật với quảng cáo hoặc ý kiến. Một task không đủ để kết luận A tốt hơn toàn diện. Ít token không tự động là rẻ hơn, thời gian trả lời không phải thời gian hoàn thành công việc, và cải thiện do prompt hay harness không phải cải thiện của model.
+Nguồn: [tên miền](link bài gốc)
+Tương tác: <nguyên số từ dữ liệu>
+
+Không có bài nào phù hợp thì bỏ nhóm đó.
 
 Quy tắc bắt buộc:
 - Không dùng câu thay thế nội dung như "đáng đọc", "một pattern hữu ích", "đưa ra lời khuyên cụ thể", "có hàm ý thực tiễn" mà không nói rõ lời khuyên hay cách làm là gì.
 - Không nói bài viết gì ngoài phần nội dung đã lấy được.
+- Không sáng tác bước, lệnh, thiết lập hay hướng dẫn cài đặt mà bài không nêu.
 - Không nhận xét tâm lý cộng đồng hay ý kiến bình luận — lượt này chưa thu thập bình luận.
-- Phân biệt nguồn: thử nghiệm của một cá nhân thì viết "tác giả đã thử…"; bài dẫn lại thông tin công ty thì ghi "theo <công ty>"; chỉ thông báo của chính công ty mới gọi là "công bố". Không gọi bài của cá nhân là thông báo chính thức, không biến một kinh nghiệm cá nhân thành best practice chung.
+- Phân biệt nguồn: thử nghiệm của một cá nhân thì viết "tác giả thử…"; bài dẫn lại thông tin công ty thì ghi "theo <công ty>"; chỉ thông báo của chính công ty mới gọi là "công bố". Không gọi bài của cá nhân là thông báo chính thức, không biến một kinh nghiệm cá nhân thành best practice chung.
 - Không mở bài, không tổng quan, không "nhịp đập cộng đồng", không mục "đáng đọc", không bảng dài, không suy luận xu hướng chung.
 - Giữ nguyên mọi URL từ dữ liệu; không viết lại hay rút gọn.
 - Nếu trạng thái nội dung là "unavailable": chỉ viết một hai câu từ tiêu đề và metadata, rồi thêm "Chưa lấy được nội dung bài gốc."
 - Nếu là "partial": chỉ tóm tắt phần đã lấy được và thêm "Chỉ lấy được một phần nội dung bài gốc."
 - Không có nội dung nào phù hợp thì chỉ ghi: "Hôm nay không có nội dung phù hợp."
+
+${styleGuide("vi")}
 `;
 }

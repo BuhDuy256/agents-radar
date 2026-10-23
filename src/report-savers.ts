@@ -18,6 +18,8 @@ import {
   COMMUNITY_REPORT,
   ISSUE_LABELS,
 } from "./i18n.ts";
+import type { WatchlistResult, WatchlistState } from "./watchlist.ts";
+import { saveWatchlistState } from "./watchlist.ts";
 import {
   buildWebReportPrompt,
   buildHnPrompt,
@@ -53,6 +55,7 @@ import {
   communityCandidates,
   fetchCommunityContent,
   keywordCommunityShortlist,
+  normalizeUrl,
   pickCommunityItems,
 } from "./community.ts";
 import type { PhData } from "./ph.ts";
@@ -94,17 +97,23 @@ async function bilingualBody(enPrompt: string, maxTokens: number): Promise<Bilin
 export async function saveWebReport(
   webResults: WebFetchResult[],
   webState: WebState,
+  watchlist: WatchlistResult,
+  watchlistState: WatchlistState,
   utcStr: string,
   dateStr: string,
   digestRepo: string,
 ): Promise<BilingualBody | null> {
   const hasNewContent = webResults.some((r) => r.newItems.length > 0);
+  const watchlistChanges = watchlist.changes.length;
   let body: BilingualBody | null = null;
 
-  if (hasNewContent) {
+  if (hasNewContent || watchlistChanges > 0) {
     console.log("  [web] Calling LLM for web content report (EN) + translation (VI)...");
     try {
-      const summary = await bilingualBody(buildWebReportPrompt(webResults, dateStr, "en"), LLM_TOKENS_WEB);
+      const summary = await bilingualBody(
+        buildWebReportPrompt(webResults, dateStr, "en", watchlist),
+        LLM_TOKENS_WEB,
+      );
       const isFirstRun = webResults.some((r) => r.isFirstRun);
       const totalNew = webResults.reduce((sum, r) => sum + r.newItems.length, 0);
 
@@ -118,7 +127,9 @@ export async function saveWebReport(
         const mode = isFirstRun ? WEB_REPORT.firstCrawl[lang] : WEB_REPORT.todayUpdate[lang];
 
         const webTitle = `# ${WEB_REPORT.title[lang]} ${dateStr}\n\n`;
-        const webMeta = `> ${mode} | ${WEB_REPORT.newContent(totalNew, lang)} | ${WEB_REPORT.generated(utcStr, lang)}\n\n`;
+        const watchMeta =
+          watchlistChanges > 0 ? ` | ${WEB_REPORT.watchlistChanges(watchlistChanges, lang)}` : "";
+        const webMeta = `> ${mode} | ${WEB_REPORT.newContent(totalNew, lang)}${watchMeta} | ${WEB_REPORT.generated(utcStr, lang)}\n\n`;
         const webSources =
           lang === "en"
             ? `${WEB_REPORT.sourcesHeader[lang]}\n` +
@@ -144,10 +155,11 @@ export async function saveWebReport(
       console.error(`  [web] Report generation failed: ${err}`);
     }
   } else {
-    console.log("  [web] No new content detected, skipping report.");
+    console.log("  [web] No new content or watchlist change detected, skipping report.");
   }
 
   saveWebState(webState);
+  saveWatchlistState(watchlistState);
   console.log("  [web] State saved.");
   return body;
 }
@@ -409,17 +421,23 @@ export async function saveHfReport(
 // Community report (Dev.to + Lobste.rs)
 // ---------------------------------------------------------------------------
 
+export interface CommunitySaveResult {
+  body: BilingualBody | null;
+  /** Normalised URLs this report covered, for cross-report dedupe. */
+  selectedUrls: string[];
+}
+
 export async function saveCommunityReport(
   devtoData: DevtoData,
   lobstersData: LobstersData,
   utcStr: string,
   dateStr: string,
   digestRepo: string,
-): Promise<BilingualBody | null> {
+): Promise<CommunitySaveResult> {
   const hasData = devtoData.fetchSuccess || lobstersData.fetchSuccess;
   if (!hasData) {
     console.log("  [community] No data available, skipping report.");
-    return null;
+    return { body: null, selectedUrls: [] };
   }
 
   // 1. Shortlist: one LLM pass that only picks ids, then a keyword fallback.
@@ -438,7 +456,7 @@ export async function saveCommunityReport(
   }
   if (selected.length === 0) {
     console.log("  [community] Nothing matched the preferred topics, skipping report.");
-    return null;
+    return { body: null, selectedUrls: [] };
   }
 
   // 2. Read the selected pieces before asking for a summary.
@@ -475,5 +493,5 @@ export async function saveCommunityReport(
   } catch (err) {
     console.error(`  [community] Report generation failed: ${err}`);
   }
-  return body;
+  return { body, selectedUrls: items.map((item) => normalizeUrl(item.url)) };
 }

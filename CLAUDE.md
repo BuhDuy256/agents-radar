@@ -72,6 +72,8 @@ Report bodies are generated **once in English** and translated to Vietnamese. Ge
 | `src/config.ts` | Loads `config.yml` into `RadarConfig` (`cliRepos`, `skillsRepo`, `openclaw`, `openclawPeers`, `infraRepos`); built-in defaults when a section is missing |
 | `src/prompts.ts` | LLM prompt builders for repo reports: `buildCliPrompt`, `buildPeerPrompt`, `buildInfraPrompt`, `buildComparisonPrompt`, `buildInfraComparisonPrompt`, `buildPeersComparisonPrompt`, `buildSkillsPrompt`; plus `buildTranslationPrompt` / `buildJsonTranslationPrompt` |
 | `src/prompts-data.ts` | LLM prompt builders for data-source reports: `buildTrendingPrompt`, `buildWebReportPrompt`, `buildHnPrompt` |
+| `src/style.ts` | `styleGuide(lang)` — the shared writing guide appended to every report prompt |
+| `src/watchlist.ts` | Pricing/quota watchlist; `fetchWatchlistChanges` diffs price and limit facts against `digests/watchlist-state.json` |
 | `src/report.ts` | `callLlm` (with concurrency limiter), `translateToVi`, `saveFile`, `autoGenFooter` (uses i18n), LLM token budget constants |
 | `src/report-builders.ts` | `buildCliReportContent`, `buildOpenclawReportContent`, `buildInfraReportContent` — assemble final Markdown strings for CLI, OpenClaw and infra reports |
 | `src/report-savers.ts` | `saveWebReport`, `saveTrendingReport`, `saveHnReport`, … — English LLM call + translation + both language files + optional GitHub issues; exports `LANGS` and `BilingualBody` |
@@ -126,6 +128,9 @@ Files written to `digests/YYYY-MM-DD/`:
 - Report **bodies** are not bilingual strings — they are generated in English and translated (see "English-first generation"). Never add a second generation call to produce Vietnamese.
 - `translateToVi(text, maxTokens)` must be passed the same token budget the English body was generated with, or a long report gets truncated mid-translation.
 - LLM prompt builders are split across two files: `src/prompts.ts` (repo-level prompts) and `src/prompts-data.ts` (data-source prompts). Each report type has its own builder function.
+- Every report prompt ends with `styleGuide(lang)` from `src/style.ts`: summary first, plain words, one name per concept, fact separated from claim. Change the voice there, not in individual prompts. The translation prompt keeps the same order and terminology and treats the report body as data, so a `Rules:` line inside an article is translated, not executed.
+- The watchlist (`WATCHLIST` in `src/watchlist.ts`) compares only price and limit facts. The first successful read of a page is a baseline and is never reported as a price increase or decrease. State is `digests/watchlist-state.json`, committed by the workflow's `git add digests/`.
+- `saveWebReport` generates a report when either the sitemap found new content or the watchlist changed. The community report runs before the HN report so HN can drop URLs community already published; the check is URL-only and costs no extra LLM call.
 - Weekly and monthly rollups were removed in July 2026. `ai-weekly`/`ai-monthly` remain in `REPORT_LABELS` (`src/i18n.ts`) and `REPORT_FILES` (`src/generate-manifest.ts`) only so archived reports stay reachable — do not add generation code back.
 - `callLlm(prompt, maxTokens?)` defaults to 4096 tokens. Web report uses 8192, trending uses 6144. The table-formatted listing reports (HN, PH, ArXiv, HF, Community) use `LLM_TOKENS_LISTING` = 6144 to fit multi-row tables plus 2-sentence summaries.
 - Data-source listing reports (Trending, HN, PH, ArXiv, HF, Community) render their item lists as **Markdown tables** (not bullet lists). Numeric columns are copied verbatim from the fetched data; the summary column is 2 sentences. Tables already have CSS in `index.html` and render natively in GitHub Issues too.

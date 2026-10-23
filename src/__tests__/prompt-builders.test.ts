@@ -273,7 +273,7 @@ describe("buildSkillsPrompt", () => {
 
   it("generates English variant", () => {
     const result = buildSkillsPrompt([], [], "2026-03-09", "en");
-    expect(result).toContain("Claude Code ecosystem");
+    expect(result).toContain("Claude Code Skills");
     expect(result).toContain("None");
   });
 });
@@ -361,7 +361,7 @@ describe("buildWebReportPrompt", () => {
     const result = buildWebReportPrompt(results, "2026-03-09");
     expect(result).toContain("Quét đầy đủ lần đầu");
     expect(result).toContain("Anthropic");
-    expect(result).toContain("Tổng quan bố cục nội dung"); // first-run-only section
+    expect(result).toContain("Đã thay đổi gì"); // summary-first section
   });
 
   it("shows incremental mode for non-first-run", () => {

@@ -48,6 +48,13 @@ import {
   reportFileName,
 } from "./report-savers.ts";
 import { loadWebState, fetchSiteContent, type WebFetchResult, type WebState } from "./web.ts";
+import { normalizeUrl } from "./community.ts";
+import {
+  loadWatchlistState,
+  fetchWatchlistChanges,
+  type WatchlistResult,
+  type WatchlistState,
+} from "./watchlist.ts";
 import { fetchTrendingData, type TrendingData } from "./trending.ts";
 import { fetchHnData, type HnData } from "./hn.ts";
 import { fetchDevtoData, type DevtoData } from "./devto.ts";
@@ -79,6 +86,7 @@ function requireEnv(name: string): string {
 async function fetchAllData(
   since: Date,
   webState: WebState,
+  watchlistState: WatchlistState,
 ): Promise<{
   fetched: RepoFetch[];
   skillsData: { prs: GitHubItem[]; issues: GitHubItem[] };
@@ -87,71 +95,78 @@ async function fetchAllData(
   hnData: HnData;
   devtoData: DevtoData;
   lobstersData: LobstersData;
+  watchlist: WatchlistResult;
 }> {
   console.log(
-    `  Tracking: ${CLI_REPOS.map((r) => r.id).join(", ")}, claude-code-skills, web, trending, hn, devto, lobsters`,
+    `  Tracking: ${CLI_REPOS.map((r) => r.id).join(", ")}, claude-code-skills, web, trending, hn, devto, lobsters, watchlist`,
   );
 
-  const [fetched, skillsData, webResults, trendingData, hnData, devtoData, lobstersData] = await Promise.all([
-    Promise.all(
-      CLI_REPOS.map(async (cfg) => {
-        try {
-          const [issuesRaw, prs, releases, discussions] = await Promise.all([
-            fetchRecentItems(cfg, "issues", since),
-            fetchRecentItems(cfg, "pulls", since),
-            fetchRecentReleases(cfg.repo, since),
-            cfg.discussions ? fetchRecentDiscussions(cfg.repo, since) : Promise.resolve([]),
-          ]);
-          const issues = issuesRaw.filter((i) => !i.pull_request);
-          console.log(
-            `  [${cfg.id}] issues: ${issues.length}, prs: ${prs.length}, releases: ${releases.length}` +
-              (cfg.discussions ? `, discussions: ${discussions.length}` : ""),
-          );
-          return { cfg, issues, prs, releases, discussions };
-        } catch (err) {
-          console.error(`  [${cfg.id}] fetch failed: ${err}`);
-          return { cfg, issues: [], prs: [], releases: [], discussions: [] };
-        }
-      }),
-    ),
-    fetchSkillsData(CLAUDE_SKILLS_REPO)
-      .then((d) => {
-        console.log(`  [claude-code-skills] prs: ${d.prs.length}, issues: ${d.issues.length}`);
-        return d;
-      })
-      .catch((err) => {
-        console.error(`  [claude-code-skills] fetch failed: ${err}`);
-        return { prs: [] as GitHubItem[], issues: [] as GitHubItem[] };
-      }),
-    Promise.all([
-      fetchSiteContent("anthropic", webState).catch((err): WebFetchResult => {
-        console.error(`  [web/anthropic] fetch failed: ${err}`);
-        return {
-          site: "anthropic",
-          siteName: "Anthropic (Claude)",
-          isFirstRun: false,
-          newItems: [],
-          totalDiscovered: 0,
-        };
-      }),
-      fetchSiteContent("openai", webState).catch((err): WebFetchResult => {
-        console.error(`  [web/openai] fetch failed: ${err}`);
-        return { site: "openai", siteName: "OpenAI", isFirstRun: false, newItems: [], totalDiscovered: 0 };
-      }),
-    ]),
-    fetchTrendingData().catch(
-      (): TrendingData => ({
-        trendingRepos: [],
-        searchRepos: [],
-        trendingFetchSuccess: false,
-      }),
-    ),
-    fetchHnData().catch((): HnData => ({ stories: [], fetchSuccess: false })),
-    fetchDevtoData().catch((): DevtoData => ({ articles: [], fetchSuccess: false })),
-    fetchLobstersData().catch((): LobstersData => ({ stories: [], fetchSuccess: false })),
-  ]);
+  const [fetched, skillsData, webResults, trendingData, hnData, devtoData, lobstersData, watchlist] =
+    await Promise.all([
+      Promise.all(
+        CLI_REPOS.map(async (cfg) => {
+          try {
+            const [issuesRaw, prs, releases, discussions] = await Promise.all([
+              fetchRecentItems(cfg, "issues", since),
+              fetchRecentItems(cfg, "pulls", since),
+              fetchRecentReleases(cfg.repo, since),
+              cfg.discussions ? fetchRecentDiscussions(cfg.repo, since) : Promise.resolve([]),
+            ]);
+            const issues = issuesRaw.filter((i) => !i.pull_request);
+            console.log(
+              `  [${cfg.id}] issues: ${issues.length}, prs: ${prs.length}, releases: ${releases.length}` +
+                (cfg.discussions ? `, discussions: ${discussions.length}` : ""),
+            );
+            return { cfg, issues, prs, releases, discussions };
+          } catch (err) {
+            console.error(`  [${cfg.id}] fetch failed: ${err}`);
+            return { cfg, issues: [], prs: [], releases: [], discussions: [] };
+          }
+        }),
+      ),
+      fetchSkillsData(CLAUDE_SKILLS_REPO)
+        .then((d) => {
+          console.log(`  [claude-code-skills] prs: ${d.prs.length}, issues: ${d.issues.length}`);
+          return d;
+        })
+        .catch((err) => {
+          console.error(`  [claude-code-skills] fetch failed: ${err}`);
+          return { prs: [] as GitHubItem[], issues: [] as GitHubItem[] };
+        }),
+      Promise.all([
+        fetchSiteContent("anthropic", webState).catch((err): WebFetchResult => {
+          console.error(`  [web/anthropic] fetch failed: ${err}`);
+          return {
+            site: "anthropic",
+            siteName: "Anthropic (Claude)",
+            isFirstRun: false,
+            newItems: [],
+            totalDiscovered: 0,
+          };
+        }),
+        fetchSiteContent("openai", webState).catch((err): WebFetchResult => {
+          console.error(`  [web/openai] fetch failed: ${err}`);
+          return { site: "openai", siteName: "OpenAI", isFirstRun: false, newItems: [], totalDiscovered: 0 };
+        }),
+      ]),
+      fetchTrendingData().catch(
+        (): TrendingData => ({
+          trendingRepos: [],
+          searchRepos: [],
+          trendingFetchSuccess: false,
+        }),
+      ),
+      fetchHnData().catch((): HnData => ({ stories: [], fetchSuccess: false })),
+      fetchDevtoData().catch((): DevtoData => ({ articles: [], fetchSuccess: false })),
+      fetchLobstersData().catch((): LobstersData => ({ stories: [], fetchSuccess: false })),
+      // Never throws: a page that cannot be read is reported as unavailable and
+      // keeps its previous baseline.
+      fetchWatchlistChanges(watchlistState).catch(
+        (): WatchlistResult => ({ changes: [], baselines: 0, unavailable: [], checked: 0 }),
+      ),
+    ]);
 
-  return { fetched, skillsData, webResults, trendingData, hnData, devtoData, lobstersData };
+  return { fetched, skillsData, webResults, trendingData, hnData, devtoData, lobstersData, watchlist };
 }
 
 // ---------------------------------------------------------------------------
@@ -296,8 +311,9 @@ async function main(): Promise<void> {
 
   // 1. Fetch all data in parallel
   const webState = loadWebState();
-  const { fetched, skillsData, webResults, trendingData, hnData, devtoData, lobstersData } =
-    await fetchAllData(since, webState);
+  const watchlistState = loadWatchlistState();
+  const { fetched, skillsData, webResults, trendingData, hnData, devtoData, lobstersData, watchlist } =
+    await fetchAllData(since, webState, watchlistState);
 
   // 2. Generate every report body once in English, then translate to Vietnamese
   console.log("  Generating summaries (EN)...");
@@ -339,12 +355,24 @@ async function main(): Promise<void> {
 
   // Saver return values (not the files on disk) decide what this run produced:
   // a leftover file from an earlier run on the same day must not feed highlights.
-  const [webBody, trendingBody, hnBody, communityBody] = await Promise.all([
-    saveWebReport(webResults, webState, utcStr, dateStr, digestRepo),
+  const [webBody, trendingBody, communityResult] = await Promise.all([
+    saveWebReport(webResults, webState, watchlist, watchlistState, utcStr, dateStr, digestRepo),
     saveTrendingReport(trendingData, trendingSummaries, utcStr, dateStr, digestRepo),
-    saveHnReport(hnData, utcStr, dateStr, digestRepo),
     saveCommunityReport(devtoData, lobstersData, utcStr, dateStr, digestRepo),
   ]);
+  const communityBody = communityResult.body;
+
+  // One URL must not appear in both the community report and the HN report.
+  // Community is the more specific home for a hands-on post, so HN drops what
+  // community actually published. No extra LLM call: this compares URLs only.
+  const communityUrls = new Set(communityBody ? communityResult.selectedUrls : []);
+  const hnStories = hnData.stories.filter((story) => !communityUrls.has(normalizeUrl(story.url)));
+  if (hnStories.length < hnData.stories.length) {
+    console.log(
+      `  [hn] ${hnData.stories.length - hnStories.length} story(ies) already covered by the community report`,
+    );
+  }
+  const hnBody = await saveHnReport({ ...hnData, stories: hnStories }, utcStr, dateStr, digestRepo);
 
   // Second gate: an outage that starts *after* the first gate would otherwise
   // sail straight through — the savers each swallow their own failure and just

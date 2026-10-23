@@ -34,6 +34,17 @@ export interface CommunityItem {
 export const COMMUNITY_MAX = 5;
 const CONTENT_CONCURRENCY = 3;
 
+/** Host + path, without scheme, `www.`, query or fragment — for cross-source dedupe. */
+export function normalizeUrl(raw: string): string {
+  try {
+    const url = new URL(raw);
+    const host = url.hostname.toLowerCase().replace(/^www\./, "");
+    return `${host}${url.pathname.replace(/\/+$/, "")}`;
+  } catch {
+    return raw.trim().toLowerCase();
+  }
+}
+
 /** Build the candidate list from both sources, best-engagement first. */
 export function communityCandidates(devto: DevtoData, lobsters: LobstersData): CommunityItem[] {
   const candidates: CommunityItem[] = [];
