@@ -1,150 +1,118 @@
 {
   "vi": {
     "ai-cli": [
-      "Cuộc đua sáu chiều hội tụ về an toàn và quản trị",
-      "Niềm tin, không phải năng lực, là nỗi thất vọng lớn nhất của cộng đồng",
-      "Bề mặt desktop tăng trưởng nhanh nhất, dễ hồi quy nhất",
-      "Khả năng mở rộng (plugins, hooks, MCP) là trục khác biệt hóa",
-      "Claude Code phát hành bản vá v2.1.308 và v2.1.309",
-      "Các bản vá tập trung vào sandbox và sửa lỗi quyền"
+      "Công cụ AI CLI bước vào giai đoạn tăng cường và tin cậy",
+      "Claude Code sửa lỗi thoát sandbox trong v2.1.309",
+      "OpenCode vá gói CVE Bun 1.4.4",
+      "Copilot CLI giờ tuân thủ cờ sandbox",
+      "Cả 7 công cụ hội tụ về vòng lặp agent, MCP hooks",
+      "Lỗi agent im lặng giờ là nhóm phàn nàn hàng đầu"
     ],
     "ai-agents": [
-      "OpenClaw: 500 issue và 500 PR được cập nhật trong 24h",
-      "OpenClaw v2026.10.6 yêu cầu runtime Node 24.22.1+",
-      "Nợ ổn định vượt xa tính năng mới, lỗi P0 vẫn tồn đọng",
-      "OpenClaw chia gần đều: 290 issue mở, 210 đã đóng",
-      "Bản vá Node từ chối khóa chứng chỉ TLS bị xâm phạm",
-      "Hệ sinh thái năm dự án: OpenClaw, Hermes, IronClaw, QwenPaw, ZeroClaw"
+      "OpenClaw đạt 500 issue và 500 PR trong một ngày",
+      "OpenClaw v2026.10.6 buộc nâng cấp runtime Node",
+      "Sự cố chứng chỉ TLS thúc đẩy bản vá bắt buộc",
+      "Bot clawsweeper phân loại tồn đọng issue OpenClaw",
+      "Lỗi sleep/wake trên Windows và macOS vẫn tồn tại",
+      "Lỗi quyền khôi phục sau khởi động được sửa trong PR"
     ],
     "ai-infra": [
-      "Giai đoạn ưu tiên tính đúng đắn hơn tính năng trên toàn hạ tầng",
-      "Ô nhiễm KV âm thầm và hồi quy chuỗi cung ứng chiếm ưu thế",
-      "LiteLLM 1.107.0 bị ảnh hưởng bởi sự cố chuỗi cung ứng",
-      "Ollama Cloud Pro gặp sự cố ngừng hoạt động kéo dài",
-      "Blackwell/SM120 và AMD MI355X dẫn đầu công việc hiệu năng",
-      "DeepSeek-V4.x, Qwen3.8, Kimi-K3 dẫn đầu checkpoint ngày đầu"
+      "LiteLLM v1.107.0 bị chuỗi cung ứng đánh cắp thông tin xác thực",
+      "vLLM PD disaggregation cho thấy rò rỉ KV giữa các request",
+      "Lỗi thay thế âm thầm MXFP4 SwiGLU thành SiTU trong SGLang",
+      "llama.cpp báo cáo sụp đổ giải mã ngữ cảnh dài",
+      "AMD ROCm MI355X đạt hỗ trợ hạng nhất",
+      "Không có bản phát hành lớn nào trong cả sáu dự án hạ tầng"
     ],
     "ai-trending": [
-      "Cloudflare security-audit-skill đứng đầu xu hướng, +2.979 sao",
-      "Công cụ hướng agent thống trị danh sách trending GitHub",
-      "ponytail đạt 173.773 sao, +1.948 hôm nay",
-      "Anthropic knowledge-work-plugins lọt vào trending",
-      "Bùng nổ lưu trữ ký ức: claude-mem, mem0, cognee",
-      "RAG không vector trỗi dậy: graphify, PageIndex, LEANN"
-    ],
-    "ai-web": [
-      "Claude xác minh thư viện thật xuống tận hợp ngữ RISC-V",
-      "Anthropic trao chuẩn Agent Skills cho Linux Foundation",
-      "Anthropic mở đợt gọi Guest Investigator khoa học sự sống",
-      "OpenAI công bố Decisions API và trang Uber ChatGPT",
-      "Claude tìm ra lỗi mà hàng nghìn tỷ test bỏ sót",
-      "Anthropic phát hành 4 bài mới; OpenAI đăng 2 bài"
+      "cloudflare/security-audit-skill tăng +2.979 sao",
+      "DietrichGebert/ponytail tăng +1.948 nhờ kiềm chế",
+      "Graphify-Labs/graphify đẩy đồ thị không vector store",
+      "Anthropic ra mắt knowledge-work-plugins (+303)",
+      "Công cụ agent và skill thống trị GitHub trending",
+      "ECC harness hợp nhất Claude Code, Codex, Cursor"
     ],
     "ai-hn": [
-      "Claude Duet đứng đầu HN với 549 điểm, 514 bình luận",
-      "DeepSeek DeepInfer đạt 2333 điểm, 888 bình luận",
-      "NVIDIA OpenShell đạt 335 điểm cho an toàn đội agent",
-      "Voxtral 3 ra mắt với 767 điểm trên HN",
-      "Thảo luận: mọi mô hình đều chia sẻ quan điểm gây tranh cãi",
-      "Khảo sát cho thấy đa số người Mỹ nhìn AI tiêu cực"
-    ],
-    "ai-ph": [
-      "UseIt Studio dẫn đầu Product Hunt với 325 phiếu",
-      "Agent thiết kế AI tạo tệp dự án thật có thể chỉnh sửa",
-      "BAND for Developers đưa agent vào lập trình cộng tác",
-      "Needle nhắm vào quy trình agent bán hàng outbound",
-      "SuperCMO AI, The Brains, Hotly mã nguồn mở thu hút chú ý",
-      "17 sản phẩm AI ra mắt; agent thống trị bảng tin"
+      "DeepInfer đứng đầu HN với 2.333 điểm và 888 bình luận",
+      "NVIDIA OpenShell runtime an toàn cho đội agent gây tranh cãi",
+      "OpenAI 'Patch the Planet' công bố phối hợp gây tranh luận",
+      "Mô hình âm thanh Mistral Voxtral 3 đạt 768 điểm",
+      "Công trình xác minh hình thức của Anthropic khơi dậy thảo luận",
+      "Economist: 'AI compute là dầu mỏ mới'"
     ],
     "ai-arxiv": [
-      "Bài báo sửa lỗi số của softmax và cross-entropy",
-      "Embedding N-gram bit thấp giảm nút thắt bộ nhớ LM",
-      "Chia sẻ KV thu hẹp khoảng cách bộ nhớ kiến trúc lặp",
-      "Hướng tới hành vi mô hình có thể kiểm chứng khi triển khai",
-      "Nghiên cứu sụp đổ token và rò rỉ token tương lai",
-      "Xu hướng: kiểm toán chi tiết hơn thay vì chỉ tăng năng lực"
+      "Bài báo sửa lỗi Softmax Collapse và Softmax Cancellation",
+      "Embedding n-gram bit thấp giảm chi phí bộ nhớ LM",
+      "Kiểm toán chọn lọc quyết định AI thu hút quan tâm",
+      "Đề xuất chia sẻ KV cho kiến trúc vòng lặp",
+      "Nghiên cứu gán tín dụng giả trong agentic RL",
+      "Bài báo kiểm toán sử dụng dataset T2I thể hiện trách nhiệm"
     ],
     "ai-community": [
-      "Dev.to: đừng làm proxy giữa tôi và AI của bạn",
-      "Mổ xẻ lỗi ẩn sau các yêu cầu API trùng lặp",
-      "Vòng lặp thử lại được gọi là tính năng đắt nhất",
-      "Prompt injection và an toàn công cụ thống trị thảo luận",
-      "Lobste.rs: malware Turing-complete trong lan truyền ngược PyTorch",
-      "Mintal ra mắt mô hình nền tảng chuỗi thời gian mới"
+      "Điểm tin cậy của LLM là chuỗi, không phải xác suất",
+      "Anthropic chạy 30.000 agent giải bài toán",
+      "Phòng chống prompt-injection thống trị thảo luận kiến trúc agent",
+      "Dev.to: vòng lặp thử lại âm thầm đốt ngân sách token",
+      "Lobste.rs: malware Turing-complete trong PyTorch backward",
+      "Mistral phát hành mô hình nền tảng chuỗi thời gian"
     ]
   },
   "en": {
     "ai-cli": [
-      "Six-way race converges on safety and governance",
-      "Trust, not capability, is top community frustration",
-      "Desktop surfaces fastest-growing, most regression-prone",
-      "Extensibility (plugins, hooks, MCP) is differentiation axis",
-      "Claude Code ships v2.1.308 and v2.1.309 patches",
-      "Patch releases focus on sandbox and permission fixes"
+      "AI CLI tools enter hardening-and-trust phase",
+      "Claude Code fixes sandbox escapes in v2.1.309",
+      "OpenCode patches Bun 1.4.4 CVE bundle",
+      "Copilot CLI now honors sandbox flags",
+      "All 7 tools converge on agent loops, MCP hooks",
+      "Silent agent failures now top complaint class"
     ],
     "ai-agents": [
-      "OpenClaw: 500 issues and 500 PRs updated in 24h",
-      "OpenClaw v2026.10.6 requires Node 24.22.1+ runtime",
-      "Stability debt outpacing feature delivery, P0 bugs linger",
-      "OpenClaw split near-even: 290 open issues, 210 closed",
-      "Node patch rejects compromised TLS certificate keys",
-      "Five-project ecosystem: OpenClaw, Hermes, IronClaw, QwenPaw, ZeroClaw"
+      "OpenClaw hits 500 issues and 500 PRs in a day",
+      "OpenClaw v2026.10.6 forces Node runtime upgrade",
+      "TLS certificate compromise drives mandatory patch",
+      "clawsweeper bot triages OpenClaw issue backlog",
+      "Windows and macOS sleep/wake regressions persist",
+      "restart-recovery authority bugs fixed in PRs"
     ],
     "ai-infra": [
-      "Correctness-over-features phase across infrastructure stack",
-      "Silent KV contamination and supply-chain regressions dominate",
-      "LiteLLM 1.107.0 hit by supply-chain event",
-      "Ollama Cloud Pro suffers long-running outage",
-      "Blackwell/SM120 and AMD MI355X lead perf work",
-      "DeepSeek-V4.x, Qwen3.8, Kimi-K3 lead day-0 checkpoints"
+      "LiteLLM v1.107.0 hit by credential-stealer supply chain",
+      "vLLM PD disaggregation shows cross-request KV leakage",
+      "SGLang silent MXFP4 SwiGLU to SiTU substitution bug",
+      "llama.cpp long-context decode collapse reported",
+      "AMD ROCm MI355X crosses into first-class support",
+      "No major releases across all six infra projects"
     ],
     "ai-trending": [
-      "Cloudflare security-audit-skill tops trending, +2,979 stars",
-      "Agent-centric tooling dominates GitHub trending list",
-      "ponytail hits 173,773 stars, +1,948 today",
-      "Anthropic knowledge-work-plugins enters trending",
-      "Memory persistence breakout: claude-mem, mem0, cognee",
-      "Vectorless RAG rises: graphify, PageIndex, LEANN"
-    ],
-    "ai-web": [
-      "Claude verifies real libraries down to RISC-V assembly",
-      "Anthropic donates Agent Skills standard to Linux Foundation",
-      "Anthropic opens Guest Investigator life sciences call",
-      "OpenAI publishes Decisions API and Uber ChatGPT pages",
-      "Claude finds bugs missed by trillions of tests",
-      "Anthropic ships 4 new articles; OpenAI posts 2"
+      "cloudflare/security-audit-skill gains +2,979 stars",
+      "DietrichGebert/ponytail adds +1,948 for restraint",
+      "Graphify-Labs/graphify pushes no-vector-store graphs",
+      "Anthropic launches knowledge-work-plugins (+303)",
+      "Agent tooling and skills dominate GitHub trending",
+      "ECC harness unifies Claude Code, Codex, Cursor"
     ],
     "ai-hn": [
-      "Claude Duet tops HN with 549 points, 514 comments",
-      "DeepSeek DeepInfer hits 2333 points, 888 comments",
-      "NVIDIA OpenShell scores 335 for agent fleet safety",
-      "Voxtral 3 lands with 767 points on HN",
-      "Thread: every model shares same controversial human take",
-      "Surveys show most Americans view AI negatively"
-    ],
-    "ai-ph": [
-      "UseIt Studio leads Product Hunt with 325 votes",
-      "AI design agent delivers real editable project files",
-      "BAND for Developers brings agents to collaborative coding",
-      "Needle targets outbound sales agent workflows",
-      "Open-source SuperCMO AI, The Brains, Hotly gain traction",
-      "17 AI products launched; agents dominate the feed"
+      "DeepInfer tops HN with 2,333 points and 888 comments",
+      "NVIDIA OpenShell safe runtime for agent fleets draws fire",
+      "OpenAI 'Patch the Planet' coordinated disclosure debated",
+      "Mistral Voxtral 3 audio model scores 768 points",
+      "Anthropic formal verification work sparks discussion",
+      "Economist: 'AI compute is the new oil'"
     ],
     "ai-arxiv": [
-      "Paper fixes softmax and cross-entropy numerical bugs",
-      "Low-bit N-gram embeddings cut LM memory bottleneck",
-      "KV-sharing closes looping architecture memory gap",
-      "Push toward verifiable model behavior under deployment",
-      "Work probes token collapse and future-token leakage",
-      "Trend: finer-grained audits over pure capability gains"
+      "Paper fixes Softmax Collapse and Softmax Cancellation bugs",
+      "Low-bit n-gram embeddings shrink LM memory costs",
+      "Selective auditing of AI decisions gains traction",
+      "KV-sharing proposed for looped architectures",
+      "Counterfeit-credit assignment in agentic RL studied",
+      "T2I dataset-use auditing paper signals accountability"
     ],
     "ai-community": [
-      "Dev.to: don't be a proxy between me and your AI",
-      "Hidden bugs behind duplicate API requests dissected",
-      "Retry loops called your most expensive feature",
-      "Prompt injection and tool safety dominate discussion",
-      "Lobste.rs: Turing-complete malware in PyTorch backward pass",
-      "Mintal debuts new time-series foundation models"
+      "LLM confidence scores are strings, not probabilities",
+      "Anthropic runs 30,000 agents on math problems",
+      "Prompt-injection defenses dominate agent architecture talk",
+      "Dev.to: retry loops silently burn token budget",
+      "Lobste.rs: Turing-complete malware in PyTorch backward",
+      "Mistral ships time-series foundation models"
     ]
   }
 }
