@@ -3,7 +3,7 @@
  * Extracted from index.ts for separation of concerns.
  *
  * Each saver emits both languages. The body is generated once in English and
- * translated to Chinese (see `bilingualBody`), so a saver owns the whole
+ * translated to Vietnamese (see `bilingualBody`), so a saver owns the whole
  * bilingual output for its report instead of being called once per language.
  */
 
@@ -28,7 +28,7 @@ import {
 } from "./prompts-data.ts";
 import {
   callLlm,
-  translateToZh,
+  translateToVi,
   saveFile,
   autoGenFooter,
   LLM_TOKENS_WEB,
@@ -45,20 +45,28 @@ import type { DevtoData } from "./devto.ts";
 import type { LobstersData } from "./lobsters.ts";
 
 /** Output languages, in the order reports are written. */
-export const LANGS = ["zh", "en"] as const;
+export const LANGS = ["vi", "en"] as const;
+
+/**
+ * File name for a report in a given language. The primary language uses the
+ * bare id (`ai-cli.md`); English keeps the `-en` suffix (`ai-cli-en.md`).
+ */
+export function reportFileName(id: string, lang: Lang): string {
+  return lang === "en" ? `${id}-en.md` : `${id}.md`;
+}
 
 /** A report body in both languages. */
 export type BilingualBody = Record<Lang, string>;
 
 /**
- * Generate a report body once in English, then translate it to Chinese.
+ * Generate a report body once in English, then translate it to Vietnamese.
  * Throws if the English generation fails — there is nothing to save then.
  * A failed translation degrades to English rather than throwing.
  */
 async function bilingualBody(enPrompt: string, maxTokens: number): Promise<BilingualBody> {
   const en = await callLlm(enPrompt, maxTokens);
-  const zh = await translateToZh(en, maxTokens);
-  return { en, zh };
+  const vi = await translateToVi(en, maxTokens);
+  return { en, vi };
 }
 
 // ---------------------------------------------------------------------------
@@ -75,7 +83,7 @@ export async function saveWebReport(
   const hasNewContent = webResults.some((r) => r.newItems.length > 0);
 
   if (hasNewContent) {
-    console.log("  [web] Calling LLM for web content report (EN) + translation (ZH)...");
+    console.log("  [web] Calling LLM for web content report (EN) + translation (VI)...");
     try {
       const summary = await bilingualBody(buildWebReportPrompt(webResults, dateStr, "en"), LLM_TOKENS_WEB);
       const isFirstRun = webResults.some((r) => r.isFirstRun);
@@ -87,7 +95,7 @@ export async function saveWebReport(
       const openaiTotal = webResults.find((r) => r.site === "openai")?.totalDiscovered ?? 0;
 
       for (const lang of LANGS) {
-        const fileName = lang === "en" ? "ai-web-en.md" : "ai-web.md";
+        const fileName = reportFileName("ai-web", lang);
         const mode = isFirstRun ? WEB_REPORT.firstCrawl[lang] : WEB_REPORT.todayUpdate[lang];
 
         const webTitle = `# ${WEB_REPORT.title[lang]} ${dateStr}\n\n`;
@@ -98,8 +106,8 @@ export async function saveWebReport(
               `- Anthropic: [anthropic.com](https://www.anthropic.com) — ${anthropicNew} new articles (sitemap total: ${anthropicTotal})\n` +
               `- OpenAI: [openai.com](https://openai.com) — ${openaiNew} new articles (sitemap total: ${openaiTotal})\n\n`
             : `${WEB_REPORT.sourcesHeader[lang]}\n` +
-              `- Anthropic: [anthropic.com](https://www.anthropic.com) — 新增 ${anthropicNew} 篇（sitemap 共 ${anthropicTotal} 条）\n` +
-              `- OpenAI: [openai.com](https://openai.com) — 新增 ${openaiNew} 篇（sitemap 共 ${openaiTotal} 条）\n\n`;
+              `- Anthropic: [anthropic.com](https://www.anthropic.com) — ${anthropicNew} bài mới (sitemap tổng: ${anthropicTotal})\n` +
+              `- OpenAI: [openai.com](https://openai.com) — ${openaiNew} bài mới (sitemap tổng: ${openaiTotal})\n\n`;
 
         const webContent = webTitle + webMeta + webSources + `---\n\n` + summary[lang] + autoGenFooter(lang);
 
@@ -141,10 +149,10 @@ export async function saveTrendingReport(
   }
 
   for (const lang of LANGS) {
-    const fileName = lang === "en" ? "ai-trending-en.md" : "ai-trending.md";
+    const fileName = reportFileName("ai-trending", lang);
     const header =
       `# ${TRENDING_REPORT.title[lang]} ${dateStr}\n\n` +
-      `> ${TRENDING_REPORT.sources[lang]} | ${lang === "en" ? "Generated" : "生成时间"}: ${utcStr} UTC\n\n---\n\n`;
+      `> ${TRENDING_REPORT.sources[lang]} | ${lang === "en" ? "Generated" : "Tạo lúc"}: ${utcStr} UTC\n\n---\n\n`;
 
     const trendingContent = header + trendingSummary[lang] + autoGenFooter(lang);
 
@@ -174,12 +182,12 @@ export async function saveHnReport(
     return;
   }
 
-  console.log("  [hn] Calling LLM for HN report (EN) + translation (ZH)...");
+  console.log("  [hn] Calling LLM for HN report (EN) + translation (VI)...");
   try {
     const summary = await bilingualBody(buildHnPrompt(hnData, dateStr, "en"), LLM_TOKENS_LISTING);
 
     for (const lang of LANGS) {
-      const fileName = lang === "en" ? "ai-hn-en.md" : "ai-hn.md";
+      const fileName = reportFileName("ai-hn", lang);
       const header =
         lang === "en"
           ? `# ${HN_REPORT.title[lang]} ${dateStr}\n\n` +
@@ -187,8 +195,8 @@ export async function saveHnReport(
             `${hnData.stories.length} stories | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${HN_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> 数据来源: [Hacker News](https://news.ycombinator.com/) | ` +
-            `共 ${hnData.stories.length} 条 | 生成时间: ${utcStr} UTC\n\n` +
+            `> Nguồn dữ liệu: [Hacker News](https://news.ycombinator.com/) | ` +
+            `${hnData.stories.length} bài | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const hnContent = header + summary[lang] + autoGenFooter(lang);
@@ -222,12 +230,12 @@ export async function savePhReport(
     return;
   }
 
-  console.log("  [ph] Calling LLM for Product Hunt report (EN) + translation (ZH)...");
+  console.log("  [ph] Calling LLM for Product Hunt report (EN) + translation (VI)...");
   try {
     const summary = await bilingualBody(buildPhPrompt(phData, dateStr, "en"), LLM_TOKENS_LISTING);
 
     for (const lang of LANGS) {
-      const fileName = lang === "en" ? "ai-ph-en.md" : "ai-ph.md";
+      const fileName = reportFileName("ai-ph", lang);
       const header =
         lang === "en"
           ? `# ${PH_REPORT.title[lang]} ${dateStr}\n\n` +
@@ -235,8 +243,8 @@ export async function savePhReport(
             `${phData.products.length} products | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${PH_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> 数据来源: [Product Hunt](https://www.producthunt.com/) | ` +
-            `共 ${phData.products.length} 个产品 | 生成时间: ${utcStr} UTC\n\n` +
+            `> Nguồn dữ liệu: [Product Hunt](https://www.producthunt.com/) | ` +
+            `${phData.products.length} sản phẩm | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const phContent = header + summary[lang] + autoGenFooter(lang);
@@ -270,12 +278,12 @@ export async function saveArxivReport(
     return;
   }
 
-  console.log("  [arxiv] Calling LLM for ArXiv report (EN) + translation (ZH)...");
+  console.log("  [arxiv] Calling LLM for ArXiv report (EN) + translation (VI)...");
   try {
     const summary = await bilingualBody(buildArxivPrompt(arxivData, dateStr, "en"), LLM_TOKENS_LISTING);
 
     for (const lang of LANGS) {
-      const fileName = lang === "en" ? "ai-arxiv-en.md" : "ai-arxiv.md";
+      const fileName = reportFileName("ai-arxiv", lang);
       const header =
         lang === "en"
           ? `# ${ARXIV_REPORT.title[lang]} ${dateStr}\n\n` +
@@ -283,8 +291,8 @@ export async function saveArxivReport(
             `${arxivData.papers.length} papers | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${ARXIV_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> 数据来源: [ArXiv](https://arxiv.org/) (cs.AI, cs.CL, cs.LG) | ` +
-            `共 ${arxivData.papers.length} 篇论文 | 生成时间: ${utcStr} UTC\n\n` +
+            `> Nguồn dữ liệu: [ArXiv](https://arxiv.org/) (cs.AI, cs.CL, cs.LG) | ` +
+            `${arxivData.papers.length} bài báo | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const content = header + summary[lang] + autoGenFooter(lang);
@@ -318,12 +326,12 @@ export async function saveHfReport(
     return;
   }
 
-  console.log("  [hf] Calling LLM for Hugging Face report (EN) + translation (ZH)...");
+  console.log("  [hf] Calling LLM for Hugging Face report (EN) + translation (VI)...");
   try {
     const summary = await bilingualBody(buildHfPrompt(hfData, dateStr, "en"), LLM_TOKENS_LISTING);
 
     for (const lang of LANGS) {
-      const fileName = lang === "en" ? "ai-hf-en.md" : "ai-hf.md";
+      const fileName = reportFileName("ai-hf", lang);
       const header =
         lang === "en"
           ? `# ${HF_REPORT.title[lang]} ${dateStr}\n\n` +
@@ -331,8 +339,8 @@ export async function saveHfReport(
             `${hfData.models.length} models | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${HF_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> 数据来源: [Hugging Face Hub](https://huggingface.co/) | ` +
-            `共 ${hfData.models.length} 个模型 | 生成时间: ${utcStr} UTC\n\n` +
+            `> Nguồn dữ liệu: [Hugging Face Hub](https://huggingface.co/) | ` +
+            `${hfData.models.length} mô hình | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const content = header + summary[lang] + autoGenFooter(lang);
@@ -368,7 +376,7 @@ export async function saveCommunityReport(
     return;
   }
 
-  console.log("  [community] Calling LLM for community report (EN) + translation (ZH)...");
+  console.log("  [community] Calling LLM for community report (EN) + translation (VI)...");
   try {
     const summary = await bilingualBody(
       buildCommunityPrompt(devtoData, lobstersData, dateStr, "en"),
@@ -378,14 +386,14 @@ export async function saveCommunityReport(
     const lobstersCount = lobstersData.stories.length;
 
     for (const lang of LANGS) {
-      const fileName = lang === "en" ? "ai-community-en.md" : "ai-community.md";
+      const fileName = reportFileName("ai-community", lang);
       const header =
         lang === "en"
           ? `# ${COMMUNITY_REPORT.title[lang]} ${dateStr}\n\n` +
             `> Sources: [Dev.to](https://dev.to/) (${devtoCount} articles) + [Lobste.rs](https://lobste.rs/) (${lobstersCount} stories) | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${COMMUNITY_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> 数据来源: [Dev.to](https://dev.to/) (${devtoCount} 篇) + [Lobste.rs](https://lobste.rs/) (${lobstersCount} 条) | 生成时间: ${utcStr} UTC\n\n` +
+            `> Nguồn dữ liệu: [Dev.to](https://dev.to/) (${devtoCount} bài) + [Lobste.rs](https://lobste.rs/) (${lobstersCount} mục) | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const content = header + summary[lang] + autoGenFooter(lang);

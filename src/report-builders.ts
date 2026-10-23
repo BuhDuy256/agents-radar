@@ -18,7 +18,7 @@ export function buildCliReportContent(
   dateStr: string,
   footer: string,
   skillsRepo: string,
-  lang: Lang = "zh",
+  lang: Lang = "vi",
 ): string {
   const repoLinks =
     cliDigests.map((d) => `- [${d.config.name}](https://github.com/${d.config.repo})`).join("\n") +
@@ -70,7 +70,7 @@ export function buildInfraReportContent(
   utcStr: string,
   dateStr: string,
   footer: string,
-  lang: Lang = "zh",
+  lang: Lang = "vi",
 ): string {
   const repoLinks = infraDigests
     .map((d) => `- [${d.config.name}](https://github.com/${d.config.repo})`)
@@ -117,7 +117,7 @@ export function buildOpenclawReportContent(
   footer: string,
   openclaw: RepoConfig,
   openclawPeers: RepoConfig[],
-  lang: Lang = "zh",
+  lang: Lang = "vi",
 ): string {
   const { issues, prs } = fetchedOpenclaw;
 
@@ -142,7 +142,7 @@ export function buildOpenclawReportContent(
   const meta =
     lang === "en"
       ? `> Issues: ${issues.length} | PRs: ${prs.length} | Projects covered: ${1 + openclawPeers.length} | Generated: ${utcStr} UTC\n\n`
-      : `> Issues: ${issues.length} | PRs: ${prs.length} | 覆盖项目: ${1 + openclawPeers.length} 个 | 生成时间: ${utcStr} UTC\n\n`;
+      : `> Issues: ${issues.length} | PRs: ${prs.length} | Dự án theo dõi: ${1 + openclawPeers.length} | Tạo lúc: ${utcStr} UTC\n\n`;
 
   return (
     title +

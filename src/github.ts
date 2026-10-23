@@ -332,7 +332,10 @@ export async function fetchSkillsData(repo: string): Promise<{ prs: GitHubItem[]
 }
 
 const GITHUB_ISSUE_BODY_LIMIT = 65536;
-const TRUNCATION_NOTICE = "\n\n---\n> ⚠️ 内容超过 GitHub Issue 上限，完整报告见提交的 Markdown 文件。";
+const TRUNCATION_NOTICE =
+  "\n\n---\n> ⚠️ Nội dung vượt giới hạn của GitHub Issue, xem báo cáo đầy đủ trong tệp Markdown đã commit.";
+const TRUNCATION_NOTICE_EN =
+  "\n\n---\n> ⚠️ Content exceeds the GitHub Issue limit, see the committed Markdown file for the full report.";
 
 /** GitHub label colors by label name. Default: "0075ca". */
 const LABEL_COLORS: Record<string, string> = {
@@ -382,7 +385,7 @@ function neutralizeGitHubRefs(text: string): string {
  * touched.
  */
 const DIGEST_ISSUE_LABELS = new Set([
-  ...Object.values(ISSUE_LABELS).flatMap((l) => [l.zh, l.en]),
+  ...Object.values(ISSUE_LABELS).flatMap((l) => [l.vi, l.en]),
   "weekly",
   "weekly-en",
   "monthly",
@@ -468,7 +471,8 @@ export async function createGitHubIssue(title: string, body: string, label: stri
   const digestRepo = process.env["DIGEST_REPO"] ?? "";
   body = neutralizeGitHubRefs(body);
   if (body.length > GITHUB_ISSUE_BODY_LIMIT) {
-    body = body.slice(0, GITHUB_ISSUE_BODY_LIMIT - TRUNCATION_NOTICE.length) + TRUNCATION_NOTICE;
+    const notice = label.endsWith("-en") ? TRUNCATION_NOTICE_EN : TRUNCATION_NOTICE;
+    body = body.slice(0, GITHUB_ISSUE_BODY_LIMIT - notice.length) + notice;
   }
   await ensureLabel(label, LABEL_COLORS[label] ?? "0075ca");
   const resp = await fetch(`https://api.github.com/repos/${digestRepo}/issues`, {

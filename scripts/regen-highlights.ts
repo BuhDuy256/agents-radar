@@ -51,28 +51,28 @@ async function main() {
   ];
 
   // Read reports
-  const zhReports: Record<string, string> = {};
+  const viReports: Record<string, string> = {};
   const enReports: Record<string, string> = {};
   for (const id of reportIds) {
-    const zhPath = path.join(digestsDir, dateStr, `${id}.md`);
+    const viPath = path.join(digestsDir, dateStr, `${id}.md`);
     const enPath = path.join(digestsDir, dateStr, `${id}-en.md`);
-    if (fs.existsSync(zhPath)) zhReports[id] = fs.readFileSync(zhPath, "utf-8");
+    if (fs.existsSync(viPath)) viReports[id] = fs.readFileSync(viPath, "utf-8");
     if (fs.existsSync(enPath)) enReports[id] = fs.readFileSync(enPath, "utf-8");
   }
 
-  console.log(`  ZH reports: ${Object.keys(zhReports).length}, EN reports: ${Object.keys(enReports).length}`);
+  console.log(`  VI reports: ${Object.keys(viReports).length}, EN reports: ${Object.keys(enReports).length}`);
 
   // Generate highlights
-  const highlights: Record<Lang, ReportHighlights> = { zh: {}, en: {} };
-  const [zhRaw, enRaw] = await Promise.all([
-    callLlm(buildHighlightsPrompt(zhReports, "zh"), 2048),
+  const highlights: Record<Lang, ReportHighlights> = { vi: {}, en: {} };
+  const [viRaw, enRaw] = await Promise.all([
+    callLlm(buildHighlightsPrompt(viReports, "vi"), 2048),
     callLlm(buildHighlightsPrompt(enReports, "en"), 2048),
   ]);
 
   try {
-    highlights.zh = parseLlmJson<ReportHighlights>(zhRaw);
+    highlights.vi = parseLlmJson<ReportHighlights>(viRaw);
   } catch (err) {
-    console.error(`  [highlights] zh parse failed: ${err}`);
+    console.error(`  [highlights] vi parse failed: ${err}`);
   }
   try {
     highlights.en = parseLlmJson<ReportHighlights>(enRaw);
@@ -81,13 +81,13 @@ async function main() {
   }
 
   // Backfill an empty language from the other so notifications never blank out.
-  if (Object.keys(highlights.zh).length === 0) highlights.zh = highlights.en;
-  else if (Object.keys(highlights.en).length === 0) highlights.en = highlights.zh;
+  if (Object.keys(highlights.vi).length === 0) highlights.vi = highlights.en;
+  else if (Object.keys(highlights.en).length === 0) highlights.en = highlights.vi;
 
   const outPath = path.join(digestsDir, dateStr, "highlights.json");
   fs.writeFileSync(outPath, JSON.stringify(highlights, null, 2) + "\n");
   console.log(`  Saved ${outPath}`);
-  console.log(`  ZH keys: ${Object.keys(highlights.zh).join(", ")}`);
+  console.log(`  VI keys: ${Object.keys(highlights.vi).join(", ")}`);
   console.log(`  EN keys: ${Object.keys(highlights.en).join(", ")}`);
 
   if (NOTIFY) {
@@ -99,7 +99,7 @@ async function main() {
       process.exit(1);
     }
 
-    const allReports = [...Object.keys(zhReports), ...Object.keys(enReports).map((k) => `${k}-en`)];
+    const allReports = [...Object.keys(viReports), ...Object.keys(enReports).map((k) => `${k}-en`)];
     const text = buildMessage(dateStr, allReports, undefined, highlights);
 
     console.log(`  Sending Telegram notification...`);

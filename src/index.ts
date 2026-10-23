@@ -34,7 +34,7 @@ import {
 import { buildTrendingPrompt, buildHighlightsPrompt, type ReportHighlights } from "./prompts-data.ts";
 import {
   callLlm,
-  translateToZh,
+  translateToVi,
   parseLlmJson,
   saveFile,
   autoGenFooter,
@@ -59,6 +59,7 @@ import {
   saveArxivReport,
   saveHfReport,
   saveCommunityReport,
+  reportFileName,
 } from "./report-savers.ts";
 import { loadWebState, fetchSiteContent, type WebFetchResult, type WebState } from "./web.ts";
 import { fetchTrendingData, type TrendingData } from "./trending.ts";
@@ -257,9 +258,9 @@ interface Summaries {
 }
 
 /**
- * Generate every report body in English. Chinese comes from
+ * Generate every report body in English. Vietnamese comes from
  * `translateSummaries`, not from a second pass over the raw data — see
- * `translateToZh` in report.ts for why.
+ * `translateToVi` in report.ts for why.
  */
 async function generateSummaries(
   fetchedCli: RepoFetch[],
@@ -344,27 +345,27 @@ async function generateSummaries(
 }
 
 // ---------------------------------------------------------------------------
-// Phase 2b: Chinese translation
+// Phase 2b: Vietnamese translation
 // ---------------------------------------------------------------------------
 
 /**
  * Fixed status strings ("no activity", "generation failed") are i18n constants,
  * not model output. Map them straight across rather than paying for a
- * translation call that would only re-derive Chinese we already have — on a
+ * translation call that would only re-derive Vietnamese we already have — on a
  * quiet day that is most of the peer digests.
  */
-const FIXED_EN_TO_ZH = new Map(Object.values(MSG).map((m) => [m.en, m.zh] as [string, string]));
+const FIXED_EN_TO_VI = new Map(Object.values(MSG).map((m) => [m.en, m.vi] as [string, string]));
 
 function localize(enText: string, maxTokens?: number): Promise<string> {
-  const fixed = FIXED_EN_TO_ZH.get(enText);
-  return fixed !== undefined ? Promise.resolve(fixed) : translateToZh(enText, maxTokens);
+  const fixed = FIXED_EN_TO_VI.get(enText);
+  return fixed !== undefined ? Promise.resolve(fixed) : translateToVi(enText, maxTokens);
 }
 
 async function localizeDigest(d: RepoDigest): Promise<RepoDigest> {
   return { ...d, summary: await localize(d.summary) };
 }
 
-/** Translate a full set of English report bodies into Chinese. */
+/** Translate a full set of English report bodies into Vietnamese. */
 async function translateSummaries(en: Summaries): Promise<Summaries> {
   const [cliDigests, openclawSummary, skillsSummary, peerDigests, infraDigests, trendingSummary] =
     await Promise.all([
@@ -439,7 +440,7 @@ async function main(): Promise<void> {
   const fetchedPeers = fetched.filter((f) => peerIds.has(f.cfg.id));
   const fetchedInfra = fetched.filter((f) => infraIds.has(f.cfg.id));
 
-  // 2. Generate every report body once in English, then translate to Chinese
+  // 2. Generate every report body once in English, then translate to Vietnamese
   console.log("  Generating summaries (EN)...");
   const enSummaries = await generateSummaries(
     fetchedCli,
@@ -451,8 +452,8 @@ async function main(): Promise<void> {
     dateStr,
   );
 
-  console.log("  Translating summaries (EN -> ZH)...");
-  const zhSummaries = await translateSummaries(enSummaries);
+  console.log("  Translating summaries (EN -> VI)...");
+  const viSummaries = await translateSummaries(enSummaries);
 
   // First gate: ~40 calls have run by now, enough to tell an outage from a
   // flaky report. Bailing here costs nothing — no file has been written yet.
@@ -460,7 +461,7 @@ async function main(): Promise<void> {
 
   // 3. Generate cross-repo comparisons in English, then translate
   console.log("  Calling LLM for comparative analyses (EN)...");
-  const summariesByLang: Record<Lang, Summaries> = { zh: zhSummaries, en: enSummaries };
+  const summariesByLang: Record<Lang, Summaries> = { vi: viSummaries, en: enSummaries };
 
   const makeOpenclawDigest = (lang: Lang): RepoDigest => ({
     config: OPENCLAW,
@@ -495,20 +496,20 @@ async function main(): Promise<void> {
     ),
   ]);
 
-  console.log("  Translating comparative analyses (EN -> ZH)...");
-  // localize(), not translateToZh(): when a comparison fell back to the fixed
-  // notice there is nothing to translate, and its Chinese text is already known.
-  const [zhComparison, zhPeersComparison, zhInfraComparison] = await Promise.all([
+  console.log("  Translating comparative analyses (EN -> VI)...");
+  // localize(), not translateToVi(): when a comparison fell back to the fixed
+  // notice there is nothing to translate, and its Vietnamese text is already known.
+  const [viComparison, viPeersComparison, viInfraComparison] = await Promise.all([
     localize(enComparison),
     localize(enPeersComparison),
     localize(enInfraComparison),
   ]);
 
-  const comparisonByLang = { zh: zhComparison, en: enComparison };
-  const peersComparisonByLang = { zh: zhPeersComparison, en: enPeersComparison };
-  const infraComparisonByLang = { zh: zhInfraComparison, en: enInfraComparison };
+  const comparisonByLang = { vi: viComparison, en: enComparison };
+  const peersComparisonByLang = { vi: viPeersComparison, en: enPeersComparison };
+  const infraComparisonByLang = { vi: viInfraComparison, en: enInfraComparison };
 
-  // 4. Build + save all reports (zh + en)
+  // 4. Build + save all reports (vi + en)
   const cliContent: Record<Lang, string> = {} as Record<Lang, string>;
   const openclawContent: Record<Lang, string> = {} as Record<Lang, string>;
   const infraContent: Record<Lang, string> = {} as Record<Lang, string>;
@@ -516,7 +517,6 @@ async function main(): Promise<void> {
   for (const lang of LANGS) {
     const s = summariesByLang[lang];
     const ft = autoGenFooter(lang);
-    const suffix = lang === "en" ? "-en" : "";
 
     cliContent[lang] = buildCliReportContent(
       s.cliDigests,
@@ -550,15 +550,15 @@ async function main(): Promise<void> {
       lang,
     );
 
-    console.log(`  Saved ${saveFile(cliContent[lang], dateStr, `ai-cli${suffix}.md`)}`);
-    console.log(`  Saved ${saveFile(openclawContent[lang], dateStr, `ai-agents${suffix}.md`)}`);
-    console.log(`  Saved ${saveFile(infraContent[lang], dateStr, `ai-infra${suffix}.md`)}`);
+    console.log(`  Saved ${saveFile(cliContent[lang], dateStr, reportFileName("ai-cli", lang))}`);
+    console.log(`  Saved ${saveFile(openclawContent[lang], dateStr, reportFileName("ai-agents", lang))}`);
+    console.log(`  Saved ${saveFile(infraContent[lang], dateStr, reportFileName("ai-infra", lang))}`);
   }
 
   // Each saver now emits both languages: it generates its body in English,
   // translates it, and writes both files plus both issues.
   const trendingSummaries: BilingualBody = {
-    zh: zhSummaries.trendingSummary,
+    vi: viSummaries.trendingSummary,
     en: enSummaries.trendingSummary,
   };
 
@@ -588,8 +588,8 @@ async function main(): Promise<void> {
     return fs.existsSync(p) ? fs.readFileSync(p, "utf-8") : undefined;
   };
 
-  // Highlights are extracted from the English reports only — the Chinese set is
-  // translated from the result, so the Chinese files are never re-read here.
+  // Highlights are extracted from the English reports only — the Vietnamese set is
+  // translated from the result, so the Vietnamese files are never re-read here.
   const enReports: Record<string, string> = {
     "ai-cli": cliContent.en,
     "ai-agents": openclawContent.en,
@@ -609,10 +609,10 @@ async function main(): Promise<void> {
   }
 
   console.log("  Generating highlights for Telegram...");
-  const highlights: Record<Lang, ReportHighlights> = { zh: {}, en: {} };
+  const highlights: Record<Lang, ReportHighlights> = { vi: {}, en: {} };
   // Both passes parse JSON, and both retry once: the LLM occasionally emits
-  // slightly malformed JSON that repairJson can't fix (seen 2026-07-13: zh
-  // failed with "Expected ',' or ']' after array element"); a fresh generation
+  // slightly malformed JSON that repairJson can't fix (seen 2026-07-13: one
+  // language failed with "Expected ',' or ']' after array element"); a fresh generation
   // usually returns valid JSON.
   //
   // A connection failure is a different animal: attempt 1 has already burned
@@ -640,34 +640,34 @@ async function main(): Promise<void> {
     return {};
   };
 
-  // English is extracted from the reports; Chinese is translated from that
+  // English is extracted from the reports; Vietnamese is translated from that
   // result. The extraction prompt carries every report body, the translation
   // prompt carries only the short highlight list.
   highlights.en = await attemptJson("en", buildHighlightsPrompt(enReports, "en"));
-  highlights.zh = Object.keys(highlights.en).length
-    ? await attemptJson("zh", buildJsonTranslationPrompt(JSON.stringify(highlights.en)))
+  highlights.vi = Object.keys(highlights.en).length
+    ? await attemptJson("vi", buildJsonTranslationPrompt(JSON.stringify(highlights.en)))
     : {};
 
   // If one language failed (generation or parse) but the other succeeded,
   // backfill the empty one from the other so notifications never render with
-  // zero highlights. Seen 2026-07-13: zh failed intermittently while en was
-  // fine, leaving Telegram/Feishu with only section headers and no bullets.
-  const zhEmpty = Object.keys(highlights.zh).length === 0;
+  // zero highlights. Seen 2026-07-13: the translation failed intermittently
+  // while en was fine, leaving Telegram/Feishu with only section headers.
+  const viEmpty = Object.keys(highlights.vi).length === 0;
   const enEmpty = Object.keys(highlights.en).length === 0;
-  if (zhEmpty && !enEmpty) {
-    console.warn("  [highlights] zh empty — backfilling from en");
-    highlights.zh = highlights.en;
-  } else if (enEmpty && !zhEmpty) {
-    console.warn("  [highlights] en empty — backfilling from zh");
-    highlights.en = highlights.zh;
+  if (viEmpty && !enEmpty) {
+    console.warn("  [highlights] vi empty — backfilling from en");
+    highlights.vi = highlights.en;
+  } else if (enEmpty && !viEmpty) {
+    console.warn("  [highlights] en empty — backfilling from vi");
+    highlights.en = highlights.vi;
   }
 
   const highlightsPath = saveFile(JSON.stringify(highlights, null, 2), dateStr, "highlights.json");
   console.log(`  Saved ${highlightsPath}`);
 
-  // 6. Create GitHub issues for CLI + OpenClaw (zh + en)
+  // 6. Create GitHub issues for CLI + OpenClaw (vi + en)
   if (digestRepo) {
-    for (const lang of ["zh", "en"] as const) {
+    for (const lang of ["vi", "en"] as const) {
       const cliUrl = await createGitHubIssue(
         CLI_ISSUE_TITLE(dateStr, lang),
         cliContent[lang],

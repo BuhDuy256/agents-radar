@@ -38,6 +38,10 @@ const REPORT_FILES = [
 ] as const;
 const MAX_FEED_ITEMS = 30;
 
+/** RSS channel metadata. Vietnamese is the primary language. */
+export const FEED_LANGUAGE = "vi-VN";
+export const FEED_DESCRIPTION = "Bản tin AI mã nguồn mở hằng ngày · Daily AI ecosystem digest";
+
 interface DateEntry {
   date: string;
   reports: string[];
@@ -161,8 +165,8 @@ async function main(): Promise<void> {
     `  <channel>\n` +
     `    <title>agents-radar</title>\n` +
     `    <link>${SITE_URL}</link>\n` +
-    `    <description>AI 开源生态每日简报 · Daily AI ecosystem digest</description>\n` +
-    `    <language>zh-CN</language>\n` +
+    `    <description>${FEED_DESCRIPTION}</description>\n` +
+    `    <language>${FEED_LANGUAGE}</language>\n` +
     `    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n` +
     `    <lastBuildDate>${buildDate}</lastBuildDate>\n` +
     itemsXml +

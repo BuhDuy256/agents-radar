@@ -230,7 +230,7 @@ export async function callLlm(prompt: string, maxTokens = LLM_TOKENS_DEFAULT): P
 // ---------------------------------------------------------------------------
 
 /**
- * Translate a finished English report body into Chinese.
+ * Translate a finished English report body into Vietnamese.
  *
  * Report bodies are generated once in English and translated from there. The
  * previous design ran the whole pipeline twice — once per language — over the
@@ -241,10 +241,10 @@ export async function callLlm(prompt: string, maxTokens = LLM_TOKENS_DEFAULT): P
  * `maxTokens` should match the budget the English body was generated with, or
  * a long report gets truncated mid-translation.
  *
- * Falls back to the English text on failure: a Chinese report that is partly
+ * Falls back to the English text on failure: a Vietnamese report that is partly
  * English still carries the day's information, an empty one carries none.
  */
-export async function translateToZh(text: string, maxTokens = LLM_TOKENS_DEFAULT): Promise<string> {
+export async function translateToVi(text: string, maxTokens = LLM_TOKENS_DEFAULT): Promise<string> {
   if (!text.trim()) return text;
   try {
     return await callLlm(buildTranslationPrompt(text), maxTokens);
@@ -312,8 +312,8 @@ export function saveFile(content: string, ...segments: string[]): string {
   return filepath;
 }
 
-export function autoGenFooter(lang: Lang = "zh"): string {
+export function autoGenFooter(lang: Lang = "vi"): string {
   const digestRepo = process.env["DIGEST_REPO"] ?? "";
   if (!digestRepo) return "";
-  return `\n\n---\n*${FOOTER.autoGen[lang]} [agents-radar](https://github.com/${digestRepo})${lang === "en" ? "." : " 自动生成。"}*`;
+  return `\n\n---\n*${FOOTER.autoGen[lang]} [agents-radar](https://github.com/${digestRepo})${lang === "en" ? "." : " tự động tạo."}*`;
 }

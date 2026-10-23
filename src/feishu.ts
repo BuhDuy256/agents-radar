@@ -13,7 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { NOTIFY_LABELS } from "./i18n.ts";
-import type { Highlights } from "./notify.ts";
+import type { Highlights, LegacyHighlights } from "./notify.ts";
 
 const PAGES_URL_DEFAULT = "https://duanyytop.github.io/agents-radar";
 
@@ -61,32 +61,34 @@ export function buildFeishuMessage(
   date: string,
   reports: string[],
   pagesUrl?: string,
-  highlights?: Highlights | null,
+  highlights?: Highlights | LegacyHighlights | null,
 ): string {
   const PAGES_URL = (pagesUrl ?? process.env["PAGES_URL"] ?? PAGES_URL_DEFAULT).replace(/\/$/, "");
   const ordered = reports.filter((r) => !r.endsWith("-en"));
   const lines: string[] = [`📡 **agents-radar · ${date}**`];
 
-  const zhHighlights = highlights?.zh ?? {};
+  const viHighlights = highlights?.vi ?? {};
   const enHighlights = highlights?.en ?? {};
+  // Legacy `zh` highlights are ignored: Vietnamese is primary, English is the
+  // only fallback.
 
   for (const r of ordered) {
-    const zhLabel = NOTIFY_LABELS[r]?.zh ?? r;
-    const zhUrl = `${PAGES_URL}/#${date}/${r}`;
+    const viLabel = NOTIFY_LABELS[r]?.vi ?? r;
+    const viUrl = `${PAGES_URL}/#${date}/${r}`;
     const enKey = `${r}-en`;
 
     lines.push("");
     if (reports.includes(enKey)) {
       const enLabel = NOTIFY_LABELS[r]?.en ?? "EN";
       const enUrl = `${PAGES_URL}/#${date}/${enKey}`;
-      lines.push(`• [${zhLabel}](${zhUrl})  ·  [${enLabel}](${enUrl})`);
+      lines.push(`• [${viLabel}](${viUrl})  ·  [${enLabel}](${enUrl})`);
     } else {
-      lines.push(`• [${zhLabel}](${zhUrl})`);
+      lines.push(`• [${viLabel}](${viUrl})`);
     }
 
-    // Fall back to en when a report's zh highlights are missing so a
+    // Fall back to en when a report's vi highlights are missing so a
     // single-language failure never blanks the message.
-    const items = zhHighlights[r] ?? enHighlights[r];
+    const items = viHighlights[r] ?? enHighlights[r];
     if (items?.length) {
       for (const h of items) {
         lines.push(`  ◦ ${h}`);
@@ -121,11 +123,11 @@ async function main(): Promise<void> {
   }
   const { date, reports } = latest;
 
-  let highlights: Highlights | null = null;
+  let highlights: Highlights | LegacyHighlights | null = null;
   const highlightsPath = path.join("digests", date, "highlights.json");
   if (fs.existsSync(highlightsPath)) {
     try {
-      highlights = JSON.parse(fs.readFileSync(highlightsPath, "utf-8")) as Highlights;
+      highlights = JSON.parse(fs.readFileSync(highlightsPath, "utf-8")) as Highlights | LegacyHighlights;
     } catch {
       console.log("[feishu] Failed to parse highlights.json — sending without highlights.");
     }

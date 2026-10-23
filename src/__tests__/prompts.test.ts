@@ -36,15 +36,15 @@ function makeItem(overrides: Partial<GitHubItem> = {}): GitHubItem {
 // ---------------------------------------------------------------------------
 
 describe("formatItem", () => {
-  it("formats a basic item in Chinese (default)", () => {
+  it("formats a basic item in Vietnamese (default)", () => {
     const result = formatItem(makeItem());
     expect(result).toContain("#1 [OPEN]");
     expect(result).toContain("Test issue");
-    expect(result).toContain("作者: alice");
-    expect(result).toContain("评论: 5");
+    expect(result).toContain("Tác giả: alice");
+    expect(result).toContain("Bình luận: 5");
     expect(result).toContain("👍: 3");
-    expect(result).toContain("链接: org/repo Issue #1");
-    expect(result).toContain("摘要: Some body text");
+    expect(result).toContain("Liên kết: org/repo Issue #1");
+    expect(result).toContain("Tóm tắt: Some body text");
   });
 
   it("formats an item in English", () => {
@@ -81,7 +81,7 @@ describe("formatItem", () => {
 
   it("handles null body gracefully", () => {
     const result = formatItem(makeItem({ body: null }));
-    expect(result).toContain("摘要: ");
+    expect(result).toContain("Tóm tắt: ");
   });
 
   it("handles missing reactions gracefully", () => {
@@ -141,14 +141,14 @@ describe("topN", () => {
 // ---------------------------------------------------------------------------
 
 describe("sampleNote", () => {
-  it("shows sampled note in Chinese when total > sampled", () => {
+  it("shows sampled note in Vietnamese when total > sampled", () => {
     const result = sampleNote(100, 30);
-    expect(result).toBe("（共 100 条，以下展示评论数最多的 30 条）");
+    expect(result).toBe("(Tổng: 100 mục; hiển thị 30 mục có số bình luận nhiều nhất)");
   });
 
-  it("shows total-only note in Chinese when total <= sampled", () => {
-    expect(sampleNote(10, 10)).toBe("（共 10 条）");
-    expect(sampleNote(5, 10)).toBe("（共 5 条）");
+  it("shows total-only note in Vietnamese when total <= sampled", () => {
+    expect(sampleNote(10, 10)).toBe("(Tổng: 10 mục)");
+    expect(sampleNote(5, 10)).toBe("(Tổng: 5 mục)");
   });
 
   it("shows sampled note in English when total > sampled", () => {
@@ -161,8 +161,8 @@ describe("sampleNote", () => {
   });
 
   it("names the engagement criterion when sampling discussions", () => {
-    expect(sampleNote(100, 25, "zh", "engagement")).toBe(
-      "（共 100 条，以下展示评论数 + 点赞数最多的 25 条）",
+    expect(sampleNote(100, 25, "vi", "engagement")).toBe(
+      "(Tổng: 100 mục; hiển thị 25 mục có bình luận và lượt thích nhiều nhất)",
     );
     expect(sampleNote(100, 25, "en", "engagement")).toBe(
       "(Total: 100 items; showing top 25 by comments + upvotes)",
@@ -192,15 +192,15 @@ function makeDiscussion(overrides: Partial<GitHubDiscussion> = {}): GitHubDiscus
 }
 
 describe("formatDiscussion", () => {
-  it("formats a discussion in Chinese (default)", () => {
+  it("formats a discussion in Vietnamese (default)", () => {
     const result = formatDiscussion(makeDiscussion());
     expect(result).toContain("#42 [Ideas]");
     expect(result).toContain("Add a Pro plan");
-    expect(result).toContain("作者: alice");
-    expect(result).toContain("评论: 4");
+    expect(result).toContain("Tác giả: alice");
+    expect(result).toContain("Bình luận: 4");
     expect(result).toContain("👍: 16");
-    expect(result).toContain("链接: org/repo Discussion #42");
-    expect(result).toContain("摘要: Some discussion body");
+    expect(result).toContain("Liên kết: org/repo Discussion #42");
+    expect(result).toContain("Tóm tắt: Some discussion body");
   });
 
   it("formats a discussion in English", () => {
@@ -210,7 +210,7 @@ describe("formatDiscussion", () => {
   });
 
   it("flags answered threads", () => {
-    expect(formatDiscussion(makeDiscussion({ answered: true }))).toContain("[已解决]");
+    expect(formatDiscussion(makeDiscussion({ answered: true }))).toContain("[ĐÃ GIẢI QUYẾT]");
     expect(formatDiscussion(makeDiscussion({ answered: true }), "en")).toContain("[ANSWERED]");
   });
 
@@ -254,11 +254,11 @@ describe("topDiscussions", () => {
 // ---------------------------------------------------------------------------
 
 describe("buildTranslationPrompt", () => {
-  it("embeds the source text and asks for Chinese output only", () => {
+  it("embeds the source text and asks for Vietnamese output only", () => {
     const p = buildTranslationPrompt("## Releases\n\n- v1.2.3 shipped");
     expect(p).toContain("## Releases");
     expect(p).toContain("v1.2.3 shipped");
-    expect(p).toContain("Simplified Chinese");
+    expect(p).toContain("into Vietnamese");
     expect(p).toContain("Output ONLY the translation");
   });
 
@@ -266,6 +266,7 @@ describe("buildTranslationPrompt", () => {
     const p = buildTranslationPrompt("body");
     expect(p).toContain("Preserve the Markdown structure");
     expect(p).toContain("repository slugs");
+    expect(p).toContain("Issue/PR references");
   });
 });
 
@@ -275,5 +276,6 @@ describe("buildJsonTranslationPrompt", () => {
     expect(p).toContain('{"ai-cli":["a","b"]}');
     expect(p).toContain("Return ONLY valid JSON");
     expect(p).toContain("Keep every key exactly as-is");
+    expect(p).toContain("at most 25 words");
   });
 });

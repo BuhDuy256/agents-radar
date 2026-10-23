@@ -44,12 +44,12 @@ describe("bilingual string maps", () => {
   ];
 
   for (const { name, obj } of maps) {
-    it(`${name} has both zh and en`, () => {
-      expect(obj).toHaveProperty("zh");
+    it(`${name} has both vi and en`, () => {
+      expect(obj).toHaveProperty("vi");
       expect(obj).toHaveProperty("en");
-      expect(obj.zh).toBeTruthy();
+      expect(obj.vi).toBeTruthy();
       expect(obj.en).toBeTruthy();
-      expect(obj.zh).not.toBe(obj.en);
+      expect(obj.vi).not.toBe(obj.en);
     });
   }
 });
@@ -59,36 +59,36 @@ describe("bilingual string maps", () => {
 // ---------------------------------------------------------------------------
 
 describe("issue title functions", () => {
-  it("CLI_ISSUE_TITLE produces zh and en titles", () => {
-    expect(CLI_ISSUE_TITLE("2026-03-12", "zh")).toContain("AI CLI");
-    expect(CLI_ISSUE_TITLE("2026-03-12", "zh")).toContain("2026-03-12");
+  it("CLI_ISSUE_TITLE produces vi and en titles", () => {
+    expect(CLI_ISSUE_TITLE("2026-03-12", "vi")).toContain("AI CLI");
+    expect(CLI_ISSUE_TITLE("2026-03-12", "vi")).toContain("2026-03-12");
     expect(CLI_ISSUE_TITLE("2026-03-12", "en")).toContain("AI CLI Tools Digest");
   });
 
-  it("OPENCLAW_ISSUE_TITLE produces zh and en titles", () => {
-    expect(OPENCLAW_ISSUE_TITLE("2026-03-12", "zh")).toContain("OpenClaw");
+  it("OPENCLAW_ISSUE_TITLE produces vi and en titles", () => {
+    expect(OPENCLAW_ISSUE_TITLE("2026-03-12", "vi")).toContain("OpenClaw");
     expect(OPENCLAW_ISSUE_TITLE("2026-03-12", "en")).toContain("OpenClaw Ecosystem Digest");
   });
 
-  it("INFRA_ISSUE_TITLE produces zh and en titles", () => {
-    expect(INFRA_ISSUE_TITLE("2026-03-12", "zh")).toContain("AI 基础设施日报");
-    expect(INFRA_ISSUE_TITLE("2026-03-12", "zh")).toContain("2026-03-12");
+  it("INFRA_ISSUE_TITLE produces vi and en titles", () => {
+    expect(INFRA_ISSUE_TITLE("2026-03-12", "vi")).toContain("Bản tin hạ tầng AI");
+    expect(INFRA_ISSUE_TITLE("2026-03-12", "vi")).toContain("2026-03-12");
     expect(INFRA_ISSUE_TITLE("2026-03-12", "en")).toContain("AI Infrastructure Digest");
   });
 
   it("WEB_REPORT.issueTitle includes first crawl flag", () => {
-    expect(WEB_REPORT.issueTitle("2026-03-12", true, "zh")).toContain("首次全量");
-    expect(WEB_REPORT.issueTitle("2026-03-12", false, "zh")).not.toContain("首次全量");
+    expect(WEB_REPORT.issueTitle("2026-03-12", true, "vi")).toContain("quét đầy đủ đầu tiên");
+    expect(WEB_REPORT.issueTitle("2026-03-12", false, "vi")).not.toContain("quét đầy đủ đầu tiên");
     expect(WEB_REPORT.issueTitle("2026-03-12", true, "en")).toContain("First Crawl");
   });
 
-  it("TRENDING_REPORT.issueTitle produces zh and en", () => {
-    expect(TRENDING_REPORT.issueTitle("2026-03-12", "zh")).toContain("开源趋势");
+  it("TRENDING_REPORT.issueTitle produces vi and en", () => {
+    expect(TRENDING_REPORT.issueTitle("2026-03-12", "vi")).toContain("Xu hướng mã nguồn mở AI");
     expect(TRENDING_REPORT.issueTitle("2026-03-12", "en")).toContain("Open Source Trends");
   });
 
-  it("HN_REPORT.issueTitle produces zh and en", () => {
-    expect(HN_REPORT.issueTitle("2026-03-12", "zh")).toContain("Hacker News");
+  it("HN_REPORT.issueTitle produces vi and en", () => {
+    expect(HN_REPORT.issueTitle("2026-03-12", "vi")).toContain("Hacker News");
     expect(HN_REPORT.issueTitle("2026-03-12", "en")).toContain("Hacker News");
   });
 });
@@ -98,10 +98,10 @@ describe("issue title functions", () => {
 // ---------------------------------------------------------------------------
 
 describe("dynamic content helpers", () => {
-  it("CLI_REPORT.meta produces zh and en metadata", () => {
-    const zh = CLI_REPORT.meta("12:00", 5, "zh");
-    expect(zh).toContain("12:00");
-    expect(zh).toContain("5 个");
+  it("CLI_REPORT.meta produces vi and en metadata", () => {
+    const vi = CLI_REPORT.meta("12:00", 5, "vi");
+    expect(vi).toContain("12:00");
+    expect(vi).toContain("Công cụ theo dõi: 5");
 
     const en = CLI_REPORT.meta("12:00", 5, "en");
     expect(en).toContain("12:00");
@@ -109,12 +109,12 @@ describe("dynamic content helpers", () => {
   });
 
   it("WEB_REPORT.newContent formats count", () => {
-    expect(WEB_REPORT.newContent(10, "zh")).toContain("10 篇");
+    expect(WEB_REPORT.newContent(10, "vi")).toContain("10 bài");
     expect(WEB_REPORT.newContent(10, "en")).toContain("10 articles");
   });
 
   it("WEB_REPORT.generated formats timestamp", () => {
-    expect(WEB_REPORT.generated("12:00", "zh")).toContain("12:00 UTC");
+    expect(WEB_REPORT.generated("12:00", "vi")).toContain("12:00 UTC");
     expect(WEB_REPORT.generated("12:00", "en")).toContain("12:00 UTC");
   });
 });
@@ -125,10 +125,10 @@ describe("dynamic content helpers", () => {
 
 describe("ISSUE_LABELS", () => {
   it("maps report types to label names", () => {
-    expect(ISSUE_LABELS.cli.zh).toBe("digest");
+    expect(ISSUE_LABELS.cli.vi).toBe("digest");
     expect(ISSUE_LABELS.cli.en).toBe("digest-en");
-    expect(ISSUE_LABELS.openclaw.zh).toBe("openclaw");
-    expect(ISSUE_LABELS.infra.zh).toBe("infra");
+    expect(ISSUE_LABELS.openclaw.vi).toBe("openclaw");
+    expect(ISSUE_LABELS.infra.vi).toBe("infra");
     expect(ISSUE_LABELS.infra.en).toBe("infra-en");
     expect(ISSUE_LABELS.trending.en).toBe("trending-en");
     expect(ISSUE_LABELS.hn.en).toBe("hn-en");
@@ -141,7 +141,7 @@ describe("ISSUE_LABELS", () => {
 
 describe("REPORT_LABELS", () => {
   it("covers the infra report in both languages", () => {
-    expect(REPORT_LABELS["ai-infra"]).toBe("AI 基础设施日报");
+    expect(REPORT_LABELS["ai-infra"]).toBe("Bản tin hạ tầng AI");
     expect(REPORT_LABELS["ai-infra-en"]).toBe("AI Infrastructure Digest");
   });
 });
@@ -155,7 +155,7 @@ describe("NOTIFY_LABELS", () => {
     const expected = ["ai-cli", "ai-agents", "ai-infra", "ai-web", "ai-trending", "ai-hn"];
     for (const key of expected) {
       expect(NOTIFY_LABELS[key]).toBeDefined();
-      expect(NOTIFY_LABELS[key]!.zh).toBeTruthy();
+      expect(NOTIFY_LABELS[key]!.vi).toBeTruthy();
       expect(NOTIFY_LABELS[key]!.en).toBeTruthy();
     }
   });

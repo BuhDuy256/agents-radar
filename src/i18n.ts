@@ -1,12 +1,12 @@
 /**
- * Centralized i18n strings for bilingual (zh/en) report generation.
+ * Centralized i18n strings for bilingual (vi/en) report generation.
  */
 
-export type Lang = "zh" | "en";
+export type Lang = "vi" | "en";
 
 /** Get a bilingual string by language key. */
-function t(zh: string, en: string): Record<Lang, string> {
-  return { zh, en };
+function t(vi: string, en: string): Record<Lang, string> {
+  return { vi, en };
 }
 
 // ---------------------------------------------------------------------------
@@ -14,15 +14,15 @@ function t(zh: string, en: string): Record<Lang, string> {
 // ---------------------------------------------------------------------------
 
 export const MSG = {
-  noActivity: t("过去24小时无活动。", "No activity in the last 24 hours."),
-  summaryFailed: t("⚠️ 摘要生成失败。", "⚠️ Summary generation failed."),
-  skillsFailed: t("⚠️ Skills 摘要生成失败。", "⚠️ Skills summary generation failed."),
+  noActivity: t("Không có hoạt động trong 24 giờ qua.", "No activity in the last 24 hours."),
+  summaryFailed: t("⚠️ Tạo tóm tắt thất bại.", "⚠️ Summary generation failed."),
+  skillsFailed: t("⚠️ Tạo tóm tắt Skills thất bại.", "⚠️ Skills summary generation failed."),
   trendingNoData: t(
-    "⚠️ 今日趋势数据获取失败，无法生成报告。",
+    "⚠️ Không lấy được dữ liệu xu hướng hôm nay, không thể tạo báo cáo.",
     "⚠️ Trending data unavailable, unable to generate report.",
   ),
-  trendingFailed: t("⚠️ 趋势报告生成失败。", "⚠️ Trending report generation failed."),
-  comparisonFailed: t("⚠️ 横向对比生成失败。", "⚠️ Comparative analysis generation failed."),
+  trendingFailed: t("⚠️ Tạo báo cáo xu hướng thất bại.", "⚠️ Trending report generation failed."),
+  comparisonFailed: t("⚠️ Tạo phân tích so sánh thất bại.", "⚠️ Comparative analysis generation failed."),
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -30,86 +30,91 @@ export const MSG = {
 // ---------------------------------------------------------------------------
 
 export const CLI_REPORT = {
-  title: t("AI CLI 工具社区动态日报", "AI CLI Tools Community Digest"),
+  title: t("Bản tin cộng đồng công cụ AI CLI", "AI CLI Tools Community Digest"),
   meta: (utcStr: string, count: number, lang: Lang) =>
     lang === "en"
       ? `> Generated: ${utcStr} UTC | Tools covered: ${count}\n\n`
-      : `> 生成时间: ${utcStr} UTC | 覆盖工具: ${count} 个\n\n`,
-  skillsHeading: t("Claude Code Skills 社区热点", "Claude Code Skills Highlights"),
-  skillsSource: t("数据来源", "Source"),
-  comparison: t("横向对比", "Cross-Tool Comparison"),
-  detail: t("各工具详细报告", "Per-Tool Reports"),
+      : `> Tạo lúc: ${utcStr} UTC | Công cụ theo dõi: ${count}\n\n`,
+  skillsHeading: t("Điểm nóng cộng đồng Claude Code Skills", "Claude Code Skills Highlights"),
+  skillsSource: t("Nguồn dữ liệu", "Source"),
+  comparison: t("So sánh chéo công cụ", "Cross-Tool Comparison"),
+  detail: t("Báo cáo chi tiết từng công cụ", "Per-Tool Reports"),
 } as const;
 
 export const OPENCLAW_REPORT = {
-  title: t("OpenClaw 生态日报", "OpenClaw Ecosystem Digest"),
-  deepDive: t("OpenClaw 项目深度报告", "OpenClaw Deep Dive"),
-  comparison: t("横向生态对比", "Cross-Ecosystem Comparison"),
-  peers: t("同赛道项目详细报告", "Peer Project Reports"),
+  title: t("Bản tin hệ sinh thái OpenClaw", "OpenClaw Ecosystem Digest"),
+  deepDive: t("Báo cáo chuyên sâu dự án OpenClaw", "OpenClaw Deep Dive"),
+  comparison: t("So sánh chéo hệ sinh thái", "Cross-Ecosystem Comparison"),
+  peers: t("Báo cáo chi tiết các dự án cùng phân khúc", "Peer Project Reports"),
 } as const;
 
 export const INFRA_REPORT = {
-  title: t("AI 基础设施日报", "AI Infrastructure Digest"),
+  title: t("Bản tin hạ tầng AI", "AI Infrastructure Digest"),
   meta: (utcStr: string, count: number, lang: Lang) =>
     lang === "en"
       ? `> Generated: ${utcStr} UTC | Projects covered: ${count}\n\n`
-      : `> 生成时间: ${utcStr} UTC | 覆盖项目: ${count} 个\n\n`,
-  comparison: t("横向对比", "Cross-Project Comparison"),
-  detail: t("各项目详细报告", "Per-Project Reports"),
+      : `> Tạo lúc: ${utcStr} UTC | Dự án theo dõi: ${count}\n\n`,
+  comparison: t("So sánh chéo dự án", "Cross-Project Comparison"),
+  detail: t("Báo cáo chi tiết từng dự án", "Per-Project Reports"),
 } as const;
 
 export const WEB_REPORT = {
-  title: t("AI 官方内容追踪报告", "Official AI Content Report"),
-  firstCrawl: t("首次全量", "First full crawl"),
-  todayUpdate: t("今日更新", "Today's update"),
+  title: t("Báo cáo theo dõi nội dung chính thức của AI", "Official AI Content Report"),
+  firstCrawl: t("Quét đầy đủ đầu tiên", "First full crawl"),
+  todayUpdate: t("Cập nhật hôm nay", "Today's update"),
   newContent: (count: number, lang: Lang) =>
-    lang === "en" ? `New content: ${count} articles` : `新增内容: ${count} 篇`,
+    lang === "en" ? `New content: ${count} articles` : `Nội dung mới: ${count} bài`,
   generated: (utcStr: string, lang: Lang) =>
-    lang === "en" ? `Generated: ${utcStr} UTC` : `生成时间: ${utcStr} UTC`,
-  sourcesHeader: t("数据来源:", "Sources:"),
+    lang === "en" ? `Generated: ${utcStr} UTC` : `Tạo lúc: ${utcStr} UTC`,
+  sourcesHeader: t("Nguồn dữ liệu:", "Sources:"),
   issueTitle: (dateStr: string, isFirstRun: boolean, lang: Lang) =>
     lang === "en"
       ? `🌐 Official AI Content Report ${dateStr}${isFirstRun ? " (First Crawl)" : ""}`
-      : `🌐 AI 官方内容追踪报告 ${dateStr}${isFirstRun ? "（首次全量）" : ""}`,
+      : `🌐 Báo cáo nội dung chính thức AI ${dateStr}${isFirstRun ? " (quét đầy đủ đầu tiên)" : ""}`,
 } as const;
 
 export const TRENDING_REPORT = {
-  title: t("AI 开源趋势日报", "AI Open Source Trends"),
-  sources: t("数据来源: GitHub Trending + GitHub Search API", "Sources: GitHub Trending + GitHub Search API"),
+  title: t("Xu hướng mã nguồn mở AI", "AI Open Source Trends"),
+  sources: t(
+    "Nguồn dữ liệu: GitHub Trending + GitHub Search API",
+    "Sources: GitHub Trending + GitHub Search API",
+  ),
   issueTitle: (dateStr: string, lang: Lang) =>
-    lang === "en" ? `📈 AI Open Source Trends ${dateStr}` : `📈 AI 开源趋势日报 ${dateStr}`,
+    lang === "en" ? `📈 AI Open Source Trends ${dateStr}` : `📈 Xu hướng mã nguồn mở AI ${dateStr}`,
 } as const;
 
 export const HN_REPORT = {
-  title: t("Hacker News AI 社区动态日报", "Hacker News AI Community Digest"),
+  title: t("Bản tin cộng đồng Hacker News AI", "Hacker News AI Community Digest"),
   issueTitle: (dateStr: string, lang: Lang) =>
-    lang === "en" ? `📰 Hacker News AI Digest ${dateStr}` : `📰 Hacker News AI 社区动态日报 ${dateStr}`,
+    lang === "en" ? `📰 Hacker News AI Digest ${dateStr}` : `📰 Bản tin Hacker News AI ${dateStr}`,
 } as const;
 
 export const PH_REPORT = {
-  title: t("Product Hunt AI 产品日报", "Product Hunt AI Products Digest"),
+  title: t("Bản tin sản phẩm AI trên Product Hunt", "Product Hunt AI Products Digest"),
   issueTitle: (dateStr: string, lang: Lang) =>
-    lang === "en" ? `🚀 Product Hunt AI Digest ${dateStr}` : `🚀 Product Hunt AI 产品日报 ${dateStr}`,
+    lang === "en" ? `🚀 Product Hunt AI Digest ${dateStr}` : `🚀 Bản tin AI Product Hunt ${dateStr}`,
 } as const;
 
 export const ARXIV_REPORT = {
-  title: t("ArXiv AI 研究日报", "ArXiv AI Research Digest"),
+  title: t("Bản tin nghiên cứu AI trên ArXiv", "ArXiv AI Research Digest"),
   issueTitle: (dateStr: string, lang: Lang) =>
-    lang === "en" ? `📚 ArXiv AI Research Digest ${dateStr}` : `📚 ArXiv AI 研究日报 ${dateStr}`,
+    lang === "en" ? `📚 ArXiv AI Research Digest ${dateStr}` : `📚 Bản tin nghiên cứu AI ArXiv ${dateStr}`,
 } as const;
 
 // The HF report runs weekly (see HF_REPORT_WEEKDAY in index.ts) — the Hub's
 // download-ranked list barely moves day to day, so the titles say "weekly".
 export const HF_REPORT = {
-  title: t("Hugging Face 热门模型周报", "Hugging Face Trending Models Weekly"),
+  title: t("Bản tin tuần mô hình nổi bật trên Hugging Face", "Hugging Face Trending Models Weekly"),
   issueTitle: (dateStr: string, lang: Lang) =>
-    lang === "en" ? `🤗 Hugging Face Trending Models ${dateStr}` : `🤗 Hugging Face 热门模型周报 ${dateStr}`,
+    lang === "en"
+      ? `🤗 Hugging Face Trending Models ${dateStr}`
+      : `🤗 Mô hình nổi bật Hugging Face ${dateStr}`,
 } as const;
 
 export const COMMUNITY_REPORT = {
-  title: t("技术社区 AI 动态日报", "Tech Community AI Digest"),
+  title: t("Bản tin AI từ cộng đồng công nghệ", "Tech Community AI Digest"),
   issueTitle: (dateStr: string, lang: Lang) =>
-    lang === "en" ? `💬 Tech Community AI Digest ${dateStr}` : `💬 技术社区 AI 动态日报 ${dateStr}`,
+    lang === "en" ? `💬 Tech Community AI Digest ${dateStr}` : `💬 Bản tin AI cộng đồng công nghệ ${dateStr}`,
 } as const;
 
 export const ISSUE_LABELS = {
@@ -126,20 +131,20 @@ export const ISSUE_LABELS = {
 } as const;
 
 export const CLI_ISSUE_TITLE = (dateStr: string, lang: Lang) =>
-  lang === "en" ? `📊 AI CLI Tools Digest ${dateStr}` : `📊 AI CLI 工具社区动态日报 ${dateStr}`;
+  lang === "en" ? `📊 AI CLI Tools Digest ${dateStr}` : `📊 Bản tin công cụ AI CLI ${dateStr}`;
 
 export const OPENCLAW_ISSUE_TITLE = (dateStr: string, lang: Lang) =>
-  lang === "en" ? `🦞 OpenClaw Ecosystem Digest ${dateStr}` : `🦞 OpenClaw 生态日报 ${dateStr}`;
+  lang === "en" ? `🦞 OpenClaw Ecosystem Digest ${dateStr}` : `🦞 Bản tin hệ sinh thái OpenClaw ${dateStr}`;
 
 export const INFRA_ISSUE_TITLE = (dateStr: string, lang: Lang) =>
-  lang === "en" ? `⚙️ AI Infrastructure Digest ${dateStr}` : `⚙️ AI 基础设施日报 ${dateStr}`;
+  lang === "en" ? `⚙️ AI Infrastructure Digest ${dateStr}` : `⚙️ Bản tin hạ tầng AI ${dateStr}`;
 
 // ---------------------------------------------------------------------------
 // Footer (used in report.ts)
 // ---------------------------------------------------------------------------
 
 export const FOOTER = {
-  autoGen: t("本日报由", "This digest is auto-generated by"),
+  autoGen: t("Bản tin này được tạo tự động bởi", "This digest is auto-generated by"),
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -151,43 +156,43 @@ export const FOOTER = {
 // ---------------------------------------------------------------------------
 
 export const REPORT_LABELS: Record<string, string> = {
-  "ai-cli": "AI CLI 工具社区动态日报",
+  "ai-cli": "Bản tin cộng đồng công cụ AI CLI",
   "ai-cli-en": "AI CLI Tools Digest",
-  "ai-agents": "AI Agents 生态日报",
+  "ai-agents": "Bản tin hệ sinh thái AI Agents",
   "ai-agents-en": "AI Agents Ecosystem Digest",
-  "ai-infra": "AI 基础设施日报",
+  "ai-infra": "Bản tin hạ tầng AI",
   "ai-infra-en": "AI Infrastructure Digest",
-  "ai-web": "AI 官方内容追踪报告",
+  "ai-web": "Báo cáo theo dõi nội dung chính thức AI",
   "ai-web-en": "Official AI Content Report",
-  "ai-trending": "AI 开源趋势日报",
+  "ai-trending": "Xu hướng mã nguồn mở AI",
   "ai-trending-en": "AI Open Source Trends",
-  "ai-hn": "Hacker News AI 社区动态日报",
+  "ai-hn": "Bản tin cộng đồng Hacker News AI",
   "ai-hn-en": "Hacker News AI Community Digest",
-  "ai-ph": "Product Hunt AI 产品日报",
+  "ai-ph": "Bản tin sản phẩm AI Product Hunt",
   "ai-ph-en": "Product Hunt AI Products Digest",
-  "ai-arxiv": "ArXiv AI 研究日报",
+  "ai-arxiv": "Bản tin nghiên cứu AI ArXiv",
   "ai-arxiv-en": "ArXiv AI Research Digest",
-  "ai-hf": "Hugging Face 热门模型周报",
+  "ai-hf": "Bản tin tuần mô hình nổi bật Hugging Face",
   "ai-hf-en": "Hugging Face Trending Models Weekly",
-  "ai-community": "技术社区 AI 动态日报",
+  "ai-community": "Bản tin AI cộng đồng công nghệ",
   "ai-community-en": "Tech Community AI Digest",
   // Weekly/monthly rollups are no longer generated; kept so archived reports
   // still render a proper title in the sidebar and RSS feed.
-  "ai-weekly": "AI 工具生态周报",
+  "ai-weekly": "Bản tin tuần hệ sinh thái công cụ AI",
   "ai-weekly-en": "AI Tools Weekly Digest",
-  "ai-monthly": "AI 工具生态月报",
+  "ai-monthly": "Bản tin tháng hệ sinh thái công cụ AI",
   "ai-monthly-en": "AI Tools Monthly Digest",
 };
 
 export const NOTIFY_LABELS: Record<string, Record<Lang, string>> = {
-  "ai-cli": t("AI CLI 工具", "AI CLI Tools"),
-  "ai-agents": t("AI Agents 生态", "AI Agents Ecosystem"),
-  "ai-infra": t("AI 基础设施", "AI Infrastructure"),
-  "ai-web": t("官网动态", "Official Updates"),
-  "ai-trending": t("GitHub 趋势", "GitHub Trends"),
-  "ai-hn": t("HN 社区动态", "HN Community"),
+  "ai-cli": t("Công cụ AI CLI", "AI CLI Tools"),
+  "ai-agents": t("Hệ sinh thái AI Agents", "AI Agents Ecosystem"),
+  "ai-infra": t("Hạ tầng AI", "AI Infrastructure"),
+  "ai-web": t("Cập nhật chính thức", "Official Updates"),
+  "ai-trending": t("Xu hướng GitHub", "GitHub Trends"),
+  "ai-hn": t("Cộng đồng HN", "HN Community"),
   "ai-ph": t("Product Hunt", "Product Hunt"),
-  "ai-arxiv": t("ArXiv 研究", "ArXiv Research"),
-  "ai-hf": t("HF 模型", "HF Models"),
-  "ai-community": t("技术社区", "Tech Community"),
+  "ai-arxiv": t("Nghiên cứu ArXiv", "ArXiv Research"),
+  "ai-hf": t("Mô hình HF", "HF Models"),
+  "ai-community": t("Cộng đồng công nghệ", "Tech Community"),
 };

@@ -86,7 +86,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LLM_PROVIDER: openai
-          OPENAI_API_KEY: ${{ secrets.RIVER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: https://api.river.ai/v1
           OPENAI_MODEL: deepseek-ai/DeepSeek-V4.1-Flash
           DIGEST_REPO: ${{ github.repository }}

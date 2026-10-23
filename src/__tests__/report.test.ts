@@ -23,7 +23,7 @@ import {
   isConnectionError,
   isRetryable,
   callLlm,
-  translateToZh,
+  translateToVi,
   saveFile,
   autoGenFooter,
   parseLlmJson,
@@ -135,12 +135,12 @@ describe("autoGenFooter", () => {
     expect(autoGenFooter()).toBe("");
   });
 
-  it("returns Chinese footer when DIGEST_REPO is set", () => {
+  it("returns Vietnamese footer when DIGEST_REPO is set", () => {
     process.env["DIGEST_REPO"] = "user/repo";
-    const result = autoGenFooter("zh");
+    const result = autoGenFooter("vi");
     expect(result).toContain("agents-radar");
     expect(result).toContain("github.com/user/repo");
-    expect(result).toContain("自动生成");
+    expect(result).toContain("tự động tạo");
   });
 
   it("returns English footer when lang is en", () => {
@@ -455,45 +455,45 @@ describe("llm health accounting", () => {
     expect(llmFailureRatio()).toBe(0.5);
   });
 
-  it("counts failures swallowed by translateToZh", async () => {
-    // translateToZh falls back to English rather than rethrowing, so without
+  it("counts failures swallowed by translateToVi", async () => {
+    // translateToVi falls back to English rather than rethrowing, so without
     // accounting inside callLlm a translation outage would leave no trace.
     vi.spyOn(console, "error").mockImplementation(() => {});
     mockCall.mockRejectedValueOnce(new Error("nope"));
 
-    expect(await translateToZh("English body")).toBe("English body");
+    expect(await translateToVi("English body")).toBe("English body");
     expect(llmStats).toEqual({ attempted: 1, failed: 1 });
     expect(llmFailureRatio()).toBe(1);
   });
 });
 
 // ---------------------------------------------------------------------------
-// translateToZh
+// translateToVi
 // ---------------------------------------------------------------------------
 
-describe("translateToZh", () => {
+describe("translateToVi", () => {
   beforeEach(() => {
     mockCall.mockReset();
   });
 
   it("sends the English body through the translation prompt", async () => {
-    mockCall.mockResolvedValue("中文报告");
-    const out = await translateToZh("# English report");
-    expect(out).toBe("中文报告");
+    mockCall.mockResolvedValue("Báo cáo tiếng Việt");
+    const out = await translateToVi("# English report");
+    expect(out).toBe("Báo cáo tiếng Việt");
     expect(mockCall).toHaveBeenCalledTimes(1);
     const prompt = mockCall.mock.calls[0]![0];
-    expect(prompt).toContain("Simplified Chinese");
+    expect(prompt).toContain("into Vietnamese");
     expect(prompt).toContain("# English report");
   });
 
   it("passes the caller's token budget through", async () => {
-    mockCall.mockResolvedValue("中文");
-    await translateToZh("body", 6144);
+    mockCall.mockResolvedValue("Tiếng Việt");
+    await translateToVi("body", 6144);
     expect(mockCall.mock.calls[0]![1]).toBe(6144);
   });
 
   it("skips the LLM entirely for empty input", async () => {
-    const out = await translateToZh("   ");
+    const out = await translateToVi("   ");
     expect(out).toBe("   ");
     expect(mockCall).not.toHaveBeenCalled();
   });
@@ -501,7 +501,7 @@ describe("translateToZh", () => {
   it("falls back to the English text when the call fails", async () => {
     vi.spyOn(console, "error").mockImplementation(() => {});
     mockCall.mockRejectedValue(new Error("boom"));
-    const out = await translateToZh("English body");
+    const out = await translateToVi("English body");
     expect(out).toBe("English body");
   });
 });

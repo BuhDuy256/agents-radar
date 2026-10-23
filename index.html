@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="vi" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -276,11 +276,11 @@
   <div id="body">
     <div id="sidebar">
       <div id="mob-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">
-        ☰ &nbsp;选择报告
+        ☰ &nbsp;Chọn báo cáo
       </div>
       <div class="side-label">REPORTS</div>
       <div class="search-wrap">
-        <input id="searchInput" type="search" placeholder="搜索全文，如 Claude">
+        <input id="searchInput" type="search" placeholder="Tìm trong toàn văn, ví dụ Claude">
         <div id="searchStatus"></div>
       </div>
       <div id="nav"></div>
@@ -288,7 +288,7 @@
 
     <div id="cwrap">
       <div id="content">
-        <div class="msg"><div class="msg-icon">📡</div><div>正在加载…</div></div>
+        <div class="msg"><div class="msg-icon">📡</div><div>Đang tải…</div></div>
       </div>
     </div>
   </div>
@@ -313,25 +313,25 @@ function renderMarkdown(raw) {
 }
 
 const LABELS = {
-  'ai-cli':          'AI CLI 工具',
+  'ai-cli':          'Công cụ AI CLI',
   'ai-cli-en':       'AI CLI Tools',
-  'ai-agents':       'AI Agents 生态',
+  'ai-agents':       'Hệ sinh thái AI Agents',
   'ai-agents-en':    'AI Agents Ecosystem',
-  'ai-infra':        'AI 基础设施',
+  'ai-infra':        'Hạ tầng AI',
   'ai-infra-en':     'AI Infrastructure',
-  'ai-web':          'OpenAI & Anthropic 官网动态',
+  'ai-web':          'Cập nhật chính thức OpenAI & Anthropic',
   'ai-web-en':       'OpenAI & Anthropic Updates',
-  'ai-trending':     'GitHub AI 趋势',
+  'ai-trending':     'Xu hướng AI trên GitHub',
   'ai-trending-en':  'GitHub AI Trends',
-  'ai-hn':           'HN 社区动态',
+  'ai-hn':           'Cộng đồng Hacker News',
   'ai-hn-en':        'HN Community Digest',
   'ai-ph':           'Product Hunt AI',
   'ai-ph-en':        'Product Hunt AI',
-  'ai-arxiv':        'ArXiv AI 研究',
+  'ai-arxiv':        'Nghiên cứu AI trên ArXiv',
   'ai-arxiv-en':     'ArXiv AI Research',
-  'ai-hf':           'HF 热门模型',
+  'ai-hf':           'Mô hình nổi bật trên HF',
   'ai-hf-en':        'HF Trending Models',
-  'ai-community':    '技术社区 AI',
+  'ai-community':    'AI trong cộng đồng công nghệ',
   'ai-community-en': 'Tech Community AI',
 };
 
@@ -395,9 +395,9 @@ function applyDateSearch(query) {
   if (!needle) {
     setSearchStatus('');
   } else if (!searchReady) {
-    setSearchStatus('正在建立索引…');
+    setSearchStatus('Đang tạo chỉ mục…');
   } else {
-    setSearchStatus(`匹配 ${hits} 天`);
+    setSearchStatus(`Khớp ${hits} ngày`);
   }
 }
 
@@ -435,7 +435,7 @@ async function buildSearchIndex(dates) {
 
 function initSearch(dates) {
   searchReady = false;
-  setSearchStatus('索引准备中…');
+  setSearchStatus('Đang chuẩn bị chỉ mục…');
 
   buildSearchIndex(dates).then((index) => {
     searchIndex = index;
@@ -530,7 +530,7 @@ async function loadReport(date, report, push = true) {
     // the early-return above turns every further click into a silent no-op
     // and the only way out is loading a different report first.
     currentKey = null;
-    setContent(`<div class="msg"><div class="msg-icon">⚠️</div><div>加载失败：${e.message}</div></div>`);
+    setContent(`<div class="msg"><div class="msg-icon">⚠️</div><div>Tải thất bại: ${e.message}</div></div>`);
   }
 }
 
@@ -572,11 +572,11 @@ function buildDateGroup(date, reports, isFirst) {
       const btns = document.createElement('div');
       btns.className = 'lang-btns';
 
-      const zhBtn = document.createElement('button');
-      zhBtn.className = 'lang-btn';
-      zhBtn.dataset.key = `${date}/${r}`;
-      zhBtn.textContent = 'ZH';
-      zhBtn.onclick = () => loadReport(date, r);
+      const viBtn = document.createElement('button');
+      viBtn.className = 'lang-btn';
+      viBtn.dataset.key = `${date}/${r}`;
+      viBtn.textContent = 'VI';
+      viBtn.onclick = () => loadReport(date, r);
 
       const enBtn = document.createElement('button');
       enBtn.className = 'lang-btn';
@@ -584,7 +584,7 @@ function buildDateGroup(date, reports, isFirst) {
       enBtn.textContent = 'EN';
       enBtn.onclick = () => loadReport(date, enKey);
 
-      btns.append(zhBtn, enBtn);
+      btns.append(viBtn, enBtn);
       row.append(label, btns);
       list.appendChild(row);
     } else {
@@ -675,7 +675,7 @@ window.addEventListener('popstate', () => {
   } catch (e) {
     document.getElementById('nav').innerHTML =
       '<div class="msg" style="height:80px;font-size:10px">⚠️ ' + e.message + '</div>';
-    setContent('<div class="msg"><div class="msg-icon">📡</div><div>无法加载 manifest.json</div></div>');
+    setContent('<div class="msg"><div class="msg-icon">📡</div><div>Không tải được manifest.json</div></div>');
   }
 })();
 </script>

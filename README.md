@@ -2,7 +2,7 @@
 
 English | [中文](./README.zh.md)
 
-A GitHub Actions workflow that runs every morning at 07:00 CST. It aggregates AI ecosystem signals from 10 data sources, then publishes bilingual (Chinese + English) daily digests as GitHub Issues and committed Markdown files.
+A GitHub Actions workflow that runs every morning at 07:00 CST. It aggregates AI ecosystem signals from 10 data sources, then publishes bilingual (Vietnamese + English) daily digests as GitHub Issues and committed Markdown files.
 
 ### Data Sources
 
@@ -29,7 +29,7 @@ Browse all historical digests in a clean, dark-themed interface — no login req
 
 ## Telegram Channel & Feishu Group
 
-Subscribe to get daily digest notifications pushed directly to your preferred platform. Each message links to all reports for that day (ZH and EN variants) plus the Web UI and RSS feed.
+Subscribe to get daily digest notifications pushed directly to your preferred platform. Each message links to all reports for that day (VI and EN variants) plus the Web UI and RSS feed.
 
 <table>
   <tr>
@@ -199,7 +199,7 @@ New articles are detected by comparing sitemap `lastmod` timestamps against a pe
 - Monitors GitHub Trending daily + searches 6 AI topic tags; classifies repos by dimension and extracts trend signals
 - Fetches top-30 AI stories from Hacker News (last 24h, ranked by points); generates community sentiment report
 - Publishes GitHub Issues for each report type; commits Markdown files to `digests/YYYY-MM-DD/`
-- Generates every report body once in English and translates it to Chinese, instead of running the whole pipeline twice per language
+- Generates every report body once in English and translates it to Vietnamese, instead of running the whole pipeline twice per language
 - Runs on a daily schedule via GitHub Actions; supports manual triggering
 - All tracked repositories are configurable via `config.yml` — no code changes needed
 
@@ -340,7 +340,7 @@ Files are written to `digests/YYYY-MM-DD/`:
 
 A shared state file `digests/web-state.json` tracks which web URLs have been seen; it is committed alongside the daily digests.
 
-Each report is generated in both Chinese (`ai-cli.md`) and English (`ai-cli-en.md`). The Web UI sidebar shows ZH / EN toggle buttons for reports that have both variants.
+Each report is generated in both Vietnamese (`ai-cli.md`) and English (`ai-cli-en.md`). The Web UI sidebar shows VI / EN toggle buttons for reports that have both variants.
 
 ---
 

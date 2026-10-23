@@ -2,7 +2,7 @@
 
 ## Project overview
 
-agents-radar is a daily digest generator for the AI open-source ecosystem. A GitHub Actions cron job runs at 22:37 UTC (06:37 CST next day) and produces bilingual (Chinese + English) reports, published as GitHub Issues and committed Markdown files.
+agents-radar is a daily digest generator for the AI open-source ecosystem. A GitHub Actions cron job runs at 22:37 UTC (06:37 CST next day) and produces bilingual (Vietnamese + English) reports, published as GitHub Issues and committed Markdown files.
 
 ## Commands
 
@@ -49,18 +49,18 @@ The pipeline runs in five sequential phases, each implemented as a named async f
 
 1. **`fetchAllData`** — all network I/O in parallel: GitHub API (issues/PRs/releases) for 18 repos, Claude Code Skills, Anthropic/OpenAI sitemaps, GitHub Trending HTML + Search API, Hacker News Algolia API.
 2. **`generateSummaries`** — per-repo LLM calls **in English only**, all in parallel, rate-limited to 5 concurrent requests by a queue in `src/report.ts`.
-3. **`translateSummaries`** — translates the English bodies to Chinese via `translateToZh`.
+3. **`translateSummaries`** — translates the English bodies to Vietnamese via `translateToVi`.
 4. **Comparisons** — three English LLM calls (cross-tool CLI, OpenClaw cross-ecosystem, infra), each then translated.
 5. **Save phase** — `buildCliReportContent` / `buildOpenclawReportContent` / `buildInfraReportContent` (in `src/report-builders.ts`) build Markdown strings; the `saveXxxReport` functions (in `src/report-savers.ts`) generate their body in English, translate it, then write both language files and create both GitHub Issues.
 
 ### English-first generation
 
-Report bodies are generated **once in English** and translated to Chinese. Generating both languages from the raw GitHub/API data ran the whole pipeline twice for identical information; a translation prompt carries the finished report instead of the item dump, so it costs a fraction of the input tokens. Consequences for new code:
+Report bodies are generated **once in English** and translated to Vietnamese. Generating both languages from the raw GitHub/API data ran the whole pipeline twice for identical information; a translation prompt carries the finished report instead of the item dump, so it costs a fraction of the input tokens. Consequences for new code:
 
 - Prompt builders still take a `lang` argument, but the pipeline only ever passes `"en"`. The `lang` branches remain because the fixed scaffolding (titles, headers, footers) is still rendered per language from `src/i18n.ts`.
 - A `saveXxxReport` function emits **both** languages and takes no `lang` parameter. Do not call it once per language.
-- Fixed status strings (`MSG.noActivity`, `MSG.summaryFailed`, …) are mapped en→zh through `FIXED_EN_TO_ZH` in `src/index.ts` instead of being sent to the LLM.
-- `translateToZh` falls back to the English text on failure — a partly-English Chinese report still carries the day's information.
+- Fixed status strings (`MSG.noActivity`, `MSG.summaryFailed`, …) are mapped en→vi through `FIXED_EN_TO_VI` in `src/index.ts` instead of being sent to the LLM.
+- `translateToVi` falls back to the English text on failure — a partly-English Vietnamese report still carries the day's information.
 
 ## Source files
 
@@ -72,7 +72,7 @@ Report bodies are generated **once in English** and translated to Chinese. Gener
 | `src/config.ts` | Loads `config.yml` into `RadarConfig` (`cliRepos`, `skillsRepo`, `openclaw`, `openclawPeers`, `infraRepos`); built-in defaults when a section is missing |
 | `src/prompts.ts` | LLM prompt builders for repo reports: `buildCliPrompt`, `buildPeerPrompt`, `buildInfraPrompt`, `buildComparisonPrompt`, `buildInfraComparisonPrompt`, `buildPeersComparisonPrompt`, `buildSkillsPrompt`; plus `buildTranslationPrompt` / `buildJsonTranslationPrompt` |
 | `src/prompts-data.ts` | LLM prompt builders for data-source reports: `buildTrendingPrompt`, `buildWebReportPrompt`, `buildHnPrompt` |
-| `src/report.ts` | `callLlm` (with concurrency limiter), `translateToZh`, `saveFile`, `autoGenFooter` (uses i18n), LLM token budget constants |
+| `src/report.ts` | `callLlm` (with concurrency limiter), `translateToVi`, `saveFile`, `autoGenFooter` (uses i18n), LLM token budget constants |
 | `src/report-builders.ts` | `buildCliReportContent`, `buildOpenclawReportContent`, `buildInfraReportContent` — assemble final Markdown strings for CLI, OpenClaw and infra reports |
 | `src/report-savers.ts` | `saveWebReport`, `saveTrendingReport`, `saveHnReport`, … — English LLM call + translation + both language files + optional GitHub issues; exports `LANGS` and `BilingualBody` |
 | `src/date.ts` | Date and timing utilities: `toCstDateStr`, `toUtcStr`, `weekdayOf`, `sleep` |
@@ -118,9 +118,9 @@ Files written to `digests/YYYY-MM-DD/`:
 
 ## Key conventions
 
-- All bilingual strings (titles, labels, footers, messages) are centralized in `src/i18n.ts`. Use the `Lang` type (`"zh" | "en"`) and `Record<Lang, string>` maps. Do not add inline bilingual ternaries elsewhere.
-- Report **bodies** are not bilingual strings — they are generated in English and translated (see "English-first generation"). Never add a second generation call to produce Chinese.
-- `translateToZh(text, maxTokens)` must be passed the same token budget the English body was generated with, or a long report gets truncated mid-translation.
+- All bilingual strings (titles, labels, footers, messages) are centralized in `src/i18n.ts`. Use the `Lang` type (`"vi" | "en"`) and `Record<Lang, string>` maps. Do not add inline bilingual ternaries elsewhere.
+- Report **bodies** are not bilingual strings — they are generated in English and translated (see "English-first generation"). Never add a second generation call to produce Vietnamese.
+- `translateToVi(text, maxTokens)` must be passed the same token budget the English body was generated with, or a long report gets truncated mid-translation.
 - LLM prompt builders are split across two files: `src/prompts.ts` (repo-level prompts) and `src/prompts-data.ts` (data-source prompts). Each report type has its own builder function.
 - Weekly and monthly rollups were removed in July 2026. `ai-weekly`/`ai-monthly` remain in `REPORT_LABELS` (`src/i18n.ts`) and `REPORT_FILES` (`src/generate-manifest.ts`) only so archived reports stay reachable — do not add generation code back.
 - `callLlm(prompt, maxTokens?)` defaults to 4096 tokens. Web report uses 8192, trending uses 6144. The table-formatted listing reports (HN, PH, ArXiv, HF, Community) use `LLM_TOKENS_LISTING` = 6144 to fit multi-row tables plus 2-sentence summaries.

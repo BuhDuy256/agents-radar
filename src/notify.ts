@@ -16,8 +16,17 @@ import { NOTIFY_LABELS } from "./i18n.ts";
 import type { ReportHighlights } from "./prompts-data.ts";
 
 export interface Highlights {
-  zh: ReportHighlights;
+  vi: ReportHighlights;
   en: ReportHighlights;
+}
+
+/**
+ * Shape of highlights.json written before the switch to Vietnamese. Kept so a
+ * re-run of notify/feishu over an old digest folder still finds English
+ * highlights instead of failing on the missing `vi` key.
+ */
+export interface LegacyHighlights extends Partial<Highlights> {
+  zh?: ReportHighlights;
 }
 
 const PAGES_URL_DEFAULT = "https://duanyytop.github.io/agents-radar";
@@ -50,32 +59,34 @@ export function buildMessage(
   date: string,
   reports: string[],
   pagesUrl?: string,
-  highlights?: Highlights | null,
+  highlights?: Highlights | LegacyHighlights | null,
 ): string {
   const PAGES_URL = (pagesUrl ?? process.env["PAGES_URL"] ?? PAGES_URL_DEFAULT).replace(/\/$/, "");
   const ordered = reports.filter((r) => !r.endsWith("-en"));
   const lines: string[] = [`📡 <b>agents-radar · ${date}</b>`];
 
-  const zhHighlights = highlights?.zh ?? {};
+  const viHighlights = highlights?.vi ?? {};
   const enHighlights = highlights?.en ?? {};
+  // Old files may carry a `zh` key; it is deliberately ignored — Vietnamese is
+  // the primary language now, and English is the only valid fallback.
 
   for (const r of ordered) {
-    const zhLabel = NOTIFY_LABELS[r]?.zh ?? r;
-    const zhUrl = `${PAGES_URL}/#${date}/${r}`;
+    const viLabel = NOTIFY_LABELS[r]?.vi ?? r;
+    const viUrl = `${PAGES_URL}/#${date}/${r}`;
     const enKey = `${r}-en`;
 
     lines.push(""); // blank line before each report section
     if (reports.includes(enKey)) {
       const enLabel = NOTIFY_LABELS[r]?.en ?? "EN";
       const enUrl = `${PAGES_URL}/#${date}/${enKey}`;
-      lines.push(`• <a href="${zhUrl}">${zhLabel}</a>  ·  <a href="${enUrl}">${enLabel}</a>`);
+      lines.push(`• <a href="${viUrl}">${viLabel}</a>  ·  <a href="${enUrl}">${enLabel}</a>`);
     } else {
-      lines.push(`• <a href="${zhUrl}">${zhLabel}</a>`);
+      lines.push(`• <a href="${viUrl}">${viLabel}</a>`);
     }
 
-    // Add highlights as indented sub-items. Fall back to en when a report's zh
+    // Add highlights as indented sub-items. Fall back to en when a report's vi
     // highlights are missing so a single-language failure never blanks the message.
-    const items = zhHighlights[r] ?? enHighlights[r];
+    const items = viHighlights[r] ?? enHighlights[r];
     if (items?.length) {
       for (const h of items) {
         lines.push(`  ◦ ${escapeHtml(h)}`);
@@ -111,11 +122,11 @@ async function main(): Promise<void> {
   const { date, reports } = latest;
 
   // Load highlights if available
-  let highlights: Highlights | null = null;
+  let highlights: Highlights | LegacyHighlights | null = null;
   const highlightsPath = path.join("digests", date, "highlights.json");
   if (fs.existsSync(highlightsPath)) {
     try {
-      highlights = JSON.parse(fs.readFileSync(highlightsPath, "utf-8")) as Highlights;
+      highlights = JSON.parse(fs.readFileSync(highlightsPath, "utf-8")) as Highlights | LegacyHighlights;
     } catch {
       console.log("[notify] Failed to parse highlights.json — sending without highlights.");
     }

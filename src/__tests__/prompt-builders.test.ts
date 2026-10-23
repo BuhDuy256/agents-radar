@@ -79,9 +79,9 @@ function makeDigest(overrides: Partial<RepoDigest> = {}): RepoDigest {
 // ---------------------------------------------------------------------------
 
 describe("buildCliPrompt", () => {
-  it("generates Chinese prompt by default", () => {
+  it("generates Vietnamese prompt by default", () => {
     const result = buildCliPrompt(cfg, [makeItem()], [makeItem()], [release], [], "2026-03-09");
-    expect(result).toContain("技术分析师");
+    expect(result).toContain("chuyên viên phân tích kỹ thuật");
     expect(result).toContain("TestTool");
     expect(result).toContain("2026-03-09");
     expect(result).toContain("org/test");
@@ -95,28 +95,28 @@ describe("buildCliPrompt", () => {
     expect(result).toContain("Hot Issues");
   });
 
-  it("shows 无 when no data", () => {
+  it("shows Không có when no data", () => {
     const result = buildCliPrompt(cfg, [], [], [], [], "2026-03-09");
-    expect(result).toContain("无");
+    expect(result).toContain("Không có");
   });
 
   it("includes sample notes when items exceed limit", () => {
     const items = Array.from({ length: 50 }, (_, i) => makeItem({ number: i, comments: i }));
     const result = buildCliPrompt(cfg, items, [], [], [], "2026-03-09");
-    expect(result).toContain("共 50 条");
-    expect(result).toContain("30 条");
+    expect(result).toContain("Tổng: 50 mục");
+    expect(result).toContain("30 mục");
   });
 
   it("omits the Discussions section when there is no discussion data", () => {
     const result = buildCliPrompt(cfg, [makeItem()], [], [], [], "2026-03-09");
-    expect(result).not.toContain("最新 Discussions");
+    expect(result).not.toContain("Discussions mới nhất");
   });
 
   it("renders the Discussions section when data is present", () => {
     const result = buildCliPrompt(cfg, [], [], [], [makeDiscussion()], "2026-03-09");
-    expect(result).toContain("最新 Discussions");
+    expect(result).toContain("Discussions mới nhất");
     expect(result).toContain("#42 [Ideas]");
-    expect(result).toContain("热门 Discussions");
+    expect(result).toContain("Discussions nổi bật");
   });
 
   it("renders the Discussions section in English", () => {
@@ -130,8 +130,8 @@ describe("buildCliPrompt", () => {
       makeDiscussion({ number: i, comments: 0, upvotes: i }),
     );
     const result = buildCliPrompt(cfg, [], [], [], items, "2026-03-09");
-    expect(result).toContain("共 60 条");
-    expect(result).toContain("评论数 + 点赞数最多的 40 条");
+    expect(result).toContain("Tổng: 60 mục");
+    expect(result).toContain("bình luận và lượt thích nhiều nhất");
     // Highest-upvoted kept, lowest dropped
     expect(result).toContain("#59 [Ideas]");
     expect(result).not.toContain("#0 [Ideas]");
@@ -146,9 +146,9 @@ describe("buildPeerPrompt", () => {
   it("includes data overview section", () => {
     const issues = [makeItem({ state: "open" }), makeItem({ state: "closed" })];
     const result = buildPeerPrompt(cfg, issues, [makeItem()], [release], "2026-03-09");
-    expect(result).toContain("数据概览");
-    expect(result).toContain("新开/活跃: 1");
-    expect(result).toContain("已关闭: 1");
+    expect(result).toContain("Tổng quan dữ liệu");
+    expect(result).toContain("đang mở/hoạt động: 1");
+    expect(result).toContain("đã đóng: 1");
   });
 
   it("generates English prompt", () => {
@@ -163,10 +163,10 @@ describe("buildPeerPrompt", () => {
 // ---------------------------------------------------------------------------
 
 describe("buildInfraPrompt", () => {
-  it("generates Chinese prompt by default", () => {
+  it("generates Vietnamese prompt by default", () => {
     const result = buildInfraPrompt(cfg, [makeItem()], [makeItem()], [release], "2026-03-09");
-    expect(result).toContain("AI 基础设施");
-    expect(result).toContain("新模型与硬件支持");
+    expect(result).toContain("hạ tầng AI");
+    expect(result).toContain("Hỗ trợ mô hình và phần cứng mới");
     expect(result).toContain("TestTool");
     expect(result).toContain("v1.0.0");
   });
@@ -181,8 +181,8 @@ describe("buildInfraPrompt", () => {
   it("includes sample notes when items exceed limit", () => {
     const items = Array.from({ length: 50 }, (_, i) => makeItem({ number: i, comments: i }));
     const result = buildInfraPrompt(cfg, items, [], [], "2026-03-09");
-    expect(result).toContain("共 50 条");
-    expect(result).toContain("30 条");
+    expect(result).toContain("Tổng: 50 mục");
+    expect(result).toContain("30 mục");
   });
 });
 
@@ -197,7 +197,7 @@ describe("buildInfraComparisonPrompt", () => {
       makeDigest({ config: { ...cfg, name: "Ollama" }, summary: "Summary B", prs: [makeItem()] }),
     ];
     const result = buildInfraComparisonPrompt(digests, "2026-03-09");
-    expect(result).toContain("模型支持竞速");
+    expect(result).toContain("Cuộc đua hỗ trợ mô hình");
     expect(result).toContain("vLLM");
     expect(result).toContain("Summary A");
     expect(result).toContain("Ollama");
@@ -206,7 +206,7 @@ describe("buildInfraComparisonPrompt", () => {
 
   it("shows no-activity for empty digests", () => {
     const result = buildInfraComparisonPrompt([makeDigest({ summary: "Summary" })], "2026-03-09");
-    expect(result).toContain("过去24小时无活动");
+    expect(result).toContain("Không có hoạt động trong 24 giờ qua.");
   });
 
   it("generates English prompt", () => {
@@ -236,7 +236,7 @@ describe("buildComparisonPrompt", () => {
   it("shows no-activity for empty digests", () => {
     const digests = [makeDigest({ summary: "Summary" })]; // no issues/prs/releases
     const result = buildComparisonPrompt(digests, "2026-03-09");
-    expect(result).toContain("过去24小时无活动");
+    expect(result).toContain("Không có hoạt động trong 24 giờ qua.");
   });
 });
 
@@ -254,7 +254,7 @@ describe("buildPeersComparisonPrompt", () => {
       makeDigest({ config: { ...cfg, name: "Peer" }, summary: "Peer summary", issues: [makeItem()] }),
     ];
     const result = buildPeersComparisonPrompt(openclawDigest, peerDigests, "2026-03-09");
-    expect(result).toContain("OpenClaw（核心参照");
+    expect(result).toContain("OpenClaw (tham chiếu chính");
     expect(result).toContain("OC summary");
     expect(result).toContain("Peer summary");
   });
@@ -309,7 +309,7 @@ describe("buildTrendingPrompt", () => {
   it("shows fetch failure message when trending fails", () => {
     const data: TrendingData = { trendingRepos: [], searchRepos: [], trendingFetchSuccess: false };
     const result = buildTrendingPrompt(data, "2026-03-09");
-    expect(result).toContain("未能抓取");
+    expect(result).toContain("Không lấy được bảng GitHub Trending hôm nay");
   });
 
   it("includes search repos with topic tag", () => {
@@ -359,9 +359,9 @@ describe("buildWebReportPrompt", () => {
       },
     ];
     const result = buildWebReportPrompt(results, "2026-03-09");
-    expect(result).toContain("首次全量抓取");
+    expect(result).toContain("Quét đầy đủ lần đầu");
     expect(result).toContain("Anthropic");
-    expect(result).toContain("内容格局总览"); // first-run-only section
+    expect(result).toContain("Tổng quan bố cục nội dung"); // first-run-only section
   });
 
   it("shows incremental mode for non-first-run", () => {
@@ -369,8 +369,8 @@ describe("buildWebReportPrompt", () => {
       { site: "openai", siteName: "OpenAI", isFirstRun: false, newItems: [], totalDiscovered: 100 },
     ];
     const result = buildWebReportPrompt(results, "2026-03-09");
-    expect(result).toContain("增量更新");
-    expect(result).not.toContain("内容格局总览");
+    expect(result).toContain("Cập nhật tăng dần");
+    expect(result).not.toContain("Tổng quan bố cục nội dung");
   });
 });
 
@@ -397,10 +397,10 @@ describe("buildHnPrompt", () => {
     };
     const result = buildHnPrompt(data, "2026-03-09");
     expect(result).toContain("AI News");
-    expect(result).toContain("分数: 200");
-    expect(result).toContain("评论: 50");
-    expect(result).toContain("作者: bob");
-    expect(result).toContain("共 1 条");
+    expect(result).toContain("Điểm: 200");
+    expect(result).toContain("Bình luận: 50");
+    expect(result).toContain("Tác giả: bob");
+    expect(result).toContain("tổng 1 bài");
   });
 
   it("generates English variant", () => {

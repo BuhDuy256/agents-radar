@@ -1,5 +1,20 @@
 import { describe, it, expect } from "vitest";
-import { toRfc822, escapeXml } from "../generate-manifest.ts";
+import { toRfc822, escapeXml, FEED_DESCRIPTION, FEED_LANGUAGE } from "../generate-manifest.ts";
+
+// ---------------------------------------------------------------------------
+// RSS channel metadata
+// ---------------------------------------------------------------------------
+
+describe("RSS metadata", () => {
+  it("declares Vietnamese as the feed language", () => {
+    expect(FEED_LANGUAGE).toBe("vi-VN");
+  });
+
+  it("uses a Vietnamese channel description", () => {
+    expect(FEED_DESCRIPTION).toContain("Bản tin");
+    expect(FEED_DESCRIPTION).toContain("Daily AI ecosystem digest");
+  });
+});
 
 // ---------------------------------------------------------------------------
 // toRfc822
