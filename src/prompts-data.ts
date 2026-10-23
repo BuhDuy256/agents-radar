@@ -65,7 +65,7 @@ ${searchSection}
 ---
 
 Task:
-1. Choose **at most 5 repositories** that are clearly relevant to AI agents, coding harnesses/CLIs, skills, or developer tools. Skip unrelated projects (general frontend frameworks, games, non-tooling content). Fewer than 5 is fine — do not pad.
+1. Choose **at most 10 repositories** that are clearly relevant to AI agents, coding harnesses/CLIs, skills, or developer tools. Skip unrelated projects (general frontend frameworks, games, non-tooling content). Fewer than 10 is fine — do not pad.
 2. Output a single **Markdown table** with exactly these columns:
 
    | Project | Lang | Stars (total / today) | What it does / when to use it |
@@ -101,7 +101,7 @@ ${searchSection}
 ---
 
 Yêu cầu:
-1. Chọn **tối đa 5 kho** liên quan rõ ràng đến AI agent, harness/CLI lập trình, skills hoặc công cụ nhà phát triển. Bỏ dự án không liên quan (framework frontend tổng quát, trò chơi, nội dung không phải công cụ). Ít hơn 5 vẫn tốt — không độn thêm cho đủ.
+1. Chọn **tối đa 10 kho** liên quan rõ ràng đến AI agent, harness/CLI lập trình, skills hoặc công cụ nhà phát triển. Bỏ dự án không liên quan (framework frontend tổng quát, trò chơi, nội dung không phải công cụ). Ít hơn 10 vẫn tốt — không độn thêm cho đủ.
 2. Xuất một **bảng Markdown** duy nhất với cột cố định:
 
    | Dự án | Ngôn ngữ | Stars (tổng / hôm nay) | Công dụng / khi nào dùng |
