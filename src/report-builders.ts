@@ -46,14 +46,16 @@ export function buildCliReportContent(
     })
     .join("\n\n");
 
+  const comparisonSection = comparison.trim()
+    ? `## ${CLI_REPORT.comparison[lang]}\n\n${comparison}\n\n---\n\n`
+    : "";
+
   return (
     title +
     meta +
     `${repoLinks}\n\n` +
     `---\n\n` +
-    `## ${CLI_REPORT.comparison[lang]}\n\n` +
-    comparison +
-    `\n\n---\n\n` +
+    comparisonSection +
     `## ${CLI_REPORT.detail[lang]}\n\n` +
     toolSections +
     footer

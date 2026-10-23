@@ -38,17 +38,7 @@ async function main() {
 
   console.log(`Regenerating highlights for ${dateStr}...`);
 
-  const reportIds = [
-    "ai-cli",
-    "ai-agents",
-    "ai-web",
-    "ai-trending",
-    "ai-hn",
-    "ai-ph",
-    "ai-arxiv",
-    "ai-hf",
-    "ai-community",
-  ];
+  const reportIds = ["ai-cli", "ai-web", "ai-trending", "ai-hn", "ai-community"];
 
   // Read reports
   const viReports: Record<string, string> = {};

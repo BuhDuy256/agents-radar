@@ -7,6 +7,7 @@
 // ---------------------------------------------------------------------------
 
 export interface LobstersStory {
+  id: string;
   title: string;
   url: string;
   commentsUrl: string;
@@ -71,6 +72,7 @@ export async function fetchLobstersData(): Promise<LobstersData> {
           for (const s of raw) {
             if (!seen.has(s.short_id)) {
               seen.set(s.short_id, {
+                id: s.short_id,
                 title: s.title,
                 url: s.url || s.comments_url,
                 commentsUrl: s.comments_url,

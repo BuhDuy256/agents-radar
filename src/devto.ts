@@ -52,6 +52,42 @@ interface DevtoApiArticle {
 }
 
 // ---------------------------------------------------------------------------
+// Article body (Dev.to detail API)
+// ---------------------------------------------------------------------------
+
+const ARTICLE_API = "https://dev.to/api/articles";
+
+/**
+ * Fetch the full markdown body of one article. Never throws — a failure comes
+ * back as `unavailable` so the report can fall back to the metadata.
+ */
+export async function fetchDevtoBody(
+  id: number,
+): Promise<{ status: "full" | "partial" | "unavailable"; text: string; note?: string }> {
+  try {
+    const resp = await fetch(`${ARTICLE_API}/${id}`, {
+      headers: {
+        "User-Agent": "agents-radar/1.0",
+        Accept: "application/json",
+      },
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+    const data = (await resp.json()) as { body_markdown?: string; body_html?: string };
+    const body = (data.body_markdown ?? data.body_html ?? "").replace(/<[^>]+>/g, " ").trim();
+    const text = body.slice(0, 8_000);
+    return {
+      status: text.length >= 1_200 ? "full" : text.length >= 200 ? "partial" : "unavailable",
+      text,
+      note: text.length < 200 ? "empty body" : "Dev.to API body_markdown",
+    };
+  } catch (err) {
+    return { status: "unavailable", text: "", note: err instanceof Error ? err.message : String(err) };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Fetch
 // ---------------------------------------------------------------------------
 

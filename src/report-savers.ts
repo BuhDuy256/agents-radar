@@ -21,10 +21,12 @@ import {
 import {
   buildWebReportPrompt,
   buildHnPrompt,
+  buildHnShortlistPrompt,
   buildPhPrompt,
   buildArxivPrompt,
   buildHfPrompt,
   buildCommunityPrompt,
+  buildCommunityShortlistPrompt,
 } from "./prompts-data.ts";
 import {
   callLlm,
@@ -36,7 +38,23 @@ import {
 } from "./report.ts";
 import { createGitHubIssue } from "./github.ts";
 import { saveWebState, type WebFetchResult, type WebState } from "./web.ts";
-import type { HnData } from "./hn.ts";
+import {
+  type HnData,
+  type HnStory,
+  HN_SHORTLIST_MAX,
+  fetchHnArticles,
+  keywordShortlist,
+  parseHnSelection,
+  pickStories,
+} from "./hn.ts";
+import {
+  type CommunityItem,
+  COMMUNITY_MAX,
+  communityCandidates,
+  fetchCommunityContent,
+  keywordCommunityShortlist,
+  pickCommunityItems,
+} from "./community.ts";
 import type { PhData } from "./ph.ts";
 import type { TrendingData } from "./trending.ts";
 import type { ArxivData } from "./arxiv.ts";
@@ -177,14 +195,35 @@ export async function saveHnReport(
   dateStr: string,
   digestRepo: string,
 ): Promise<void> {
-  if (!hnData.fetchSuccess) {
+  if (!hnData.fetchSuccess || hnData.stories.length === 0) {
     console.log("  [hn] No data available, skipping report.");
     return;
   }
 
+  // 1. Shortlist: one LLM pass that only picks ids, then a keyword fallback.
+  let selected: HnStory[] = [];
+  try {
+    const raw = await callLlm(buildHnShortlistPrompt(hnData, dateStr, HN_SHORTLIST_MAX), 512);
+    selected = pickStories(hnData.stories, parseHnSelection(raw), HN_SHORTLIST_MAX);
+    console.log(`  [hn] Selection picked ${selected.length} stories`);
+  } catch (err) {
+    console.error(`  [hn] Selection failed: ${err}`);
+  }
+  if (selected.length === 0) {
+    selected = keywordShortlist(hnData.stories, HN_SHORTLIST_MAX);
+    console.log(`  [hn] Using keyword fallback for ${selected.length} stories`);
+  }
+  if (selected.length === 0) {
+    console.log("  [hn] Nothing matched the preferred topics, skipping report.");
+    return;
+  }
+
+  // 2. Fetch only the shortlisted articles' content.
+  const articles = await fetchHnArticles(selected);
+
   console.log("  [hn] Calling LLM for HN report (EN) + translation (VI)...");
   try {
-    const summary = await bilingualBody(buildHnPrompt(hnData, dateStr, "en"), LLM_TOKENS_LISTING);
+    const summary = await bilingualBody(buildHnPrompt(articles, dateStr, "en"), LLM_TOKENS_LISTING);
 
     for (const lang of LANGS) {
       const fileName = reportFileName("ai-hn", lang);
@@ -192,11 +231,11 @@ export async function saveHnReport(
         lang === "en"
           ? `# ${HN_REPORT.title[lang]} ${dateStr}\n\n` +
             `> Source: [Hacker News](https://news.ycombinator.com/) | ` +
-            `${hnData.stories.length} stories | Generated: ${utcStr} UTC\n\n` +
+            `${articles.length} stories | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${HN_REPORT.title[lang]} ${dateStr}\n\n` +
             `> Nguồn dữ liệu: [Hacker News](https://news.ycombinator.com/) | ` +
-            `${hnData.stories.length} bài | Tạo lúc: ${utcStr} UTC\n\n` +
+            `${articles.length} tin | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const hnContent = header + summary[lang] + autoGenFooter(lang);
@@ -376,24 +415,41 @@ export async function saveCommunityReport(
     return;
   }
 
+  // 1. Shortlist: one LLM pass that only picks ids, then a keyword fallback.
+  const candidates = communityCandidates(devtoData, lobstersData);
+  let selected: CommunityItem[] = [];
+  try {
+    const raw = await callLlm(buildCommunityShortlistPrompt(candidates, dateStr, COMMUNITY_MAX), 512);
+    selected = pickCommunityItems(candidates, parseHnSelection(raw), COMMUNITY_MAX);
+    console.log(`  [community] Selection picked ${selected.length} items`);
+  } catch (err) {
+    console.error(`  [community] Selection failed: ${err}`);
+  }
+  if (selected.length === 0) {
+    selected = keywordCommunityShortlist(candidates, COMMUNITY_MAX);
+    console.log(`  [community] Using keyword fallback for ${selected.length} items`);
+  }
+  if (selected.length === 0) {
+    console.log("  [community] Nothing matched the preferred topics, skipping report.");
+    return;
+  }
+
+  // 2. Read the selected pieces before asking for a summary.
+  const items = await fetchCommunityContent(selected);
+
   console.log("  [community] Calling LLM for community report (EN) + translation (VI)...");
   try {
-    const summary = await bilingualBody(
-      buildCommunityPrompt(devtoData, lobstersData, dateStr, "en"),
-      LLM_TOKENS_LISTING,
-    );
-    const devtoCount = devtoData.articles.length;
-    const lobstersCount = lobstersData.stories.length;
+    const summary = await bilingualBody(buildCommunityPrompt(items, dateStr, "en"), LLM_TOKENS_LISTING);
 
     for (const lang of LANGS) {
       const fileName = reportFileName("ai-community", lang);
       const header =
         lang === "en"
           ? `# ${COMMUNITY_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> Sources: [Dev.to](https://dev.to/) (${devtoCount} articles) + [Lobste.rs](https://lobste.rs/) (${lobstersCount} stories) | Generated: ${utcStr} UTC\n\n` +
+            `> Sources: [Dev.to](https://dev.to/) + [Lobste.rs](https://lobste.rs/) | ${items.length} items | Generated: ${utcStr} UTC\n\n` +
             `---\n\n`
           : `# ${COMMUNITY_REPORT.title[lang]} ${dateStr}\n\n` +
-            `> Nguồn dữ liệu: [Dev.to](https://dev.to/) (${devtoCount} bài) + [Lobste.rs](https://lobste.rs/) (${lobstersCount} mục) | Tạo lúc: ${utcStr} UTC\n\n` +
+            `> Nguồn dữ liệu: [Dev.to](https://dev.to/) + [Lobste.rs](https://lobste.rs/) | ${items.length} mục | Tạo lúc: ${utcStr} UTC\n\n` +
             `---\n\n`;
 
       const content = header + summary[lang] + autoGenFooter(lang);

@@ -166,61 +166,64 @@ export function buildCliPrompt(
     : "";
 
   if (lang === "en") {
-    return `You are a technical analyst focused on AI developer tools. Based on the following GitHub data, generate the ${cfg.name} community digest for ${dateStr}.
+    return `Write a short daily note about ${cfg.name} (${dateStr}) for developers who already use this tool. Use only the GitHub data below.
 
 # Data source: github.com/${cfg.repo}
 
-## Latest Releases (last 24h)
+## Releases (last 24h)
 ${releasesText}
 
-## Latest Issues (updated in last 24h)${issueNote}
+## Issues (updated in last 24h)${issueNote}
 ${issuesText}
 
-## Latest Pull Requests (updated in last 24h)${prNote}
+## Pull requests (updated in last 24h)${prNote}
 ${prsText}
 ${discussionsSection}
 ---
 
-Generate a structured English digest with the following sections:
+Write these two sections, in English:
 
-1. **Today's Highlights** - 2-3 sentences summarizing the most important updates
-2. **Releases** - If new versions exist, summarize changes; omit if none
-3. **Hot Issues** - Pick 10 noteworthy Issues, explain why they matter and community reaction
-4. **Key PR Progress** - Pick 10 important PRs, describe features or fixes
-5. **Hot Discussions** - Pick up to 10 noteworthy Discussions, grouped by category (Ideas / Q&A / Show and tell). Omit this section entirely if no discussion data was provided
-6. **Feature Request Trends** - Distill the most-requested feature directions from all Issues and Discussions
-7. **Developer Pain Points** - Summarize recurring developer frustrations or high-frequency requests
+**What changed** — up to 4 bullets on releases and PRs that change how the tool is used: new features, breaking changes, and fixes for problems users actually hit. Use the shape "Added A to do B; useful when you need C." Copy version numbers, PR/issue numbers and links from the data.
 
-Style: concise and professional, suited for technical developers. Include GitHub links for each item.
+**Worth knowing** — up to 3 issues or discussions that affect daily use: what breaks, for whom, and whether a fix exists in the data. Skip if nothing qualifies.
+
+Rules:
+- Fewer items is fine; do not pad.
+- Only state what the data supports. Do not invent use cases, community reaction, or version comparisons.
+- Comment counts may be quoted as numbers, but do not claim the community agrees or disagrees unless the item text says so.
+- No overview paragraph, no PR/issue volume statistics, no conclusions.
+- Keep it under 200 words.
 `;
   }
 
-  return `Bạn là chuyên viên phân tích kỹ thuật tập trung vào công cụ phát triển AI. Dựa trên dữ liệu GitHub dưới đây, hãy tạo bản tin cộng đồng ${cfg.name} ngày ${dateStr}.
+  return `Viết một ghi chú ngắn hằng ngày về ${cfg.name} (${dateStr}) cho người đã dùng công cụ này. Chỉ dùng dữ liệu GitHub dưới đây.
 
 # Nguồn dữ liệu: github.com/${cfg.repo}
 
-## Bản phát hành mới nhất (24 giờ qua)
+## Bản phát hành (24 giờ qua)
 ${releasesText}
 
-## Issue mới nhất (cập nhật trong 24 giờ qua)${issueNote}
+## Issue (cập nhật trong 24 giờ qua)${issueNote}
 ${issuesText}
 
-## Pull Request mới nhất (cập nhật trong 24 giờ qua)${prNote}
+## Pull request (cập nhật trong 24 giờ qua)${prNote}
 ${prsText}
 ${discussionsSection}
 ---
 
-Hãy tạo bản tin tiếng Việt có cấu trúc rõ ràng, gồm các phần sau:
+Viết hai mục sau bằng tiếng Việt:
 
-1. **Điểm nổi bật hôm nay** - Dùng 2-3 câu tóm tắt những cập nhật quan trọng nhất
-2. **Bản phát hành** - Nếu có phiên bản mới, tóm tắt nội dung cập nhật; không có thì bỏ qua
-3. **Issue nổi bật** - Chọn 10 Issue đáng chú ý, nêu vì sao quan trọng và phản ứng của cộng đồng
-4. **Tiến triển PR quan trọng** - Chọn 10 PR quan trọng, mô tả tính năng hoặc bản sửa
-5. **Discussions nổi bật** - Chọn tối đa 10 Discussion đáng chú ý, nhóm theo khu vực (Ideas / Q&A / Show and tell). Bỏ toàn bộ phần này nếu không có dữ liệu Discussions
-6. **Xu hướng yêu cầu tính năng** - Đúc kết từ tất cả Issue và Discussion những hướng tính năng được cộng đồng quan tâm nhất (ví dụ tích hợp IDE, hiệu năng, hỗ trợ mô hình mới)
-7. **Điểm đau của nhà phát triển** - Tóm tắt những khó khăn lặp lại hoặc yêu cầu phổ biến trong phản hồi của nhà phát triển
+**Có gì thay đổi** — tối đa 4 gạch đầu dòng về bản phát hành và PR làm thay đổi cách dùng công cụ: tính năng mới, thay đổi phá vỡ tương thích, và bản sửa cho lỗi người dùng thực sự gặp. Dùng dạng "Thêm A để làm B; hữu ích khi bạn cần C." Sao chép số phiên bản, số PR/issue và liên kết từ dữ liệu.
 
-Yêu cầu văn phong: ngắn gọn, chuyên nghiệp, phù hợp nhà phát triển kỹ thuật. Mỗi mục kèm liên kết GitHub.`;
+**Đáng lưu ý** — tối đa 3 issue hoặc discussion ảnh hưởng đến việc dùng hằng ngày: lỗi gì, ảnh hưởng ai, và dữ liệu có bản sửa chưa. Không có thì bỏ mục này.
+
+Quy tắc:
+- Ít mục vẫn tốt hơn; không độn thêm cho đủ.
+- Chỉ viết điều dữ liệu hỗ trợ. Không bịa công dụng, phản ứng cộng đồng hay so sánh phiên bản.
+- Được nêu số bình luận, nhưng không nói cộng đồng đồng tình/phản đối nếu nội dung mục không nói vậy.
+- Không viết đoạn tổng quan, không thống kê lượng PR/issue, không kết luận.
+- Dưới 200 từ.
+`;
 }
 
 const INFRA_ISSUE_LIMIT = 30;

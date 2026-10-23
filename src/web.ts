@@ -159,7 +159,7 @@ export function extractTitle(html: string): string {
   );
 }
 
-export function extractText(html: string): string {
+export function extractText(html: string, limit: number = MAX_CONTENT_LENGTH): string {
   // Prefer <main> or <article> to avoid nav/header/footer boilerplate
   const source =
     html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] ??
@@ -178,7 +178,7 @@ export function extractText(html: string): string {
     .replace(/&nbsp;/g, " ")
     .replace(/\s+/g, " ")
     .trim()
-    .slice(0, MAX_CONTENT_LENGTH);
+    .slice(0, limit);
 }
 
 export function urlCategory(url: string): string {

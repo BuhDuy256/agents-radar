@@ -12,7 +12,7 @@ import { buildTrendingPrompt, buildWebReportPrompt, buildHnPrompt } from "../pro
 import type { RepoConfig, GitHubItem, GitHubRelease, GitHubDiscussion } from "../github.ts";
 import type { RepoDigest } from "../prompts.ts";
 import type { TrendingData } from "../trending.ts";
-import type { HnData } from "../hn.ts";
+import type { HnArticle } from "../hn.ts";
 import type { WebFetchResult } from "../web.ts";
 
 // ---------------------------------------------------------------------------
@@ -379,10 +379,10 @@ describe("buildWebReportPrompt", () => {
 // ---------------------------------------------------------------------------
 
 describe("buildHnPrompt", () => {
-  it("includes stories with metadata", () => {
-    const data: HnData = {
-      stories: [
-        {
+  it("includes story metadata and fetched content", () => {
+    const articles: HnArticle[] = [
+      {
+        story: {
           id: "123",
           title: "AI News",
           url: "https://example.com/ai",
@@ -392,21 +392,23 @@ describe("buildHnPrompt", () => {
           author: "bob",
           createdAt: "2026-03-09T10:00:00Z",
         },
-      ],
-      fetchSuccess: true,
-    };
-    const result = buildHnPrompt(data, "2026-03-09");
+        status: "full",
+        text: "Body text about the launch.",
+      },
+    ];
+    const result = buildHnPrompt(articles, "2026-03-09");
     expect(result).toContain("AI News");
-    expect(result).toContain("Điểm: 200");
-    expect(result).toContain("Bình luận: 50");
-    expect(result).toContain("Tác giả: bob");
-    expect(result).toContain("tổng 1 bài");
+    expect(result).toContain("Points: 200");
+    expect(result).toContain("Comments: 50");
+    expect(result).toContain("Content status: full");
+    expect(result).toContain("Body text about the launch.");
+    expect(result).toContain("Viết bản tin ngành AI");
   });
 
   it("generates English variant", () => {
-    const data: HnData = {
-      stories: [
-        {
+    const articles: HnArticle[] = [
+      {
+        story: {
           id: "1",
           title: "Test",
           url: "https://test.com",
@@ -416,12 +418,14 @@ describe("buildHnPrompt", () => {
           author: "a",
           createdAt: "2026-03-09T10:00:00Z",
         },
-      ],
-      fetchSuccess: true,
-    };
-    const result = buildHnPrompt(data, "2026-03-09", "en");
-    expect(result).toContain("Score: 10");
-    expect(result).toContain("Comments: 2");
-    expect(result).toContain("Hacker News");
+        status: "unavailable",
+        text: "",
+        note: "HTTP 403",
+      },
+    ];
+    const result = buildHnPrompt(articles, "2026-03-09", "en");
+    expect(result).toContain("Content status: unavailable");
+    expect(result).toContain("HTTP 403");
+    expect(result).toContain("Full article content could not be retrieved.");
   });
 });
