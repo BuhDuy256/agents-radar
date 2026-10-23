@@ -312,28 +312,22 @@ function renderMarkdown(raw) {
   });
 }
 
+// Only these reports are still published — keep in sync with
+// PUBLISHED_REPORTS in src/i18n.ts. Older keys stay in the manifest history but
+// are filtered out below, so archived reports never show in the sidebar.
 const LABELS = {
   'ai-cli':          'Công cụ AI CLI',
   'ai-cli-en':       'AI CLI Tools',
-  'ai-agents':       'Hệ sinh thái AI Agents',
-  'ai-agents-en':    'AI Agents Ecosystem',
-  'ai-infra':        'Hạ tầng AI',
-  'ai-infra-en':     'AI Infrastructure',
   'ai-web':          'Cập nhật chính thức OpenAI & Anthropic',
   'ai-web-en':       'OpenAI & Anthropic Updates',
   'ai-trending':     'Xu hướng AI trên GitHub',
   'ai-trending-en':  'GitHub AI Trends',
   'ai-hn':           'Cộng đồng Hacker News',
   'ai-hn-en':        'HN Community Digest',
-  'ai-ph':           'Product Hunt AI',
-  'ai-ph-en':        'Product Hunt AI',
-  'ai-arxiv':        'Nghiên cứu AI trên ArXiv',
-  'ai-arxiv-en':     'ArXiv AI Research',
-  'ai-hf':           'Mô hình nổi bật trên HF',
-  'ai-hf-en':        'HF Trending Models',
   'ai-community':    'AI trong cộng đồng công nghệ',
   'ai-community-en': 'Tech Community AI',
 };
+const PUBLISHED = new Set(Object.keys(LABELS));
 
 // ── Theme ──
 const htmlEl = document.documentElement;
@@ -652,8 +646,15 @@ window.addEventListener('popstate', () => {
   try {
     const res = await fetch('./manifest.json');
     if (!res.ok) throw new Error('manifest.json not found');
-    const { dates } = await res.json();
-    if (!dates?.length) throw new Error('manifest is empty');
+    const data = await res.json();
+    // Drop archived report ids even if the committed manifest still lists them.
+    const dates = (data.dates || [])
+      .map((entry) => ({
+        ...entry,
+        reports: (entry.reports || []).filter((r) => PUBLISHED.has(r)),
+      }))
+      .filter((entry) => entry.reports.length > 0);
+    if (!dates.length) throw new Error('manifest is empty');
 
     buildNav(dates);
 

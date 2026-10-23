@@ -196,3 +196,36 @@ export const NOTIFY_LABELS: Record<string, Record<Lang, string>> = {
   "ai-hf": t("Mô hình HF", "HF Models"),
   "ai-community": t("Cộng đồng công nghệ", "Tech Community"),
 };
+
+// ---------------------------------------------------------------------------
+// Published reports
+// ---------------------------------------------------------------------------
+
+/**
+ * Reports still generated and published. Everything else on disk is history:
+ * keep the old files and issues, but do not list them in the manifest, RSS
+ * feed, Telegram message or sidebar.
+ */
+export const PUBLISHED_REPORTS = ["ai-cli", "ai-trending", "ai-web", "ai-hn", "ai-community"] as const;
+
+/** Published report files: Vietnamese (base id) and English (`-en`). */
+export const PUBLISHED_REPORT_FILES: readonly string[] = PUBLISHED_REPORTS.flatMap((id) => [id, `${id}-en`]);
+
+// ---------------------------------------------------------------------------
+// Telegram message (Vietnamese only — English is still readable on the web)
+// ---------------------------------------------------------------------------
+
+/**
+ * Telegram section headings, in message order. Keyed by report id; a section
+ * is only rendered when that report has highlights for the day.
+ */
+export const NOTIFY_SECTIONS: Record<string, Record<Lang, string>> = {
+  "ai-cli": t("🛠 Công cụ AI", "🛠 AI tools"),
+  "ai-trending": t("⭐ Open-source đáng thử", "⭐ Open-source worth a look"),
+  "ai-hn": t("📰 Tin công nghệ", "📰 Tech news"),
+  "ai-web": t("📢 Tin chính thức", "📢 Official news"),
+  "ai-community": t("💬 Kinh nghiệm cộng đồng", "💬 Community lessons"),
+};
+
+export const NOTIFY_TITLE = t("📡 Bản tin công nghệ", "📡 Tech digest");
+export const NOTIFY_READ_MORE = t("Đọc chi tiết", "Read more");

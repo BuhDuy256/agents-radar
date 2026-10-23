@@ -119,6 +119,10 @@ Files written to `digests/YYYY-MM-DD/`:
 ## Key conventions
 
 - All bilingual strings (titles, labels, footers, messages) are centralized in `src/i18n.ts`. Use the `Lang` type (`"vi" | "en"`) and `Record<Lang, string>` maps. Do not add inline bilingual ternaries elsewhere.
+- Publishing is allowlisted by `PUBLISHED_REPORTS` in `src/i18n.ts` (`ai-cli`, `ai-trending`, `ai-web`, `ai-hn`, `ai-community`). `generate-manifest.ts` derives manifest/RSS entries from `PUBLISHED_REPORT_FILES`, so archived reports (arxiv, hf, ph, agents, infra, weekly/monthly) stay in `digests/` as history but are not listed in the manifest, RSS, Telegram or sidebar. `index.html` keeps its own `LABELS`/`PUBLISHED` copy in sync.
+- Telegram (`src/notify.ts`) is Vietnamese-only: at most 3 highlights per section, one `Đọc chi tiết` link per section, sections without highlights dropped, message trimmed to 3,500 chars by removing whole trailing highlights (never cutting HTML). It sends nothing when the latest manifest date is not today (CST) or when no section has a highlight.
+- `buildHighlightsPrompt` reads a short slice of **every** section of a report (`excerptReport`, 12,000-char budget) instead of the first 2,000 characters, asks for at most 3 distinct news items, and forbids overstating PR status: OPEN → "đề xuất/đang phát triển", merged without a release → "đã merge", "đã phát hành" only with release evidence.
+- `src/index.ts` builds the highlights input from the saver return values (`BilingualBody | null`) of the current run, not from files on disk, so a leftover report from an earlier run on the same day is never picked up.
 - Report **bodies** are not bilingual strings — they are generated in English and translated (see "English-first generation"). Never add a second generation call to produce Vietnamese.
 - `translateToVi(text, maxTokens)` must be passed the same token budget the English body was generated with, or a long report gets truncated mid-translation.
 - LLM prompt builders are split across two files: `src/prompts.ts` (repo-level prompts) and `src/prompts-data.ts` (data-source prompts). Each report type has its own builder function.

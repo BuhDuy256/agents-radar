@@ -680,6 +680,7 @@ Rules:
 - Keep every key exactly as-is. Keep the array lengths and nesting identical.
 - Translate only the string values.
 - Keep project names, repository slugs, version tags and numbers in their original form.
+- Do not change numbers, dates or status wording: keep "đề xuất/đang phát triển" for open PRs, "đã merge" for merged-but-unreleased, "đã phát hành/hỗ trợ" only where the source says so.
 - Each highlight must be a short Vietnamese sentence of at most 25 words.
 `;
 }

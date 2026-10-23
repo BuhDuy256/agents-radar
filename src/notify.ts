@@ -12,7 +12,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { NOTIFY_LABELS } from "./i18n.ts";
+import { NOTIFY_READ_MORE, NOTIFY_SECTIONS, NOTIFY_TITLE } from "./i18n.ts";
+import { toCstDateStr } from "./date.ts";
 import type { ReportHighlights } from "./prompts-data.ts";
 
 export interface Highlights {
@@ -30,6 +31,12 @@ export interface LegacyHighlights extends Partial<Highlights> {
 }
 
 const PAGES_URL_DEFAULT = "https://buhduy256.github.io/agents-radar";
+
+/** Telegram rejects messages over 4096 UTF-16 chars; leave room for encoding. */
+export const TELEGRAM_MAX_CHARS = 3_500;
+
+/** Ceiling per section, even if highlights.json still carries older, longer lists. */
+const MAX_HIGHLIGHTS_PER_SECTION = 3;
 
 function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -55,6 +62,20 @@ async function sendTelegram(text: string): Promise<void> {
   }
 }
 
+interface Section {
+  id: string;
+  title: string;
+  items: string[];
+}
+
+/**
+ * Build the Vietnamese Telegram message.
+ *
+ * Only published reports are considered (`NOTIFY_SECTIONS`), a section is
+ * dropped when it has no usable highlight, and the message is shortened by
+ * removing whole trailing highlights — never by cutting HTML or a link.
+ * Returns an empty string when there is nothing worth sending.
+ */
 export function buildMessage(
   date: string,
   reports: string[],
@@ -62,40 +83,44 @@ export function buildMessage(
   highlights?: Highlights | LegacyHighlights | null,
 ): string {
   const PAGES_URL = (pagesUrl ?? process.env["PAGES_URL"] ?? PAGES_URL_DEFAULT).replace(/\/$/, "");
-  const ordered = reports.filter((r) => !r.endsWith("-en"));
-  const lines: string[] = [`📡 <b>agents-radar · ${date}</b>`];
-
   const viHighlights = highlights?.vi ?? {};
   const enHighlights = highlights?.en ?? {};
   // Old files may carry a `zh` key; it is deliberately ignored — Vietnamese is
   // the primary language now, and English is the only valid fallback.
 
-  for (const r of ordered) {
-    const viLabel = NOTIFY_LABELS[r]?.vi ?? r;
-    const viUrl = `${PAGES_URL}/#${date}/${r}`;
-    const enKey = `${r}-en`;
-
-    lines.push(""); // blank line before each report section
-    if (reports.includes(enKey)) {
-      const enLabel = NOTIFY_LABELS[r]?.en ?? "EN";
-      const enUrl = `${PAGES_URL}/#${date}/${enKey}`;
-      lines.push(`• <a href="${viUrl}">${viLabel}</a>  ·  <a href="${enUrl}">${enLabel}</a>`);
-    } else {
-      lines.push(`• <a href="${viUrl}">${viLabel}</a>`);
-    }
-
-    // Add highlights as indented sub-items. Fall back to en when a report's vi
-    // highlights are missing so a single-language failure never blanks the message.
-    const items = viHighlights[r] ?? enHighlights[r];
-    if (items?.length) {
-      for (const h of items) {
-        lines.push(`  ◦ ${escapeHtml(h)}`);
-      }
-    }
+  const sections: Section[] = [];
+  for (const [id, titles] of Object.entries(NOTIFY_SECTIONS)) {
+    if (!reports.includes(id)) continue;
+    const raw = viHighlights[id]?.length ? viHighlights[id] : enHighlights[id];
+    const items = (raw ?? []).map((h) => h.trim()).filter((h) => h.length > 0);
+    const unique = [...new Set(items)].slice(0, MAX_HIGHLIGHTS_PER_SECTION);
+    if (unique.length) sections.push({ id, title: titles.vi, items: unique });
   }
 
-  lines.push(`\n<a href="${PAGES_URL}">🌐 Web UI</a>  ·  <a href="${PAGES_URL}/feed.xml">⊕ RSS</a>`);
-  return lines.join("\n");
+  if (sections.length === 0) return "";
+
+  const header = `${NOTIFY_TITLE.vi} · ${date}`;
+  const render = (): string => {
+    const blocks = sections.map((s) =>
+      [
+        s.title,
+        ...s.items.map((item) => `• ${escapeHtml(item)}`),
+        `<a href="${PAGES_URL}/#${date}/${s.id}">${NOTIFY_READ_MORE.vi}</a>`,
+      ].join("\n"),
+    );
+    return [header, ...blocks].join("\n\n");
+  };
+
+  let text = render();
+  // Too long: drop the last whole highlight and re-render. Removing the final
+  // item of a section drops the section itself, so no empty heading is sent.
+  while (text.length > TELEGRAM_MAX_CHARS && sections.length > 0) {
+    const last = sections[sections.length - 1]!;
+    last.items.pop();
+    if (last.items.length === 0) sections.pop();
+    text = render();
+  }
+  return text;
 }
 
 async function main(): Promise<void> {
@@ -121,6 +146,13 @@ async function main(): Promise<void> {
   }
   const { date, reports } = latest;
 
+  // A digest folder that is not today's is yesterday's news — never re-send it.
+  const today = toCstDateStr(new Date());
+  if (date !== today) {
+    console.log(`[notify] Latest digest is ${date}, not today (${today}) — skipping.`);
+    return;
+  }
+
   // Load highlights if available
   let highlights: Highlights | LegacyHighlights | null = null;
   const highlightsPath = path.join("digests", date, "highlights.json");
@@ -128,13 +160,18 @@ async function main(): Promise<void> {
     try {
       highlights = JSON.parse(fs.readFileSync(highlightsPath, "utf-8")) as Highlights | LegacyHighlights;
     } catch {
-      console.log("[notify] Failed to parse highlights.json — sending without highlights.");
+      console.log("[notify] Failed to parse highlights.json — skipping (nothing to report).");
+      return;
     }
   }
 
   const text = buildMessage(date, reports, undefined, highlights);
+  if (!text) {
+    console.log(`[notify] No usable highlights for ${date} — skipping.`);
+    return;
+  }
 
-  console.log(`[notify] Sending Telegram message for ${date} (${reports.length} reports)…`);
+  console.log(`[notify] Sending Telegram message for ${date} (${text.length} chars)…`);
   await sendTelegram(text);
   console.log("[notify] Done!");
 }

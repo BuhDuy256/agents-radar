@@ -248,33 +248,62 @@ export interface ReportHighlights {
   [reportId: string]: string[];
 }
 
+/** Total excerpt budget fed to the highlights prompt for one report. */
+export const HIGHLIGHTS_INPUT_LIMIT = 12_000;
+/** Default highlight ceiling per report. Fewer is allowed. */
+export const HIGHLIGHTS_PER_REPORT = 3;
+
+/**
+ * Keep a short slice of every section instead of the opening characters only,
+ * so the end of a long report (where the day's releases usually are) is also
+ * considered. No extra LLM call is involved — this is a plain text slice.
+ */
+export function excerptReport(content: string, limit = HIGHLIGHTS_INPUT_LIMIT): string {
+  if (content.length <= limit) return content;
+
+  const sections = content.split(/\n(?=#{1,3} )/).filter((s) => s.trim());
+  const budget = Math.max(200, Math.floor(limit / Math.max(sections.length, 1)) - 2);
+
+  let out = "";
+  for (const section of sections) {
+    const part = section.length <= budget ? section : `${section.slice(0, budget).trimEnd()} …`;
+    if (out.length + part.length + 2 > limit) break;
+    out += (out ? "\n\n" : "") + part;
+  }
+  return out || content.slice(0, limit);
+}
+
 export function buildHighlightsPrompt(
   reportContents: Record<string, string>,
   lang: Lang = "vi",
-  itemsPerReport: number = 6,
+  itemsPerReport: number = HIGHLIGHTS_PER_REPORT,
 ): string {
   const sections = Object.entries(reportContents)
-    .map(([id, content]) => `## [${id}]\n\n${content.slice(0, 2000)}`)
+    .map(([id, content]) => `## [${id}]\n\n${excerptReport(content)}`)
     .join("\n\n---\n\n");
 
   if (lang === "en") {
-    return `You are a concise news editor. The following are today's AI ecosystem report excerpts, each labeled with a report ID.
+    return `You are a concise news editor. The following are excerpts from today's AI ecosystem reports, each labeled with a report ID.
 
 ${sections}
 
 ---
 
-For each report, extract ${itemsPerReport} of the most noteworthy highlights — the kind that would make a reader want to click through. Each highlight should be a single short sentence (under 60 characters).
+For each report, pick up to ${itemsPerReport} highlights: the most noteworthy, *distinct* news items — the kind that would make a reader click through.
 
 Return ONLY valid JSON, no markdown fences, no explanation. Format:
-{"ai-cli":["highlight 1","highlight 2",...],"ai-trending":["highlight 1","highlight 2",...],...}
+{"ai-cli":["highlight 1","highlight 2"],"ai-trending":["highlight 1"],...}
 
 Rules:
 - Use the exact report IDs from the [brackets] above as keys
-- Only include reports that have meaningful content (skip reports with failure messages or no activity)
-- ${itemsPerReport} highlights per report, each under 60 characters
-- Focus on: new releases, notable features, trending projects, key discussions
-- Be specific: include project names, version numbers, star counts where relevant`;
+- Only include reports that have meaningful content (skip failure messages, no activity, empty sections)
+- At most ${itemsPerReport} highlights per report — fewer is correct when the report has less news; never pad or repeat to fill the quota
+- One news item per highlight: do not split several numbers or facts from the same article/tool into separate highlights
+- Each highlight is one short sentence of at most 25 words
+- Skip introductory sentences that only list the tracked tools/sources — they are not news
+- Do not add facts that are not stated in the report (no invented versions, counts, dates or benefits)
+- Keep the report's status wording: an OPEN pull request is "Proposed…" or "In development…" — never "released". A merged PR without a confirmed release is "Merged…". Say "released"/"supports" only when the report cites a release
+- Keep numbers, dates and statuses exactly as written in the report`;
   }
 
   return `Bạn là biên tập viên tin tức ngắn gọn. Dưới đây là trích đoạn báo cáo hệ sinh thái AI hôm nay, mỗi báo cáo được gắn ID.
@@ -283,18 +312,22 @@ ${sections}
 
 ---
 
-Với mỗi báo cáo, hãy chọn ${itemsPerReport} điểm nổi bật đáng chú ý nhất — loại khiến người đọc muốn bấm vào xem. Mỗi điểm là một câu tiếng Việt ngắn, tối đa 25 từ.
+Với mỗi báo cáo, hãy chọn tối đa ${itemsPerReport} điểm nổi bật đáng chú ý nhất — mỗi điểm là một tin khác nhau, loại khiến người đọc muốn bấm vào xem.
 
 Chỉ trả về JSON hợp lệ, không dùng khối mã markdown, không giải thích. Định dạng:
-{"ai-cli":["điểm 1","điểm 2",...],"ai-trending":["điểm 1","điểm 2",...],...}
+{"ai-cli":["điểm 1","điểm 2"],"ai-trending":["điểm 1"],...}
 
 Quy tắc:
 - Dùng đúng ID báo cáo trong [ngoặc vuông] ở trên làm key
-- Chỉ gồm báo cáo có nội dung thực chất (bỏ báo cáo lỗi hoặc không có hoạt động)
-- ${itemsPerReport} điểm mỗi báo cáo, mỗi điểm tối đa 25 từ
-- Tập trung vào: bản phát hành mới, tính năng quan trọng, dự án nổi bật, thảo luận then chốt
-- Nêu cụ thể: tên dự án, số phiên bản, số star... khi có
-- Mỗi điểm phải viết bằng tiếng Việt; kể cả khi nguồn (tiêu đề bài báo, tên mô hình, tiêu đề thảo luận...) là tiếng Anh cũng phải dịch sang tiếng Việt, chỉ giữ nguyên tiếng Anh cho tên riêng như tên dự án, tên mô hình, tên sản phẩm; không sao chép nguyên câu tiếng Anh`;
+- Chỉ gồm báo cáo có nội dung thực chất (bỏ báo cáo lỗi, không có hoạt động hoặc rỗng)
+- Tối đa ${itemsPerReport} điểm mỗi báo cáo — ít hơn là đúng khi báo cáo có ít tin; không cố cho đủ số lượng và không lặp lại một tin
+- Mỗi điểm là một tin riêng: không tách nhiều số liệu của cùng một bài/công cụ thành nhiều điểm
+- Mỗi điểm là một câu tiếng Việt dễ hiểu, tối đa 25 từ
+- Không chọn câu giới thiệu chỉ liệt kê các công cụ/nguồn đang được theo dõi — đó không phải tin
+- Không thêm chi tiết ngoài báo cáo (không tự thêm phiên bản, số lượng, ngày tháng hay lợi ích)
+- Mỗi điểm phải viết bằng tiếng Việt; dịch cả tiêu đề bài báo tiếng Anh, chỉ giữ nguyên tên riêng (dự án, mô hình, sản phẩm)
+- Giữ đúng trạng thái trong báo cáo: PR đang OPEN thì viết "Đề xuất…" hoặc "Đang phát triển…", tuyệt đối không viết "đã phát hành"; PR đã merge nhưng chưa xác nhận release thì viết "Đã merge…"; chỉ viết "đã phát hành/hỗ trợ" khi báo cáo có căn cứ release
+- Không đổi số liệu, ngày tháng hoặc trạng thái so với báo cáo`;
 }
 
 function hostOf(url: string): string {

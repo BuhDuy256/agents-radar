@@ -15,7 +15,7 @@ import path from "node:path";
 import { callLlm, parseLlmJson } from "../src/report.ts";
 import { buildHighlightsPrompt, type ReportHighlights } from "../src/prompts-data.ts";
 import { buildMessage } from "../src/notify.ts";
-import type { Lang } from "../src/i18n.ts";
+import { PUBLISHED_REPORTS, type Lang } from "../src/i18n.ts";
 
 const DATE = process.argv[2] && !process.argv[2].startsWith("-") ? process.argv[2] : null;
 const NOTIFY = process.argv.includes("--notify");
@@ -38,7 +38,7 @@ async function main() {
 
   console.log(`Regenerating highlights for ${dateStr}...`);
 
-  const reportIds = ["ai-cli", "ai-web", "ai-trending", "ai-hn", "ai-community"];
+  const reportIds = PUBLISHED_REPORTS;
 
   // Read reports
   const viReports: Record<string, string> = {};

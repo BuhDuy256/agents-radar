@@ -97,8 +97,9 @@ export async function saveWebReport(
   utcStr: string,
   dateStr: string,
   digestRepo: string,
-): Promise<void> {
+): Promise<BilingualBody | null> {
   const hasNewContent = webResults.some((r) => r.newItems.length > 0);
+  let body: BilingualBody | null = null;
 
   if (hasNewContent) {
     console.log("  [web] Calling LLM for web content report (EN) + translation (VI)...");
@@ -138,6 +139,7 @@ export async function saveWebReport(
           console.log(`  Created web issue (${lang}): ${webUrl}`);
         }
       }
+      body = summary;
     } catch (err) {
       console.error(`  [web] Report generation failed: ${err}`);
     }
@@ -147,6 +149,7 @@ export async function saveWebReport(
 
   saveWebState(webState);
   console.log("  [web] State saved.");
+  return body;
 }
 
 // ---------------------------------------------------------------------------
@@ -159,11 +162,11 @@ export async function saveTrendingReport(
   utcStr: string,
   dateStr: string,
   digestRepo: string,
-): Promise<void> {
+): Promise<BilingualBody | null> {
   const hasData = trendingData.trendingRepos.length > 0 || trendingData.searchRepos.length > 0;
   if (!hasData) {
     console.log("  [trending] No data available, skipping report.");
-    return;
+    return null;
   }
 
   for (const lang of LANGS) {
@@ -183,6 +186,7 @@ export async function saveTrendingReport(
       console.log(`  Created trending issue (${lang}): ${trendingUrl}`);
     }
   }
+  return trendingSummary;
 }
 
 // ---------------------------------------------------------------------------
@@ -194,10 +198,10 @@ export async function saveHnReport(
   utcStr: string,
   dateStr: string,
   digestRepo: string,
-): Promise<void> {
+): Promise<BilingualBody | null> {
   if (!hnData.fetchSuccess || hnData.stories.length === 0) {
     console.log("  [hn] No data available, skipping report.");
-    return;
+    return null;
   }
 
   // 1. Shortlist: one LLM pass that only picks ids, then a keyword fallback.
@@ -215,13 +219,14 @@ export async function saveHnReport(
   }
   if (selected.length === 0) {
     console.log("  [hn] Nothing matched the preferred topics, skipping report.");
-    return;
+    return null;
   }
 
   // 2. Fetch only the shortlisted articles' content.
   const articles = await fetchHnArticles(selected);
 
   console.log("  [hn] Calling LLM for HN report (EN) + translation (VI)...");
+  let body: BilingualBody | null = null;
   try {
     const summary = await bilingualBody(buildHnPrompt(articles, dateStr, "en"), LLM_TOKENS_LISTING);
 
@@ -249,9 +254,11 @@ export async function saveHnReport(
         console.log(`  Created HN issue (${lang}): ${hnUrl}`);
       }
     }
+    body = summary;
   } catch (err) {
     console.error(`  [hn] Report generation failed: ${err}`);
   }
+  return body;
 }
 
 // ---------------------------------------------------------------------------
@@ -408,11 +415,11 @@ export async function saveCommunityReport(
   utcStr: string,
   dateStr: string,
   digestRepo: string,
-): Promise<void> {
+): Promise<BilingualBody | null> {
   const hasData = devtoData.fetchSuccess || lobstersData.fetchSuccess;
   if (!hasData) {
     console.log("  [community] No data available, skipping report.");
-    return;
+    return null;
   }
 
   // 1. Shortlist: one LLM pass that only picks ids, then a keyword fallback.
@@ -431,13 +438,14 @@ export async function saveCommunityReport(
   }
   if (selected.length === 0) {
     console.log("  [community] Nothing matched the preferred topics, skipping report.");
-    return;
+    return null;
   }
 
   // 2. Read the selected pieces before asking for a summary.
   const items = await fetchCommunityContent(selected);
 
   console.log("  [community] Calling LLM for community report (EN) + translation (VI)...");
+  let body: BilingualBody | null = null;
   try {
     const summary = await bilingualBody(buildCommunityPrompt(items, dateStr, "en"), LLM_TOKENS_LISTING);
 
@@ -463,7 +471,9 @@ export async function saveCommunityReport(
         console.log(`  Created community issue (${lang}): ${url}`);
       }
     }
+    body = summary;
   } catch (err) {
     console.error(`  [community] Report generation failed: ${err}`);
   }
+  return body;
 }

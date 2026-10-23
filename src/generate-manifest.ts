@@ -1,41 +1,17 @@
 import fs from "fs";
 import path from "path";
 import { marked } from "marked";
-import { REPORT_LABELS } from "./i18n.ts";
+import { PUBLISHED_REPORT_FILES, REPORT_LABELS } from "./i18n.ts";
 
 const DIGESTS_DIR = "digests";
 const MANIFEST_PATH = "manifest.json";
 const FEED_PATH = "feed.xml";
 const SITE_URL = "https://buhduy256.github.io/agents-radar";
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-const REPORT_FILES = [
-  "ai-cli",
-  "ai-cli-en",
-  "ai-agents",
-  "ai-agents-en",
-  "ai-infra",
-  "ai-infra-en",
-  "ai-web",
-  "ai-web-en",
-  "ai-trending",
-  "ai-trending-en",
-  "ai-hn",
-  "ai-hn-en",
-  "ai-ph",
-  "ai-ph-en",
-  "ai-arxiv",
-  "ai-arxiv-en",
-  "ai-hf",
-  "ai-hf-en",
-  "ai-community",
-  "ai-community-en",
-  // Rollups are no longer generated — listed only so archived reports stay
-  // reachable from the sidebar and RSS feed.
-  "ai-weekly",
-  "ai-weekly-en",
-  "ai-monthly",
-  "ai-monthly-en",
-] as const;
+// Only reports that are still generated are listed. Older files (arxiv, hf,
+// ph, agents, infra, weekly/monthly rollups) stay in digests/ as history but
+// must not reappear in the manifest, RSS feed or sidebar.
+const REPORT_FILES = PUBLISHED_REPORT_FILES;
 const MAX_FEED_ITEMS = 30;
 
 /** RSS channel metadata. Vietnamese is the primary language. */

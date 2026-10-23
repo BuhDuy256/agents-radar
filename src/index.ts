@@ -9,8 +9,6 @@
  * Provider-specific env vars — see src/providers/ for full list.
  */
 
-import fs from "node:fs";
-import path from "node:path";
 import {
   type GitHubItem,
   type RepoFetch,
@@ -334,7 +332,9 @@ async function main(): Promise<void> {
     en: enSummaries.trendingSummary,
   };
 
-  await Promise.all([
+  // Saver return values (not the files on disk) decide what this run produced:
+  // a leftover file from an earlier run on the same day must not feed highlights.
+  const [webBody, trendingBody, hnBody, communityBody] = await Promise.all([
     saveWebReport(webResults, webState, utcStr, dateStr, digestRepo),
     saveTrendingReport(trendingData, trendingSummaries, utcStr, dateStr, digestRepo),
     saveHnReport(hnData, utcStr, dateStr, digestRepo),
@@ -348,22 +348,18 @@ async function main(): Promise<void> {
   assertLlmHealthy("report");
 
   // 4. Generate highlights for Telegram notification
-  const readReport = (name: string): string | undefined => {
-    const p = path.join("digests", dateStr, name);
-    return fs.existsSync(p) ? fs.readFileSync(p, "utf-8") : undefined;
-  };
-
-  // Highlights are extracted from the English reports only — the Vietnamese set is
-  // translated from the result, so the Vietnamese files are never re-read here.
+  // Highlights are extracted from the English bodies only — the Vietnamese set is
+  // translated from the result. Bodies come straight from this run's savers, so
+  // reports that were skipped or failed are absent instead of being read back
+  // from an older file.
   const enReports: Record<string, string> = { "ai-cli": cliContent.en };
-  for (const [id, enFile] of [
-    ["ai-trending", "ai-trending-en.md"],
-    ["ai-web", "ai-web-en.md"],
-    ["ai-hn", "ai-hn-en.md"],
-    ["ai-community", "ai-community-en.md"],
+  for (const [id, body] of [
+    ["ai-trending", trendingBody],
+    ["ai-web", webBody],
+    ["ai-hn", hnBody],
+    ["ai-community", communityBody],
   ] as const) {
-    const en = readReport(enFile);
-    if (en) enReports[id] = en;
+    if (body) enReports[id] = body.en;
   }
 
   console.log("  Generating highlights for Telegram...");
