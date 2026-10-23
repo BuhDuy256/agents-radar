@@ -15,7 +15,7 @@ import { pathToFileURL } from "node:url";
 import { NOTIFY_LABELS } from "./i18n.ts";
 import type { Highlights, LegacyHighlights } from "./notify.ts";
 
-const PAGES_URL_DEFAULT = "https://duanyytop.github.io/agents-radar";
+const PAGES_URL_DEFAULT = "https://buhduy256.github.io/agents-radar";
 
 function getWebhookUrls(): string[] {
   const raw = process.env["FEISHU_WEBHOOK_URLS"] ?? process.env["FEISHU_WEBHOOK_URL"] ?? "";

@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>agents-radar</title>
-    <link>https://duanyytop.github.io/agents-radar</link>
+    <link>https://buhduy256.github.io/agents-radar</link>
     <description>Bản tin AI mã nguồn mở hằng ngày · Daily AI ecosystem digest</description>
     <language>vi-VN</language>
-    <atom:link href="https://duanyytop.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 23 Oct 2026 03:58:38 +0000</lastBuildDate>
+    <atom:link href="https://buhduy256.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Fri, 23 Oct 2026 04:23:05 +0000</lastBuildDate>
     <item>
       <title>Bản tin cộng đồng công cụ AI CLI 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-cli</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-cli</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-cli</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-cli</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Bản tin cộng đồng công cụ AI CLI 2026-10-23 Tạo lúc: 2026-10-23 03:54 UTC | Công cụ theo dõi: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills So sánh chéo công cụ Báo cáo So sánh Giữa các Công cụ — Hệ sinh thái AI CLI Ngày: 2026-10-23 | Nguồn: Tổng hợp từ cộng đồng GitHub cho 7 công cụ AI CLI lớn 1. Tổng quan Hệ sinh thái Bối cảnh AI CLI giờ đây đã là một hệ sinh thái trưởng thành với bảy công cụ trở lên, nơi tính ổn định và tăng cường bảo mật đã...</description>
       <content:encoded><![CDATA[<h1>Bản tin cộng đồng công cụ AI CLI 2026-10-23</h1>
@@ -940,8 +940,8 @@ Animate mượt timeline desktop trong phiên thay vì giật theo frame (code +
     </item>
     <item>
       <title>AI CLI Tools Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-cli-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-cli-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-cli-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-cli-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI CLI Tools Community Digest 2026-10-23 Generated: 2026-10-23 03:54 UTC | Tools covered: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills Cross-Tool Comparison Cross-Tool Comparison Report — AI CLI Ecosystem Date: 2026-10-23 | Sources: GitHub community digests for 7 major AI CLI tools 1. Ecosystem Overview The AI CLI landscape is now a mature, seven-plus-tool ecosystem where stability and security hardening have displaced raw feature velocity as ...</description>
       <content:encoded><![CDATA[<h1>AI CLI Tools Community Digest 2026-10-23</h1>
@@ -1876,8 +1876,8 @@ Smoothly animates the desktop timeline during sessions instead of snapping per f
     </item>
     <item>
       <title>Bản tin hệ sinh thái AI Agents 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-agents</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-agents</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-agents</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-agents</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Bản tin hệ sinh thái OpenClaw 2026-10-23 Issues: 500 | PRs: 500 | Dự án theo dõi: 5 | Tạo lúc: 2026-10-23 03:54 UTC OpenClaw Hermes Agent IronClaw QwenPaw ZeroClaw Báo cáo chuyên sâu dự án OpenClaw Tóm tắt Dự án OpenClaw — 2026-10-23 1. Tổng quan hôm nay OpenClaw cho thấy mức độ hoạt động liên tục rất cao: 500 issue và 500 PR được cập nhật trong 24 giờ qua, với 211 issue đã đóng và 232 PR đã merge/đóng. Một bản phát hành vá duy nhất (v2026.10.6) đã ra mắt, chủ yếu là nâng cấp runtime Node vì lý ...</description>
       <content:encoded><![CDATA[<h1>Bản tin hệ sinh thái OpenClaw 2026-10-23</h1>
@@ -2650,8 +2650,8 @@ Fixture test tạo symlink <code>nul</code>; panic trên FS kiểu macOS/Windows
     </item>
     <item>
       <title>AI Agents Ecosystem Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-agents-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-agents-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-agents-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-agents-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw Ecosystem Digest 2026-10-23 Issues: 500 | PRs: 500 | Projects covered: 5 | Generated: 2026-10-23 03:54 UTC OpenClaw Hermes Agent IronClaw QwenPaw ZeroClaw OpenClaw Deep Dive OpenClaw Project Digest — 2026-10-23 1. Today&amp;#39;s Overview OpenClaw shows very high sustained activity: 500 issues and 500 PRs updated in the last 24 hours, with 211 issues closed and 232 PRs merged/closed. A single patch release (v2026.10.6) landed, primarily a security-driven Node runtime bump in response to the...</description>
       <content:encoded><![CDATA[<h1>OpenClaw Ecosystem Digest 2026-10-23</h1>
@@ -3547,8 +3547,8 @@ Test fixture creates <code>nul</code> symlink; panics on macOS/Windows-style FS.
     </item>
     <item>
       <title>Bản tin hạ tầng AI 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-infra</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-infra</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-infra</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-infra</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Bản tin hạ tầng AI 2026-10-23 Tạo lúc: 2026-10-23 03:54 UTC | Dự án theo dõi: 6 vLLM SGLang llama.cpp Ollama LiteLLM Unsloth So sánh chéo dự án Báo cáo so sánh liên dự án — Hệ sinh thái hạ tầng AI Ngày tổng hợp: 2026-10-23 1. Tổng quan hệ sinh thái Bức tranh hạ tầng AI hôm nay được định hình không phải bởi các bản phát hành mới, mà bởi việc gia cố tính đúng đắn dưới tải lớn. Trên hai engine phục vụ chủ lực (vLLM và SGLang), các vấn đề nghiêm trọng nhất đều là lỗi hỏng dữ liệu âm thầm trong phục ...</description>
       <content:encoded><![CDATA[<h1>Bản tin hạ tầng AI 2026-10-23</h1>
@@ -4265,8 +4265,8 @@ RERANK giờ đây chấp nhận các phần nội dung có kiểu (kiểu đa p
     </item>
     <item>
       <title>AI Infrastructure Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-infra-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-infra-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-infra-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-infra-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI Infrastructure Digest 2026-10-23 Generated: 2026-10-23 03:54 UTC | Projects covered: 6 vLLM SGLang llama.cpp Ollama LiteLLM Unsloth Cross-Project Comparison Cross-Project Comparison Report — AI Infrastructure Ecosystem Digest date: 2026-10-23 1. Ecosystem Overview Today&amp;#39;s AI infrastructure landscape is defined less by new releases than by correctness hardening under scale. Across the two flagship serving engines (vLLM and SGLang), the highest-severity items are silent-corruption bugs in d...</description>
       <content:encoded><![CDATA[<h1>AI Infrastructure Digest 2026-10-23</h1>
@@ -5024,8 +5024,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Báo cáo theo dõi nội dung chính thức AI 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-web</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-web</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-web</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-web</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI 官方内容追踪报告 2026-10-23 今日更新 | 新增内容: 6 篇 | 生成时间: 2026-10-23 01:05 UTC 数据来源: Anthropic: anthropic.com — 新增 4 篇（sitemap 共 480 条） OpenAI: openai.com — 新增 2 篇（sitemap 共 1082 条） AI官方内容追踪报告日期：2026-10-23来源：anthropic.com, openai.com（爬取时间：2026-10-23） 1. 今日亮点 Anthropic 发布了一项重大研究突破，证明大型语言模型（特别是 Claude）现在能够在真实世界开源库中以规模化方式执行形式化软件验证，精确到 RISC-V 汇编级别——这一成就此前被认为在无多年专家投入的情况下不切实际。这一里程碑标志着向由人工智能辅助、可证明安全的软件开发模式的关键转变，即使经过数万亿次测试，Claude 仍发现了长期隐藏的漏洞。与此同时，Anthropic 启动了面向生命科学研究人员的开放招募计划，通过其“访客研究员项目”开展合作，彰显其在人工智能驱动科学发现领域的深入...</description>
       <content:encoded><![CDATA[<h1>AI 官方内容追踪报告 2026-10-23</h1>
@@ -5109,8 +5109,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Official AI Content Report 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-web-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-web-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-web-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-web-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Official AI Content Report 2026-10-23 Today&amp;#39;s update | New content: 6 articles | Generated: 2026-10-23 01:05 UTC Sources: Anthropic: anthropic.com — 4 new articles (sitemap total: 480) OpenAI: openai.com — 2 new articles (sitemap total: 1082) AI Official Content Tracking ReportDate: 2026-10-23Sources: anthropic.com, openai.com (crawled 2026-10-23) 1. Today&amp;#39;s Highlights Anthropic has released a major research breakthrough demonstrating that LLMs—specifically Claude—can now perform formal ...</description>
       <content:encoded><![CDATA[<h1>Official AI Content Report 2026-10-23</h1>
@@ -5194,8 +5194,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Xu hướng mã nguồn mở AI 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-trending</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-trending</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-trending</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-trending</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Xu hướng mã nguồn mở AI 2026-10-23 Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-10-23 03:54 UTC Báo cáo Xu hướng AI Mã nguồn Mở — 2026-10-23 1. Điểm nổi bật hôm nay Tín hiệu GitHub hôm nay bị chi phối bởi kỹ năng agent và kỹ thuật ngữ cảnh. Hai repo kiểu kỹ năng — cloudflare/security-audit-skill (+2,979) và Graphify-Labs/graphify (+1,408) — là những dự án liên quan AI tăng trưởng mạnh nhất trong ngày, cả hai đều được đóng gói dưới dạng &amp;quot;kỹ năng&amp;quot; plug-in cho các co...</description>
       <content:encoded><![CDATA[<h1>Xu hướng mã nguồn mở AI 2026-10-23</h1>
@@ -5498,8 +5498,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>AI Open Source Trends 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-trending-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-trending-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-trending-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-trending-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI Open Source Trends 2026-10-23 Sources: GitHub Trending + GitHub Search API | Generated: 2026-10-23 03:54 UTC AI Open Source Trends Report — 2026-10-23 1. Today&amp;#39;s Highlights Today&amp;#39;s GitHub signal is dominated by agent skills and context engineering. Two skill-style repos — cloudflare/security-audit-skill (+2,979) and Graphify-Labs/graphify (+1,408) — are the day&amp;#39;s biggest AI-adjacent movers, both packaged as plug-in &amp;quot;skills&amp;quot; for coding agents (Claude Code, Cursor, Codex, ...</description>
       <content:encoded><![CDATA[<h1>AI Open Source Trends 2026-10-23</h1>
@@ -5791,8 +5791,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin cộng đồng Hacker News AI 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-hn</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-hn</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-hn</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-hn</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Bản tin cộng đồng Hacker News AI 2026-10-23 Nguồn dữ liệu: Hacker News | 30 bài | Tạo lúc: 2026-10-23 03:54 UTC Hacker News AI Community Digest — 2026-10-23 1. Điểm nổi bật hôm nay Bảng tin AI trên HN chủ yếu xoay quanh hạ tầng và độ tin cậy của agent thay vì năng lực thuần túy của mô hình. OpenShell của NVIDIA (Hạng 5, 328 điểm) và nhiều Show HN về kiểm thử/kiểm soát truy cập agent cho thấy cộng đồng đã vượt qua câu hỏi &amp;quot;agent có hoạt động được không?&amp;quot; để chuyển sang &amp;quot;làm sao vận...</description>
       <content:encoded><![CDATA[<h1>Bản tin cộng đồng Hacker News AI 2026-10-23</h1>
@@ -5961,8 +5961,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Hacker News AI Community Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-hn-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-hn-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-hn-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-hn-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI Community Digest 2026-10-23 Source: Hacker News | 30 stories | Generated: 2026-10-23 03:54 UTC Hacker News AI Community Digest — 2026-10-23 1. Today&amp;#39;s Highlights The HN AI feed is dominated by agent infrastructure and reliability rather than raw model capability. NVIDIA&amp;#39;s OpenShell (Rank 5, 328 pts) and multiple agent-testing/access-control Show HNs signal the community is moving past &amp;quot;can agents work?&amp;quot; to &amp;quot;how do we run them safely at scale?&amp;quot; Meanwhile...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI Community Digest 2026-10-23</h1>
@@ -6131,8 +6131,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin sản phẩm AI Product Hunt 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-ph</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-ph</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-ph</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-ph</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Product Hunt AI 产品日报 2026-10-23 数据来源: Product Hunt | 共 17 个产品 | 生成时间: 2026-10-23 01:05 UTC 今日亮点 今日 Product Hunt 上的 AI 产品格局由智能代理、开发者导向的工具链以及开源创新主导。UseIt Studio 凭借 325 票位居榜首，作为一款能够生成真实可编辑项目文件的设计代理，弥合了 AI 创意构思与可交付生产成果之间的鸿沟。BAND for Developers 和 Needle 展现了 AI 代理在协作编码和外向销售工作流中的崛起，预示着向“代理原生”生产力的转变。值得注意的是，开源项目如 SuperCMO AI、The Brains 以及 Hotly 正迅速获得关注，凸显透明化与社区驱动开发的重要性。这一趋势表明，AI 工具生态系统正在成熟——它们不再仅仅是辅助角色，而是深度嵌入、具备自主性的流程组成部分。 热门产品 🤖 AI 代理与助手（聊天机器人、副驾驶、自主代理） 产品 票数 评论数 摘要 UseIt Studio · 网站 325 28 你的 AI 设计代理，...</description>
       <content:encoded><![CDATA[<h1>Product Hunt AI 产品日报 2026-10-23</h1>
@@ -6287,8 +6287,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Product Hunt AI Products Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-ph-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-ph-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-ph-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-ph-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Product Hunt AI Products Digest 2026-10-23 Source: Product Hunt | 17 products | Generated: 2026-10-23 01:05 UTC Today&amp;#39;s Highlights The AI product landscape on Product Hunt today is dominated by intelligent agents, developer-centric tooling, and open-source innovation. UseIt Studio leads with 325 votes as a design agent that delivers real, editable project files—bridging the gap between AI ideation and production-ready output. BAND for Developers and Needle highlight the rise of AI agents in ...</description>
       <content:encoded><![CDATA[<h1>Product Hunt AI Products Digest 2026-10-23</h1>
@@ -6444,8 +6444,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin nghiên cứu AI ArXiv 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-arxiv</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-arxiv</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-arxiv</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-arxiv</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Bản tin nghiên cứu AI trên ArXiv 2026-10-23 Nguồn dữ liệu: ArXiv (cs.AI, cs.CL, cs.LG) | 50 bài báo | Tạo lúc: 2026-10-23 03:54 UTC ArXiv AI Research Digest — 2026-10-22 1. Điểm nổi bật hôm nay Các bài nộp hôm nay cho thấy một sự hội tụ đáng chú ý về việc làm cho hành vi của mô hình trở nên đáng tin cậy và có thể kiểm toán thay vì chỉ mạnh mẽ hơn. Một số bài báo giải quyết tính toàn vẹn của đánh giá: công trình về rò rỉ token tương lai ẩn trong các mô hình chuỗi thích ứng, đánh giá RAG nhận biết...</description>
       <content:encoded><![CDATA[<h1>Bản tin nghiên cứu AI trên ArXiv 2026-10-23</h1>
@@ -6665,8 +6665,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>ArXiv AI Research Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-arxiv-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-arxiv-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-arxiv-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-arxiv-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>ArXiv AI Research Digest 2026-10-23 Source: ArXiv (cs.AI, cs.CL, cs.LG) | 50 papers | Generated: 2026-10-23 03:54 UTC ArXiv AI Research Digest — 2026-10-22 1. Today&amp;#39;s Highlights Today&amp;#39;s submissions reveal a striking convergence on making model behavior trustworthy and auditable rather than merely more capable. Several papers tackle evaluation integrity: work on hidden future-token leakage in adaptive sequence models, evidence-aware RAG evaluation, and post-hoc privacy auditing without re...</description>
       <content:encoded><![CDATA[<h1>ArXiv AI Research Digest 2026-10-23</h1>
@@ -6875,8 +6875,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin AI cộng đồng công nghệ 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-community</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-community</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-community</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-community</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Bản tin AI từ cộng đồng công nghệ 2026-10-23 Nguồn dữ liệu: Dev.to (30 bài) + Lobste.rs (5 mục) | Tạo lúc: 2026-10-23 03:54 UTC Tech Community AI Digest — 2026-10-23 1. Điểm nổi bật hôm nay Cuộc trò chuyện về AI hôm nay trên Dev.to và Lobste.rs xoay quanh niềm tin và kiểm soát — các lập trình viên không còn quá hào hứng với năng lực thô của mô hình mà tập trung nhiều hơn vào những kiểu thất bại ẩn sau các lần chạy &amp;quot;xanh&amp;quot;. Dev.to nghiêng hẳn về độ tin cậy và khả năng quan sát của agent,...</description>
       <content:encoded><![CDATA[<h1>Bản tin AI từ cộng đồng công nghệ 2026-10-23</h1>
@@ -7020,8 +7020,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Tech Community AI Digest 2026-10-23</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-23/ai-community-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-23/ai-community-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-23/ai-community-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-23/ai-community-en</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <description>Tech Community AI Digest 2026-10-23 Sources: Dev.to (30 articles) + Lobste.rs (5 stories) | Generated: 2026-10-23 03:54 UTC Tech Community AI Digest — 2026-10-23 1. Today&amp;#39;s Highlights Today&amp;#39;s AI conversation across Dev.to and Lobste.rs is dominated by trust and control — developers are less excited about raw model capability and more focused on the failure modes that hide behind &amp;quot;green&amp;quot; executions. Dev.to leans heavily into agent reliability and observability, with a cluster of...</description>
       <content:encoded><![CDATA[<h1>Tech Community AI Digest 2026-10-23</h1>
@@ -7165,8 +7165,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin cộng đồng công cụ AI CLI 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-cli</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-cli</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-cli</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-cli</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI CLI 工具社区动态日报 2026-10-22 生成时间: 2026-10-22 01:16 UTC | 覆盖工具: 7 个 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills 横向对比 跨工具 AI CLI 生态系统对比报告 生成时间：2026-10-22 | 数据来源：GitHub 社区简报 1. 生态概览 2026 年第四季度，AI CLI 开发者工具生态系统已进入成熟阶段，竞争激烈，对智能体工作流、会话容错能力以及企业级可观测性要求极高。工具已从早期的代码生成功能演进为全栈智能体编排平台，对可靠性、安全性及跨表面问责机制的关注持续上升。尽管早期创新仍在持续（如 Pi 对多模态输入的支持），但主流趋势是稳定化——重点解决会话状态、内存管理与模型行为中的关键缺陷，这些缺陷正威胁着大规模生产环境下的开发效率。各工具间共同面临的问题表明，整个行业正集体迈向可预测、可审计、企业就绪的 AI 开发环境。 2. 活动对比 工具 问题（前10） PR...</description>
       <content:encoded><![CDATA[<h1>AI CLI 工具社区动态日报 2026-10-22</h1>
@@ -8431,8 +8431,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>AI CLI Tools Digest 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-cli-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-cli-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-cli-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-cli-en</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI CLI Tools Community Digest 2026-10-22 Generated: 2026-10-22 01:16 UTC | Tools covered: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills Cross-Tool Comparison Cross-Tool AI CLI Ecosystem Comparison Report Generated: 2026-10-22 | Data Source: GitHub Community Digests 1. Ecosystem Overview The AI CLI developer tools ecosystem in Q4 2026 reflects a maturing, high-stakes landscape where agentic workflows, session resilience, and enterprise-grade obs...</description>
       <content:encoded><![CDATA[<h1>AI CLI Tools Community Digest 2026-10-22</h1>
@@ -9698,8 +9698,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin hệ sinh thái AI Agents 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-agents</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-agents</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-agents</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-agents</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw 生态日报 2026-10-22 Issues: 500 | PRs: 500 | 覆盖项目: 5 个 | 生成时间: 2026-10-22 01:16 UTC OpenClaw Hermes Agent IronClaw QwenPaw ZeroClaw OpenClaw 项目深度报告 OpenClaw 项目简报 — 2026-10-22 1. 今日概览 OpenClaw 项目持续保持高度活跃，过去 24 小时内更新了超过 500 个问题和 PR，反映出密集的开发与用户反馈循环。新发布了一个 测试版（v2026.10.10-beta.3），重点提升 Windows 平台的稳定性，包括网关启动的可靠性、隐藏 SQLite 辅助窗口以及强制重装时的容错能力。尽管势头强劲，但关键的稳定性问题依然存在——特别是内存泄漏、SQLite WAL 文件无限制增长以及代理/网关崩溃循环等问题，凸显了长期系统耐用性与状态管理方面的持续挑战。 2. 发布情况 ✅ 新版本发布：v2026.10.10-beta.3 – Windows 稳定性优化GitHub 发布页 亮点： ✅ 修复了全新状...</description>
       <content:encoded><![CDATA[<h1>OpenClaw 生态日报 2026-10-22</h1>
@@ -10795,8 +10795,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>AI Agents Ecosystem Digest 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-agents-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-agents-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-agents-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-agents-en</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw Ecosystem Digest 2026-10-22 Issues: 500 | PRs: 500 | Projects covered: 5 | Generated: 2026-10-22 01:16 UTC OpenClaw Hermes Agent IronClaw QwenPaw ZeroClaw OpenClaw Deep Dive OpenClaw Project Digest — 2026-10-22 1. Today&amp;#39;s Overview The OpenClaw project remains highly active, with over 500 issues and PRs updated in the last 24 hours, indicating intense development and user feedback cycles. A new beta release (v2026.10.10-beta.3) was published, focusing on Windows reliability improveme...</description>
       <content:encoded><![CDATA[<h1>OpenClaw Ecosystem Digest 2026-10-22</h1>
@@ -11892,8 +11892,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin hạ tầng AI 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-infra</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-infra</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-infra</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-infra</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI 基础设施日报 2026-10-22 生成时间: 2026-10-22 01:16 UTC | 覆盖项目: 6 个 vLLM SGLang llama.cpp Ollama LiteLLM Unsloth 横向对比 跨项目AI基础设施生态报告 – 2026-10-22 1. 生态概览 2026年第四季度，AI推理基础设施领域呈现出快速专业化与向高吞吐、低延迟、代理就绪部署融合的趋势。各项目正沿着架构方向日益分化：vLLM 和 SGLang 在分布式服务和内核级优化方面持续突破；llama.cpp 与 Unsloth 聚焦于边缘与本地执行，并进行硬件感知调优；Ollama 在多平台间整合开发者体验；而 LiteLLM 则演变为安全、高性能的网关层。近期频发的安全事件——尤其是恶意 litellm==1.107.0 包——凸显了开源AI工具链中供应链风险的加剧。与此同时，LiteLLM 的 Rust 迁移以及多个项目对 ROCm/AMD GPU 加速的支持，标志着战略重心正转向性能、可移植性与长期可持续性。 2. 活动对比 项目 问题（开放） PR（开放） 最近24小时发布 破坏性变更...</description>
       <content:encoded><![CDATA[<h1>AI 基础设施日报 2026-10-22</h1>
@@ -12642,8 +12642,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>AI Infrastructure Digest 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-infra-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-infra-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-infra-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-infra-en</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI Infrastructure Digest 2026-10-22 Generated: 2026-10-22 01:16 UTC | Projects covered: 6 vLLM SGLang llama.cpp Ollama LiteLLM Unsloth Cross-Project Comparison Cross-Project AI Infrastructure Ecosystem Report – 2026-10-22 1. Ecosystem Overview The AI inference infrastructure landscape in Q4 2026 is marked by rapid specialization and convergence toward high-throughput, low-latency, and agent-ready deployments. Projects are increasingly diverging along architectural lines: vLLM and SGLang push the...</description>
       <content:encoded><![CDATA[<h1>AI Infrastructure Digest 2026-10-22</h1>
@@ -13393,8 +13393,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Báo cáo theo dõi nội dung chính thức AI 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-web</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-web</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-web</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-web</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI 官方内容追踪报告 2026-10-22 今日更新 | 新增内容: 17 篇 | 生成时间: 2026-10-22 01:16 UTC 数据来源: Anthropic: anthropic.com — 新增 9 篇（sitemap 共 477 条） OpenAI: openai.com — 新增 8 篇（sitemap 共 1080 条） AI官方内容追踪报告 日期： 2026-10-22抓取来源： Anthropic / OpenAI 1. 今日亮点 Anthropic 发布了一系列高影响力更新，聚焦企业安全、前沿模型安全性以及尖端科学发现。其中最重大的进展是推出 企业级前沿防护系统（Enterprise Frontier Safeguards, EFS） —— 一种由客户自主控制、零数据留存的系统，使像 Claude Fable 5.1 这样的下一代模型可在受监管行业实现安全部署。这一举措凸显了 Anthropic 战略重心向以信任驱动的企业采纳转移，尤其在金融、医疗和公共部门领域。与此同时，新研究揭示，包括 GLM-5.3 在内的 AI 模型现已具备自主构建端到端网络攻击的能...</description>
       <content:encoded><![CDATA[<h1>AI 官方内容追踪报告 2026-10-22</h1>
@@ -13551,8 +13551,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Official AI Content Report 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-web-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-web-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-web-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-web-en</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>Official AI Content Report 2026-10-22 Today&amp;#39;s update | New content: 17 articles | Generated: 2026-10-22 01:16 UTC Sources: Anthropic: anthropic.com — 9 new articles (sitemap total: 477) OpenAI: openai.com — 8 new articles (sitemap total: 1080) AI Official Content Tracking Report Date: 2026-10-22Crawled From: Anthropic / OpenAI 1. Today&amp;#39;s Highlights Anthropic has released a suite of high-impact updates centered on enterprise security, frontier model safety, and cutting-edge scientific dis...</description>
       <content:encoded><![CDATA[<h1>Official AI Content Report 2026-10-22</h1>
@@ -13709,8 +13709,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Xu hướng mã nguồn mở AI 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-trending</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-trending</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-trending</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-trending</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI 开源趋势日报 2026-10-22 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-10-22 01:16 UTC AI 开源趋势报告 – 2026-10-22 1. 今日亮点 当前的 AI 开源生态正迎来以智能体（agent）为核心的创新浪潮，聚焦于智能自动化、记忆持久化和上下文压缩的项目正迅速崛起。Ponytail 和 Graphify 在提升智能体效率方面引领潮流——将令牌（token）使用量降低高达 95%，并可在无需向量存储的情况下实现确定性的知识图谱构建。与此同时，vLLM 仍在基础设施领域保持主导地位，其高性能的大语言模型服务引擎持续推动生产级部署的发展；而 headroom 与 thedotmack/claude-mem 则在编码智能体的长期记忆与上下文保留方面取得关键进展。这些发展表明，生态系统正在走向成熟：性能、可靠性与实际可用性已超越对模型规模的盲目追求。 2. 按类别划分的顶级项目 🔧 AI 基础设施 项目 语言 星标数（总计 / 今日新增） 摘要 vllm-project/vllm Pyth...</description>
       <content:encoded><![CDATA[<h1>AI 开源趋势日报 2026-10-22</h1>
@@ -13872,8 +13872,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>AI Open Source Trends 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-trending-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-trending-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-trending-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-trending-en</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>AI Open Source Trends 2026-10-22 Sources: GitHub Trending + GitHub Search API | Generated: 2026-10-22 01:16 UTC AI Open Source Trends Report – 2026-10-22 1. Today&amp;#39;s Highlights The AI open-source ecosystem is witnessing a surge in agent-centric innovation, with projects focused on intelligent automation, memory persistence, and context compression gaining explosive traction. Ponytail and Graphify are leading the charge in optimizing agent efficiency—cutting token usage by up to 95% and enabli...</description>
       <content:encoded><![CDATA[<h1>AI Open Source Trends 2026-10-22</h1>
@@ -14035,8 +14035,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Bản tin cộng đồng Hacker News AI 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-hn</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-hn</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-hn</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-hn</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI 社区动态日报 2026-10-22 数据来源: Hacker News | 共 30 条 | 生成时间: 2026-10-22 01:16 UTC 今日亮点 Hacker News 上的 AI 社区正热烈讨论 OpenAI 将其模型引入 Google Cloud 的战略举措，这一动向标志着云竞争格局和企业采用模式的重大转变。与此同时，Claude Duet 因支持人类与 AI 代理之间的实时协作而引发广泛热议，被许多人视为迈向实用化代理工作流的关键一步。围绕 AI 驱动的漏洞发现（如 PHP2Shell）以及生成内容的伦理风险（尤其在科研诚信与网络安全领域）的隐忧日益浮现。整体基调仍保持谨慎乐观，对开源替代方案和代理级基础设施的兴趣浓厚，但对企业责任和 AI 意外后果的审查也在不断上升。 热点新闻与讨论 🔬 模型与研究 标题 分数 评论数 摘要 Claude Duet · HN 310 269 人类与 AI 协作的突破性进展，支持实时共同编辑与迭代推理；HN 用户称其为“游戏规则改变者”，特别适用于交互式编程与问题求解。 使用数千个 AI 代理在生物数据...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI 社区动态日报 2026-10-22</h1>
@@ -14180,8 +14180,8 @@ New <code>PROJECTOR_TYPE_MINICPM_OCR_1_0</code> reuses the MiniCPM-V 4.6 clip gr
     </item>
     <item>
       <title>Hacker News AI Community Digest 2026-10-22</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-10-22/ai-hn-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-10-22/ai-hn-en</guid>
+      <link>https://buhduy256.github.io/agents-radar/#2026-10-22/ai-hn-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-22/ai-hn-en</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI Community Digest 2026-10-22 Source: Hacker News | 30 stories | Generated: 2026-10-22 01:16 UTC Today&amp;#39;s Highlights The AI community on Hacker News is buzzing over OpenAI’s strategic move to bring its models to Google Cloud, signaling a major shift in cloud competition and enterprise adoption. Meanwhile, Claude Duet has sparked intense discussion for enabling real-time collaboration between humans and AI agents—seen by many as a leap toward practical agent workflows. A growing u...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI Community Digest 2026-10-22</h1>

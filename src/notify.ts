@@ -29,7 +29,7 @@ export interface LegacyHighlights extends Partial<Highlights> {
   zh?: ReportHighlights;
 }
 
-const PAGES_URL_DEFAULT = "https://duanyytop.github.io/agents-radar";
+const PAGES_URL_DEFAULT = "https://buhduy256.github.io/agents-radar";
 
 function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

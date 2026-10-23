@@ -17,8 +17,6 @@ on:
 permissions:
   contents: write
   issues: write
-  pages: write
-  id-token: write
 
 # A late scheduled run must not overlap a manual catch-up run: both would build
 # the same CST day's digest and open a duplicate set of issues (as happened on
@@ -61,10 +59,6 @@ jobs:
     if: needs.guard.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 40
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy_pages.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -119,29 +113,11 @@ jobs:
             git push
           fi
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Prepare website
-        run: |
-          mkdir -p _site
-          cp index.html manifest.json feed.xml _site/
-          cp -R assets digests _site/
-
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-      - name: Deploy website
-        id: deploy_pages
-        uses: actions/deploy-pages@v4
-
       - name: Send Telegram notification
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          PAGES_URL: ${{ steps.deploy_pages.outputs.page_url }}
+          PAGES_URL: https://buhduy256.github.io/agents-radar
         run: pnpm exec tsx src/notify.ts
 
       - name: Close stale issues
