@@ -1,150 +1,150 @@
 {
-  "zh": {
+  "vi": {
     "ai-cli": [
-      "AI CLI工具转向可靠性与安全加固",
-      "Claude Code发布v2.1.308/309沙箱补丁",
-      "OpenAI Codex推进托管配置企业策略PR",
-      "Copilot CLI新增ACP令牌以控组织",
-      "孤儿进程与中途杀shell问题居首",
-      "MCP与认证韧性成跨工具首要关切"
+      "Mọi công cụ AI CLI đều phát hành bản vá trong 24h qua",
+      "Claude Code v2.1.309 vá lỗ hổng bảo mật sandbox",
+      "Rò rỉ tiến trình Windows và bất đối xứng hạn ngạch hoành hành CLI",
+      "Ranh giới tin cậy subagent và plugin là chiến trường mới",
+      "Lỗi 'at capacity' mơ hồ khiến người dùng Codex bực bội",
+      "Marketplace, hook và xác thực MCP tạo khác biệt"
     ],
     "ai-agents": [
-      "OpenClaw 24小时内500 PR与98问题",
-      "v2026.10.6因TLS漏洞强制升级Node",
-      "发布阻塞被标为影响:ux-release-blocker跨P0/P1",
-      "网关阻塞与事件循环停顿拖累稳定线",
-      "密钥与执行审批权限漏洞受审查",
-      "245个开放PR显示审查积压加剧"
+      "OpenClaw v2026.10.6 nâng Node sau sự cố TLS",
+      "500 issue và 500 PR được cập nhật trong 24 giờ",
+      "Bug chặn gateway #160959 thu hút 42 bình luận",
+      "Lỗi phục hồi sau ngủ vẫn mở từ 2026.9.x",
+      "Biên dịch plugin lúc khởi động ngốn CPU với repo lớn",
+      "Maintainer đóng tồn đọng cũ từ tháng 3–5/2026"
     ],
     "ai-infra": [
-      "无重大发布，六个项目均加固正确性",
-      "LiteLLM v1.107.0供应链漏洞修复中",
-      "vLLM瞄准PD分离与ROCm对齐",
-      "SGLang推进DSv4与GLM-5.3内核融合",
-      "FP4 KV缓存与MoE漏洞致静默正确性问题",
-      "LiteLLM网关吸收路由与成本计费逻辑"
+      "LiteLLM v1.107.0 bị xâm phạm chuỗi cung ứng, tệ nhất hôm nay",
+      "vLLM lỗi nhiễm KV phân tách PD #61160",
+      "SGLang race hết hạn lease NIXL trong phục vụ phân tách",
+      "Kimi-K3 DCP lỗi đồ thị a2a báo cáo trên vLLM",
+      "Mô hình attention lai (Gated DeltaNet, QSA) gây hồi quy",
+      "Không có bản phát hành hôm nay; gia cố tính đúng đắn chiếm ưu thế"
     ],
     "ai-trending": [
-      "cloudflare/security-audit-skill今日暴涨+2,979星",
-      "智能体技能成竞争单位而非模型",
-      "headroom与claude-mem领跑智能体记忆代币经济",
-      "反臃肿智能体如ponytail获+1,948星",
-      "无向量检索成为RAG替代方案",
-      "ollama以184,348星保持本地优先默认"
+      "cloudflare/security-audit-skill tăng vọt +2.979 sao",
+      "DietrichGebert/ponytail: 'suy nghĩ như senior dev lười nhất'",
+      "Graphify-Labs/graphify thêm +1.408 sao như agent skill",
+      "Truy xuất chuyển từ tìm kiếm vector sang lập chỉ mục suy luận",
+      "RAG, vector DB và bộ nhớ agent hội tụ thành một lớp",
+      "affaan-m/ECC agent harness đạt 286.629 sao"
     ],
     "ai-web": [
-      "Claude实现下至RISC-V的形式化软件验证",
-      "Claude发现经受万亿次测试仍存漏洞",
-      "Anthropic开放生命科学访问学者征集",
-      "智能体技能标准捐赠给Linux基金会",
-      "OpenAI预告Decisions API与Uber ChatGPT上线",
-      "Anthropic发4篇新文，OpenAI 2个索引页"
+      "Claude thực hiện xác minh hình thức xuống tận hợp ngữ RISC-V",
+      "Anthropic tặng chuẩn Agent Skills cho Linux Foundation",
+      "Chương trình Guest Investigator mở cho nhà nghiên cứu khoa học sự sống",
+      "OpenAI hé lộ trang chỉ mục Decisions API",
+      "OpenAI đăng trang chỉ mục Uber ChatGPT Work Rollout",
+      "Claude tìm ra lỗi ẩn lâu năm dù hàng nghìn tỷ lần chạy thử"
     ],
     "ai-hn": [
-      "DeepSeek的DeepInfer获2332分888评论",
-      "NVIDIA OpenShell瞄准自主智能体集群",
-      "Claude Duet发布帖获549分",
-      "Mistral的Voxtral 3音频模型获767分",
-      "社区质疑LLM置信度与数据中心成本",
-      "Show HN焦点转向智能体授权与审计"
+      "DeepSeek DeepInfer đạt 2.332 điểm và 888 bình luận",
+      "Mistral Voxtral 3 đạt 767 điểm trên HN",
+      "NVIDIA OpenShell agent sandbox thu hút 328 điểm",
+      "'Dùng LLM để chấm điểm tin cậy là ý tồi' gây tranh luận",
+      "Khảo sát ABC/Ipsos: đa số người Mỹ thấy AI có hại cho xã hội",
+      "Cộng đồng chuyển từ 'agent có chạy được?' sang 'chạy an toàn'"
     ],
     "ai-ph": [
-      "UseIt Studio以325票登顶Product Hunt",
-      "AI设计智能体交付真实可编辑项目文件",
-      "BAND for Developers将智能体带入协作编码",
-      "Needle用AI智能体自动化外呼销售",
-      "开源SuperCMO AI与The Brains获关注",
-      "智能体从助手转向嵌入工作流部件"
+      "UseIt Studio đứng đầu Product Hunt với 325 phiếu",
+      "BAND for Developers đưa AI agent vào lập trình cộng tác",
+      "Needle nhắm bán hàng outbound bằng agent tự trị",
+      "SuperCMO AI và The Brains đẩy mạnh agent mã nguồn mở",
+      "Hotly thu hút nhờ công cụ AI cộng đồng",
+      "Xu hướng chuyển sang thành phần workflow tự trị, agent-native"
     ],
     "ai-arxiv": [
-      "论文质疑LLM评估是否测量了任何东西",
-      "LLM即法官被证明对提示和语言敏感",
-      "审计后幻象揭示智能体审计的虚假安全",
-      "低位n-gram嵌入降低开放权重模型内存",
-      "KV缓存压缩瞄准推测草稿模型",
-      "测试时计算与多智能体拓扑趋于成熟"
+      "Bài báo nhận diện lỗi Softmax Collapse và Softmax Cancellation",
+      "Embedding n-gram bit thấp thu gọn bảng LM ngốn bộ nhớ",
+      "Phát hiện rò rỉ token tương lai ẩn trong mô hình chuỗi thích ứng",
+      "Tối ưu Pass@k cho tỉa suy nghĩ trong mô hình suy luận",
+      "Kiểm toán riêng tư hậu kiểm không cần huấn luyện lại thu hút",
+      "Chuyển pha khả huấn luyện và quên qua lý thuyết ổn định"
     ],
     "ai-community": [
-      "Dev.to：开发者作为AI代理引发热议",
-      "静默失败与重试循环困扰智能体工作流",
-      "“我有93%把握”是字符串而非概率",
-      "Mistral Timestral时序模型登顶Lobste.rs",
-      "图灵完备恶意软件在PyTorch反向传播中运行",
-      "重复API请求追溯至AI编写的处理程序"
+      "'Đừng làm proxy giữa tôi và AI của bạn' đứng đầu Dev.to",
+      "'Tôi 93% tự tin' là chuỗi ký tự, không phải xác suất",
+      "Yêu cầu API trùng lặp do khoảng hở idempotency 40ms",
+      "Mistral phát hành mô hình nền chuỗi thời gian trên Lobste.rs",
+      "OCaml unikernel và bảo mật PyTorch trên Lobste.rs",
+      "Lỗi LLM im lặng, chi phí vòng lặp thử lại chiếm sóng Dev.to"
     ]
   },
   "en": {
     "ai-cli": [
-      "AI CLI tools shift to reliability and safety hardening",
-      "Claude Code ships v2.1.308/309 sandbox patches",
-      "OpenAI Codex pushes managed-config enterprise policy PRs",
-      "Copilot CLI adds ACP token work for org control",
-      "Orphaned processes and mid-task shell kills dominate issues",
-      "MCP and auth resilience now top cross-tool concern"
+      "Every AI CLI tool shipped a patch in the last 24h",
+      "Claude Code v2.1.309 patches sandbox security holes",
+      "Windows process leaks and quota asymmetry plague CLIs",
+      "Subagent and plugin trust boundaries are the new battleground",
+      "Opaque 'at capacity' errors frustrate Codex users",
+      "Marketplaces, hooks, and MCP auth drive differentiation"
     ],
     "ai-agents": [
-      "OpenClaw hits 500 PRs and 98 issues in 24 hours",
-      "v2026.10.6 forces Node runtime bump after TLS compromise",
-      "Release blockers flagged impact:ux-release-blocker across P0/P1",
-      "Gateway blocking and event-loop stalls stall stable line",
-      "Secrets and exec approval authority bugs under scrutiny",
-      "245 open PRs signal growing review backlog"
+      "OpenClaw v2026.10.6 bumps Node over TLS compromise",
+      "500 issues and 500 PRs updated in 24 hours",
+      "Gateway blocking bug #160959 draws 42 comments",
+      "Post-sleep recovery failures still open from 2026.9.x",
+      "Plugin startup CPU-bound compilation hits large repos",
+      "Maintainers closing stale March–May 2026 backlog"
     ],
     "ai-infra": [
-      "No major releases as all six projects harden correctness",
-      "LiteLLM v1.107.0 supply-chain compromise remediation ongoing",
-      "vLLM targets PD disaggregation and ROCm parity",
-      "SGLang pushes DSv4 and GLM-5.3 kernel fusion",
-      "FP4 KV cache and MoE bugs cause silent correctness issues",
-      "LiteLLM gateway absorbs routing and cost billing logic"
+      "LiteLLM v1.107.0 supply-chain compromise is the day's worst",
+      "vLLM PD disaggregation KV contamination bug #61160",
+      "SGLang NIXL lease-expiry race in disaggregated serving",
+      "Kimi-K3 DCP a2a graph corruption reported in vLLM",
+      "Hybrid attention models (Gated DeltaNet, QSA) drive regressions",
+      "No releases today; correctness hardening dominates"
     ],
     "ai-trending": [
-      "cloudflare/security-audit-skill explodes +2,979 stars today",
-      "Agent skills now the unit of competition, not models",
-      "headroom and claude-mem lead agent memory token economy",
-      "Anti-bloat agents like ponytail gain +1,948 stars",
-      "Vectorless retrieval emerges as RAG alternative",
-      "ollama holds 184,348 stars as local-first default"
+      "cloudflare/security-audit-skill surges +2,979 stars",
+      "DietrichGebert/ponytail: 'think like the laziest senior dev'",
+      "Graphify-Labs/graphify adds +1,408 stars as agent skill",
+      "Retrieval shifts from vector search to reasoning-based indexing",
+      "RAG, vector DB, and agent memory converge into one layer",
+      "affaan-m/ECC agent harness hits 286,629 stars"
     ],
     "ai-web": [
-      "Claude achieves formal software verification down to RISC-V",
-      "Claude finds bugs surviving trillions of test runs",
-      "Anthropic opens Guest Investigator life sciences call",
-      "Agent Skills standard donated to Linux Foundation",
-      "OpenAI teases Decisions API and Uber ChatGPT rollout",
-      "Anthropic posts 4 new articles, OpenAI 2 index pages"
+      "Claude performs formal verification down to RISC-V assembly",
+      "Anthropic donates Agent Skills standard to Linux Foundation",
+      "Guest Investigator Program opens for life sciences researchers",
+      "OpenAI teases Decisions API index page",
+      "OpenAI posts Uber ChatGPT Work Rollout index page",
+      "Claude finds long-hidden bugs despite trillions of test runs"
     ],
     "ai-hn": [
-      "DeepSeek's DeepInfer hits 2332 points, 888 comments",
-      "NVIDIA OpenShell targets autonomous agent fleets",
-      "Claude Duet launch thread scores 549 points",
-      "Mistral's Voxtral 3 audio model draws 767 points",
-      "Community questions LLM confidence and data center costs",
-      "Show HN momentum shifts to agent permissioning and audit"
+      "DeepSeek DeepInfer hits 2,332 points and 888 comments",
+      "Mistral Voxtral 3 lands at 767 points on HN",
+      "NVIDIA OpenShell agent sandbox draws 328 points",
+      "'Using LLM for confidence scoring is a bad idea' sparks debate",
+      "ABC/Ipsos poll: most Americans see AI as bad for society",
+      "Community pivots from 'can agents work?' to 'run them safely'"
     ],
     "ai-ph": [
       "UseIt Studio tops Product Hunt with 325 votes",
-      "AI design agent delivers real editable project files",
-      "BAND for Developers brings agents to collaborative coding",
-      "Needle automates outbound sales with AI agents",
-      "Open-source SuperCMO AI and The Brains gain traction",
-      "Agents shift from assistants to embedded workflow parts"
+      "BAND for Developers brings AI agents to collaborative coding",
+      "Needle targets outbound sales with autonomous agents",
+      "SuperCMO AI and The Brains push open-source agents",
+      "Hotly gains traction as community-driven AI tool",
+      "Shift toward agent-native, autonomous workflow components"
     ],
     "ai-arxiv": [
-      "Papers question whether LLM evaluations measure anything",
-      "LLM-as-a-Judge shown prompt- and language-sensitive",
-      "Post-audit mirage flags false safety in agent audits",
-      "Low-bit n-gram embeddings cut open-weight model memory",
-      "KV-cache compression targets speculative draft models",
-      "Test-time compute and multi-agent topologies mature"
+      "Paper identifies Softmax Collapse and Softmax Cancellation bugs",
+      "Low-bit n-gram embeddings shrink memory-heavy LM tables",
+      "Hidden future-token leakage found in adaptive sequence models",
+      "Pass@k optimization for thought pruning in reasoning models",
+      "Post-hoc privacy auditing without retraining gains traction",
+      "Trainability phase transitions and forgetting via stability theory"
     ],
     "ai-community": [
-      "Dev.to: developers as AI proxies sparks top debate",
-      "Silent failures and retry loops plague agent workflows",
+      "'Don't Be a Proxy Between Me and Your AI' tops Dev.to",
       "'I'm 93% confident' is a string, not a probability",
-      "Mistral Timestral time-series models top Lobste.rs",
-      "Turing-complete malware runs in PyTorch backward pass",
-      "Duplicate API requests traced to AI-authored handlers"
+      "Duplicate API requests traced to a 40ms idempotency gap",
+      "Mistral releases time-series foundation model on Lobste.rs",
+      "OCaml unikernels and PyTorch security on Lobste.rs",
+      "Silent LLM failures, retry-loop costs dominate Dev.to"
     ]
   }
 }

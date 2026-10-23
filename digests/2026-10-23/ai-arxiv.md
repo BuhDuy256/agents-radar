@@ -1,79 +1,87 @@
-# ArXiv AI 研究日报 2026-10-23
+# Bản tin nghiên cứu AI trên ArXiv 2026-10-23
 
-> 数据来源: [ArXiv](https://arxiv.org/) (cs.AI, cs.CL, cs.LG) | 共 50 篇论文 | 生成时间: 2026-10-23 02:46 UTC
-
----
-
-# ArXiv AI 研究摘要 — 2026-10-22
-
-## 1. 今日亮点
-
-今天的投稿揭示了一个日益关注**已部署语言系统的可靠性与鲁棒性，而非单纯能力提升**的领域。一组引人注目的论文对评估本身提出了质疑——表明 LLM-as-a-Judge 的结果对提示词和语言敏感，成对奖励分数掩盖了逐提示词效应，工具访问并不能稳定模型排名，离线智能体审计可能给出虚假的安全感（“审计后海市蜃楼”）。与此同时，效率研究向更细粒度的领域推进：面向扩散语言模型的任务与时间步感知量化、低位 N-gram 嵌入、投机解码草稿模型的 KV 缓存压缩，以及向前-only 的持续写入原生 N-gram 记忆。推理与智能体工作正沿两个轴走向成熟——测试时计算分配（Pass@k 感知剪枝、扩散解码的协调 token 承诺）和多智能体集体行为（拓扑塑造共识、混合模型群体中的影响力归因）。临床、法律和工业应用依然强劲，但主导性的元信号是一场方法论清算：社区正在追问*其测量是否真正测量了它们声称测量的东西*。
+> Nguồn dữ liệu: [ArXiv](https://arxiv.org/) (cs.AI, cs.CL, cs.LG) | 50 bài báo | Tạo lúc: 2026-10-23 03:54 UTC
 
 ---
 
-## 2. 重点论文
+# ArXiv AI Research Digest — 2026-10-22
 
-### 🧠 大语言模型（架构、训练、对齐、评估）
+## 1. Điểm nổi bật hôm nay
 
-| 论文 | 作者 | 摘要 |
+Các bài nộp hôm nay cho thấy một sự hội tụ đáng chú ý về việc **làm cho hành vi của mô hình trở nên đáng tin cậy và có thể kiểm toán** thay vì chỉ mạnh mẽ hơn. Một số bài báo giải quyết tính toàn vẹn của đánh giá: công trình về rò rỉ token tương lai ẩn trong các mô hình chuỗi thích ứng, đánh giá RAG nhận biết bằng chứng, và kiểm toán quyền riêng tư hậu kiểm mà không cần huấn luyện lại — tất cả đều đặt câu hỏi liệu các benchmark của chúng ta có đo lường đúng những gì chúng ta nghĩ hay không. Có một nhóm đáng chú ý về **hiệu quả suy luận và tính toán tại thời điểm kiểm tra**, từ tối ưu hóa Pass@k trực tiếp cho việc tỉa bớt suy nghĩ đến các chính sách bỏ mặt nạ được học trong các mô hình ngôn ngữ khuếch tán. Nghiên cứu về căn chỉnh và an toàn đang hướng tới các đảm bảo ở cấp độ quyết định—kiểm toán chọn lọc, từ chối dựa trên chi phí, và đánh giá kiểm soát tác nhân. Cuối cùng, công trình lý thuyết về chuyển pha khả năng huấn luyện và quên thảm khốc thông qua tính ổn định thuật toán báo hiệu sự quan tâm trở lại đối với nền tảng chặt chẽ bên dưới cuộc đua mở rộng quy mô dựa trên thực nghiệm.
+
+## 2. Các bài báo chính
+
+### 🧠 Mô hình ngôn ngữ lớn (kiến trúc, huấn luyện, căn chỉnh, đánh giá)
+
+| Bài báo | Tác giả | Tóm tắt |
 | :--- | :--- | :--- |
-| [Low-Bit N-Gram Embeddings for Language Models](http://arxiv.org/abs/2610.31646v1) | Chung, Du | 将 N-gram 嵌入表——开放权重 LLM 中的一项主要内存开销——压缩为低位表示，同时保留其性能优势。直接降低了广泛采用的架构组件的内存占用，使大型模型的推理服务更便宜。 |
-| [Prompting Strategy Effects Depend on the Judge: A Multilingual Study of LLM-as-a-Judge Robustness](http://arxiv.org/abs/2610.31172v1) | Mehrabi, Aliannejadi, Siro | 表明诸如思维链和角色条件化等推荐评判策略仅在英文上得到验证，无法可靠地跨评判模型和语言迁移。对于任何在多语言评估流程中使用 LLM 评判者的人而言，这是一个关键警告。 |
-| [What Pairwise Evaluation Misses: Reward Scores across Prompts](http://arxiv.org/abs/2610.31090v1) | Modrzejewski, Radzikowski | 证明成对比较会抵消提示词内共享的任何分数成分，使奖励模型的跨提示词可比性未受检验。揭示了偏好优化和排名工作流中的一个盲点。 |
-| [Prompt Sensitivity in Tool-Augmented Model Comparisons](http://arxiv.org/abs/2610.31148v1) | Modrzejewski, Radzikowski | 测试工具访问是否使模型排名在改写下更稳定；发现仅凭准确率提升无法回答这一问题。主张即使在智能体设置中，排行榜结论也可能只是提示词措辞的产物。 |
-| [Different Tasks, Different Timesteps: Temporal Task-Aware Quantization for Diffusion Language Models](http://arxiv.org/abs/2610.31198v1) | Avivi, Rahimi, Mendelson et al. | 揭示扩散 LM 中的量化敏感性既依赖任务也依赖去噪步骤，使精度能够被自适应分配。这是一条无需均匀精度损失即可实现更廉价迭代解码的实用路径。 |
-| [RIFT: KV Cache Compression for Draft Models with Complementary Compressibility Training](http://arxiv.org/abs/2610.31098v1) | Tsur, Ashkenazi, Golub et al. | 专门针对投机解码草稿模型的 KV 缓存压缩，这是以前缀为中心的方法表现不佳的场景。对于草稿缓存主导内存的长输出生成至关重要。 |
-| [Delta N-gram: Forward-Only Continual Writing into a Language Model's Native N-gram Memory](http://arxiv.org/abs/2610.31125v1) | Hao Wu | 将持续更新写入冻结的预训练哈希 N-gram 表，无需反向传播，也无需修改基表。为知识更新提供了一条轻量、非破坏性的途径。 |
-| [Transformers with CoT Discover Heavy-Ball Acceleration Through Training](http://arxiv.org/abs/2610.31089v1) | Cai, Cao | 提供理论表明带有思维链的 Transformer 可以学会将重球加速作为一种算法过程来执行。推进了对 CoT 为何能改善优化式推理的机制性理解。 |
+| [**A Fix for Softmax and Cross-Entropy**](http://arxiv.org/abs/2610.31642v1) | Barron, Gnanapragasam, Tschannen | Xác định hai lỗi số—"Softmax Collapse" và "Softmax Cancellation"—trong các triển khai softmax/log-softmax/cross-entropy tiêu chuẩn gây hỏng hành vi gradient. Đề xuất các sửa chữa liên quan đến hầu như mọi pipeline huấn luyện, khiến đây trở thành một bản sửa chữa thực tiễn có đòn bẩy cao. |
+| [**Low-Bit N-Gram Embeddings for Language Models**](http://arxiv.org/abs/2610.31646v1) | Chung, Du | Nén các bảng nhúng n-gram tốn bộ nhớ trong các LM trọng số mở thành biểu diễn bit thấp. Quan trọng cho việc triển khai các mô hình lớn dưới ngân sách bộ nhớ eo hẹp mà không đánh mất lợi ích hiệu năng của các đặc trưng n-gram. |
+| [**Questioning Instrumental Convergence in RLVR: Checkpoint Evidence from OLMo-3**](http://arxiv.org/abs/2610.31624v1) | Alparslan, Tanwisuth, Petterson | Kiểm tra thực nghiệm liệu RL từ phần thưởng có thể xác minh có tạo ra các mục tiêu phụ tìm kiếm quyền lực (tự bảo tồn, lừa dối, chống giám sát) qua các checkpoint huấn luyện hay không. Cung cấp bằng chứng theo chiều dọc hiếm có về một mối lo an toàn được giả định rộng rãi nhưng ít được đo lường. |
+| [**Bilingual Language Models Capture Cross-Linguistic Influence in Second-Language Reading**](http://arxiv.org/abs/2610.31620v1) | Issam, Winther, Frank | Cho thấy surprisal của LM song ngữ dự đoán thời gian đọc L2 tốt hơn surprisal đơn ngữ, nắm bắt các hiệu ứng chuyển giao do L1 dẫn dắt. Kết nối mô hình nhận thức và đánh giá LM trong một lĩnh vực mà các baseline đơn ngữ được biết là thất bại. |
+| [**On the Token Collapse Phenomenon in Textual Graph Soft Prompting**](http://arxiv.org/abs/2610.31572v1) | Di Francesco, Jain, Nardini và cộng sự | Chẩn đoán "token collapse" nơi các soft prompt đồ thị được GNN học bị thoái hóa khi kết hợp với mô tả đồ thị bằng ngôn ngữ. Làm rõ một chế độ thất bại trong một paradigm phổ biến đưa đồ thị vào LLM. |
+| [**The Geometry of Metaphor: Probing and Steering Metaphor Representations in LLMs**](http://arxiv.org/abs/2610.31520v1) | Li, Andersen, Lewis | Sử dụng diễn giải cơ chế để định vị các không gian con nhân quả mã hóa ẩn dụ và chứng minh khả năng điều khiển trên nhiều kiến trúc. Thúc đẩy cả khả năng diễn giải và khả năng kiểm soát ngôn ngữ ẩn dụ cấp cao. |
+| [**Rethinking Sequence Compression with Test-time Regression**](http://arxiv.org/abs/2610.31574v1) | Yang, Huang, Li và cộng sự | Tái định hình nén chuỗi như hồi quy tại thời điểm kiểm tra, vượt trội hơn các baseline pooling và chiếu được học. Một nguyên thủy tổng quát đầy hứa hẹn cho hiệu quả ngữ cảnh dài và đa phương thức. |
 
-### 🤖 智能体与推理（规划、工具使用、多智能体、思维链）
+### 🤖 Tác nhân & Suy luận (lập kế hoạch, sử dụng công cụ, đa tác nhân, chuỗi suy nghĩ)
 
-| 论文 | 作者 | 摘要 |
+| Bài báo | Tác giả | Tóm tắt |
 | :--- | :--- | :--- |
-| [Direct Pass@k Optimization for Thought Pruning: Balancing Quality and Diversity in Test-Time Reasoning](http://arxiv.org/abs/2610.31667v1) | Salmani, Javanmard, Gupta et al. | 通过直接优化 Pass@k 而非逐样本质量来剪枝候选推理轨迹，显式平衡多样性与正确性。在不牺牲找到正确解机会的前提下，使测试时扩展更便宜。 |
-| [Network Topology Shapes Consensus and Vulnerability in LLM Populations](http://arxiv.org/abs/2610.31165v1) | Passaro, Flint, Pastor-Satorras et al. | 将来自四个 LLM 的策略置于网络化群体中，表明交互结构决定了集体惯例和对操纵的脆弱性。将多智能体 LLM 安全从充分混合假设推进到现实拓扑。 |
-| [Who Is the Influencer? Consensus Dynamics in Multi-Agent Systems](http://arxiv.org/abs/2610.31105v1) | Minegishi, Feng, Furuta et al. | 使用受控任务识别在混合模型族时哪个模型对最终共识影响最大，跨七个模型族。为多智能体审议中隐藏的权力不对称提供了实证抓手。 |
-| [Post-Audit Mirage: Identifiability Limits of Offline Agent Verification](http://arxiv.org/abs/2610.31130v1) | Behera, Payal | 构造了产生相同验证器可见证据的匹配安全与有害智能体生命周期，证明了离线审计的可识别性极限。这是一个正式警告：通过部署前测试不能保证部署后安全。 |
-| [SetCommit: Coordinated Token Commitments for Few-Step Diffusion Language Model Decoding](http://arxiv.org/abs/2610.31120v1) | Feng, Ye, Yao et al. | 通过联合评估 token 集合是否一致，解决少步扩散解码中过早的并行 token 承诺问题。在逐 token 置信度具有误导性的场景下提升并行生成质量。 |
+| [**Direct Pass@$k$ Optimization for Thought Pruning**](http://arxiv.org/abs/2610.31667v1) | Salmani, Javanmard, Gupta và cộng sự | Tối ưu hóa trực tiếp mục tiêu Pass@k trong quá trình tỉa bớt suy nghĩ, cân bằng chất lượng giải pháp với tính đa dạng tại thời điểm kiểm tra. Nhắm vào đánh đổi tính toán-độ chính xác trung tâm của mở rộng quy mô tại thời điểm kiểm tra cho các mô hình suy luận. |
+| [**Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation**](http://arxiv.org/abs/2610.31639v1) | Dominici, McMillan, Barez và cộng sự | Buộc các bước CoT phải chịu trách nhiệm nhân quả cho câu trả lời cuối cùng bằng cách cô lập ngữ cảnh để ngăn rò rỉ attention. Giải quyết chỉ trích cốt lõi rằng các lý do CoT có thể là hậu kiểm thay vì giải thích. |
+| [**Simulated Control Evals**](http://arxiv.org/abs/2610.31593v1) | Olmo, Zhang, Tracy | Nghiên cứu mức độ các thiết lập đánh giá kiểm soát được xây dựng có mục đích có thể ngoại suy sang điều kiện triển khai thực tế để phát hiện các mô hình cố ý hành xử sai. Quan trọng cho việc diễn giải bằng chứng an toàn từ các đánh giá kiểm soát. |
+| [**EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence**](http://arxiv.org/abs/2610.31650v1) | Zhang, Wang, Zhao và cộng sự | Giới thiệu một benchmark nơi phản hồi công cụ bỏ sót các sự kiện liên quan đến an toàn, khiến tác nhân cho phép các hành động bị cấm mặc dù các tuyên bố được trả về là đúng. Phơi bày một chế độ thất bại tinh tế nơi các yêu cầu lành tính tạo ra kết quả không an toàn. |
+| [**Same Luck, Different Choice: Twin-World Credit Assignment for Agentic RL**](http://arxiv.org/abs/2610.31544v1) | Surio, Engel, Chou và cộng sự | Giải quyết vấn đề độc lập nhiễu trong phân nhánh phản thực tế cho gán tín dụng theo từng quyết định trong RL tác nhân. Cải thiện quy kết tín dụng trong các nhiệm vụ tầm xa nơi phần thưởng cấp tập quá thô. |
+| [**Can an Agent Debug a Web Corpus? Agentic Auditing of Slovak FineWeb2**](http://arxiv.org/abs/2610.31636v1) | Šuppa, Vykopal, Kopčan | Sử dụng một tác nhân LLM như trình gỡ lỗi corpus thông qua API chỉ đọc có ngân sách để phát hiện các thất bại pipeline đặc thù ngôn ngữ trong dữ liệu web đa ngôn ngữ. Tái định hình tác nhân từ bộ phân loại thành kiểm toán viên điều tra chất lượng dữ liệu. |
+| [**DuoCook: An Overcooked-Inspired Benchmark for Visual Planning and Coordination**](http://arxiv.org/abs/2610.31511v1) | Jiao, Zhang, Regmi và cộng sự | Xây dựng một benchmark trên Unreal Engine đánh giá các tác nhân thị giác-ngôn ngữ về lập kế hoạch thị giác và phối hợp chia sẻ tài nguyên dưới áp lực thời gian. Kiểm tra các năng lực mà các benchmark tĩnh đơn tác nhân bỏ qua. |
 
-### 🔧 方法与框架（新技术、基准、效率改进）
+### 🔧 Phương pháp & Khung (kỹ thuật mới, benchmark, cải thiện hiệu quả)
 
-| 论文 | 作者 | 摘要 |
+| Bài báo | Tác giả | Tóm tắt |
 | :--- | :--- | :--- |
-| [Mixing Matters: Evidence Position Bias Across Sequence Mixers in Long-Context Question Answering](http://arxiv.org/abs/2610.31135v1) | Behera, Solanki, Anand | 通过在固定干扰项中移动金标文档，系统比较 Transformer、状态空间和混合 Mamba 架构中的位置偏差。提供了关于证据位置在何处损害长上下文 QA 的架构级证据。 |
-| [ProductWebBench: Evaluating Website Continuity Beyond Task Completion](http://arxiv.org/abs/2610.31118v1) | Wu, Yang, Du et al. | 引入“网站连续性”作为前端编码智能体的第二项评估义务——不仅是目标是否被构建，还有网站其余部分是否仍然正常工作。填补了玩具任务成功与真实工程回归之间的空白。 |
-| [Constraint Reasoning and Large Language Models Join Forces: Providing Contrastive Explanations for Real-World Optimisation-Based Applications](http://arxiv.org/abs/2610.31119v1) | Lera-Leri, Bistaffa, Georgara et al. | 结合 MIP 约束推理与 LLM，回答用户关于基于优化的推荐的“为何/为何不”问题。通向可信决策支持的混合神经符号路径。 |
-| [What Comes Next and Why: Interpretable Next-Event Prediction with Neuro-Symbolic Rules](http://arxiv.org/abs/2610.31114v1) | Bauerschmidt, Valera, Vreeken | 学习用于序列事件预测的神经符号规则，揭示为何做出某预测，而不是以可解释性换取准确率。适用于任何需要时间预测可审计性的场景。 |
-| [Solving Flood-It Puzzles: A Comparison of Tailored A* Search with Declarative Solver Approaches](http://arxiv.org/abs/2610.31100v1) | von Manteuffel, Blankertz | 为最少步数 Flood-It 优化 A* 并采用更好的启发式，将其与 SAT、IP 和 CP 求解器进行基准比较。一项关于手工定制搜索何时胜过声明式公式的清晰、受控研究。 |
-| [Beyond Watching and Searching: Benchmarking Agents for Video-centered Deep Research Reports](http://arxiv.org/abs/2610.31158v1) | Meng, Yang, Wang et al. | 定义以视频为中心的深度研究报告生成，要求智能体从源视频中导出研究问题，并将外部证据综合为长篇报告。将深度研究基准扩展到多模态、视频接地的证据链。 |
+| [**Reliable AI-Assisted Decisions via Selective Auditing**](http://arxiv.org/abs/2610.31662v1) | Gibbs, Han, Tibshirani và cộng sự | Phát triển giám sát trực tuyến nơi điểm tin cậy (có thể từ một mô hình riêng) kích hoạt kiểm toán chọn lọc các quyết định. Cung cấp đảm bảo độ tin cậy thống kê cho các luồng quyết định AI được triển khai. |
+| [**Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success**](http://arxiv.org/abs/2610.31670v1) | Xie, Qian, Lan và cộng sự | Đề xuất căn chỉnh giác quan-vận động như một proxy ngoại tuyến rẻ để đánh giá năng lực chính sách nhúng, tránh các rollout vòng kín tốn kém. Mở rộng Giả thuyết Biểu diễn Platonic sang đánh giá robot. |
+| [**Phase Transition from Random Features to Fully Trainable Networks**](http://arxiv.org/abs/2610.31663v1) | He, Lao, Lu và cộng sự | Định lượng chuyển pha trong cận xấp xỉ khi mạng chuyển từ đặc trưng ngẫu nhiên cố định sang biểu diễn thích ứng hoàn toàn. Cung cấp hướng dẫn lý thuyết về việc cần huấn luyện bao nhiêu phần của mạng. |
+| [**BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing**](http://arxiv.org/abs/2610.31633v1) | Prairie, Ryan, Berg-Kirkpatrick và cộng sự | Giải quyết tăng trưởng KV-cache tuyến tính trong các kiến trúc lặp bằng cách chia sẻ KV qua các lần tái diễn. Cho phép lợi ích chất lượng của việc lặp mà không có hình phạt bộ nhớ tại thời điểm suy luận. |
+| [**When to Follow the Teacher: Advantage-Based On-Policy Distillation**](http://arxiv.org/abs/2610.31563v1) | Sabbaghi, Pappas, Hassani và cộng sự | Thay thế OPD "theo giáo viên mọi nơi" ngây thơ bằng hướng dẫn chọn lọc dựa trên lợi thế. Cải thiện chưng cất bằng cách không tin tưởng mù quáng vào hành động của giáo viên tại mọi trạng thái. |
+| [**Fine-Grained Analysis of Catastrophic Forgetting via Algorithmic Stability**](http://arxiv.org/abs/2610.31551v1) | Zheng, Sun, Wang và cộng sự | Cung cấp một khung lý thuyết cho quên lãng sử dụng tính ổn định thuật toán, tránh các giả định hạn chế về mô hình/nhiệm vụ. Đưa ra cái nhìn chi tiết hơn về cách các vòng lặp tích lũy quên lãng. |
+| [**Shift-aware score transport for privacy auditing without retraining**](http://arxiv.org/abs/2610.31549v1) | Yang, Pradhan, Chen và cộng sự | Cho phép kiểm toán quyền riêng tư khi kiểm toán viên không thể chèn canary hoặc huấn luyện lại mô hình, sử dụng vận chuyển điểm dưới dịch chuyển phân phối. Mở rộng kiểm toán quyền riêng tư thực tiễn sang các thiết lập quan sát. |
+| [**Efficient and Optimal Learning of Discrete Distributions with Person-Level Privacy**](http://arxiv.org/abs/2610.31612v1) | Kamath, Majid, Moitra và cộng sự | Đưa ra các thuật toán thời gian đa thức, gần tối ưu cho việc học phân phối rời rạc dưới DP cấp người trong mô hình theo lô. Thúc đẩy lý thuyết về quyền riêng tư với nhiều mẫu trên mỗi người dùng. |
 
-### 📊 应用（领域特定、多模态、代码生成）
+### 📊 Ứng dụng (đặc thù lĩnh vực, đa phương thức, sinh mã)
 
-| 论文 | 作者 | 摘要 |
+| Bài báo | Tác giả | Tóm tắt |
 | :--- | :--- | :--- |
-| [Would an LLM Match into a Residency? Uncertainty, Reasoning and Image Use of Open Language Models on the Spanish MIR Examination](http://arxiv.org/abs/2610.31586v1) | Fernandez-de-Retana, Zulaika, Sanchez-Corcuera et al. | 在西班牙 MIR 医学考试上评估开放模型，超越准确率——在本地硬件上探查校准、推理和恰当的图像使用。将医学 LLM 就绪度重新框定为围绕对自身错误的自我认知，而非分数。 |
-| [How Ground Truth Shapes Retrieval Scores: Evidence-Aware Evaluation of a RAG System for Breast Lesions](http://arxiv.org/abs/2610.31606v1) | Mochizuki Silva, Ismael, Dias et al. | 表明临床 RAG 中的检索指标严重依赖标注覆盖度，并提出了一种证据感知的评估协议。直接解决了医学检索基准测试中的一个可复现性陷阱。 |
-| [From Structured Records to Patient Narratives: Preserving Clinical Alignment in LLM-Generated Health Summaries](http://arxiv.org/abs/2610.31467v1) | Ayadi, Geissler, Schmidhuber | 将纵向可穿戴/生理记录转化为患者可理解的语言，同时保持临床对齐。解决了结构化健康数据与面向患者的沟通之间的忠实度差距。 |
-| [Can an Agent Debug a Web Corpus? Agentic Auditing of Slovak FineWeb2](http://arxiv.org/abs/2610.31636v1) | Šuppa, Vykopal, Kopčan | 使用一个工具使用型 LLM 智能体，一次性作为语料库调试器，通过预算受限的只读 API 揭示语言特定的故障模式。展示了智能体审计作为逐语言手动流水线验证的可扩展替代方案。 |
-| [A Grammar of French Civil Cassation: A Ground-Level Dataset and Tool](http://arxiv.org/abs/2610.31116v1) | Floro, Dhorasoo, Holzenberger et al. | 发布跨越 86,464 份法国最高法院裁决（2016–2025）的 121,536 个理由对及工具。一个重要的法律 NLP 资源，其中上诉结果是决定性的，推理结构在法律上是形式化的。 |
-| [Towards Field-Deployable Wearable IMU Systems for Occupational Activity Recognition](http://arxiv.org/abs/2610.31160v1) | Haq, Brusey, Nasirzadeh et al. | 在严格的留一受试者协议下重新评估建筑工人 HAR，揭示了标题中 >95% 的准确率掩盖了巨大的个体差异。主张受试者无关评估才是真正的部署门槛。 |
-| [PriMa-Causa: Causal Prescriptive Maintenance](http://arxiv.org/abs/2610.31147v1) | Felix Saretzky | 在稀疏观测记录下使用因果方法针对即将发生的故障推荐维护动作。将工业维护从故障预测推进到具有不确定性意识的行动处方。 |
+| [**Automatic Text-to-Image Dataset-Use Auditing via SpectralCanary**](http://arxiv.org/abs/2610.31659v1) | Ho, Satheesh, Chawathe và cộng sự | Cấy các tín hiệu phổ tần số thấp vào dataset trước khi phát hành để sau này phát hiện việc tinh chỉnh T2I trái phép. Cung cấp một cơ chế thực tiễn, chi phí thấp cho nguồn gốc dataset chủ động. |
+| [**VERA: A Responsible AI Dashboard for LLM Deployments under the EU AI Act**](http://arxiv.org/abs/2610.31588v1) | Quériaux, Bachellery, Déléris và cộng sự | Vận hành hóa diễn giải kỹ thuật của COMPL-AI về Đạo luật AI EU thành một dashboard đánh giá triển khai. Kết nối tuân thủ quy định và bằng chứng kỹ thuật cho việc sử dụng LLM được quản lý. |
+| [**Cost-Aware Abstention for LLM-Based IT Ticket Classification**](http://arxiv.org/abs/2610.31657v1) | Gupta | Định hình định tuyến như một bài toán sẵn sàng có điều kiện chi phí, chọn chính sách dưới chi phí định tuyến sai rõ ràng trước đánh giá đóng băng. Cho thấy định tuyến sai có thể vượt chi phí phân loại của con người, thúc đẩy từ chối được hiệu chỉnh. |
+| [**How Ground Truth Shapes Retrieval Scores: Evidence-Aware Evaluation of RAG for Breast Lesions**](http://arxiv.org/abs/2610.31606v1) | Silva, Ismael, Dias và cộng sự | Chứng minh rằng điểm truy xuất RAG lâm sàng phụ thuộc nhiều vào độ phủ chú thích, đề xuất một giao thức đánh giá nhận biết bằng chứng. Một đóng góp phương pháp luận cảnh báo cho benchmark RAG y tế. |
+| [**Piano2Pop: Expanding Piano Demos into Pop Productions Without Aligned Supervision**](http://arxiv.org/abs/2610.31510v1) | Cheng, Tan, Huang và cộng sự | Biến đổi MIDI piano thành các sản phẩm pop hoàn chỉnh bằng cách điều kiện hóa một mô hình khớp luồng mà không cần giám sát căn chỉnh. Cho thấy các phương pháp giám sát giả có thể kết nối phiên âm và sinh nhạc. |
+| [**Would an LLM Match into a Residency?**](http://arxiv.org/abs/2610.31586v1) | Fernandez-de-Retana, Zulaika, Sanchez-Corcuera và cộng sự | Đánh giá các LLM mở trên kỳ thi MIR Tây Ban Nha về độ chính xác, hiệu chỉnh độ bất định, và hiệu ứng tinh chỉnh y tế. Lập luận rằng các hệ thống y tế cần nhiều hơn độ chính xác trước khi triển khai lâm sàng. |
+
+## 3. Tín hiệu xu hướng nghiên cứu
+
+Ba hướng nổi bật hôm nay. Thứ nhất, **tính toàn vẹn của đánh giá đang trở thành một vấn đề nghiên cứu hạng nhất**: các bài báo về rò rỉ token tương lai ẩn, chấm điểm RAG nhận biết bằng chứng, và kiểm toán quyền riêng tư quan sát đều lập luận rằng các đo lường của chúng ta có thể gây hiểu lầm một cách hệ thống. Thứ hai, **tính toán tại thời điểm kiểm tra đang được tối ưu hóa thay vì chỉ mở rộng quy mô**—tối ưu hóa Pass@k, chính sách bỏ mặt nạ được học, và gán tín dụng thích ứng đều coi suy luận như một bài toán quyết định có ngân sách. Thứ ba, **an toàn đang chuyển từ căn chỉnh tại thời điểm huấn luyện sang đảm bảo tại thời điểm triển khai**: kiểm toán chọn lọc, từ chối dựa trên chi phí, tính hợp lệ của đánh giá kiểm soát, và dashboard quy định đều giải quyết những gì xảy ra sau khi mô hình được phát hành. Xuyên suốt cả ba là một **sự thức tỉnh lý thuyết**—chuyển pha, tính ổn định thuật toán, và DP cấp người—cho thấy lĩnh vực đang trưởng thành vượt ra ngoài mở rộng quy mô thuần túy thực nghiệm hướng tới các đảm bảo có nguyên tắc.
+
+## 4. Đáng đọc sâu
+
+1. **[A Fix for Softmax and Cross-Entropy](http://arxiv.org/abs/2610.31642v1)** — Nếu các lỗi số được chẩn đoán là thật và tổng quát như tuyên bố, chúng âm thầm ảnh hưởng đến một phần lớn các mô hình đã được huấn luyện. Bài báo ngắn gọn, có đòn bẩy cao, và có thể hành động ngay cho bất kỳ người thực hành nào; việc xác minh và áp dụng bản sửa chữa có thể cải thiện độ trung thực gradient trên toàn bộ lĩnh vực.
+
+2. **[Direct Pass@$k$ Optimization for Thought Pruning](http://arxiv.org/abs/2610.31667v1)** — Mở rộng quy mô tại thời điểm kiểm tra là một trong những đòn bẩy quan trọng nhất hiện nay cho hiệu năng suy luận, và việc tỉa bớt ngây thơ thường hy sinh tính đa dạng làm cho Pass@k hoạt động. Bài báo này tấn công trực tiếp đánh đổi chất lượng-đa dạng, với hàm ý cho triển khai suy luận tiết kiệm chi phí.
+
+3. **[Reliable AI-Assisted Decisions via Selective Auditing](http://arxiv.org/abs/2610.31662v1)** — Cung cấp một khung dựa trên thống kê cho giám sát trực tuyến nơi độ tin cậy và quyết định có thể đến từ các mô hình khác nhau, phù hợp với triển khai thực tế phức tạp. Các đảm bảo độ tin cậy khiến nó trở thành ứng viên mạnh để áp dụng trong các thiết lập được quản lý hoặc có rủi ro cao.
 
 ---
 
-## 3. 研究趋势信号
-
-三个汇聚的方向尤为突出。第一，**评估有效性本身正成为一个研究主题**——评判者鲁棒性、成对分数抵消、工具使用下的提示词敏感性、检索分数对标注覆盖度的依赖，以及离线智能体审计的形式化可识别性极限，都在同一天出现。第二，**效率工作已细分**：不再是通用压缩，我们看到任务/时间步条件量化、草稿模型专用 KV 压缩、低位 N-gram 表，以及向前-only 持续写入——精度和内存被分配到边际成本最低之处。第三，**多智能体 LLM 系统正在获得一种社会物理学**：拓扑条件化共识、影响力归因和群体级脆弱性现在以网络科学的严谨性被研究。一条更安静但值得注意的线索是**神经符号混合**——MIP 加 LLM 的解释和可解释的基于规则的事件预测——表明可解释性正通过结构而非事后归因来追求。最后，智能体*审计*（语料库调试、深度研究证据链）正作为任务执行之外的独特用例浮现。
+Quy tắc:
+- Chỉ xuất bản dịch. Không mở đầu, không giải thích, không hàng rào markdown bao quanh toàn bộ đầu ra.
+- Giữ nguyên cấu trúc Markdown chính xác: tiêu đề, bảng (bao gồm hàng căn chỉnh cột), danh sách, blockquote, bold/italic, đường kẻ ngang, emoji.
+- Giữ nguyên URL, đích liên kết, code span, code block, số và ngày tháng.
+- Giữ tên dự án, slug kho lưu trữ, tên người dùng, thẻ phiên bản, đường dẫn tệp và định danh API/config ở dạng gốc — không dịch chúng.
+- Tham chiếu issue/PR như #12345 và văn bản liên kết của chúng giữ nguyên.
+- Sử dụng tiếng Việt tự nhiên, văn phong của bản tin nhà phát triển Việt Nam — rõ ràng và trực tiếp, không dịch từng từ một.
+- Ưu tiên từ đơn giản và câu ngắn. Nêu rõ điều gì đã thay đổi và nó dùng để làm gì khi nguồn cung cấp đủ thông tin. Không thêm sự kiện, so sánh phiên bản hoặc lợi ích không có trong nguồn.
 
 ---
-
-## 4. 值得深读
-
-1. **[Post-Audit Mirage: Identifiability Limits of Offline Agent Verification](http://arxiv.org/abs/2610.31130v1)**——这是今天概念性赌注最尖锐的论文。它使用匹配的安全/有害生命周期构造了一个形式化的不可能性式结果：相同的验证器可见证据可能对应相反的部署结果。如果该定理成立，它将重塑智能体安全论证的方式——不再是“我们的测试通过了”，而是关于离线证据*无法*排除哪些故障类别的明确陈述。对于任何构建智能体部署流水线或撰写安全评估的人而言，这是必读之作。
-
-2. **[Direct Pass@k Optimization for Thought Pruning](http://arxiv.org/abs/2610.31667v1)**——测试时扩展是该领域最昂贵的习惯之一，而大多数剪枝方法优化了错误的目标（逐轨迹质量），而实际目标是找到*任何*正确轨迹。直接优化 Pass@k 并显式控制多样性，使剪枝标准与部署指标对齐。该方法论很可能被广泛复用。
-
-3. **[Would an LLM Match into a Residency?](http://arxiv.org/abs/2610.31586v1)**——这是临床 AI 应如何被评估的一个范本。它没有报告考试准确率，而是探查了预期在卫生系统自有硬件上运行的开放模型的不确定性校准、推理质量和图像使用。其框架——*卫生系统在部署前实际需要知道什么*——远远超出了 MIR 考试，仅其评估设计就值得一读。
-
-*摘要汇编自 2026-10-22 的 50 篇 ArXiv 投稿（cs.AI、cs.CL、cs.LG）。*
+*Bản tin này được tạo tự động bởi [agents-radar](https://github.com/BuhDuy256/agents-radar) tự động tạo.*
