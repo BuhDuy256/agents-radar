@@ -13,7 +13,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { callLlm, parseLlmJson } from "../src/report.ts";
-import { buildHighlightsPrompt, type ReportHighlights } from "../src/prompts-data.ts";
+import { buildHighlightsPrompt, clampHighlights, type ReportHighlights } from "../src/prompts-data.ts";
 import { buildMessage } from "../src/notify.ts";
 import { PUBLISHED_REPORTS, type Lang } from "../src/i18n.ts";
 
@@ -60,12 +60,12 @@ async function main() {
   ]);
 
   try {
-    highlights.vi = parseLlmJson<ReportHighlights>(viRaw);
+    highlights.vi = clampHighlights(parseLlmJson<ReportHighlights>(viRaw));
   } catch (err) {
     console.error(`  [highlights] vi parse failed: ${err}`);
   }
   try {
-    highlights.en = parseLlmJson<ReportHighlights>(enRaw);
+    highlights.en = clampHighlights(parseLlmJson<ReportHighlights>(enRaw));
   } catch (err) {
     console.error(`  [highlights] en parse failed: ${err}`);
   }

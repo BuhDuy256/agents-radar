@@ -19,7 +19,12 @@ import {
   createGitHubIssue,
 } from "./github.ts";
 import { type RepoDigest, buildCliPrompt, buildSkillsPrompt, buildJsonTranslationPrompt } from "./prompts.ts";
-import { buildTrendingPrompt, buildHighlightsPrompt, type ReportHighlights } from "./prompts-data.ts";
+import {
+  buildTrendingPrompt,
+  buildHighlightsPrompt,
+  clampHighlights,
+  type ReportHighlights,
+} from "./prompts-data.ts";
 import {
   callLlm,
   translateToVi,
@@ -379,7 +384,7 @@ async function main(): Promise<void> {
   const attemptJson = async (label: string, prompt: string): Promise<ReportHighlights> => {
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
-        return parseLlmJson<ReportHighlights>(await callLlm(prompt, 2048));
+        return clampHighlights(parseLlmJson<ReportHighlights>(await callLlm(prompt, 2048)));
       } catch (err) {
         const tag = attempt < 2 ? "retrying" : "giving up";
         console.error(`  [highlights] ${label} attempt ${attempt} failed (${tag}): ${err}`);

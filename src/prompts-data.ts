@@ -330,6 +330,17 @@ Quy tắc:
 - Không đổi số liệu, ngày tháng hoặc trạng thái so với báo cáo`;
 }
 
+/**
+ * Enforce the per-report ceiling. The prompt asks for at most
+ * `HIGHLIGHTS_PER_REPORT`, but the model occasionally returns more — the
+ * notification renders up to three, so trim here rather than downstream.
+ */
+export function clampHighlights(highlights: ReportHighlights): ReportHighlights {
+  return Object.fromEntries(
+    Object.entries(highlights).map(([id, items]) => [id, items.slice(0, HIGHLIGHTS_PER_REPORT)]),
+  );
+}
+
 function hostOf(url: string): string {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
