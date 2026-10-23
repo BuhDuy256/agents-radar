@@ -1,70 +1,48 @@
 {
   "vi": {
     "ai-cli": [
-      "Bản sửa Claude Code mcp-builder hỗ trợ mcp>=2.0.0 đã cập bến",
-      "skill-creator tách biệt đánh giá trigger sau báo cáo bỏ sót sai",
-      "OpenAI Codex, Gemini CLI, Copilot CLI đều được theo dõi trong digest",
-      "Pi và Qwen Code gia nhập bản tổng hợp hệ sinh thái 7 công cụ CLI",
-      "Repo Anthropic Skills thúc đẩy đóng góp kỹ năng từ cộng đồng",
-      "Lỗi Windows select() trong đánh giá trigger kỹ năng đã được sửa"
+      "Claude Code v2.1.309 đã sửa lỗi macOS và Linux sandboxed Bash chạy các tệp khởi động shell bên ngoài sandbox trước mỗi lệnh.",
+      "Vấn đề được quan tâm nhất của Claude Code (#492, 46 bình luận) là rủi ro chuỗi cung ứng từ các skill cộng đồng đăng dưới anthropics/ mạo danh chính thức.",
+      "PR #1298 của Claude Code skill-creator giúp đánh giá trigger mang tính xác định và sửa select() trên Windows cho pipe subprocess."
     ],
     "ai-trending": [
-      "cloudflare/security-audit-skill tăng vọt +2.979 sao hôm nay",
-      "ponytail đạt 173.872 sao, hướng agent viết ít mã hơn",
-      "graphify biến mã nguồn thành đồ thị tri thức không cần vector",
-      "claude-mem bổ sung bộ nhớ lâu dài xuyên phiên agent",
-      "Hệ thống tối ưu hóa ECC harness nay đạt 286.678 sao",
-      "Kỹ năng Graphify hỗ trợ Claude Code, Cursor, Codex, Gemini"
+      "security-audit-skill của Cloudflare tăng 2.979 sao hôm nay nhờ skill kiểm toán bảo mật coding-agent đa giai đoạn với phát hiện máy đọc được.",
+      "Graphify biến codebase, tài liệu, schema SQL, cấu hình và PDF thành knowledge graph truy vấn được dưới dạng skill /graphify, thêm 1.408 sao hôm nay.",
+      "cloudflare/security-audit-skill và anthropics/knowledge-work-plugins là mục mới: skill kiểm toán agent kiểm chứng được và plugin công việc tri thức Claude Cowork."
     ],
     "ai-hn": [
-      "Claude chính thức xác minh 123 thư viện RISC-V ở quy mô lớn",
-      "Anthropic và Theorem tìm lỗi sống sót qua hàng nghìn tỷ lần kiểm thử",
-      "NVIDIA OpenShell cô lập hàng loạt agent AI tự hành",
-      "OpenShell thực thi chính sách cấp kernel trên tệp và syscall",
-      "Xác minh hình thức gắn cờ truy cập agent rủi ro trước khi phê duyệt",
-      "OpenShell phát hành SDK cho Python, TypeScript, Go, Rust"
+      "Anthropic cho biết Claude và Theorem tạo chứng minh bảo mật mức assembly RISC-V trên 123 thư viện mã nguồn mở, tìm ra lỗi lâu năm.",
+      "NVIDIA phát hành OpenShell, runtime sandbox Apache 2.0 thực thi quyền truy cập tệp, API và thông tin xác thực của agent ở mức kernel với thay đổi chính sách được xác minh hình thức.",
+      "Mistral ra mắt Voxtral 3, SDK voice agent kết hợp speech-to-text và TTS thời gian thực trong hơn 50 ngôn ngữ với biến thể Mini 4B phiên âm giá $0.0035/phút.",
+      "Thử nghiệm 12 mô hình AI cho thấy 29 trong 35 câu trả lời cho prompt 'ý kiến gây tranh cãi nhất của con người' chia sẻ cùng ý tưởng: trung thành nhóm hơn sự thật."
     ],
     "ai-community": [
-      "Anthropic vận hành 30.000 agent đồng thời trên nền tảng nội bộ",
-      "Tỷ lệ chặn 0,002%: 1 trong 47.000 quyết định agent bị dừng",
-      "26% công việc R&D mô hình đạt mức AL4 theo thang Epoch AI",
-      "Agent ART tìm thấy mảng DNA giống CRISPR, 10 lần chạy lại thất bại",
-      "950 phiên agent đốt 215,6 triệu token trong 21,5 giờ",
-      "Giám sát trước thực thi kèm quy trình leo thang cho người hàng tuần"
+      "Anthropic cho biết 26% công việc R&D mô hình đo được đạt tự chủ AL4 vào tháng 8/2026, tăng từ dưới 1% hồi tháng 2, với ~1/47.000 quyết định agent bị chặn.",
+      "Agent của Anthropic tìm thấy mảng lặp ART giống CRISPR trong DNA bacteriophage, nhưng mười lần chạy lại không tái phát hiện, cho thấy nút thắt là quỹ đạo điều tra.",
+      "Một tác giả đã xây dựng 15 skill agent kết hợp heuristic bốn giai đoạn Pólya và Clean Architecture để buộc AI coder dừng lại trước khi viết mã."
     ]
   },
   "en": {
     "ai-cli": [
-      "Claude Code mcp-builder fix lands for mcp>=2.0.0 support",
-      "skill-creator isolates trigger evals after false-miss reports",
-      "OpenAI Codex, Gemini CLI, Copilot CLI all tracked in digest",
-      "Pi and Qwen Code join 7-tool CLI ecosystem roundup",
-      "Anthropic Skills repo drives community skill contributions",
-      "Windows select() failures fixed in skill trigger evaluation"
+      "Claude Code v2.1.309 fixed macOS and Linux sandboxed Bash running shell startup files outside the sandbox before each command.",
+      "Claude Code's highest-engagement issue (#492, 46 comments) is supply-chain risk from community skills published under anthropics/ impersonating official ones.",
+      "Claude Code skill-creator PR #1298 makes trigger evaluation deterministic and fixes Windows select() on subprocess pipes."
     ],
     "ai-trending": [
-      "cloudflare/security-audit-skill spikes +2,979 stars today",
-      "ponytail hits 173,872 stars, biases agents to write less code",
-      "graphify turns codebases into knowledge graphs without vectors",
-      "claude-mem adds persistent memory across agent sessions",
-      "ECC harness optimization system now at 286,678 stars",
-      "Graphify skill supports Claude Code, Cursor, Codex, Gemini"
+      "Cloudflare's security-audit-skill gained 2,979 stars today as a multi-phase coding-agent security audit skill with machine-readable findings.",
+      "Graphify turns codebases, docs, SQL schemas, configs, and PDFs into a queryable knowledge graph as a /graphify skill, adding 1,408 stars today.",
+      "cloudflare/security-audit-skill and anthropics/knowledge-work-plugins are new entries: a verifiable agent audit skill and Claude Cowork knowledge-work plugins."
     ],
     "ai-hn": [
-      "Claude formally verifies 123 RISC-V libraries at scale",
-      "Anthropic and Theorem find bugs surviving trillions of test runs",
-      "NVIDIA OpenShell sandboxes fleets of autonomous AI agents",
-      "OpenShell enforces kernel-level policy on files and syscalls",
-      "Formal verification flags risky agent access before approval",
-      "OpenShell ships SDKs for Python, TypeScript, Go, Rust"
+      "Anthropic says Claude and Theorem produced RISC-V assembly-level security proofs across 123 open-source libraries, finding long-standing bugs along the way.",
+      "NVIDIA released OpenShell, an Apache 2.0 sandboxed runtime enforcing agent file, API, and credential access at the kernel level with formally verified policy changes.",
+      "Mistral launched Voxtral 3, a voice agent SDK pairing real-time speech-to-text and TTS models in 50+ languages with the 4B Mini transcribe variant at $0.0035/min.",
+      "A test of 12 AI models found 29 of 35 answers to a 'most controversial opinion of humans' prompt shared the same idea: group loyalty over truth."
     ],
     "ai-community": [
-      "Anthropic runs 30,000 concurrent agents on internal platform",
-      "0.002% block rate: 1 in 47,000 agent decisions stopped",
-      "26% of model R&D work measured at AL4 on Epoch AI scale",
-      "ART agent found CRISPR-like DNA array, 10 reruns failed",
-      "950 agent sessions burned 215.6M tokens in 21.5 hours",
-      "Pre-execution monitors plus weekly human escalation pipeline"
+      "Anthropic says 26% of measured model R&D work reached AL4 autonomy by August 2026, up from under 1% in February, with ~1 in 47,000 agent decisions blocked.",
+      "Anthropic agents found a CRISPR-like ART repeat array in bacteriophage DNA, but ten reruns failed to rediscover it, showing the bottleneck is investigation trajectory.",
+      "A writer built 15 Pólya four-stage heuristic plus Clean Architecture agent skills to force an AI coder to pause before writing code."
     ]
   }
 }

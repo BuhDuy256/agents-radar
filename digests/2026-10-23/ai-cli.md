@@ -1,6 +1,6 @@
 # Bản tin cộng đồng công cụ AI CLI 2026-10-23
 
-> Tạo lúc: 2026-10-23 06:10 UTC | Công cụ theo dõi: 7
+> Tạo lúc: 2026-10-23 06:31 UTC | Công cụ theo dõi: 7
 
 - [Claude Code](https://github.com/anthropics/claude-code)
 - [OpenAI Codex](https://github.com/openai/codex)
@@ -25,113 +25,104 @@
 # Claude Code Skills — Báo cáo điểm nổi bật cộng đồng
 *Ảnh chụp dữ liệu: 2026-10-23 | Nguồn: github.com/anthropics/skills*
 
+> **Lưu ý về chất lượng dữ liệu:** Tập dữ liệu PR báo cáo `Comments: undefined` cho tất cả 50 dòng, nên không thể xếp hạng PR strictly theo số lượng bình luận. Xếp hạng dưới đây dựa trên các tín hiệu chú ý tổng hợp (độ mới, tần suất cập nhật, số lượng 👍, số issue liên kết, và mức độ nổi bật trong feed đã sắp xếp). Các issue — vốn có số lượng bình luận — được xếp hạng trực tiếp.
+
 ---
 
-## 1. Bảng xếp hạng Skill hàng đầu
-
-Xếp hạng theo mức độ chú ý của cộng đồng (bình luận, hoạt động review, tham chiếu chéo). Lưu ý: số lượng bình luận trên PR không có sẵn trong tập dữ liệu, nên thứ hạng phản ánh độ mới của cập nhật, các issue liên kết và độ sâu thảo luận.
+## 1. Xếp hạng Skill hàng đầu (theo mức độ chú ý của PR / thảo luận)
 
 | # | Skill / PR | Chức năng | Điểm nổi bật trong thảo luận | Trạng thái |
-|---|---|---|---|---|
-| 1 | **mcp-builder fix** ([#1742](https://github.com/anthropics/skills/pull/1742)) | Cập nhật MCP builder cho `mcp>=2.0.0` — đổi tên `streamablehttp_client` → `streamable_http_client`, thêm hỗ trợ custom header qua `create_mcp_http_client`. Liên kết với issue #1668. | Nằm trong một cụm lỗi của mcp-builder (xem thêm #1390, #1668); vẫn hoạt động tính đến 2026-10-08. | OPEN |
-| 2 | **skill-creator: isolate trigger evals** ([#1298](https://github.com/anthropics/skills/pull/1298)) | Sửa lỗi false-miss/invalid-score trong đánh giá trigger — tranh chấp probe giữa các worker, lỗi `select()` trên Windows, các tool không liên quan làm hủy scan. | Phản hồi trực tiếp vấn đề bất ổn định eval do cộng đồng báo cáo (#1383, #556). Cập nhật 2026-09-16. | OPEN |
-| 3 | **notion-spec-to-implementation + quantitative-resume-auditor** ([#1245](https://github.com/anthropics/skills/pull/1245)) | Gói hai skill: chuyển đổi spec Notion thành task Notion khả thi kèm tiêu chí chấp nhận; audit resume theo định lượng. | PR tồn tại lâu (mở từ tháng 6, cập nhật 15/10) — contributor duy trì tham gia đều đặn. | OPEN |
-| 4 | **proofcore-contract-auditor** ([#1771](https://github.com/anthropics/skills/pull/1771)) | Phân tích tĩnh cho smart contract Solidity/Rust với bằng chứng audit mật mã neo vào TON Blockchain (giao thức Merkle). | Mảng Web3 mới lạ; ngách nhưng đặc sắc. | OPEN |
-| 5 | **md2video-audio** ([#1703](https://github.com/anthropics/skills/pull/1703)) | Pipeline miễn phí biên dịch Markdown → slide Marp → MP4 với voiceover AI. | Skill tạo media; cho thấy nhu cầu về đầu ra đa phương thức. | OPEN |
-| 6 | **pyxel retro game dev** ([#525](https://github.com/anthropics/skills/pull/525)) | Hướng dẫn tạo, debug và kiểm thử headless game retro Pyxel. | Tồn tại lâu (từ tháng 3); cộng đồng quan tâm ổn định. | OPEN |
-| 7 | **document-typography** ([#514](https://github.com/anthropics/skills/pull/514)) | Ngăn ngừa orphan word wrap, widow paragraph và lệch số thứ tự trong tài liệu được tạo. | Hấp dẫn rộng rãi — ảnh hưởng đến *mọi* tài liệu Claude tạo ra. | OPEN |
-| 8 | **ODT skill** ([#486](https://github.com/anthropics/skills/pull/486)) | Hỗ trợ đầy đủ OpenDocument (.odt/.ods): tạo/điền/parse/chuyển sang HTML. | Lấp khoảng trống rõ ràng trong nhóm document-skills. | OPEN |
+|---|-----------|---------------|----------------------|--------|
+| 1 | **mcp-builder fix** — `streamable_http_client` + custom headers ([#1742](https://github.com/anthropics/skills/pull/1742)) | Sửa skill MCP server builder cho `mcp>=2.0.0`, phiên bản đã đổi tên `streamablehttp_client` và chuyển headers sang `create_mcp_http_client`. | Sửa trực tiếp Issue #1668; được cập nhật suốt một tháng (2026-09-08 → 2026-10-08), cho thấy đang được lặp liên tục. Issue liên quan #1390 cho thấy `evaluation.py` của cùng skill này đạt 0/N điểm trên server thực — skill MCP-builder đang chịu áp lực bảo trì liên tục. | OPEN |
+| 2 | **skill-creator: trigger eval isolation + Windows/runtime fixes** ([#1298](https://github.com/anthropics/skills/pull/1298)) | Làm cho việc đánh giá trigger trở nên tất định — cô lập command probe theo từng worker, sửa `select()` trên subprocess pipe trên Windows, ngăn các tool không liên quan hủy bỏ scan. | Một trong nhiều bản sửa skill-creator (xem thêm #1681, #1997); liên quan đến Issue #556 (tỷ lệ trigger 0%), #1383 (trigger eval hỏng trên Windows), #1394 (XSS trong eval-viewer). Bộ công cụ skill-creator là cụm báo lỗi cộng đồng lớn nhất. | OPEN |
+| 3 | **notion-spec-to-implementation + quantitative-resume-auditor** ([#1245](https://github.com/anthropics/skills/pull/1245)) | Chuyển đổi spec sản phẩm/kỹ thuật trên Notion thành các task Claude Code cụ thể, có thể hành động (tiêu chí nghiệm thu, theo dõi tiến độ); skill thứ hai đánh giá resume theo định lượng. | Bản submission được cập nhật tích cực lâu nhất trong nhóm dẫn đầu (2026-06-02 → 2026-10-15). Đại diện cho xu hướng tự động hóa quy trình "spec → kế hoạch thực thi". | OPEN |
+| 4 | **proofcore-contract-auditor** ([#1771](https://github.com/anthropics/skills/pull/1771)) | Phân tích tĩnh tự động cho smart contract Solidity/Rust với bằng chứng audit mật mã neo trên blockchain TON (giao thức Merkle zero-storage). | Đáng chú ý là đại diện Web3/blockchain trong một hệ sinh thái vốn bị chi phối bởi skill về tài liệu và dev-tooling; mang tính thương hiệu (tác giả gửi kèm protocol). | OPEN |
+| 5 | **md2video-audio** ([#1703](https://github.com/anthropics/skills/pull/1703)) | Pipeline chi phí bằng không, biên dịch Markdown → slide Marp → MP4 có thuyết minh với giọng đọc tự nhiên. | Mở rộng họ skill tạo tài liệu (docx/pdf/odt) sang đầu ra media; cách định vị "zero-cost" cho thấy nó tránh các API TTS trả phí — một mối quan tâm thường gặp của cộng đồng. | OPEN |
+| 6 | **document-typography** ([#514](https://github.com/anthropics/skills/pull/514)) | QC typography cho tài liệu được tạo ra: ngắt dòng từ mồ côi, đoạn văn mồ côi, lệch số thứ tự. | Rất khớp về mặt khái niệm với bộ document-skills chính thức; gần như mọi tài liệu do Claude tạo đều mắc các lỗi này, nên có tính ứng dụng rộng dù ít 👍. | OPEN |
+| 7 | **pyxel** ([#525](https://github.com/anthropics/skills/pull/525)) | Phát triển game retro bằng Python qua Pyxel — chạy headless dựa trên input, kiểm tra frame trực tiếp, kiểm tra state. | Submission skill lâu đời nhất trong top 20 với cập nhật liên tục (2026-03-05 → 2026-09-22), cho thấy tác giả đang duy trì nó qua các vòng review. | OPEN |
+| 8 | **skill-quality-analyzer + skill-security-analyzer** ([#83](https://github.com/anthropics/skills/pull/83)) | Meta-skill đánh giá skill theo năm chiều chất lượng (cấu trúc, tài liệu, v.v.) và review bảo mật. | PR lâu đời nhất trong top 20 (2025-11-06) và gắn về mặt chủ đề với Issue #492 (lạm dụng ranh giới tin cậy) — meta-tooling vẫn là một khoảng trống chưa được giải quyết. | OPEN |
 
-**Đáng chú ý thêm:** `scnet-hpc` (#1615), `skill-quality-analyzer` + `skill-security-analyzer` (#83), đại tu độ rõ ràng của frontend-design (#210).
-
----
-
-## 2. Xu hướng nhu cầu cộng đồng
-
-Chắt lọc từ top 15 Issue. Bốn nhóm nhu cầu rõ rệt xuất hiện:
-
-**A. Tin cậy, Bảo mật & Quản trị** *(tương tác cao nhất)*
-- [#492](https://github.com/anthropics/skills/issues/492) — **46 bình luận, issue #1**: skill cộng đồng phân phối dưới namespace `anthropic/` cho phép lạm dụng ranh giới tin cậy.
-- [#1394](https://github.com/anthropics/skills/issues/1394) — XSS trong eval-viewer qua `escapeHtml()` không an toàn với attribute.
-- [#412](https://github.com/anthropics/skills/issues/412) — đề xuất skill `agent-governance` (thực thi chính sách, audit trail). CLOSED.
-- **Tín hiệu:** người dùng muốn provenance, sandboxing và các primitive quản trị trước khi tin tưởng skill bên thứ ba.
-
-**B. Độ tin cậy của Skill-Creator & Công cụ đánh giá** *(xuất hiện thường xuyên nhất)*
-- [#556](https://github.com/anthropics/skills/issues/556), [#1383](https://github.com/anthropics/skills/issues/1383), [#202](https://github.com/anthropics/skills/issues/202) — trigger eval ở mức 0%, hỏng trên Windows, sai lệch benchmark, vi phạm tone/style.
-- **Tín hiệu:** bộ meta-tooling để viết skill chính là nguồn ma sát lớn nhất.
-
-**C. Tự động hóa quy trình & Cộng tác**
-- [#228](https://github.com/anthropics/skills/issues/228) — chia sẻ skill trong toàn tổ chức (17 bình luận, 8 👍).
-- [#189](https://github.com/anthropics/skills/issues/189) — nội dung trùng lặp giữa plugin `document-skills`/`example-skills` (9 👍).
-- **Tín hiệu:** doanh nghiệp áp dụng cần chia sẻ, khử trùng lặp và quản lý thư viện.
-
-**D. Quality Gate & Bộ nhớ**
-- [#1385](https://github.com/anthropics/skills/issues/1385) — Pipeline Reasoning Quality Gate (calibration → adversarial review → delivery verification).
-- [#1329](https://github.com/anthropics/skills/issues/1329) — ký hiệu symbolic `compact-memory` cho trạng thái agent.
-- [#1487](https://github.com/anthropics/skills/issues/1487) — skill `claude-api` tiêm ~156k token trong một lần gọi.
-- **Tín hiệu:** nhu cầu về tiết kiệm context và các pattern tự xác minh.
+*Các bản sửa đáng chú ý khác:* [webapp-testing loại bỏ shell=True (CWE-78)](https://github.com/anthropics/skills/pull/1980), [docx xử lý timeout của LibreOffice](https://github.com/anthropics/skills/pull/1792), [skill-creator phân tích YAML frontmatter](https://github.com/anthropics/skills/pull/1997), [algorithmic-art sửa `wrapAround()`](https://github.com/anthropics/skills/pull/1977).
 
 ---
 
-## 3. Skill đang chờ xử lý có tiềm năng cao
+## 2. Xu hướng nhu cầu cộng đồng (từ Issues)
 
-Các PR có bình luận/cập nhật tích cực, khả năng được merge sớm (tất cả OPEN):
+Xếp hạng theo số bình luận và độ mới:
 
-| PR | Skill | Vì sao đáng kỳ vọng |
-|---|---|---|
-| [#1977](https://github.com/anthropics/skills/pull/1977) | Sửa wrapAround của algorithmic-art | Bug fix nhỏ, độc lập; đóng #1897; cập nhật 2026-10-18. |
-| [#1976](https://github.com/anthropics/skills/pull/1976) | Sửa element_discovery trong webapp-testing | Đóng #1891; phạm vi đơn giản; cùng tác giả với #1977. |
-| [#1980](https://github.com/anthropics/skills/pull/1980) | Loại bỏ `shell=True` trong webapp-testing | Bản vá bảo mật (CWE-78); cập nhật 2026-10-22 — PR mới nhất trong nhóm. |
-| [#1997](https://github.com/anthropics/skills/pull/1997) | Parser YAML frontmatter của skill-creator | Sửa lỗi lệch metadata; cập nhật 2026-10-19. |
-| [#1792](https://github.com/anthropics/skills/pull/1792) | Xử lý timeout LibreOffice của docx | Sửa tính đúng đắn — ngăn báo thành công giả. |
-| [#1730](https://github.com/anthropics/skills/pull/1730) | Thay URL chết trong claude-api | Đơn giản, đã xác minh HTTP 200; merge rủi ro thấp. |
-| [#1681](https://github.com/anthropics/skills/pull/1681) | Thực thi độc lập của skill-creator | Sửa `ModuleNotFoundError` khi chạy script trực tiếp. |
-| [#1245](https://github.com/anthropics/skills/pull/1245) | Notion spec + resume auditor | Đề xuất skill mới; contributor duy trì hoạt động đến 15/10. |
+1. **Bảo mật chuỗi cung ứng & tin cậy namespace** — [Issue #492](https://github.com/anthropics/skills/issues/492) (46 bình luận, 👍3, hoạt động 7+ tháng). Các skill cộng đồng được publish dưới `anthropic/` mạo danh skill chính thức, cho phép leo thang đặc quyền qua ranh giới tin cậy. **Issue có mức tương tác cao nhất trong toàn bộ tập dữ liệu, vượt trội về mọi mặt.**
 
-**Xu hướng:** một làn sóng PR bug fix nhỏ, chất lượng cao xuất hiện từ 6–22/10, cho thấy băng thông review đang ưu tiên các bản sửa rủi ro thấp hơn là các đề xuất skill mới lớn.
+2. **Phân phối skill trong toàn tổ chức** — [Issue #228](https://github.com/anthropics/skills/issues/228) (17 bình luận, 👍8). Người dùng phải tải thủ công file `.skill`, chia sẻ qua Slack/Teams, và đồng nghiệp phải upload lại qua Settings. Nhu cầu: thư viện skill chia sẻ và link chia sẻ.
+
+3. **Độ tin cậy của trigger / đánh giá skill** — [Issue #556](https://github.com/anthropics/skills/issues/556) (13 bình luận, 👍7). `run_eval.py` không bao giờ trigger skill (tỷ lệ trigger 0%) vì `claude -p` + frontmatter `.claude/commands/` không gọi tool `Skill`/`Read`. Được củng cố bởi #1383 và #1298.
+
+4. **Hiệu quả context & vệ sinh skill** — [Issue #1487](https://github.com/anthropics/skills/issues/1487): `claude-api` chủ động inject ~156k token trong một lần gọi tool, làm cạn cửa sổ context. [Issue #189](https://github.com/anthropics/skills/issues/189) (👍9): skill trùng lặp từ plugin `document-skills` và `example-skills` làm phình context. Nhu cầu: lazy loading và loại bỏ trùng lặp.
+
+5. **Thực hành tốt khi viết skill** — [Issue #202](https://github.com/anthropics/skills/issues/202) (CLOSED): skill-creator đọc như tài liệu dành cho developer, không phải hướng dẫn vận hành; giọng văn dài dòng làm giảm hiệu quả token, và tên vi phạm chính hướng dẫn của nó.
+
+6. **Mô hình quản trị / an toàn** — [Issue #412](https://github.com/anthropics/skills/issues/412, CLOSED): thực thi policy, phát hiện mối đe dọa, chấm điểm tin cậy, audit trail cho hệ thống agent. [Issue #1385](https://github.com/anthropics/skills/issues/1385): pipeline chất lượng suy luận ba cổng (calibration → adversarial review → delivery verification).
+
+7. **Nén bộ nhớ & trạng thái** — [Issue #1329](https://github.com/anthropics/skills/issues/1329): ký hiệu symbolic để nén bộ nhớ agent chạy dài và giảm chi phí context. Liên quan đến xu hướng #4.
+
+**Các hướng nhu cầu đã chắt lọc:** ranh giới bảo mật/tin cậy, phân phối trong tổ chức, meta-tooling (độ tin cậy trigger, bộ phân tích chất lượng/bảo mật), kỷ luật ngân sách context, và pipeline cổng chất lượng chính thức. Đáng chú ý là vắng mặt trong nhu cầu: sinh test và review code — lực kéo của cộng đồng hướng về *hạ tầng xung quanh skill*, chứ không phải skill miền mới.
+
+---
+
+## 3. Skill đang chờ có tiềm năng cao (đang hoạt động, chưa merge)
+
+Các PR có hoạt động cập nhật gần đây (tháng 9–10/2026) và chưa được merge:
+
+| PR | Skill | Vì sao có thể sớm được nhận |
+|----|-------|---------------------|
+| [#1997](https://github.com/anthropics/skills/pull/1997) | Sửa phân tích scalar YAML của skill-creator | Cập nhật 2026-10-19; xử lý một bug đúng đắn cụ thể (`parse_skill_md` làm hỏng description có dấu ngoặc kép), nằm ngay thượng nguồn của chất lượng trigger/eval. |
+| [#1742](https://github.com/anthropics/skills/pull/1742) | mcp-builder tương thích `mcp>=2` | Cập nhật 2026-10-08; sửa lỗi hỏng hoàn toàn (#1668) cho bất kỳ ai dùng MCP SDK hiện tại. Các bản sửa tương thích thường được merge nhanh nhất. |
+| [#1245](https://github.com/anthropics/skills/pull/1245) | notion-spec-to-implementation + resume auditor | Cập nhật 2026-10-15; chạy dài nhưng vẫn được chỉnh sửa tích cực — có thể đang chờ phản hồi về việc tách skill hoặc đặt tên. |
+| [#1980](https://github.com/anthropics/skills/pull/1980) | webapp-testing loại bỏ `shell=True` | Cập nhật 2026-10-22 (mới nhất trong tập dữ liệu); bản sửa bảo mật CWE-78 gọn gàng với diff nhỏ — ít ma sát khi review. |
+| [#1730](https://github.com/anthropics/skills/pull/1730) | claude-api thay URL chết | Cập nhật 2026-10-04; 3 URL được thay bằng đích HTTP 200 đã xác minh bằng curl — bản sửa tài liệu dễ merge. |
+| [#1681](https://github.com/anthropics/skills/pull/1681) | skill-creator thực thi trực tiếp `package_skill.py` | Cập nhật 2026-10-08; sửa `ModuleNotFoundError` khi gọi độc lập, một workflow phổ biến của developer. |
+| [#1792](https://github.com/anthropics/skills/pull/1792) | docx timeout LibreOffice → lỗi thực | Cập nhật 2026-09-25; biến false-success im lặng thành output đã xác minh — sửa đúng đắn với hành vi có thể kiểm thử. |
+| [#1976](https://github.com/anthropics/skills/pull/1976) / [#1977](https://github.com/anthropics/skills/pull/1977) | webapp-testing báo cáo `textarea`/`select`; algorithmic-art `wrapAround()` | Cập nhật 2026-10-18; cả hai tham chiếu Issue đã đóng (#1891, #1897) và là các bản sửa bug nhỏ, phạm vi rõ ràng. |
+
+**Quy luật:** các bản merge có xác suất cao nhất trong ngắn hạn là *sửa bug cho skill chính thức hiện có* (skill-creator, mcp-builder, webapp-testing, docx, claude-api), không phải skill mới hoàn toàn. Các PR skill mới (#1245, #1771, #1703, #1615, #525, #514, #486) vẫn mở lâu hơn nhiều — một số từ đầu năm 2026.
 
 ---
 
 ## 4. Góc nhìn về hệ sinh thái Skill
 
-> **Nhu cầu tập trung nhất của cộng đồng không phải là thêm nhiều skill — mà là skill *đáng tin cậy*: xử lý provenance/namespace an toàn, công cụ đánh giá đáng tin, và tính đúng đắn có thể xác minh, tất cả hiện đang cản trở việc áp dụng nhiều hơn là năng lực thô.**
-
----
-
-*Soạn từ metadata PR và Issue của anthropics/skills, 2026-10-23. Số bình luận trên PR không được điền trong tập dữ liệu nguồn; thứ hạng PR được suy ra từ độ mới cập nhật, mật độ issue liên kết và tham chiếu chéo.*
+**Nhu cầu tập trung nhất của cộng đồng không phải là skill miền mới, mà là gia cố *hạ tầng* skill — ranh giới tin cậy (Issue #492 với 46 bình luận), trigger/đánh giá đáng tin cậy (tỷ lệ trigger 0% trong #556), và kỷ luật ngân sách context (#1487, #189) — trong khi thông lượng PR bị chi phối bởi các bản sửa đúng đắn cho bộ công cụ skill-creator và mcp-builder chính thức, chứ không phải các submission năng lực mới.**
 
 ---
 
 **Những gì đã thay đổi**
 
-- v2.1.309 sửa lỗi các lệnh Bash trong sandbox trên macOS và Linux chạy các file khởi động của shell bên ngoài sandbox trước mỗi lệnh — liên quan nếu bạn dựa vào sandbox cho các lệnh không đáng tin cậy.
-- Cùng bản phát hành này sửa lỗi các mẫu glob `denyWrite` của sandbox macOS không được áp dụng tại vị trí thực của đường dẫn khi truy cập qua symlink; hữu ích nếu các quy tắc deny của bạn nhắm vào các thư mục được symlink.
-- PR #99118 (đã đóng) thay đổi `/diff` để toast của các plugin khác hiển thị trong khi pane hoặc dialog đang mở, thay vì bị giữ lại cho đến khi đóng.
-- PR #99540 (đã đóng) đặt mức trần phê duyệt công cụ của tổ chức lên trên các plugin do người dùng cài đặt.
+- v2.1.309 đã sửa lỗi Bash trong sandbox trên macOS và Linux chạy các tệp khởi động shell bên ngoài sandbox trước mỗi lệnh; hữu ích nếu bạn chạy các lệnh không đáng tin cậy trong sandbox.
+- v2.1.309 đã sửa lỗi mẫu glob `denyWrite` của sandbox macOS không được áp dụng tại vị trí thực của đường dẫn khi truy cập qua symlink; hữu ích nếu bạn chặn ghi trong các thư mục được liên kết tượng trưng.
+- Bảy PR của @poteat (ví dụ #99540, #99137, #97688, #97334) đã bị đóng: ở nơi `sec-default` được đặt, plugin của một người không còn có thể nới lỏng quy tắc deny/ask, nâng trần công cụ của tổ chức, hoặc xóa/ghi đè bản ghi collector.
+- #99118 và #99141 giải quyết hành vi của khung `/diff`: thông báo từ các plugin khác giờ hiển thị khi khung đang mở, và khung được mở trước khi có gì đó có thể vẽ nó sẽ hiển thị một khi có thứ có thể vẽ.
 
-**Đáng lưu ý**
+**Đáng biết**
 
-- Tab Code trên Desktop: mức sử dụng context-window bị thiếu khỏi vòng/popover hiển thị mức sử dụng qua nhiều báo cáo (#102094 đã đóng, #102615, #102103, #102176, #103885). Ảnh hưởng đến người dùng desktop; một cái đã đóng, các cái khác vẫn mở.
-- Windows: công cụ Bash rò rỉ các tiến trình con mồ côi khi hết thời gian chờ (#76353) — các lệnh `find`/quét chạy hoang tích tụ trong nhiều giờ.
-- Windows: Remote Control không được khôi phục sau khi khởi động lại ứng dụng, các phiên bị lưu trữ trên di động (#100114).
+- Mức sử dụng cửa sổ ngữ cảnh của tab Code trên Desktop liên tục biến mất: #102094 (đã đóng, Windows), #103918 (đã đóng, macOS), #102615, #102103, #102623, #103885, #102133 — giới hạn gói vẫn hiển thị.
+- #76353: trên Windows, thời gian chờ của công cụ Bash kill `bash.exe` nhưng không kill các tiến trình con, nên các `find`/quét mồ côi vẫn tiếp tục chạy; đang mở, chưa có fix trong dữ liệu.
+- #104497: `find` đi kèm (bfs 4.1.1) lặp vô hạn và tăng bộ nhớ không giới hạn trên một ntfs3 junction được báo là DT_DIR; GNU find kết thúc bình thường; đang mở, chưa có fix.
+
+Links: github.com/anthropics/claude-code
 
 </details>
 
 <details>
 <summary><strong>OpenAI Codex</strong> — <a href="https://github.com/openai/codex">openai/codex</a></summary>
 
-**Những thay đổi**
+## Những thay đổi
+- Thêm các slot `/presets` được đánh số cho prompt và slash command có thể tái sử dụng, kèm menu bàn phím; hữu ích khi bạn lặp lại cùng một prompt thường xuyên. (rust-v0.164.0, #54380, #54381)
+- Thêm đối số inline cho `/model` và `/permissions` để đặt model, reasoning effort, speed và permission profile trực tiếp. (rust-v0.164.0, #54378, #54383)
+- Thêm `threadSource` vào request `thread/sample`, mặc định là `thread_sample` khi bỏ qua. (PR #56364)
+- Thêm `attachToSource` vào `thread/fork` để giữ lại bản fork gắn với nguồn của nó; yêu cầu lưu trữ cục bộ và không thể dùng `ephemeral` hoặc `deferGoalContinuation`. (PR #56351)
 
-- Thêm mười slot `/presets` được đánh số cho các prompt và slash command có thể tái sử dụng, kèm menu bàn phím; hữu ích khi bạn lặp lại cùng một prompt và muốn gọi chúng chỉ bằng một phím ([rust-v0.164.0](https://github.com/openai/codex/releases)).
-- `/model` và `/permissions` giờ chấp nhận đối số inline cho model, reasoning effort, speed và permission profile; hữu ích khi bạn đổi cấu hình mà không cần rời khỏi prompt ([rust-v0.164.0](https://github.com/openai/codex/releases)).
-- Thêm experimental attached thread forks (`attachToSource` trên `thread/fork`), giữ một fork gắn với nguồn của nó mà không phát `thread/started`; yêu cầu local storage và từ chối `ephemeral`/`deferGoalContinuation` ([#56351](https://github.com/openai/codex/pull/56351)).
-- `thread/sample` chấp nhận `threadSource` tùy chọn, mặc định là `thread_sample` khi bỏ qua ([#56364](https://github.com/openai/codex/pull/56364)).
-
-**Đáng chú ý**
-
-- Windows 10 Computer Use bị deadlock khi chờ chuyển đổi SoftwareBitmap bên trong FrameArrived — 50 bình luận, vẫn mở ([#35446](https://github.com/openai/codex/issues/35446)).
-- BYOK Work mode chặn gửi tin nhắn khi bật local browser/computer tools — 37 bình luận, 27 👍, đang mở ([#54841](https://github.com/openai/codex/issues/54841)).
-- Hạn mức CLI cạn bất thường nhanh ngay cả với prompt đã cache tầm thường; đang mở ([#51088](https://github.com/openai/codex/issues/51088)).
+## Đáng lưu ý
+- Người dùng Windows CLI 0.163.0 với `[windows] sandbox = "elevated"` gặp lỗi làm mới sandbox ACL (`os error 5`) trước khi PowerShell khởi động, ngay cả với lệnh chỉ đọc, trên cả workspace Git hiện có lẫn mới. Chưa có bản sửa trong dữ liệu. (#56078)
+- Người dùng Windows desktop có thể thấy lỗi "workspace routing discovery timed out" lặp lại trong các goal và luồng subagent. Chưa có bản sửa trong dữ liệu. (#54540)
+- Nhiều người dùng báo lỗi "Selected model is at capacity" trên mọi model, trong đó một người báo 69 lần thất bại đã xác nhận; một báo cáo cho biết web vẫn hoạt động bình thường. Chưa có bản sửa trong dữ liệu. (#56105, #56368)
 
 </details>
 
@@ -139,17 +130,15 @@ Các PR có bình luận/cập nhật tích cực, khả năng được merge s�
 <summary><strong>Gemini CLI</strong> — <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></summary>
 
 **Những thay đổi**
+- Bản nightly `v0.67.0-nightly.20261023.ga713410ab` giữ lại metadata mở rộng về mức sử dụng token và đồng bộ báo cáo theo từng lượt ([PR #29834](https://github.com/google-gemini/gemini-cli/pull/29834)); đồng thời đảm bảo mọi lượt của model có gọi hàm đều nhận được thought signature.
+- Các lệnh gọi công cụ của subagent giờ vẫn hiển thị trong task tree trong khi thực thi ([PR #29859](https://github.com/google-gemini/gemini-cli/pull/29859)); hữu ích khi theo dõi công việc subagent đang chạy.
+- Hook `SubagentStop` của Claude Code giờ di chuyển đúng cách, với `Stop` và `SubagentStop` được thêm vào thay vì ghi đè ([PR #29764](https://github.com/google-gemini/gemini-cli/pull/29764)).
+- Việc khám phá `tools/list` của MCP được giới hạn bởi timeout mặc định 60 giây thay vì kế thừa timeout gọi công cụ 10 phút ([PR #29767](https://github.com/google-gemini/gemini-cli/pull/29767)).
 
-- v0.67.0-nightly.20261023.ga713410ab đã ra mắt; bản này sửa lỗi bảo toàn metadata sử dụng token mở rộng với căn chỉnh báo cáo theo từng lượt ([PR #29834](https://github.com/google-gemini/gemini-cli/pull/29834)) và đảm bảo các lượt model có lời gọi hàm nhận được thought signature.
-- [PR #29890](https://github.com/google-gemini/gemini-cli/pull/29890) chỉ khôi phục thư mục workspace sau khi phiên chat được tiếp tục thành công; hữu ích khi việc resume thất bại và bạn không muốn các thư mục cũ còn sót lại trong context.
-- [PR #29859](https://github.com/google-gemini/gemini-cli/pull/29859) hiển thị lại các lời gọi công cụ của subagent đang thực thi trong task tree; hữu ích khi bạn cần xem subagent đang chạy gì.
-- [PR #29880](https://github.com/google-gemini/gemini-cli/pull/29880) thêm subcommand `gemini models` và flag `--list-models` với đầu ra JSON; hữu ích khi bạn cần khám phá model bằng chương trình.
-
-**Đáng lưu ý**
-
-- Generalist agent có thể treo vô thời hạn, ngay cả với các thay đổi đơn giản như tạo thư mục ([#21409](https://github.com/google-gemini/gemini-cli/issues/21409), 8 bình luận); yêu cầu model không chuyển tiếp cho subagent được cho là giúp tránh tình trạng này. Chưa có bản sửa trong dữ liệu.
-- Browser Agent bỏ qua các ghi đè trong `settings.json` như `maxTurns` ([#22267](https://github.com/google-gemini/gemini-cli/issues/22267)); chưa có bản sửa trong dữ liệu.
-- Hơn khoảng 128 công cụ sẽ kích hoạt lỗi 400 ([#24246](https://github.com/google-gemini/gemini-cli/issues/24246)); chưa có bản sửa trong dữ liệu.
+**Đáng chú ý**
+- Generalist agent treo vô thời hạn ở các tác vụ đơn giản như tạo thư mục ([Issue #21409](https://github.com/google-gemini/gemini-cli/issues/21409), 8 bình luận); chưa có bản sửa trong dữ liệu.
+- Browser Agent bỏ qua các ghi đè trong `settings.json` như `maxTurns` ([Issue #22267](https://github.com/google-gemini/gemini-cli/issues/22267)); chưa có bản sửa trong dữ liệu.
+- Việc phục hồi subagent sau `MAX_TURNS` được báo cáo là thành công `GOAL`, che giấu sự gián đoạn ([Issue #22323](https://github.com/google-gemini/gemini-cli/issues/22323)); chưa có bản sửa trong dữ liệu.
 
 </details>
 
@@ -157,51 +146,47 @@ Các PR có bình luận/cập nhật tích cực, khả năng được merge s�
 <summary><strong>GitHub Copilot CLI</strong> — <a href="https://github.com/github/copilot-cli">github/copilot-cli</a></summary>
 
 **Những gì đã thay đổi**
+- v1.0.103 (2026-10-22): Nhấp vào khối mã của phản hồi đã hoàn thành giờ sẽ sao chép mã gốc khi được bật; hữu ích khi bạn muốn chính xác mã nguồn, không phải đầu ra đã kết xuất.
+- Các phiên ACP giờ tuân theo cài đặt sandbox đã lưu và cờ `--sandbox`/`--no-sandbox`, kể cả khi tiếp tục; hữu ích khi tiếp tục công việc mà không cần chỉ định lại sandbox.
+- Phản hồi đám mây giữ toàn bộ văn bản khi CLI kết nối lại sau khi mất kết nối; hữu ích trên mạng chập chờn.
+- Các thay đổi trình duyệt phiên được phát hành trong cùng bản phát hành (chi tiết bị cắt trong dữ liệu).
 
-- v1.0.103 (2026-10-22): Nhấp vào khối mã của phản hồi đã hoàn tất sẽ sao chép mã gốc khi tính năng này được bật; hữu ích khi bạn muốn đoạn mã thô thay vì kết quả hiển thị lại.
-- v1.0.103: Các phiên ACP giờ tuân theo cài đặt sandbox đã lưu và cờ `--sandbox`/`--no-sandbox`, kể cả khi khôi phục phiên.
-- v1.0.103: Phản hồi từ cloud giữ nguyên toàn bộ văn bản khi CLI kết nối lại sau khi mất kết nối.
-- v1.0.103: Trình duyệt phiên sh (nội dung mục bị cắt trong dữ liệu).
-
-**Đáng chú ý**
-
-- Issue #5232 (OPEN, cập nhật 2026-10-23): Ở chế độ quyền `manual`, các lệnh shell mà mọi đường dẫn được tham chiếu đều nằm trong thư mục tin cậy sẽ tự động được phê duyệt mà không hỏi, kể cả với script, sqlcmd hay curl. Chưa có bản sửa.
-- Issue #5242 (OPEN, 2026-10-23): Khi ngân sách theo dõi inotify của host cạn kiệt, việc đăng ký theo dõi cấu hình MCP thất bại với lỗi ENOSPC và các phiên ngừng xử lý prompt. Chưa có bản sửa.
-- Issue #5238 (OPEN, 2026-10-23, v1.0.103): Vượt quá giới hạn 50 ảnh mỗi phiên, việc xóa ảnh cũ nhất sẽ kích hoạt nạp lại toàn bộ cache cho mọi ảnh tiếp theo, gây tốn kém. Chưa có bản sửa.
+**Đáng biết**
+- #5240 (đã đóng): Chế độ tương tác làm hỏng TTY terminal trên macOS 1.0.98 trong iTerm2 và Terminal.app. Trạng thái đã đóng được báo cáo; không có chi tiết sửa lỗi trong dữ liệu.
+- #5197 (mở): Máy chủ thoại bị segfault (tín hiệu 11) trên WSL2 sau khi cập nhật lên 1.0.100; `/voice` vẫn ở "Fetching voice models". 4 bình luận, 2 👍. Không có sửa lỗi trong dữ liệu.
+- #5232 (mở): Ở chế độ cấp quyền thủ công, các lệnh shell có đường dẫn nằm trong thư mục tin cậy sẽ chạy mà không nhắc, kể cả khi có tác dụng phụ không lường trước. 2 bình luận. Không có sửa lỗi trong dữ liệu.
 
 </details>
 
 <details>
 <summary><strong>OpenCode</strong> — <a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></summary>
 
-**Những gì đã thay đổi**
-
-- Phát hành v1.19.4, nâng cấp runtime Bun đi kèm lên 1.4.4 (bản vá bảo mật cho Brotli, TLS, HTTP/1.1–3, WebSocket, `fetch`; root certs cập nhật lên NSS 3.131.1).
-- PR #58355 (đã đóng): `model` đã cấu hình của agent giờ được dùng khi một phiên không có model, sửa lỗi `opencode run --agent <id>` âm thầm rơi về mặc định của server.
-- PR #58352 (đang mở): khi không có model nào được chọn, phiên sẽ mặc định dùng agent và model dùng lần cuối thay vì model mới phát hành nhất (trước đây thường rơi vào một model miễn phí).
-- PR #58349/#58351 (đã đóng): các MCP server không còn bị nhân bản trong lần đồng bộ ban đầu và dừng song song khi tắt, sửa lỗi `service restart` chậm.
+**Những thay đổi**
+- v1.19.4 nâng cấp Bun runtime đi kèm lên 1.4.4, mang đến các bản vá bảo mật cho Brotli, TLS, HTTP/1.1, HTTP/2, HTTP/3, WebSocket và `fetch`, cùng chứng chỉ gốc NSS 3.131.1.
+- PR #58355 sửa lỗi cài đặt `model` của agent bị bỏ qua khi phiên bắt đầu mà không có model, nên `opencode run --agent <id>` không còn rơi về mặc định của server.
+- PR #58350 bỏ qua từng MCP tool bị lỗi thay vì làm hỏng cả server, nên một `inputSchema` sai không còn kéo sập toàn bộ tools của server.
+- PR #58351 dừng các MCP server song song khi tắt, giải quyết độ trễ đóng stdin 2–4s mỗi server được báo trong #50758.
 
 **Đáng lưu ý**
-
-- Issue #58176 (đang mở, đã tái hiện): v2 không bao giờ tạo tiêu đề phiên; phiên mới vẫn là "Untitled session" trong khi v1.18.x tự động đặt tiêu đề. Không có bản sửa trong dữ liệu.
-- Issue #51828 (đang mở): các shell chạy nền bị SIGTERM sau 60 phút không có hoạt động tại location, phá hủy shell graph theo phạm vi location trong khi service vẫn sống.
-- Issue #50257 (đang mở): trình chọn model trên desktop hiển thị "No reasoning" cho tất cả model V2 vì `capabilities.reasoning` không bao giờ được đặt.
+- Issue #50257 (mở): trình chọn model trên desktop hiển thị "No reasoning" cho tất cả model V2, kể cả những model hỗ trợ reasoning, vì `capabilities.reasoning` không bao giờ được đặt. Chưa có bản sửa trong dữ liệu.
+- Issue #58176 (mở, đã tái hiện): V2 không bao giờ tạo tiêu đề phiên — phiên mới vẫn là "Untitled session" — không có trigger tự động và bị từ chối ở gói miễn phí.
+- Issue #58364 (mở): các phiên đã lưu trữ vẫn xuất hiện trong trình chọn phiên của TUI (`Ctrl+O`), dù bộ lọc API `GET /api/session?archived=false` hoạt động.
 
 </details>
 
 <details>
 <summary><strong>Pi</strong> — <a href="https://github.com/earendil-works/pi">earendil-works/pi</a></summary>
 
-**Những thay đổi**
-- Không có bản phát hành mới trong 24h qua.
-- PR #11299 sửa type guard `thinkingLevelMap?.off` và `max_completion_tokens` thừa; hữu ích khi chạy model `reasoning: true` + `thinkingFormat: "openrouter"` mà không có `thinkingLevelMap` thông qua `--model`. (earendil-works/pi PR #11299)
-- PR #11293/#11275 thay thế việc duyệt cây đệ quy khi export HTML bằng stack tường minh; hữu ích cho `/export` trên các session dài trước đây render ra trắng. (earendil-works/pi PR #11293)
-- PR #11290 render system message trong export HTML; hữu ích để xem prompt ban đầu và các cập nhật section/tool giữa session. (earendil-works/pi PR #11290)
+**Những gì đã thay đổi**
+- PR [#11304](https://github.com/earendil-works/pi/pull/11304) (đang mở) ngăn quá trình khởi động bị hủy khi một package đã cấu hình cài đặt thất bại — nó bỏ qua nguồn đó và tải phần còn lại, hữu ích nếu một mục settings lỗi hiện đang khiến việc khởi chạy bị kẹt.
+- PR [#11288](https://github.com/earendil-works/pi/pull/11288) (đang mở) viết lại các phiên forked thông qua một file descriptor duy nhất thay vì một `appendFileSync` cho mỗi mục, khắc phục tình trạng `--fork` bị treo 30 giây+ trên các phiên lớn (xem issue [#11253](https://github.com/earendil-works/pi/issues/11253)).
+- Nhiều PR đã được merge ([#11293](https://github.com/earendil-works/pi/pull/11293), [#11275](https://github.com/earendil-works/pi/pull/11275), [#6843](https://github.com/earendil-works/pi/pull/6843)) thay thế các phép duyệt HTML-export đệ quy bằng stack lặp, khắc phục tình trạng trang `/export` trắng trên các phiên dài ([#11225](https://github.com/earendil-works/pi/issues/11225)).
+- PR [#11289](https://github.com/earendil-works/pi/pull/11289) (đã merge) gửi tín hiệu đến các process group của shell trên macOS trước khi kill chúng, giảm tình trạng race khi hủy `a; b` mà `b` vẫn chạy ([#11252](https://github.com/earendil-works/pi/issues/11252)).
 
 **Đáng chú ý**
-- #11086 (OPEN, prio:p0): ký tự rò rỉ vào input trên terminal Windows khi CPU tải cao trong lúc SSH đến máy Linux chạy Pi 1.3; chưa có fix trong dữ liệu. (earendil-works/pi Issue #11086)
-- #11287 (CLOSED): reload cài đặt giữa session xóa các API provider do extension cung cấp, gây uncaughtException `No API provider registered` và thoát process; đã đóng, nhưng không có PR liên kết trong dữ liệu. (earendil-works/pi Issue #11287)
-- Discussion #11307: `pi-better-web-search` đăng ký một tool `web_search` với kết quả thô từ provider và fallback giữa các provider; hữu ích khi model hiện tại không search được. (earendil-works/pi Discussion #11307)
+- Issue [#11086](https://github.com/earendil-works/pi/issues/11086) (đang mở, p0): các ký hiệu rò rỉ vào input trên terminal Windows khi CPU tải cao; chưa có bản sửa trong dữ liệu.
+- Issue [#9807](https://github.com/earendil-works/pi/issues/9807) (đang mở): việc re-render toàn bộ TUI gây lag cuộn/gõ phím khi có 800+ tin nhắn; chưa có bản sửa trong dữ liệu.
+- Issue [#9932](https://github.com/earendil-works/pi/issues/9932) (đang mở): các system prompt bị ép bởi `before_agent_start` vẫn giữ lại các tool đã bị gỡ qua `setActiveTools()`; chưa có bản sửa trong dữ liệu.
 
 </details>
 
@@ -209,15 +194,15 @@ Các PR có bình luận/cập nhật tích cực, khả năng được merge s�
 <summary><strong>Qwen Code</strong> — <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code</a></summary>
 
 **Những thay đổi**
-- Thêm tính năng lưu trữ token daemon trong `qwen serve` qua PR [#15023](https://github.com/QwenLM/qwen-code/pull/15023), phát hành trong v0.26.0-nightly.20261022.bf66a26c97; hữu ích khi bạn chạy daemon và cần token tồn tại qua các lần khởi động lại.
-- PR [#15313](https://github.com/QwenLM/qwen-code/pull/15313) thêm `web_fetch` vào Managed Agent Workspace Sessions; hữu ích khi một Workspace Session cần tải URL, đáp ứng yêu cầu tính năng trong issue [#15076](https://github.com/QwenLM/qwen-code/issues/15076).
-- [v0.26.0-nightly.20261022.bf66a26c97](https://github.com/QwenLM/qwen-code/releases) sửa lỗi phạm vi phát hành cho mọi binary vendored được sinh ra.
-- PR [#15332](https://github.com/QwenLM/qwen-code/pull/15332) sửa bước build-test của review để nó đi đến giai đoạn test trên monorepo này sau khi chuyển sang pnpm; hữu ích khi một PR chạm vào các package phụ thuộc ở root như core, cli, hoặc acp-bridge.
+- v0.26.0-nightly.20261022.bf66a26c97 đã phát hành: lưu trữ token daemon qua PR #15023, cùng bản sửa lỗi phát hành cho mọi binary vendored được spawn.
+- PR #15212 giúp huy hiệu PR phiên, bảng Pull requests và ảnh chụp PR của daemon hoạt động khi `gh` không nằm trên PATH của Qwen; hữu ích trên macOS khi launchd hoặc trình khởi chạy desktop khởi động daemon.
+- PR #15211 đưa cổng tác vụ theo lịch qua daemon và Web Shell, theo thiết kế của #15069; hữu ích khi tác vụ theo lịch cần một lệnh shell gating mỗi lần kích hoạt.
+- PR #15331 căn chỉnh sidebar Managed với điều hướng daemon — tìm kiếm phiên dùng chung, nhãn "New task" đơn giản, tiêu đề workspace nhất quán. PR #15303 giữ tệp đính kèm nháp qua quá trình làm mới summary và cấp phát phiên.
 
 **Đáng chú ý**
-- Issue [#15297](https://github.com/QwenLM/qwen-code/issues/15297) báo cáo Qwen Code 0.26.0 âm thầm làm mất kết quả tool (~43 trong 1.663 lần gọi mỗi vòng, 28 trường hợp được xác nhận qua transcript); gắn nhãn P1, trạng thái/need-information — chưa có bản sửa trong dữ liệu.
-- Issue [#15328](https://github.com/QwenLM/qwen-code/issues/15328): các lần chạy headless thoát với mã 0 và không có output khi một lượt bị cắt do giới hạn output; ảnh hưởng đến việc dùng phi tương tác/script, chưa có bản sửa nào được liệt kê.
-- Issue [#15165](https://github.com/QwenLM/qwen-code/issues/15165): phân loại an toàn shell có thể tăng vọt lên ~1,6 GiB bộ nhớ WASM tạm thời trên Node 24.16.0/Linux x64; ảnh hưởng đến môi trường eo hẹp bộ nhớ, chưa có bản sửa trong dữ liệu.
+- Issue #15297 (P1): Qwen Code 0.26.0 âm thầm mất kết quả công cụ khoảng 1 trong 30 lần gọi — công cụ chạy với `status: success`, nhưng không có `functionResponse` nào đến được model, buộc phải đọc lại. Được báo cáo trên Windows; dữ liệu chưa có bản sửa.
+- Issue #15248: các bài kiểm tra timing của sdk-java runtime broker flake 3/3 trên runner do GitHub host, chặn làn đường nhanh cho PR từ fork. PR #15275/#15254 thử lại các thay đổi khóa.
+- Issue #15165: phân loại an toàn shell có thể kích hoạt cấp phát WASM tạm thời ~1.6 GiB trên Node 24.16.0 (Linux x64).
 
 </details>
 
