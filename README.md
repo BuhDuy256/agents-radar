@@ -328,15 +328,12 @@ Files are written to `digests/YYYY-MM-DD/`:
 | File | Content | GitHub Issue label |
 |------|---------|-------------------|
 | `ai-cli.md` | CLI digest — cross-tool comparison + per-tool details | `digest` |
-| `ai-agents.md` | OpenClaw deep report + cross-ecosystem comparison + 4 peer details | `openclaw` |
-| `ai-infra.md` | AI infrastructure digest — cross-project comparison + per-project details | `infra` |
 | `ai-web.md` | Official web content report (only written when new content exists) | `web` |
 | `ai-trending.md` | GitHub AI trending report — repos classified by dimension + trend signals (only written when data is available) | `trending` |
 | `ai-hn.md` | Hacker News AI community digest — top stories + sentiment analysis (only written when fetch succeeds) | `hn` |
-| `ai-ph.md` | Product Hunt AI products digest (only written when `PRODUCTHUNT_TOKEN` is set and data is available) | `ph` |
-| `ai-arxiv.md` | ArXiv AI research digest — key papers from cs.AI/cs.CL/cs.LG | `arxiv` |
-| `ai-hf.md` | Hugging Face trending models digest — sorted by weekly likes (**weekly**: written on Mondays only) | `hf` |
 | `ai-community.md` | Tech community AI digest — Dev.to articles + Lobste.rs stories combined | `community` |
+
+These five reports (plus their `-en` variants) are the only ones listed in `manifest.json`, `feed.xml`, the Web UI sidebar and the Telegram notification. The OpenClaw (`ai-agents`), infrastructure (`ai-infra`), Product Hunt (`ai-ph`), ArXiv (`ai-arxiv`), Hugging Face (`ai-hf`) and weekly/monthly rollup reports are retired — they are no longer generated, and any leftover files are pruned. Their old GitHub Issues are kept.
 
 A shared state file `digests/web-state.json` tracks which web URLs have been seen; it is committed alongside the daily digests.
 

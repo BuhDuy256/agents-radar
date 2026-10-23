@@ -327,11 +327,12 @@ pnpm start
 | 文件 | 内容 | GitHub Issue 标签 |
 |------|------|------------------|
 | `ai-cli.md` | CLI 简报 — 跨工具横向对比 + 各工具详细报告 | `digest` |
-| `ai-agents.md` | OpenClaw 深度报告 + 横向生态对比 + 4 个同赛道项目详情 | `openclaw` |
-| `ai-infra.md` | AI 基础设施日报 — 横向对比 + 各项目详细报告 | `infra` |
 | `ai-web.md` | 官网内容报告（仅在有新内容时生成） | `web` |
 | `ai-trending.md` | GitHub AI 趋势热榜 — 按维度分类 + 趋势信号分析（仅在有数据时生成） | `trending` |
 | `ai-hn.md` | Hacker News AI 社区动态 — 热门帖子分类 + 情绪分析（仅在抓取成功时生成） | `hn` |
+| `ai-community.md` | 技术社区 AI 简报 — Dev.to + Lobste.rs 合并 | `community` |
+
+以上五个报告（含 `-en` 版本）是唯一会出现在 `manifest.json`、`feed.xml`、Web UI 侧栏和 Telegram 通知中的报告。OpenClaw（`ai-agents`）、基础设施（`ai-infra`）、Product Hunt（`ai-ph`）、ArXiv（`ai-arxiv`）、Hugging Face（`ai-hf`）以及周报/月报均已停止生成，遗留文件会被清理；旧的 GitHub Issue 保留。
 
 `digests/web-state.json` 用于记录已处理的 URL，随每日简报一并提交。
 
