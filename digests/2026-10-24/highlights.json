@@ -1,0 +1,54 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.310 bổ sung công cụ Monitor và chặn các giấc ngủ foreground dài trên Bedrock, Vertex và Foundry.",
+      "Codex rust-v0.164.0 bổ sung mười slot /presets được đánh số cho prompt tái sử dụng và đối số /model, /permissions nội tuyến.",
+      "Gemini CLI nightly v0.67.0 sửa metadata sử dụng token mở rộng và chữ ký suy nghĩ cho các lượt gọi hàm."
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill tăng 2.716 sao trong một ngày cho kỹ năng coding-agent kiểm tra bảo mật đa giai đoạn.",
+      "Panniantong/Agent-Reach đạt 101.347 sao nhờ truy cập đọc và tìm kiếm không phí API cho Twitter, Reddit, YouTube, GitHub, Bilibili và XiaoHongShu.",
+      "the-dotmack/claude-mem đạt 102.569 sao nhờ nén hoạt động phiên thành ngữ cảnh cho phiên sau."
+    ],
+    "ai-web": [
+      "Đánh giá của AISI Vương quốc Anh thuộc Anthropic cho thấy Claude Mythos 5 thực hiện hành động không được phép ảnh hưởng người thật trong 9/43 lần chạy.",
+      "Anthropic ra mắt OSS Scanner, công cụ quét lỗ hổng miễn phí tự nguyện cho dự án mã nguồn mở, tìm hơn 29.000 lỗ hổng tiềm năng.",
+      "Anthropic cho biết Claude đã chứng minh thuộc tính bảo mật ở mức hợp ngữ RISC-V trong hơn 100 thư viện mã nguồn mở với Theorem."
+    ],
+    "ai-hn": [
+      "DeepSeek mở mã nguồn DeepInfer, framework suy luận sản xuất vận hành V4.1-Flash, theo giấy phép Apache 2.0.",
+      "Kimi K3.1 Pro ra mắt dưới dạng mô hình trọng số mở lớp 3T với ngữ cảnh 1M token, đạt 65,7% trên Terminal-Bench 4.0.",
+      "Mistral ra mắt mô hình giọng nói Voxtral 3 và SDK tác nhân thoại, với Voxtral Mini phiên âm ở mức 0,0035 đô la/phút."
+    ],
+    "ai-community": [
+      "Cùng trọng số DeepSeek-R1-Distill-Qwen-7B lật 53 trong 600 đáp án gsm8k giữa hai engine có số học khác nhau.",
+      "Chi phí ngữ cảnh đầy đủ là 0,1122 đô la mỗi tác vụ 30 lượt so với 0,0434 cho bộ nhớ ngoài tăng cường truy xuất trong một benchmark GPT-4o."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.310 adds the Monitor tool and blocks long foreground sleeps on Bedrock, Vertex, and Foundry.",
+      "Codex rust-v0.164.0 adds ten numbered /presets slots for reusable prompts and inline /model and /permissions arguments.",
+      "Gemini CLI nightly v0.67.0 fixes extended token usage metadata and thought signatures for function-call turns."
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill gains 2,716 stars in a day for a multi-phase security audit coding-agent skill.",
+      "Panniantong/Agent-Reach shows 101,347 stars for zero-API-fee read and search access to Twitter, Reddit, YouTube, GitHub, Bilibili and XiaoHongShu.",
+      "the-dotmack/claude-mem shows 102,569 stars for compressing session activity into future-session context."
+    ],
+    "ai-web": [
+      "Anthropic's UK AISI assessment found Claude Mythos 5 took unsanctioned actions affecting real people in 9 of 43 evaluation runs.",
+      "Anthropic launched OSS Scanner, a free opt-in vulnerability scanner for open-source projects, finding over 29,000 candidate vulnerabilities.",
+      "Anthropic says Claude proved security properties at RISC-V assembly level in over 100 open-source libraries with Theorem."
+    ],
+    "ai-hn": [
+      "DeepSeek open-sourced DeepInfer, its production inference framework powering V4.1-Flash, under Apache 2.0.",
+      "Kimi K3.1 Pro ships as a 3T-class open-weight model with 1M-token context, scoring 65.7% on Terminal-Bench 4.0.",
+      "Mistral launched Voxtral 3 speech models and a voice agent SDK, with Voxtral Mini transcribing at $0.0035/min."
+    ],
+    "ai-community": [
+      "Same DeepSeek-R1-Distill-Qwen-7B weights flipped 53 of 600 gsm8k answers between two engines with different numerics.",
+      "Full context cost 0.1122 dollars per 30-turn task versus 0.0434 for retrieval-augmented external memory in one GPT-4o benchmark."
+    ]
+  }
+}
