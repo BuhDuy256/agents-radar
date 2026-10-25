@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code không có bản phát hành nào; các báo cáo mất dữ liệu đang mở gồm việc xóa ~600GB trên Windows và nội dung thư mục Applications/home trên macOS",
+      "Kimi K3.1 Pro: mô hình trọng số mở lớp 3T với ngữ cảnh 1M token đạt 65,7% trên Terminal-Bench 4.0, trọng số dự kiến ra ngày 4 tháng 11",
+      "Qwen Code v0.26.1 phát hành thay đổi phá vỡ tương thích đối với cách ly phiên theo nhóm của bot QQ trong phạm vi luồng"
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill bổ sung kỹ năng cho tác nhân lập trình để kiểm toán bảo mật đa giai đoạn với phát hiện đọc được bằng máy",
+      "NVIDIA/OpenShell cung cấp môi trường chạy an toàn, riêng tư cho các tác nhân AI tự chủ",
+      "Graphify biến cơ sở mã, tài liệu, lược đồ SQL, cấu hình và PDF thành kỹ năng đồ thị tri thức có thể truy vấn"
+    ],
+    "ai-hn": [
+      "Kimi K3.1 Pro ra mắt dưới dạng mô hình trọng số mở lớp 3T với ngữ cảnh 1M token, trọng số hứa hẹn trước ngày 4 tháng 11",
+      "Claude đã xác minh hình thức các thuộc tính bảo mật ở mức hợp ngữ RISC-V trên 123 thư viện mã nguồn mở",
+      "Claude Duet ra mắt dưới dạng tác nhân Opus 5.5 chủ động trên gói Pro và Max tại Hoa Kỳ qua danh sách chờ"
+    ],
+    "ai-community": [
+      "Một plugin linter đạt 58,67/60 so với 56,00 của Humanizer trên 12 tác vụ công khai, với chi phí gấp 2,43 lần mức cơ sở",
+      "Tinh chỉnh Qwen3.5-4B bằng LoRA hạng 16 nâng macro F1 của UNFAIR-ToS từ 0,707 lên 0,874",
+      "Qwen2.5-Coder-1.5B trả lời NO, NO, YES cho cùng đoạn mã ba lần, nên nó chỉ là gợi ý phân loại"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code had no releases; open data-loss reports include deleting ~600GB on Windows and macOS Applications/home folder contents",
+      "Kimi K3.1 Pro: 3T-class open-weight model with 1M-token context scores 65.7% on Terminal-Bench 4.0, weights due Nov 4",
+      "Qwen Code v0.26.1 ships a breaking change to QQ bot per-group session isolation under thread scope"
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill adds a coding-agent skill for multi-phase security audits with machine-readable findings",
+      "NVIDIA/OpenShell provides a safe, private runtime for autonomous AI agents",
+      "Graphify turns a codebase, docs, SQL schemas, configs and PDFs into a queryable knowledge graph skill"
+    ],
+    "ai-hn": [
+      "Kimi K3.1 Pro ships as a 3T-class open-weight model with 1M-token context, weights promised by Nov 4",
+      "Claude formally verified security properties at RISC-V assembly level across 123 open-source libraries",
+      "Claude Duet launches as a proactive Opus 5.5 agent on Pro and Max plans in the US via waitlist"
+    ],
+    "ai-community": [
+      "A linter plugin scored 58.67/60 versus 56.00 for Humanizer on 12 public tasks, at 2.43x baseline cost",
+      "Fine-tuning Qwen3.5-4B with rank-16 LoRA raised UNFAIR-ToS macro F1 from 0.707 to 0.874",
+      "Qwen2.5-Coder-1.5B gave NO, NO, YES on the same code three times, so it is only a triage hint"
+    ]
+  }
+}
