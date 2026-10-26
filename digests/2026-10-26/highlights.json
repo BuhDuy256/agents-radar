@@ -1,0 +1,44 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Người dùng Claude Code không thể chia sẻ kỹ năng trong tổ chức Claude.ai nếu không gửi thủ công tệp .skill.",
+      "Tính năng tự động giải quyết câu hỏi trong 60 giây của Codex CLI không thể tắt, với 217 lượt thích cho yêu cầu này.",
+      "Gemini CLI đề xuất sửa lỗi đường dẫn báo \"Path not in workspace\" khi đoạn bị chặn nằm trong thư mục workspace."
+    ],
+    "ai-trending": [
+      "Cloudflare ra mắt kỹ năng kiểm toán bảo mật cho coding-agent, chạy kiểm toán đa giai đoạn với phát hiện dạng máy đọc và xác minh độc lập.",
+      "hallmark của Nutlope bổ sung kỹ năng thiết kế chống AI-slop cho Claude Code, Cursor và Codex.",
+      "claude-mem ghi lại, nén và tái đưa ngữ cảnh phiên agent vào Claude Code, Codex, Gemini và Copilot."
+    ],
+    "ai-hn": [
+      "OpenAI và Anthropic giảm giá LLM tới 80% trong cuộc đối đầu kéo dài nhiều tháng, với việc cắt giảm cache-read giúp coding agent rẻ hơn 70-75%.",
+      "Kimi K3.1 Pro, mô hình open-weight lớp 3 nghìn tỷ với ngữ cảnh 1M, đạt 65,7% trên Terminal-Bench 4.0, vượt GPT-6 Astra.",
+      "Kinh tế trưởng của Apollo nói AI mang lại \"không lợi ích tài chính\" ngoài ngành công nghệ, doanh thu trên mỗi lao động của S&P 493 đi ngang."
+    ],
+    "ai-community": [
+      "Trình xác minh của Doxify đạt 13 trong 47 tuyên bố README do Gemma viết, đánh dấu 34 tuyên bố cần bằng chứng trên laptop CPU-only 8GB.",
+      "Chuyển agent từ Responses API sang Chat Completions nâng tỷ lệ trích dẫn tồn tại từ 0,333 lên 0,533."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code users can't share skills inside a Claude.ai org without manually sending the .skill file.",
+      "Codex CLI's 60-second auto-resolve for questions cannot be disabled, with 217 👍 on the request.",
+      "Gemini CLI proposes fixing path errors that say \"Path not in workspace\" when the blocked segment is inside a workspace directory."
+    ],
+    "ai-trending": [
+      "Cloudflare launched a coding-agent security-audit skill that runs multi-phase audits with machine-readable, independently verified findings.",
+      "Nutlope's hallmark adds an anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
+      "claude-mem captures, compresses, and re-injects agent session context across Claude Code, Codex, Gemini, and Copilot."
+    ],
+    "ai-hn": [
+      "OpenAI and Anthropic cut LLM prices up to 80% in a months-long tit-for-tat, with cache-read cuts making agentic coding 70-75% cheaper.",
+      "Kimi K3.1 Pro, a 3-trillion-class open-weight model with 1M context, scores 65.7% on Terminal-Bench 4.0, ahead of GPT-6 Astra.",
+      "Apollo's chief economist says AI has delivered \"zero financial payoff\" outside tech, with flat revenue per worker across the S&P 493."
+    ],
+    "ai-community": [
+      "Doxify's verifier passed 13 of 47 Gemma-written README claims, flagging 34 as needing evidence on an 8GB CPU-only laptop.",
+      "Switching an agent from the Responses API to Chat Completions lifted citation survival rate from 0.333 to 0.533."
+    ]
+  }
+}
