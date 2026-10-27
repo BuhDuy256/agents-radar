@@ -1,0 +1,54 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.311 thêm --hold-idle-file và --max-hold-min để giữ các phiên runner tự host nhàn rỗi luôn sống",
+      "Claude Code issue #96628: lỗi phân tích tool-call có thể trỏ --resume vào một dòng chưa ghi, làm mất lịch sử trước đó (mất dữ liệu)",
+      "Giao diện Codex Windows không khởi động được trong VS Code 1.143.1 từ 26.1021.22027, hai issue mở với 34 và 24 bình luận"
+    ],
+    "ai-trending": [
+      "Nutlope/hallmark thêm kỹ năng thiết kế chống AI-slop cho Claude Code, Cursor và Codex",
+      "NVIDIA/SkillSpector quét kỹ năng agent để tìm prompt injection, rò rỉ dữ liệu và rủi ro chuỗi cung ứng",
+      "Agent-Reach cho agent quyền đọc/tìm kiếm trên Twitter, Reddit, YouTube, GitHub và Bilibili với không phí API"
+    ],
+    "ai-web": [
+      "Anthropic nộp S-1 lên SEC cho đề xuất IPO trên Nasdaq với mã ANT; số cổ phần và giá chưa xác định",
+      "Các mục chỉ mục của OpenAI trỏ đến \"Introducing GPT-6.1 Terra\"; không lấy được nội dung bài, nên tiêu đề chưa xác minh"
+    ],
+    "ai-hn": [
+      "Anthropic nộp S-1 để niêm yết công khai, tiến tới IPO",
+      "OpenAI công bố GPT-6.1 Terra, chưa rõ khả năng, cửa sổ ngữ cảnh và giá",
+      "OpenAI và Anthropic giảm giá LLM tới 80% trong bốn tháng ăn miếng trả miếng"
+    ],
+    "ai-community": [
+      "Tác giả cắt máy chủ MCP từ 15 công cụ xuống 4, đưa cùng câu hỏi chi phí AWS từ bảy lần gọi xuống hai",
+      "Tác giả chuyển xử lý thử lại MCP vào harness riêng sau khi công cụ hết thời gian khiến agent tưởng thành công",
+      "Ollama giải mã prompt mã ngắn đạt 90,9 tok/s nhưng prompt 100.589 token mất 146 giây tới token đầu"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.311 adds --hold-idle-file and --max-hold-min to keep idle self-hosted runner sessions alive",
+      "Claude Code issue #96628: a failed tool-call parse can point --resume at an unwritten row, losing prior history (data-loss)",
+      "Codex Windows UI fails to start in VS Code 1.143.1 since 26.1021.22027, two open issues with 34 and 24 comments"
+    ],
+    "ai-trending": [
+      "Nutlope/hallmark adds an anti-AI-slop design skill for Claude Code, Cursor, and Codex",
+      "NVIDIA/SkillSpector scans agent skills for prompt injection, exfiltration, and supply-chain risk",
+      "Agent-Reach gives agents read/search access to Twitter, Reddit, YouTube, GitHub, and Bilibili with zero API fees"
+    ],
+    "ai-web": [
+      "Anthropic filed an S-1 with the SEC for a proposed Nasdaq IPO under symbol ANT; share count and price are undetermined",
+      "OpenAI index entries point to \"Introducing GPT-6.1 Terra\"; no article text is retrievable, so titles are unverified"
+    ],
+    "ai-hn": [
+      "Anthropic files S-1 for a public listing, moving toward an IPO",
+      "OpenAI announces GPT-6.1 Terra, with capabilities, context window and price unknown",
+      "OpenAI and Anthropic cut LLM prices up to 80% in a four-month tit-for-tat"
+    ],
+    "ai-community": [
+      "Author cut an MCP server from 15 tools to 4, taking the same AWS cost question from seven calls to two",
+      "Author moved MCP retry handling into his own harness after a timed-out tool left the agent assuming success",
+      "Ollama decoded short code prompts 90.9 tok/s but a 100,589-token prompt took 146s to first token"
+    ]
+  }
+}
