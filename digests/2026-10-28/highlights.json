@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.312 thêm oidc.user_id_claim để quản trị viên Entra ID nhận diện người dùng bằng oid thay vì sub",
+      "Claude Code v2.1.312 thêm nhấp-để-gửi cho tin nhắn trong hàng đợi ở chế độ toàn màn hình",
+      "Claude Code headless 'claude -p' dùng cửa sổ 5 giờ nhiều hơn ~1,8 lần mỗi token so với CLI tương tác"
+    ],
+    "ai-trending": [
+      "obra/superpowers tăng 617 sao hôm nay nhờ khung kỹ năng tác tử và phương pháp luận",
+      "affaan-m/ECC thêm 1.165 sao, tinh chỉnh khung tác tử trên Claude Code, Codex, Opencode và Cursor",
+      "headroomlabs-ai/headroom nén đầu ra công cụ, log và đoạn RAG trước khi đến LLM"
+    ],
+    "ai-web": [
+      "Anthropic nộp S-1 lên SEC cho đề xuất IPO trên Nasdaq với mã 'ANT'",
+      "Anthropic giảm 40% cho người mua chính phủ với Claude Enterprise, Claude for Government và Claude API trong thỏa thuận GSA mở rộng",
+      "Mô hình nghiên cứu Anthropic tìm ra năm chuỗi tấn công, gồm RCE một cú nhấp trong Chrome và Safari"
+    ],
+    "ai-hn": [
+      "OpenAI phát hành GPT-6.1 Terra, dù chưa có chi tiết về năng lực, giá hay tính khả dụng",
+      "Anthropic nộp S-1 cho IPO trong khi phán quyết tháng 5/2026 phát hiện Claude huấn luyện trên sách lậu của giáo sư Stanford",
+      "Cloudflare công bố lộ KV cache giữa các yêu cầu trong GLM-5.3 trên Workers AI, đã khắc phục bằng SGLang"
+    ],
+    "ai-community": [
+      "Plugin Claude Code proof-of-done miễn phí giấy phép MIT chặn tác tử nói 'xong' cho đến khi test đạt",
+      "Kế toán token theo quỹ đạo phát hiện mô hình không phải bước đắt nhất trong 9/11 tác tử sản xuất",
+      "Bốn API tìm kiếm thử trên 30 truy vấn kiểu tác tử: Parallel cao nhất 67%, không cái nào thắng chung cuộc"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.312 adds oidc.user_id_claim so Entra ID admins can identify users by oid, not sub",
+      "Claude Code v2.1.312 adds click-to-send for queued messages in fullscreen",
+      "Claude Code headless 'claude -p' uses ~1.8x more of the 5-hour window per token than interactive CLI"
+    ],
+    "ai-trending": [
+      "obra/superpowers gains 617 stars today for its agentic skills framework and methodology",
+      "affaan-m/ECC adds 1,165 stars, tuning agent harnesses across Claude Code, Codex, Opencode and Cursor",
+      "headroomlabs-ai/headroom compresses tool outputs, logs and RAG chunks before they reach the LLM"
+    ],
+    "ai-web": [
+      "Anthropic filed an S-1 with the SEC for a proposed IPO on Nasdaq under 'ANT'",
+      "Anthropic gives government buyers 40% off Claude Enterprise, Claude for Government and the Claude API under its expanded GSA deal",
+      "Anthropic research model found five attack chains, including one-click RCE in Chrome and Safari"
+    ],
+    "ai-hn": [
+      "OpenAI released GPT-6.1 Terra, though no capability, pricing or availability details were available",
+      "Anthropic filed an S-1 for IPO while a May 2026 ruling found Claude trained on pirated Stanford professors' books",
+      "Cloudflare disclosed cross-request KV cache exposure in GLM-5.3 on Workers AI, remediated with SGLang"
+    ],
+    "ai-community": [
+      "A free MIT-licensed proof-of-done Claude Code plugin blocks agents from saying 'done' until tests pass",
+      "Trajectory-level token accounting found the model was not the most expensive step in 9 of 11 production agents",
+      "Four search APIs tested on 30 agent-style queries: Parallel scored highest at 67%, none won overall"
+    ]
+  }
+}
