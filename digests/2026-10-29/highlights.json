@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Người dùng Claude Code báo cáo chế độ headless 'claude -p' tiêu tốn cửa sổ 5 giờ gấp 1,8 lần mỗi token so với chế độ tương tác.",
+      "Plugin trình xác minh chỉnh sửa đề xuất sẽ dùng hook PostToolUse để bắt các lệnh Edit thất bại âm thầm trong Claude Code.",
+      "PR đề xuất thay thế các liên kết docs.anthropic.com và docs.claude.com cũ bằng code.claude.com trên 12 tệp."
+    ],
+    "ai-trending": [
+      "Nutlope/hallmark bổ sung kỹ năng thiết kế chống AI-slop cho Claude Code, Cursor và Codex, đạt 2.110 sao hôm nay.",
+      "pbakaus/impeccable thêm các lệnh từ vựng thiết kế như polish, bolder, critique và audit cho agent lập trình, +1.472 sao.",
+      "nightly-labs/openbot chạy không gian làm việc desktop ưu tiên cục bộ cho agent Codex, Claude và Grok chia sẻ tác vụ, +1.054 sao."
+    ],
+    "ai-web": [
+      "Anthropic mở rộng chương trình AI for Science tới 20 tổ chức khoa học và nhóm nghiên cứu, cấp tín dụng Claude miễn phí.",
+      "Frontier Red Team của Anthropic dùng mô hình chưa phát hành tìm ra năm chuỗi tấn công lỗ hổng trình duyệt và hệ điều hành nghiêm trọng.",
+      "Trang kế hoạch GitHub Copilot hiện hiển thị Copilot Standalone giá 10 USD mỗi người dùng mỗi tháng; kiểm tra thanh toán trước khi gia hạn."
+    ],
+    "ai-hn": [
+      "Google công bố Gemini 4 Carbon, mô hình tiên tiến tập trung an ninh mạng với giá 2/10 USD mỗi triệu token đầu vào/đầu ra.",
+      "Cursor phát hành Agent SDK triển khai agent lập trình tùy chỉnh bằng một lệnh trên hạ tầng Cursor.",
+      "Liquid AI ra mắt LFM3, sáu mô hình đa phương thức lớp 2B với trọng số mở, ngữ cảnh 256K và dung lượng 4-bit khoảng 1 GB."
+    ],
+    "ai-community": [
+      "Cắt bớt kết quả công cụ cũ và loại bỏ công cụ không dùng giảm phát lại 286K token của agent BI xuống 21–26%.",
+      "Lược đồ đầu ra suy luận của một Apify Actor tốn 32.136 token so với 406 cho lược đồ đầu vào do tác giả viết.",
+      "Đảo ngược thứ tự trường quan sát làm chính sách MiniWoB++ đóng băng giảm từ độ chính xác 85,0% xuống 19,2%."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code users report headless 'claude -p' consumes 1.8x more of the 5-hour window per token than interactive mode.",
+      "Proposed edit-verifier plugin would use a PostToolUse hook to catch silently failed Edit calls in Claude Code.",
+      "Proposed PR replaces stale docs.anthropic.com and docs.claude.com links with code.claude.com across 12 files."
+    ],
+    "ai-trending": [
+      "Nutlope/hallmark adds an anti-AI-slop design skill for Claude Code, Cursor and Codex, gaining 2,110 stars today.",
+      "pbakaus/impeccable adds design vocabulary commands such as polish, bolder, critique and audit to coding agents, +1,472 stars.",
+      "nightly-labs/openbot runs a local-first desktop workspace for Codex, Claude and Grok agents to share tasks, +1,054 stars."
+    ],
+    "ai-web": [
+      "Anthropic expanded its AI for Science program to 20 scientific foundations and research groups, granting free Claude credits.",
+      "Anthropic's Frontier Red Team used an unreleased model to find five critical browser and OS vulnerability attack chains.",
+      "GitHub Copilot plans page now shows Copilot Standalone at $10 per user per month; verify billing before renewing."
+    ],
+    "ai-hn": [
+      "Google announced Gemini 4 Carbon, a cybersecurity-focused frontier model at $2/$10 per million input/output tokens introductory.",
+      "Cursor released an Agent SDK that deploys custom coding agents with one command on Cursor's infrastructure.",
+      "Liquid AI launched LFM3, six 2B-class multimodal models with open weights, 256K context and roughly 1 GB 4-bit footprint."
+    ],
+    "ai-community": [
+      "Trimming old tool results and cutting unused tools reduced a BI agent's 286K-token replay by 21–26%.",
+      "One Apify Actor's inferred output schema cost 32,136 tokens versus 406 for its author-written input schema.",
+      "Reversing observation-field order collapsed a frozen MiniWoB++ policy from 85.0% to 19.2% accuracy."
+    ]
+  }
+}

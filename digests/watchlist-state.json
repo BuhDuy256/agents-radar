@@ -1,17 +1,21 @@
 {
   "https://docs.github.com/en/copilot/get-started/plans": [
+    "0 seat",
     "1,000 A selection of models Copilot Pro+ $39 USD per month",
     "2000 completions per month on Copilot Free",
     "3,900 Access to premium models Copilot Max $100 USD per month Base: 10,000 Priority access to pr",
+    "access to premium models Copilot access $0",
     "access to premium models Copilot Business $19 USD per granted seat per month Total per user pe",
     "Access to premium models Copilot Enterprise $39 USD per granted seat per month Total per user pe",
-    "and usage beyond the pool is charged at $0.01 USD per AI credit",
     "Auto model selection only Copilot Pro $10 USD per month",
-    "Business $19 USD 1,900 Copilot Enterprise $39 USD",
-    "Credits per user per month Copilot Business $19 USD",
+    "Copilot Standalone : Copilot access costs $10 USD per user per month, without requir",
+    "eligibility as Copilot Enterprise, with a $0",
+    "Enterprise Cloud : Copilot access has a $0",
+    "licensed users of GitHub Enterprise Cloud $10 USD per user per month for Copilot Standalone",
     "Pro $10 USD 1,000 500 1,500 Copilot Pro+ $39 USD",
     "Pro+ $39 USD 3,900 3,100 7,000 Copilot Max $100 USD",
-    "Total monthly AI credits Copilot Pro $10 USD"
+    "Total monthly AI credits Copilot Pro $10 USD",
+    "with a GitHub Enterprise Cloud license or $10 USD per user per month for Copilot Standalone"
   ],
   "https://river.ai/pricing": [
     "1M tokens",
@@ -59,6 +63,7 @@
     "Price Search Per 1,000 successful requests $0.75"
   ],
   "https://claude.com/pricing": [
+    "& Enterprise API Individual Free Try Claude $0",
     "$100 Per seat / month if billed annually. $125",
     "$20 Per seat / month if billed annually. $25",
     "20 seat",
@@ -73,7 +78,6 @@
     "Priority access at high traffic times $100",
     "seat 5x more usage than standard seats* $100 Per seat / month if billed annually",
     "Seat price + usage at API rates US$20/seat/month, billed annually, 20 seat min",
-    "Team & Enterprise API Free Try Claude $0",
     "Yes Yes Yes New Monthly API credits † No No $100/month $200/month Priority access at high"
   ]
 }
