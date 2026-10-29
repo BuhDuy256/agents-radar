@@ -119,6 +119,22 @@ export const COMMUNITY_REPORT = {
     lang === "en" ? `💬 Tech Community AI Digest ${dateStr}` : `💬 Bản tin AI cộng đồng công nghệ ${dateStr}`,
 } as const;
 
+// The problem-discovery report runs from its own workflow, not the daily
+// digest. Its issue labels are kept out of ISSUE_LABELS on purpose, so the
+// daily digest's close-stale step (which keeps only the newest digest day)
+// never touches problem-discovery issues.
+export const PROBLEMS_REPORT = {
+  title: t("Phát hiện vấn đề từ thảo luận công khai", "Problem Discovery from Public Discussions"),
+  meta: (utcStr: string, count: number, lang: Lang) =>
+    lang === "en"
+      ? `> Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: ${count} | Generated: ${utcStr} UTC`
+      : `> Nguồn: GitHub Issues · Stack Exchange · Hacker News | Số vấn đề: ${count} | Tạo lúc: ${utcStr} UTC`,
+  issueTitle: (dateStr: string, lang: Lang) =>
+    lang === "en" ? `🔎 Problem Discovery ${dateStr}` : `🔎 Phát hiện vấn đề ${dateStr}`,
+} as const;
+
+export const PROBLEMS_ISSUE_LABELS = t("problems", "problems-en");
+
 export const ISSUE_LABELS = {
   cli: t("digest", "digest-en"),
   openclaw: t("openclaw", "openclaw-en"),
@@ -178,6 +194,8 @@ export const REPORT_LABELS: Record<string, string> = {
   "ai-hf-en": "Hugging Face Trending Models Weekly",
   "ai-community": "Bản tin AI cộng đồng công nghệ",
   "ai-community-en": "Tech Community AI Digest",
+  problems: "Phát hiện vấn đề từ thảo luận công khai",
+  "problems-en": "Problem Discovery",
   // Weekly/monthly rollups are no longer generated; kept so archived reports
   // still render a proper title in the sidebar and RSS feed.
   "ai-weekly": "Bản tin tuần hệ sinh thái công cụ AI",
@@ -208,7 +226,14 @@ export const NOTIFY_LABELS: Record<string, Record<Lang, string>> = {
  * keep the old files and issues, but do not list them in the manifest, RSS
  * feed, Telegram message or sidebar.
  */
-export const PUBLISHED_REPORTS = ["ai-cli", "ai-trending", "ai-web", "ai-hn", "ai-community"] as const;
+export const PUBLISHED_REPORTS = [
+  "ai-cli",
+  "ai-trending",
+  "ai-web",
+  "ai-hn",
+  "ai-community",
+  "problems",
+] as const;
 
 /** Published report files: Vietnamese (base id) and English (`-en`). */
 export const PUBLISHED_REPORT_FILES: readonly string[] = PUBLISHED_REPORTS.flatMap((id) => [id, `${id}-en`]);

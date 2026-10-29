@@ -331,10 +331,36 @@ pnpm start
 | `ai-trending.md` | GitHub AI 趋势热榜 — 按维度分类 + 趋势信号分析（仅在有数据时生成） | `trending` |
 | `ai-hn.md` | Hacker News AI 社区动态 — 热门帖子分类 + 情绪分析（仅在抓取成功时生成） | `hn` |
 | `ai-community.md` | 技术社区 AI 简报 — Dev.to + Lobste.rs 合并 | `community` |
+| `problems.md` | 问题发现报告 — 从公开讨论中挖掘的、有证据支撑的真实问题（独立的 `pnpm problems` 流程） | `problems` |
 
-以上五个报告（含 `-en` 版本）是唯一会出现在 `manifest.json`、`feed.xml`、Web UI 侧栏和 Telegram 通知中的报告。OpenClaw（`ai-agents`）、基础设施（`ai-infra`）、Product Hunt（`ai-ph`）、ArXiv（`ai-arxiv`）、Hugging Face（`ai-hf`）以及周报/月报均已停止生成，遗留文件会被清理；旧的 GitHub Issue 保留。
+以上报告（含 `-en` 版本）会出现在 `manifest.json`、`feed.xml`、Web UI 侧栏和 Telegram 通知中。OpenClaw（`ai-agents`）、基础设施（`ai-infra`）、Product Hunt（`ai-ph`）、ArXiv（`ai-arxiv`）、Hugging Face（`ai-hf`）以及周报/月报均已停止生成，遗留文件会被清理；旧的 GitHub Issue 保留。
 
 `digests/web-state.json` 用于记录已处理的 URL，随每日简报一并提交。
+
+---
+
+## 自主问题发现（`pnpm problems`）
+
+一条独立的流程，无需提供主题或关键词即可从公开讨论中发现真实世界的问题，并生成每日 `problems.md` / `problems-en.md` 报告。覆盖三大领域：**软件开发**（约 40%）、**金融**（约 35%）、**业务运营**（约 25%）。
+
+```bash
+export GITHUB_TOKEN=ghp_xxxxx
+export LLM_PROVIDER=openai
+export OPENAI_API_KEY=sk-xxxxx
+export DIGEST_REPO=you/agents-radar  # 可选，省略则只写文件
+pnpm problems
+```
+
+流程（`src/problem-discovery.ts`）：
+
+1. **采集**（`src/problem-sources.ts`）— 对 **GitHub Issues**（Search API）、**Stack Exchange**（Stack Overflow、Personal Finance & Money）和 **Hacker News**（Ask HN，经 Algolia）进行有界的宽泛查询，按领域设上限并在来源间轮询以保证多样性。单一来源失败不会导致整体失败，缺失的覆盖会在报告中标注。
+2. **抽取**（LLM，分批）— 为每条讨论提炼出具体问题（谁、什么困难、场景、为何重要、现有变通方案），讨论通过不透明 id 引用，绝不臆造 URL。
+3. **归并**（LLM）— 合并语义相近的问题信号，保留每一个佐证来源。
+4. **生成报告** — 从有据可依的数据确定性地构建（先英文，再翻译为越南语），按领域分组，附证据链接、现有变通方案、明确标注为假设的「软件相关性」，以及根据独立来源数量得出的证据强度（单一 / 多个独立观察）。
+
+`PROBLEMS_COLLECT_ONLY=1 pnpm problems` 只执行采集（无需 LLM key），并写出 `digests/problem-collection.json` 供检查。`digests/problem-state.json` 记录已挖掘过的讨论，避免重复处理。
+
+报告通过与简报相同的 manifest/RSS/Web UI 路径发布，并由独立的 GitHub Actions 工作流（`.github/workflows/problem-discovery.yml`，`workflow_dispatch`）运行，与每日简报互不干扰。
 
 ---
 

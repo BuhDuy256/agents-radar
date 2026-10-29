@@ -332,12 +332,38 @@ Files are written to `digests/YYYY-MM-DD/`:
 | `ai-trending.md` | GitHub AI trending report — repos classified by dimension + trend signals (only written when data is available) | `trending` |
 | `ai-hn.md` | Hacker News AI community digest — top stories + sentiment analysis (only written when fetch succeeds) | `hn` |
 | `ai-community.md` | Tech community AI digest — Dev.to articles + Lobste.rs stories combined | `community` |
+| `problems.md` | Problem Discovery report — concrete, evidence-backed problems mined from public discussions (separate `pnpm problems` pipeline) | `problems` |
 
-These five reports (plus their `-en` variants) are the only ones listed in `manifest.json`, `feed.xml`, the Web UI sidebar and the Telegram notification. The OpenClaw (`ai-agents`), infrastructure (`ai-infra`), Product Hunt (`ai-ph`), ArXiv (`ai-arxiv`), Hugging Face (`ai-hf`) and weekly/monthly rollup reports are retired — they are no longer generated, and any leftover files are pruned. Their old GitHub Issues are kept.
+These reports (plus their `-en` variants) are the ones listed in `manifest.json`, `feed.xml`, the Web UI sidebar and the Telegram notification. The OpenClaw (`ai-agents`), infrastructure (`ai-infra`), Product Hunt (`ai-ph`), ArXiv (`ai-arxiv`), Hugging Face (`ai-hf`) and weekly/monthly rollup reports are retired — they are no longer generated, and any leftover files are pruned. Their old GitHub Issues are kept.
 
 A shared state file `digests/web-state.json` tracks which web URLs have been seen; it is committed alongside the daily digests.
 
 Each report is generated in both Vietnamese (`ai-cli.md`) and English (`ai-cli-en.md`). The Web UI sidebar shows VI / EN toggle buttons for reports that have both variants.
+
+---
+
+## Autonomous Problem Discovery (`pnpm problems`)
+
+A separate pipeline that discovers real-world problems from public discussions — no topics or keywords required — and publishes a daily `problems.md` / `problems-en.md` report alongside the digests. It targets three domains: **Software Development** (~40%), **Finance** (~35%) and **Business Operations** (~25%).
+
+```bash
+export GITHUB_TOKEN=ghp_xxxxx      # GitHub Issues search + optional issue publishing
+export LLM_PROVIDER=openai         # any supported provider + its key
+export OPENAI_API_KEY=sk-xxxxx
+export DIGEST_REPO=you/agents-radar # optional; omit to only write files
+pnpm problems
+```
+
+Pipeline (`src/problem-discovery.ts`):
+
+1. **Collect** (`src/problem-sources.ts`) — bounded, broad queries against **GitHub Issues** (Search API), the **Stack Exchange** network (Stack Overflow, Personal Finance & Money) and **Hacker News** (Ask HN, via Algolia), capped per domain and round-robined across sources for diversity. A failing source never fails the run; missing coverage is noted in the report.
+2. **Extract** (LLM, batched) — names the concrete problem in each discussion (who, difficulty, context, why it matters, workarounds), referencing discussions by opaque ids so no URL is ever invented.
+3. **Group** (LLM) — merges semantically similar problem signals, preserving every supporting source.
+4. **Report** — built deterministically from the grounded data (English, then translated to Vietnamese), grouped by domain, with evidence links, current workarounds, a clearly-labelled software-relevance hypothesis, and an evidence-strength label (single / multiple independent observations) derived from the count of distinct sources.
+
+`PROBLEMS_COLLECT_ONLY=1 pnpm problems` runs collection only (no LLM key needed) and writes `digests/problem-collection.json` for inspection. A `digests/problem-state.json` file records which discussions were already mined so repeated runs do not re-process them.
+
+The report is published through the same manifest/RSS/Web UI path as the digests. It runs from its own GitHub Actions workflow (`.github/workflows/problem-discovery.yml`, `workflow_dispatch`), independent of the daily digest.
 
 ---
 

@@ -1,0 +1,79 @@
+name: Problem Discovery
+
+# Autonomous Problem Discovery — collects public discussions, mines them for
+# concrete problems with an LLM, and publishes a daily report into the same
+# digests/ outputs and web UI as the AI digest. Runs on its own schedule so it
+# never interferes with the daily digest workflow.
+on:
+  workflow_dispatch:
+  # Daily scheduling is available but commented out until the manual run is
+  # verified. 01:17 UTC is off the contended :00 slot and well clear of the
+  # daily digest (22:37 UTC), so the two never overlap.
+  # schedule:
+  #   - cron: "17 1 * * *"
+
+permissions:
+  contents: write
+  issues: write
+
+# Serialize overlapping runs so one CST day never produces two problem reports.
+concurrency:
+  group: problem-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run problem discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LLM_PROVIDER: openai
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: https://api.river.ai/v1
+          OPENAI_MODEL: deepseek-ai/DeepSeek-V4.1-Flash
+          DIGEST_REPO: ${{ github.repository }}
+        run: pnpm exec tsx src/problem-discovery.ts
+
+      - name: Commit report files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add digests/
+          if git diff --cached --quiet; then
+            echo "No new report files to commit"
+          else
+            DATE=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+            git commit -m "problems: ${DATE} problem discovery"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Update web manifest
+        run: pnpm exec tsx src/generate-manifest.ts
+
+      - name: Commit manifest and feed
+        run: |
+          git add manifest.json feed.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update manifest.json"
+            git pull --rebase
+            git push
+          fi

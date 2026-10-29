@@ -357,6 +357,8 @@ const LABEL_COLORS: Record<string, string> = {
   "community-en": "60a5fa",
   infra: "0891b2",
   "infra-en": "22d3ee",
+  problems: "7c3aed",
+  "problems-en": "a78bfa",
 };
 
 /**

@@ -8,6 +8,7 @@ agents-radar is a daily digest generator for the AI open-source ecosystem. A Git
 
 ```bash
 pnpm start          # run the full digest locally
+pnpm problems       # run the Autonomous Problem Discovery pipeline locally
 pnpm test           # vitest (unit tests)
 pnpm typecheck      # tsc --noEmit
 pnpm lint           # ESLint
@@ -91,6 +92,9 @@ Report bodies are generated **once in English** and translated to Vietnamese. Ge
 | `src/trending.ts` | GitHub Trending HTML scraper + Search API topic queries |
 | `src/hn.ts` | Hacker News top AI stories via Algolia HN Search API |
 | `src/generate-manifest.ts` | Generates `manifest.json` (sidebar data for Web UI) and `feed.xml` (RSS 2.0 feed) |
+| `src/problem-sources.ts` | Problem-discovery collectors (GitHub Issues, Stack Exchange, Hacker News Ask HN), per-domain capping with source-diversity round-robin, and `problem-state.json` seen-tracking |
+| `src/problem-prompts.ts` | Problem-discovery LLM prompts: `buildExtractionPrompt`, `buildGroupingPrompt`; `ProblemSignal` / `ProblemGroup` types |
+| `src/problem-discovery.ts` | Problem-discovery orchestration + entry point (`pnpm problems`): collect → extract → group → deterministic bilingual report → publish. Independent of the daily digest `main()` |
 
 ## Report outputs
 
@@ -105,6 +109,7 @@ Files written to `digests/YYYY-MM-DD/`:
 | `ai-trending.md` | `trending` | Skipped if both data sources fail |
 | `ai-hn.md` | `hn` | Skipped if Algolia fetch fails |
 | `ai-hf.md` | `hf` | **Weekly** — only on `HF_REPORT_WEEKDAY` (Monday, CST) |
+| `problems.md` | `problems` | Separate pipeline (`pnpm problems` / `problem-discovery.yml`), not the daily digest |
 
 ## Tracked sources
 
@@ -122,6 +127,7 @@ Files written to `digests/YYYY-MM-DD/`:
 
 - All bilingual strings (titles, labels, footers, messages) are centralized in `src/i18n.ts`. Use the `Lang` type (`"vi" | "en"`) and `Record<Lang, string>` maps. Do not add inline bilingual ternaries elsewhere.
 - Publishing is allowlisted by `PUBLISHED_REPORTS` in `src/i18n.ts` (`ai-cli`, `ai-trending`, `ai-web`, `ai-hn`, `ai-community`). `generate-manifest.ts` derives manifest/RSS entries from `PUBLISHED_REPORT_FILES`, so reports outside the allowlist are never listed in the manifest, RSS, Telegram or sidebar even if a stray file remains. Stale files from retired report types (arxiv, hf, ph, agents, infra, weekly/monthly) are removed from `digests/`; old GitHub Issues are kept. `index.html` keeps its own `LABELS`/`PUBLISHED` copy in sync.
+- **Autonomous Problem Discovery** (`pnpm problems`) is a self-contained pipeline, separate from the daily digest, that mines public discussions (GitHub Issues, Stack Exchange, Ask HN) for concrete, evidence-backed problems across three domains (software ~40%, finance ~35%, business ops ~25%). Key invariants: (1) the LLM only ever sees discussions by opaque ref ids (`D1`, `D2`, …) and references them in its JSON output, so **evidence URLs are always resolved from the real fetched discussions, never produced by the model** — `resolveProblems` drops any problem whose refs don't resolve; (2) the final report body is built **deterministically** from the grounded, grouped data (no free-form LLM write), then translated to Vietnamese via `translateToVi`, following the English-first convention; (3) evidence strength is derived from the count of distinct supporting discussions (single / multiple), never an arbitrary score; (4) a failing collector never fails the run and missing coverage is stated in the report; (5) `problems` issue labels (`PROBLEMS_ISSUE_LABELS`) are deliberately **not** in `ISSUE_LABELS`/`DIGEST_ISSUE_LABELS`, so the daily digest's `close-stale` step never closes problem-discovery issues. `problems` is in `PUBLISHED_REPORTS` so it appears in the manifest/RSS/sidebar. Do not add a second (Vietnamese) generation call; do not let the model emit URLs.
 - Telegram (`src/notify.ts`) is Vietnamese-only: at most 3 highlights per section, one `Đọc chi tiết` link per section, sections without highlights dropped, message trimmed to 3,500 chars by removing whole trailing highlights (never cutting HTML). It sends nothing when the latest manifest date is not today (CST) or when no section has a highlight.
 - `buildHighlightsPrompt` reads a short slice of **every** section of a report (`excerptReport`, 12,000-char budget) instead of the first 2,000 characters, asks for at most 3 distinct news items, and forbids overstating PR status: OPEN → "đề xuất/đang phát triển", merged without a release → "đã merge", "đã phát hành" only with release evidence.
 - `src/index.ts` builds the highlights input from the saver return values (`BilingualBody | null`) of the current run, not from files on disk, so a leftover report from an earlier run on the same day is never picked up.
