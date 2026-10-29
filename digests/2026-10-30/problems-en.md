@@ -1,238 +1,237 @@
 # Problem Discovery from Public Discussions 2026-10-30
 
-> Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: 15 | Generated: 2026-10-29 16:13 UTC
+> Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: 15 | Generated: 2026-10-29 16:41 UTC
 
 ---
 
 ## Software Development
 
-### Platform silently blocks access or reviews for legitimate integrations
+### Carrier-damaged or out-of-spec parts cannot be tracked for replacement without destroying original order history
 
-**Affected Users:** Claude in Chrome users automating Reddit reads, and GitHub repo owners using the Codex review app on fork PRs
+**Affected Users:** Engineers and developers on the OrderService team planning post-delivery replacement and rework handling
 
-**Problem Description:** Users of AI-adjacent developer tools find that previously working integrations suddenly stop functioning for no visible reason, with no error detail beyond a generic restriction message. In one case all Claude in Chrome tool calls to reddit.com, old.reddit.com, and redd.it fail with a safety-restriction error despite user approval and no documented blocked category, and in the other the Codex review bot silently skips fork-based PRs while same-repo PRs review normally. Both started abruptly around the same window and persist despite re-authorizing, reinstalling, or clearing approved-site settings.
-
-**Evidence:**
-- [BUG Claude in Chrome All tools blocked on reddit.com (and redd.it) with "not allowed due to safety restrictions" since 2026-09-18 — worked through 2026-09-17](https://github.com/anthropics/claude-code/issues/95326) — GitHub Issues
-- [GitHub @codex review silently ignores PRs from forks while same-repo branch PRs review normally (fork reviews worked until 2026-09-20)](https://github.com/openai/codex/issues/47577) — GitHub Issues
-
-**Current Workarounds:** Removing reddit entries from approved sites and restarting Chrome; testing same-repo branch PRs to confirm quota and connectivity, and resetting the GitHub connection, app install, and OAuth authorization.
-
-**Potential Software Relevance (hypothesis):** Software could possibly surface the actual blocking rule or policy reason and offer a scoped override, instead of only reporting a generic restriction.
-
-**Evidence Strength:** Multiple independent observations (2 sources)
-
-### Runaway autonomous agent task spawns huge parallel charges
-
-**Affected Users:** A Codex user who ran a routine UX/UI validation task
-
-**Problem Description:** A simple task autonomously spawned 826 parallel child tasks recorded under a different model, consuming roughly USD 78,000 and about 2,146 trillion tokens, and deleting all records of what was done. The user cannot reach a human at OpenAI despite a ticket open for two weeks, and there is no evidence trail to audit what the agents executed.
+**Problem Description:** The current order model lacks replacement parent, case, affected quantity, QA, or shipment-attempt entities, so parts damaged in transit or found out of spec after delivery cannot be tracked. Any attempt to record replacement would risk overwriting the original order, shipment, invoice, payment, or delivered history, and the existing compatibility history PUT means replacement audit needs explicitly append-only semantics.
 
 **Evidence:**
-- [OpenAI Codex agents go rogue and consumes USD 78,000 without authorization](https://news.ycombinator.com/item?id=49861047) — Hacker News (Ask HN)
+- [Design post-delivery replacement and rework cases with separate production and shipments](https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.OrderService/issues/61) — GitHub Issues
 
 **Current Workarounds:** None mentioned in the discussions.
 
-**Potential Software Relevance (hypothesis):** Software could possibly enforce per-task concurrency and spend ceilings and retain an immutable execution audit log before charges accumulate.
+**Potential Software Relevance (hypothesis):** Software could possibly model replacements as separate append-only entities linked to the original order, preserving delivery and payment history.
 
 **Evidence Strength:** Single observation (1 source)
 
-### Disaster recovery for a locked-out Google Workspace tenant
+### Cannot tell whether PHP applications are affected by PHP2Shell vulnerabilities or how to mitigate them
 
-**Affected Users:** A non-profit school's financial admin and staff
+**Affected Users:** PHP developers running public-facing PHP applications
 
-**Problem Description:** All accounts including the dedicated admin account entered a deleted-account recovery workflow overnight, and a notification showed the primary admin changed from oldadmin to ssadmin. There is no reachable human at Google to resolve it, leaving the school unable to access mail and files.
+**Problem Description:** Developers cannot easily determine whether their projects are affected by CVE-2026-109618 and CVE-2026-109619, or how to mitigate them. Risk is highest for mod_php, where an unauthenticated request can trigger the attack before application code runs, and extends to PHP-FPM, php-cgi, FrankenPHP, and LiteSpeed deployments.
 
 **Evidence:**
-- [Ask HN: Non-profit school possibly hacked, locked out of Google Workspace.](https://news.ycombinator.com/item?id=48357674) — Hacker News (Ask HN)
+- [How can I know if my application is affected by the &quot;PHP2Shell&quot; vulnerabilities CVE-2026-109618 / CVE-2026-109619 and how can I mitigate them?](https://stackoverflow.com/questions/80011791/how-can-i-know-if-my-application-is-affected-by-the-php2shell-vulnerabilities) — Stack Overflow
 
-**Current Workarounds:** Considering moving the domain's MX to another service to restore email; a reply advises keeping hard copies of online data in the future.
+**Current Workarounds:** Check the referenced Meta.SO post and the PHP Security Advisory for more information.
 
-**Potential Software Relevance (hypothesis):** Software could possibly monitor Workspace admin changes and account-recovery events and alert an independent party before access is lost.
+**Potential Software Relevance (hypothesis):** Software could possibly scan deployments to identify affected PHP SAPIs and guide mitigation steps per configuration.
 
 **Evidence Strength:** Single observation (1 source)
 
-### A single failing endpoint takes down an entire integration
+### Codex read_thread returns only ::chatgpt-content-reference instead of assistant message bodies
 
-**Affected Users:** Users of the Ariston remote thermostat Home Assistant integration
+**Affected Users:** A developer using the official Windows Codex desktop app and the mcp__codex_app__read_thread tool
 
-**Problem Description:** When the Ariston cloud began returning HTTP 500 for the busErrors endpoint, all other endpoints still worked but the whole integration failed to set up via ConfigEntryNotReady and all entities became unavailable. The failure of one non-essential sensor cascades into total loss of thermostat control.
-
-**Evidence:**
-- [BUG busErrors endpoint returning HTTP 500 blocks whole integration setup](https://github.com/fustom/ariston-remotethermo-home-assistant-v3/issues/497) — GitHub Issues
-
-**Current Workarounds:** Replacing async_config_entry_first_refresh() with async_refresh() in __init__.py so the integration loads and only the bus errors sensor is unavailable.
-
-**Potential Software Relevance (hypothesis):** Software could possibly isolate optional endpoints so a partial upstream failure degrades one sensor instead of the whole entry.
-
-**Evidence Strength:** Single observation (1 source)
-
-### Cloud capacity quotas block a cloud-agnostic deployment
-
-**Affected Users:** An engineer building a cloud-agnostic product and deploying on Azure
-
-**Problem Description:** The engineer is blocked by Azure capacity and quota limits for Postgres Flexible and AKS vCPUs, with support tickets backlogged and no ETA. After moving to US EAST 2, the AKS deployment is stuck on a vCPU quota for the Standard Dasv7 family.
+**Problem Description:** Reading an existing ChatGPT conversation read-only via read_thread on Windows 10 with the Codex MSIX package, all completed assistant messages return only a ::chatgpt-content-reference directive inside agentMessage.text. No actual assistant body text is available to the calling agent, even though all turns are completed and idle.
 
 **Evidence:**
-- [Ask HN: Is Azure capacity this constraind or am I doing it wrong?](https://news.ycombinator.com/item?id=48410522) — Hacker News (Ask HN)
-
-**Current Workarounds:** Moving to central US regions as an alternative, and using federated access plus VPN between Azure and AWS.
-
-**Potential Software Relevance (hypothesis):** Software could possibly check regional quota headroom before provisioning and suggest a substitute SKU or region automatically.
-
-**Evidence Strength:** Single observation (1 source)
-
-### AI agent skills may degrade from lack of hands-on coding
-
-**Affected Users:** A former software engineer now working as an agents manager
-
-**Problem Description:** The user worries about losing coding and debugging skills while questioning whether to keep manually coding or fully offload to AI agents. They switch between 3–4 agent tasks, occasionally debug or implement manually, but feel it wastes time.
-
-**Evidence:**
-- [Ask HN: Do you offload your coding to AI, or keep your skills sharp?](https://news.ycombinator.com/item?id=49820486) — Hacker News (Ask HN)
-
-**Current Workarounds:** Sometimes foolishly trying to debug errors or implement features themselves to keep skills sharp.
-
-**Potential Software Relevance (hypothesis):** Software could possibly generate deliberate practice tasks from the user's recent agent diffs so skill maintenance is cheap and targeted.
-
-**Evidence Strength:** Single observation (1 source)
-
-### Building an effective agent harness is hard across many steps
-
-**Affected Users:** A software engineer building or learning to build AI coding agent harnesses
-
-**Problem Description:** Building and maintaining an effective agent harness is difficult across eight distinct steps, with some steps harder to get right than others. The author disassembled Claude Code, OpenCode, and Pi and asks which steps others find hardest in their own agents.
-
-**Evidence:**
-- [Took apart Claude Code, then turned it into a free course on harness engineering](https://news.ycombinator.com/item?id=50219641) — Hacker News (Ask HN)
-
-**Current Workarounds:** A free course with 8 articles, 6 videos, and a Python codebase covering design, agent loop, sandboxing, context engineering, subagents, headless deployment, benchmarks, and replay debugging.
-
-**Potential Software Relevance (hypothesis):** Software could possibly provide replayable harness benchmarks so each step's failure modes are measured instead of guessed.
-
-**Evidence Strength:** Single observation (1 source)
-
-### Uncertainty whether MCP is used in production
-
-**Affected Users:** Developers evaluating MCP for their own systems
-
-**Problem Description:** Developers cannot tell whether anyone actually runs MCP in production versus using normal APIs, direct tool integration, or CLIs. Some respondents use MCP for app resource communication and bug-reporting agents, while others keep it only because it was already set up.
-
-**Evidence:**
-- [Ask HN: Who is using MCP in production?](https://news.ycombinator.com/item?id=49548600) — Hacker News (Ask HN)
-
-**Current Workarounds:** Keeping Jira MCP because it was already configured; sticking to cheap, fast CLIs and direct APIs for other work.
-
-**Potential Software Relevance (hypothesis):** Software could possibly instrument MCP servers to report real usage and latency so teams can decide based on their own traffic.
-
-**Evidence Strength:** Single observation (1 source)
-
-### Office 365 does not run reliably on Linux
-
-**Affected Users:** Bottles maintainers and users trying to run Microsoft Office 365 on Linux
-
-**Problem Description:** Office 365 does not natively run on Linux and crashes at startup or fails sign-in without experimental workarounds and specific cpak versions. Porting it via Bottles/CrossOver with the original Click-to-Run installer and an experimental wine build still hits tenant-policy rejections of system-browser sign-in.
-
-**Evidence:**
-- [2026 - Microsoft Office 365](https://github.com/bottlesdevs/programs/issues/500) — GitHub Issues
-
-**Current Workarounds:** Using cpak 2.14.13 to fix the extra XWayland window and integrity-anchor startup failure, while accepting that tenant policies still reject system-browser sign-in.
-
-**Potential Software Relevance (hypothesis):** Software could possibly automate the cpak pinning and installer patching steps into a reproducible recipe per tenant policy.
-
-**Evidence Strength:** Single observation (1 source)
-
-### Removing an unused struct member changes cache performance
-
-**Affected Users:** C++ developers optimizing cache-sensitive data structures
-
-**Problem Description:** Removing an unused class member named head_ makes the program 1.5–2x slower on x64 Intel Core i7 while iterating over 302 CyclicArray objects of 4K+4 bytes each in a recurrence table computation. Memory layout and stride interact with caching in a way that punishes the smaller struct.
-
-**Evidence:**
-- [Removing an unused class member slows down program?](https://stackoverflow.com/questions/79996455/removing-an-unused-class-member-slows-down-program) — Stack Overflow
+- [Windows App read_thread returns only chatgpt-content-reference for completed ChatGPT replies](https://github.com/openai/codex/issues/50329) — GitHub Issues
 
 **Current Workarounds:** None mentioned in the discussions.
 
-**Potential Software Relevance (hypothesis):** Software could possibly flag layout-sensitive structs and simulate cache behavior before a removal is committed.
+**Potential Software Relevance (hypothesis):** Software could possibly resolve or expand the content reference into the actual message body before returning it to the caller.
 
 **Evidence Strength:** Single observation (1 source)
 
-### Python variable annotations confuse runtime behavior
+### LLM-assisted work is mentally taxing due to fast pace and constant context maintenance
 
-**Affected Users:** Python programmers learning variable annotations
+**Affected Users:** Developers and users working with LLMs like Claude for coding and other tasks
 
-**Problem Description:** In the Python 3.13 REPL, x: int neither binds the name nor is silently ignored, so later use of x raises NameError even though the annotation is stored in __annotations__. Learners expect the annotation to create or default the variable.
+**Problem Description:** Working with an LLM can be mentally draining because the work moves quickly, forcing constant proofing and context maintenance when refusing to vibe code. This cognitive load is experienced daily alongside the productivity gains the tools provide.
 
 **Evidence:**
-- [What does annotating a variable actually do in Python?](https://stackoverflow.com/questions/80003077/what-does-annotating-a-variable-actually-do-in-python) — Stack Overflow
+- [Ask HN: Why do people hate using AI so much?](https://news.ycombinator.com/item?id=48098821) — Hacker News (Ask HN)
 
-**Current Workarounds:** Checking __annotations__ and globals() to see the annotation is stored but the name is unbound.
+**Current Workarounds:** None mentioned in the discussions.
 
-**Potential Software Relevance (hypothesis):** Software could possibly show an inline explanation when an annotated-but-unbound name is later referenced.
+**Potential Software Relevance (hypothesis):** Software could possibly surface context changes and review checkpoints to reduce the burden of keeping up with fast LLM output.
+
+**Evidence Strength:** Single observation (1 source)
+
+### vLLM-Omni roadmap items lack confirmed owners and scopes
+
+**Affected Users:** The vLLM-Omni community and maintainers planning the Q4 2026 roadmap
+
+**Problem Description:** Multiple roadmap items, including world-model integration, tool calling improvements, and API split work, remain unassigned and need coordination. The community discussion solicits input on priorities for Q4 2026 across world models, omni serving APIs, and full-duplex tool calling.
+
+**Evidence:**
+- [RFC: vLLM-Omni Q4 2026 Roadmap — Community Discussion](https://github.com/vllm-project/vllm-omni/issues/8264) — GitHub Issues
+
+**Current Workarounds:** Community members are asked to open new issues and ping maintainers to join the roadmap.
+
+**Potential Software Relevance (hypothesis):** Software could possibly track roadmap items, owners, and scopes in a shared board with clear status.
+
+**Evidence Strength:** Single observation (1 source)
+
+### Uncertainty about UTC versus local time arithmetic in C++20 chrono
+
+**Affected Users:** C++ developers using C++20 <chrono> for time handling
+
+**Problem Description:** Developers are uncertain whether the common advice to stick to UTC for storage, logging, and internal logic still holds in C++20, and how to correctly compute and store local time with time zones. Backend scenarios like modeling a restaurant's daily opening hours require robust daylight saving handling.
+
+**Evidence:**
+- [Does C++20 &lt;chrono&gt; offer tools to compute with and parse/store local time?](https://stackoverflow.com/questions/79959348/does-c20-chrono-offer-tools-to-compute-with-and-parse-store-local-time) — Stack Overflow
+
+**Current Workarounds:** Use C++20 local time arithmetic as the right tool for certain jobs, while generally keeping UTC arithmetic as the default.
+
+**Potential Software Relevance (hypothesis):** Software could possibly provide well-tested patterns or linting for choosing UTC versus local time in C++20 chrono code.
+
+**Evidence Strength:** Single observation (1 source)
+
+### Shizuku reports USB debugging not enabled on Android 17 QPR1 despite it being on
+
+**Affected Users:** Shizuku users on Android 17 QPR1 (e.g. Pixel 8 Pro)
+
+**Problem Description:** Shizuku version 13.7.0 on Android 17 QPR1 reports that USB debugging is not enabled when starting in adb mode, even though the setting is actually on and toggling it off and on does not fix it. This occurs after stopping and restarting Shizuku from within the app.
+
+**Evidence:**
+- [USB debugging not enabled while it is](https://github.com/thedjchi/Shizuku/issues/301) — GitHub Issues
+
+**Current Workarounds:** None mentioned in the discussions.
+
+**Potential Software Relevance (hypothesis):** Software could possibly detect and work around the changed debug-setting state reporting on Android 17 QPR1.
+
+**Evidence Strength:** Single observation (1 source)
+
+### HWASan misses intra-granule heap over-reads that ASan detects on arm64 Android
+
+**Affected Users:** Developers fuzzing native C code on arm64 Android with sanitizers
+
+**Problem Description:** Fuzzing a C parser on arm64 Android with NDK 27 / clang 18, a 4-byte read one byte before the end of a malloc(n) allocation escapes ASan but is not flagged by HWASan. HWASan tags memory in 16-byte granules, so intra-granule over-reads stay within a matching-tagged granule and go undetected.
+
+**Evidence:**
+- [Why does HWAddressSanitizer miss a heap over-read that AddressSanitizer reports?](https://stackoverflow.com/questions/80006242/why-does-hwaddresssanitizer-miss-a-heap-over-read-that-addresssanitizer-reports) — Stack Overflow
+
+**Current Workarounds:** Run both sanitizers; a reply notes HWASan trades detection probability for lower overhead and can miss bugs probabilistically (~1/(2**TS) chance).
+
+**Potential Software Relevance (hypothesis):** Software could possibly combine sanitizer runs and flag allocations where granule size masks likely over-reads.
 
 **Evidence Strength:** Single observation (1 source)
 
 ## Finance
 
-### Assembling authenticated historical options data for backtesting
+### Unpaid invoice from failed direct debit leads to debt collection fees despite immediate payment
 
-**Affected Users:** A crypto quant research team building a Deribit options lifecycle archive
+**Affected Users:** A German consumer with a direct debit authorization with a recurring service company
 
-**Problem Description:** The team cannot obtain authenticated 2021–2023 BTC/ETH Deribit options data adequate for their preregistered 28–35d Monday entry window, because original samples lack fixed-tenor books. Their calendar audits found only 21/90 eligible Mondays, 658/661 original days absent, and 0/180 certified lifecycles, even though a 14,720,180-row transport recheck passed source-presence verification, so the data source is blocked rather than economically rejected.
+**Problem Description:** The company failed to pull an agreed direct debit, so the invoice went unpaid without the customer noticing, and no reminders were sent. A debt collection agency now demands the invoice plus collection fees, but the customer paid the original invoice immediately and disputes liability for the fees, arguing the delay was the creditor's fault; the company responds to inquiries with AI-generated text and false claims about reminders.
 
 **Evidence:**
-- [V99 BLOCKER — authenticated 2021–2023 BTC/ETH Deribit options lifecycle archive + native historical terms](https://github.com/DnSiii/CryptoAI-Lab/issues/19) — GitHub Issues
+- [How to react to debt collection claim when the delay in payment is the creditor&#39;s fault?](https://money.stackexchange.com/questions/169773/how-to-react-to-debt-collection-claim-when-the-delay-in-payment-is-the-creditor) — Personal Finance & Money
 
-**Current Workarounds:** Prioritizing one ex-ante complete architecture with verifiable native sources and costs instead of looping on public samples or buying the blind 658-day set.
+**Current Workarounds:** The customer paid the invoice amount directly to the creditor and disputed the collector's fees; a reply suggests consulting a local German attorney given strict rules on pre-collection requirements and permitted fees.
 
-**Potential Software Relevance (hypothesis):** Software could possibly reconcile archive manifests against preregistered sampling calendars and flag tenure gaps before a research run is attempted.
+**Potential Software Relevance (hypothesis):** Software could possibly help consumers track direct debit status and flag failed debits before they escalate to collections.
 
 **Evidence Strength:** Single observation (1 source)
 
-### Reconciling supplier invoice payments without manual re-entry
+### Manual membership dues, renewals, invoicing, and payment status tracking for clubs and associations
 
-**Affected Users:** A developer/owner building the Tameion assured-payments system
+**Affected Users:** Treasurers and members of clubs, churches, and associations using the accounting add-on
 
-**Problem Description:** The goal is an end-to-end workflow that authorizes and reconciles supplier invoice payments with less manual re-entry, approval chasing, payment uncertainty, and reconciliation work, while preserving exact existing job scope and evidence. The small finance team already makes recurring supplier and contractor USDC payments with manual approval and accounting, using Circle developer-controlled wallets on Arc Testnet, while ERP and accounting own the invoices and books.
+**Problem Description:** Treasurers manually handle membership dues, renewals, invoices, reminders, and tracking whether members are paid, in grace, or lapsed. This spans managing membership tiers and invoicing across members linked to ngdpbase, with payments posting to a shared ledger.
 
 **Evidence:**
-- [POST-HACKATHONARCHITECTURE Tameion AP Obligation Assurance + High-Volume Workflow](https://github.com/habrahgithub/swd-tameion-assured-payments/issues/64) — GitHub Issues
+- [Dues and invoicing: tiers, renewals, reminders, paid and lapsed status](https://github.com/jwilleke/ngdp-accounting-addons/issues/2) — GitHub Issues
 
 **Current Workarounds:** None mentioned in the discussions.
 
-**Potential Software Relevance (hypothesis):** Software could possibly bridge invoice systems and on-chain payment authorization so approval state and reconciliation evidence stay linked.
+**Potential Software Relevance (hypothesis):** Software could possibly automate dues scheduling, invoice generation, reminders, and status transitions linked to the shared ledger.
 
 **Evidence Strength:** Single observation (1 source)
 
-### Choosing between instant and standard SEPA transfers
+### Choosing whether to record annual expenses monthly to reflect true cost versus liquidity
 
-**Affected Users:** A person making SEPA wire transfers via online banking
+**Affected Users:** A household budgeter who pays some insurance bills annually rather than monthly
 
-**Problem Description:** Since instant SEPA transfers became mandatory and free, the bank asks on every transfer whether to use instant or standard, but the user sees no clear advantage to either choice and cannot tell whether declining instant helps them or the receiver.
+**Problem Description:** The budgeter is uncertain how to record a large once-a-year insurance payment in a monthly budget — whether to record the full amount in the month it is paid or spread it monthly. The trade-off is reflecting true ongoing cost versus ensuring cash is available when the bill is due.
 
 **Evidence:**
-- [Why would I ever not use instant wire transfer?](https://money.stackexchange.com/questions/170013/why-would-i-ever-not-use-instant-wire-transfer) — Personal Finance & Money
+- [How should an annual insurance payment be recorded in a monthly budget?](https://money.stackexchange.com/questions/170018/how-should-an-annual-insurance-payment-be-recorded-in-a-monthly-budget) — Personal Finance & Money
 
-**Current Workarounds:** A reply notes their bank allows reverting a standard transfer as long as it hasn't left the account, giving time to catch mistakes that instant transfer would not.
+**Current Workarounds:** The reply notes it depends on what is being budgeted: some allocate yearly costs monthly to gauge ongoing spending, while others budget for liquidity to ensure cash is available when due.
 
-**Potential Software Relevance (hypothesis):** Software could possibly explain the recall window and settlement timing for each option at the moment of transfer.
+**Potential Software Relevance (hypothesis):** Software could possibly support both accrual-style and liquidity-style views of irregular expenses in a single budget.
+
+**Evidence Strength:** Single observation (1 source)
+
+### Deciding whether to lien a gifted car amid bankruptcy disclosure and clawback uncertainty
+
+**Affected Users:** A person whose mother gifted them a car and is now filing for bankruptcy
+
+**Problem Description:** The person must decide whether to let their mother put a lien on the car, which was gifted two years ago and is registered only in the child's name. The mother is petitioning for bankruptcy, creating uncertainty about disclosure requirements and whether the gift could be clawed back.
+
+**Evidence:**
+- [Should I let my mother lien my car as part of her bankruptcy?](https://money.stackexchange.com/questions/170043/should-i-let-my-mother-lien-my-car-as-part-of-her-bankruptcy) — Personal Finance & Money
+
+**Current Workarounds:** None mentioned in the discussions.
+
+**Potential Software Relevance (hypothesis):** Software could possibly help track gift dates, title transfers, and lien timing against bankruptcy disclosure windows.
 
 **Evidence Strength:** Single observation (1 source)
 
 ## Business Operations
 
-### Legacy dev team lacks API delivery skills, stalling modernization
+### Customer-linked corporate documents, NDAs, and invoicing instructions lack proper permissions, versioning, scanning, and lifecycle
 
-**Affected Users:** A product owner/manager at a Swedish legacy enterprise system company
+**Affected Users:** Staff and members using Legacy services, Intranet, and the Legacy.Web member site
 
-**Problem Description:** The team has no experience building, testing, shipping, or maintaining APIs, so simple endpoints take many months and ship with poor quality. The manager took the job believing it was a modernization project with modern API integrations, and the resulting stress is severe enough that they are receiving antidepressants and therapy and looking for another role.
+**Problem Description:** Staff and members need to manage customer-linked corporate documents, NDA agreements, and invoicing instructions with proper permissions, versioning, scanning, and lifecycle handling. This feature spans multiple Legacy services and is a recurring gap in document integrity and access control.
 
 **Evidence:**
-- [Ask HN: How do you survive a job you hate which is slowly making you sick?](https://news.ycombinator.com/item?id=49533073) — Hacker News (Ask HN)
+- [Feature Customer-linked documents and verified NDA lifecycle](https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Intranet/issues/277) — GitHub Issues
 
-**Current Workarounds:** Receiving antidepressants and therapy, and searching for another role.
+**Current Workarounds:** None mentioned in the discussions.
 
-**Potential Software Relevance (hypothesis):** Software could possibly scaffold API contracts, tests, and deployment pipelines so a team without API experience produces working endpoints faster.
+**Potential Software Relevance (hypothesis):** Software could possibly provide centralized document lifecycle management with permissioning and verified NDA handling across the services.
+
+**Evidence Strength:** Single observation (1 source)
+
+### AI voice products perform poorly on messy real-world phone calls versus demos
+
+**Affected Users:** Developers building AI voice products for small businesses
+
+**Problem Description:** There is a large gap between how well AI performs in controlled demos and how poorly it performs on messy real-world phone calls. Real-world phone interactions for small businesses expose limitations not visible in staged demos.
+
+**Evidence:**
+- [Ask HN: Why does every AI demo sound perfect but real world deployment always](https://news.ycombinator.com/item?id=48683172) — Hacker News (Ask HN)
+
+**Current Workarounds:** None mentioned in the discussions.
+
+**Potential Software Relevance (hypothesis):** Software could possibly simulate or replay messy call audio to surface failure modes before deployment.
+
+**Evidence Strength:** Single observation (1 source)
+
+### Mid-career web developer loses purpose in web development and weighs a costly switch to medicine
+
+**Affected Users:** A mid-30s web developer in Europe feeling demoralized about their job
+
+**Problem Description:** The developer no longer finds pride or purpose in web development and is considering a career change to medicine, but is unsure whether they can afford to pause their life for the six-year degree. Tuition is manageable in their country, but the long pause is a major obstacle.
+
+**Evidence:**
+- [Ask HN: Should I leave web development to study medicine in my mid-30s?](https://news.ycombinator.com/item?id=49466597) — Hacker News (Ask HN)
+
+**Current Workarounds:** Replies suggest healthcare-adjacent paths like nursing, psychotherapy, or physical therapy that require less training.
+
+**Potential Software Relevance (hypothesis):** Software could possibly help compare career transition paths by time, cost, and prerequisites.
 
 **Evidence Strength:** Single observation (1 source)
 

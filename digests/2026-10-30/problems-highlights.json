@@ -1,0 +1,12 @@
+{
+  "vi": [
+    "Không thể theo dõi việc thay thế linh kiện bị hư hỏng do vận chuyển hoặc sai thông số mà không phá hủy lịch sử đơn hàng gốc",
+    "Hóa đơn chưa thanh toán do ghi nợ trực tiếp thất bại dẫn đến phí thu hồi nợ dù đã thanh toán ngay",
+    "Theo dõi thủ công phí thành viên, gia hạn, xuất hóa đơn và trạng thái thanh toán cho các câu lạc bộ và hiệp hội"
+  ],
+  "en": [
+    "Carrier-damaged or out-of-spec parts cannot be tracked for replacement without destroying original order history",
+    "Unpaid invoice from failed direct debit leads to debt collection fees despite immediate payment",
+    "Manual membership dues, renewals, invoicing, and payment status tracking for clubs and associations"
+  ]
+}
