@@ -39,6 +39,7 @@ import {
 } from "./report.ts";
 import { createGitHubIssue } from "./github.ts";
 import { buildJsonTranslationPrompt } from "./prompts.ts";
+import { PROBLEMS_HIGHLIGHTS_FILE, type ProblemHighlights } from "./notify.ts";
 import { toCstDateStr, toUtcStr } from "./date.ts";
 import { type Lang, PROBLEMS_REPORT, PROBLEMS_ISSUE_LABELS } from "./i18n.ts";
 
@@ -281,14 +282,6 @@ async function saveReport(
 // ---------------------------------------------------------------------------
 // Telegram highlights
 // ---------------------------------------------------------------------------
-
-/** File name for the bilingual Telegram highlights, read by `notify-problems.ts`. */
-export const PROBLEMS_HIGHLIGHTS_FILE = "problems-highlights.json";
-
-export interface ProblemHighlights {
-  vi: string[];
-  en: string[];
-}
 
 /**
  * Write the strongest problem titles for the Telegram message. Problem

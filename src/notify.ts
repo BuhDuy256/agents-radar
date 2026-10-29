@@ -30,6 +30,19 @@ export interface LegacyHighlights extends Partial<Highlights> {
   zh?: ReportHighlights;
 }
 
+/**
+ * File (under `digests/<date>/`) holding the Problem Discovery Telegram
+ * highlights that `problem-discovery.ts` writes and `notify-problems.ts` sends.
+ * Lives here, in the provider-free Telegram module, so the notify step never
+ * pulls in the LLM provider graph (which throws without an API key at import).
+ */
+export const PROBLEMS_HIGHLIGHTS_FILE = "problems-highlights.json";
+
+export interface ProblemHighlights {
+  vi: string[];
+  en: string[];
+}
+
 const PAGES_URL_DEFAULT = "https://buhduy256.github.io/agents-radar";
 
 /** Telegram rejects messages over 4096 UTF-16 chars; leave room for encoding. */

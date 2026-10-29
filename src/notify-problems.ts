@@ -22,8 +22,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { buildProblemsMessage, sendTelegram } from "./notify.ts";
-import { PROBLEMS_HIGHLIGHTS_FILE, type ProblemHighlights } from "./problem-discovery.ts";
+import {
+  buildProblemsMessage,
+  sendTelegram,
+  PROBLEMS_HIGHLIGHTS_FILE,
+  type ProblemHighlights,
+} from "./notify.ts";
 import { toCstDateStr } from "./date.ts";
 
 async function main(): Promise<void> {
