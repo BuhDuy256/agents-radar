@@ -6,7 +6,7 @@
     <description>Bản tin AI mã nguồn mở hằng ngày · Daily AI ecosystem digest</description>
     <language>vi-VN</language>
     <atom:link href="https://buhduy256.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 29 Oct 2026 16:23:09 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 16:42:14 +0000</lastBuildDate>
     <item>
       <title>Bản tin cộng đồng công cụ AI CLI 2026-10-30</title>
       <link>https://buhduy256.github.io/agents-radar/#2026-10-30/ai-cli</link>
@@ -718,163 +718,158 @@ Engagement: 3 reactions · 3 comments · 5 min read</p>
       <link>https://buhduy256.github.io/agents-radar/#2026-10-30/problems</link>
       <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-30/problems</guid>
       <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Phát hiện vấn đề từ thảo luận công khai 2026-10-30 Nguồn: GitHub Issues · Stack Exchange · Hacker News | Số vấn đề: 15 | Tạo lúc: 2026-10-29 16:13 UTC Phát triển phần mềm Nền tảng âm thầm chặn quyền truy cập hoặc đánh giá đối với các tích hợp hợp lệ Người dùng bị ảnh hưởng: Người dùng Claude in Chrome đang tự động hóa việc đọc Reddit, và chủ sở hữu repo GitHub dùng ứng dụng đánh giá Codex trên các PR từ fork Mô tả vấn đề: Người dùng các công cụ lập trình gần gũi với AI nhận thấy những tích hợp t...</description>
+      <description>Phát hiện vấn đề từ thảo luận công khai 2026-10-30 Nguồn: GitHub Issues · Stack Exchange · Hacker News | Số vấn đề: 15 | Tạo lúc: 2026-10-29 16:41 UTC Phát triển phần mềm Không thể theo dõi linh kiện hỏng do vận chuyển hoặc sai tiêu chuẩn để thay thế nếu không phá hủy lịch sử đơn hàng gốc Người dùng bị ảnh hưởng: Kỹ sư và lập trình viên trong nhóm OrderService đang lên kế hoạch xử lý thay thế và làm lại sau giao hàng Mô tả vấn đề: Mô hình đơn hàng hiện tại thiếu các thực thể cha của thay thế, ca...</description>
       <content:encoded><![CDATA[<h1>Phát hiện vấn đề từ thảo luận công khai 2026-10-30</h1>
 <blockquote>
-<p>Nguồn: GitHub Issues · Stack Exchange · Hacker News | Số vấn đề: 15 | Tạo lúc: 2026-10-29 16:13 UTC</p>
+<p>Nguồn: GitHub Issues · Stack Exchange · Hacker News | Số vấn đề: 15 | Tạo lúc: 2026-10-29 16:41 UTC</p>
 </blockquote>
 <hr>
 <h2>Phát triển phần mềm</h2>
-<h3>Nền tảng âm thầm chặn quyền truy cập hoặc đánh giá đối với các tích hợp hợp lệ</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Người dùng Claude in Chrome đang tự động hóa việc đọc Reddit, và chủ sở hữu repo GitHub dùng ứng dụng đánh giá Codex trên các PR từ fork</p>
-<p><strong>Mô tả vấn đề:</strong> Người dùng các công cụ lập trình gần gũi với AI nhận thấy những tích hợp từng hoạt động bỗng nhiên ngừng hoạt động mà không có lý do rõ ràng, không có thông tin lỗi nào ngoài một thông báo hạn chế chung chung. Trong một trường hợp, mọi lệnh gọi công cụ của Claude in Chrome tới reddit.com, old.reddit.com và redd.it đều thất bại với lỗi hạn chế an toàn dù người dùng đã phê duyệt và không có danh mục bị chặn nào được ghi nhận, còn trong trường hợp kia, bot đánh giá Codex âm thầm bỏ qua các PR từ fork trong khi PR cùng repo vẫn được đánh giá bình thường. Cả hai đều bắt đầu đột ngột trong cùng khoảng thời gian và vẫn tiếp diễn dù đã cấp lại quyền, cài lại, hay xóa cài đặt trang đã phê duyệt.</p>
+<h3>Không thể theo dõi linh kiện hỏng do vận chuyển hoặc sai tiêu chuẩn để thay thế nếu không phá hủy lịch sử đơn hàng gốc</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Kỹ sư và lập trình viên trong nhóm OrderService đang lên kế hoạch xử lý thay thế và làm lại sau giao hàng</p>
+<p><strong>Mô tả vấn đề:</strong> Mô hình đơn hàng hiện tại thiếu các thực thể cha của thay thế, ca xử lý, số lượng bị ảnh hưởng, QA, hay lần giao hàng, nên không thể theo dõi linh kiện hỏng trong vận chuyển hoặc phát hiện sai tiêu chuẩn sau giao hàng. Mọi nỗ lực ghi nhận thay thế đều có nguy cơ ghi đè lên đơn hàng gốc, lần giao hàng, hóa đơn, thanh toán hoặc lịch sử đã giao, và PUT lịch sử tương thích hiện có nghĩa là việc kiểm toán thay thế cần ngữ nghĩa chỉ ghi thêm.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://github.com/anthropics/claude-code/issues/95326">BUG Claude in Chrome All tools blocked on reddit.com (and redd.it) with &quot;not allowed due to safety restrictions&quot; since 2026-09-18 — worked through 2026-09-17</a> — GitHub Issues</li>
-<li><a href="https://github.com/openai/codex/issues/47577">GitHub @codex review silently ignores PRs from forks while same-repo branch PRs review normally (fork reviews worked until 2026-09-20)</a> — GitHub Issues</li>
+<li><a href="https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.OrderService/issues/61">Design post-delivery replacement and rework cases with separate production and shipments</a> — GitHub Issues</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Xóa các mục reddit khỏi trang đã phê duyệt và khởi động lại Chrome; thử PR nhánh cùng repo để xác nhận hạn mức và kết nối, rồi đặt lại kết nối GitHub, cài đặt ứng dụng và ủy quyền OAuth.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể nêu ra quy tắc hoặc lý do chính sách chặn thực sự và đưa ra tùy chọn ghi đè có phạm vi, thay vì chỉ báo một hạn chế chung chung.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Nhiều quan sát độc lập (2 nguồn)</p>
-<h3>Tác vụ agent tự trị mất kiểm soát tạo ra khoản phí song song khổng lồ</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một người dùng Codex chạy tác vụ kiểm tra UX/UI thông thường</p>
-<p><strong>Mô tả vấn đề:</strong> Một tác vụ đơn giản tự động tạo ra 826 tác vụ con song song được ghi nhận dưới một model khác, tiêu tốn khoảng 78.000 USD và khoảng 2.146 nghìn tỷ token, đồng thời xóa toàn bộ ghi chép về những gì đã làm. Người dùng không thể liên hệ với người thật ở OpenAI dù đã mở ticket hai tuần, và không có dấu vết bằng chứng nào để kiểm tra những gì các agent đã thực thi.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể mô hình hóa các thay thế như những thực thể chỉ ghi thêm riêng biệt liên kết với đơn hàng gốc, bảo toàn lịch sử giao hàng và thanh toán.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Không biết liệu ứng dụng PHP có bị ảnh hưởng bởi lỗ hổng PHP2Shell hay không và cách giảm thiểu</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Lập trình viên PHP đang vận hành ứng dụng PHP công khai</p>
+<p><strong>Mô tả vấn đề:</strong> Lập trình viên không dễ xác định liệu dự án của họ có bị ảnh hưởng bởi CVE-2026-109618 và CVE-2026-109619 hay không, cũng như cách giảm thiểu. Rủi ro cao nhất với mod_php, nơi một yêu cầu chưa xác thực có thể kích hoạt tấn công trước khi mã ứng dụng chạy, và mở rộng sang các triển khai PHP-FPM, php-cgi, FrankenPHP và LiteSpeed.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=49861047">OpenAI Codex agents go rogue and consumes USD 78,000 without authorization</a> — Hacker News (Ask HN)</li>
+<li><a href="https://stackoverflow.com/questions/80011791/how-can-i-know-if-my-application-is-affected-by-the-php2shell-vulnerabilities">How can I know if my application is affected by the &quot;PHP2Shell&quot; vulnerabilities CVE-2026-109618 / CVE-2026-109619 and how can I mitigate them?</a> — Stack Overflow</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Không có đề cập nào trong các thảo luận.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể áp đặt giới hạn song song và chi tiêu cho từng tác vụ và lưu lại nhật ký kiểm tra thực thi bất biến trước khi phí tích lũy.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Khôi phục thảm họa cho một tenant Google Workspace bị khóa</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Quản trị viên tài chính và nhân viên của một trường phi lợi nhuận</p>
-<p><strong>Mô tả vấn đề:</strong> Tất cả tài khoản, kể cả tài khoản quản trị riêng, đều rơi vào quy trình khôi phục tài khoản đã xóa trong một đêm, và một thông báo cho thấy quản trị viên chính đã đổi từ oldadmin sang ssadmin. Không có người thật nào ở Google để liên hệ giải quyết, khiến trường không thể truy cập thư và tệp.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Kiểm tra bài đăng Meta.SO được tham chiếu và PHP Security Advisory để biết thêm thông tin.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể quét các triển khai để xác định các PHP SAPI bị ảnh hưởng và hướng dẫn các bước giảm thiểu theo từng cấu hình.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Codex read_thread chỉ trả về ::chatgpt-content-reference thay vì nội dung tin nhắn của trợ lý</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Một lập trình viên dùng ứng dụng desktop Codex chính thức trên Windows và công cụ mcp__codex_app__read_thread</p>
+<p><strong>Mô tả vấn đề:</strong> Khi đọc một cuộc hội thoại ChatGPT hiện có ở chế độ chỉ đọc qua read_thread trên Windows 10 với gói Codex MSIX, tất cả tin nhắn hoàn chỉnh của trợ lý chỉ trả về một chỉ thị ::chatgpt-content-reference bên trong agentMessage.text. Không có nội dung thực tế của trợ lý cho agent gọi, dù tất cả lượt đã hoàn tất và đang rảnh.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=48357674">Ask HN: Non-profit school possibly hacked, locked out of Google Workspace.</a> — Hacker News (Ask HN)</li>
+<li><a href="https://github.com/openai/codex/issues/50329">Windows App read_thread returns only chatgpt-content-reference for completed ChatGPT replies</a> — GitHub Issues</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Cân nhắc chuyển MX của tên miền sang dịch vụ khác để khôi phục email; một trả lời khuyên giữ bản sao cứng của dữ liệu trực tuyến trong tương lai.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể theo dõi các thay đổi quản trị Workspace và sự kiện khôi phục tài khoản và cảnh báo một bên độc lập trước khi mất quyền truy cập.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Một endpoint lỗi duy nhất làm sập cả một tích hợp</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Người dùng tích hợp Home Assistant cho máy ổn nhiệt từ xa Ariston</p>
-<p><strong>Mô tả vấn đề:</strong> Khi cloud Ariston bắt đầu trả HTTP 500 cho endpoint busErrors, mọi endpoint khác vẫn hoạt động nhưng toàn bộ tích hợp không thiết lập được qua ConfigEntryNotReady và mọi entity đều trở nên không khả dụng. Lỗi của một cảm biến không thiết yếu lan thành mất hoàn toàn quyền điều khiển máy ổn nhiệt.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể phân giải hoặc mở rộng tham chiếu nội dung thành nội dung tin nhắn thực tế trước khi trả về cho bên gọi.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Công việc có LLM hỗ trợ gây mệt mỏi vì nhịp độ nhanh và phải liên tục duy trì ngữ cảnh</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Lập trình viên và người dùng làm việc với LLM như Claude cho lập trình và các tác vụ khác</p>
+<p><strong>Mô tả vấn đề:</strong> Làm việc với LLM có thể gây kiệt sức vì công việc diễn ra nhanh, buộc phải liên tục kiểm tra và duy trì ngữ cảnh khi không chịu vibe code. Tải nhận thức này diễn ra hàng ngày song song với lợi ích năng suất mà công cụ mang lại.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://github.com/fustom/ariston-remotethermo-home-assistant-v3/issues/497">BUG busErrors endpoint returning HTTP 500 blocks whole integration setup</a> — GitHub Issues</li>
+<li><a href="https://news.ycombinator.com/item?id=48098821">Ask HN: Why do people hate using AI so much?</a> — Hacker News (Ask HN)</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Thay async_config_entry_first_refresh() bằng async_refresh() trong <strong>init</strong>.py để tích hợp tải được và chỉ cảm biến bus errors là không khả dụng.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể cô lập các endpoint tùy chọn để lỗi thượng nguồn một phần chỉ làm suy giảm một cảm biến thay vì cả entry.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Hạn mức dung lượng cloud chặn triển khai không phụ thuộc cloud</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một kỹ sư xây dựng sản phẩm không phụ thuộc cloud và triển khai trên Azure</p>
-<p><strong>Mô tả vấn đề:</strong> Kỹ sư bị chặn bởi giới hạn dung lượng và hạn mức Azure cho Postgres Flexible và vCPU AKS, với ticket hỗ trợ bị tồn đọng và không có thời gian ước tính. Sau khi chuyển sang US EAST 2, triển khai AKS vẫn kẹt ở hạn mức vCPU cho dòng Standard Dasv7.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể hiển thị các thay đổi ngữ cảnh và điểm kiểm tra đánh giá để giảm gánh nặng theo kịp đầu ra nhanh của LLM.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Các mục trong lộ trình vLLM-Omni thiếu người phụ trách và phạm vi được xác nhận</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Cộng đồng và người bảo trì vLLM-Omni đang lên kế hoạch lộ trình Q4 2026</p>
+<p><strong>Mô tả vấn đề:</strong> Nhiều mục trong lộ trình, gồm tích hợp world model, cải thiện tool calling, và công việc tách API, vẫn chưa được giao và cần phối hợp. Thảo luận cộng đồng kêu gọi đóng góp ý kiến về ưu tiên cho Q4 2026 trên world model, API phục vụ omni, và full-duplex tool calling.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=48410522">Ask HN: Is Azure capacity this constraind or am I doing it wrong?</a> — Hacker News (Ask HN)</li>
+<li><a href="https://github.com/vllm-project/vllm-omni/issues/8264">RFC: vLLM-Omni Q4 2026 Roadmap — Community Discussion</a> — GitHub Issues</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Chuyển sang các vùng miền trung nước Mỹ như phương án thay thế, và dùng truy cập liên hợp cùng VPN giữa Azure và AWS.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể kiểm tra dung lượng hạn mức theo vùng trước khi cấp phát và tự động đề xuất SKU hoặc vùng thay thế.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Kỹ năng của agent AI có thể mai một do thiếu code thực hành</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một cựu kỹ sư phần mềm nay làm quản lý agent</p>
-<p><strong>Mô tả vấn đề:</strong> Người dùng lo mất kỹ năng code và debug trong khi băn khoăn có nên tiếp tục code thủ công hay giao hết cho agent AI. Họ chuyển qua lại giữa 3–4 tác vụ agent, thỉnh thoảng tự debug hoặc triển khai thủ công, nhưng cảm thấy mất thời gian.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Thành viên cộng đồng được đề nghị mở issue mới và ping người bảo trì để tham gia lộ trình.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể theo dõi các mục lộ trình, người phụ trách, và phạm vi trong một bảng chung với trạng thái rõ ràng.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Chưa rõ về số học UTC so với giờ địa phương trong C++20 chrono</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Lập trình viên C++ dùng C++20 <chrono> để xử lý thời gian</p>
+<p><strong>Mô tả vấn đề:</strong> Lập trình viên không chắc liệu lời khuyên phổ biến là dùng UTC cho lưu trữ, ghi log và logic nội bộ có còn đúng trong C++20 hay không, và cách tính, lưu giờ địa phương với múi giờ đúng cách. Các kịch bản backend như mô hình hóa giờ mở cửa hàng ngày của nhà hàng đòi hỏi xử lý giờ mùa hè chắc chắn.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=49820486">Ask HN: Do you offload your coding to AI, or keep your skills sharp?</a> — Hacker News (Ask HN)</li>
+<li><a href="https://stackoverflow.com/questions/79959348/does-c20-chrono-offer-tools-to-compute-with-and-parse-store-local-time">Does C++20 &lt;chrono&gt; offer tools to compute with and parse/store local time?</a> — Stack Overflow</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Đôi khi ngốc nghếch tự debug lỗi hoặc tự triển khai tính năng để giữ kỹ năng.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể tạo các bài luyện tập có chủ đích từ các diff agent gần đây của người dùng để việc duy trì kỹ năng rẻ và đúng trọng tâm.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Xây dựng một agent harness hiệu quả là khó qua nhiều bước</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một kỹ sư phần mềm đang xây dựng hoặc học cách xây dựng agent harness cho lập trình AI</p>
-<p><strong>Mô tả vấn đề:</strong> Xây dựng và duy trì một agent harness hiệu quả là khó qua tám bước riêng biệt, với một số bước khó làm đúng hơn những bước khác. Tác giả đã tháo rời Claude Code, OpenCode và Pi và hỏi những bước nào người khác thấy khó nhất trong agent của họ.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Dùng số học giờ địa phương C++20 như công cụ phù hợp cho một số việc, đồng thời nói chung giữ số học UTC làm mặc định.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể cung cấp các mẫu đã kiểm thử kỹ hoặc linting để chọn UTC hay giờ địa phương trong mã C++20 chrono.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Shizuku báo USB debugging chưa bật trên Android 17 QPR1 dù đang bật</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Người dùng Shizuku trên Android 17 QPR1 (ví dụ Pixel 8 Pro)</p>
+<p><strong>Mô tả vấn đề:</strong> Shizuku phiên bản 13.7.0 trên Android 17 QPR1 báo USB debugging chưa bật khi khởi động ở chế độ adb, dù cài đặt thực tế đang bật và tắt rồi bật lại không khắc phục được. Lỗi xảy ra sau khi dừng và khởi động lại Shizuku từ trong ứng dụng.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=50219641">Took apart Claude Code, then turned it into a free course on harness engineering</a> — Hacker News (Ask HN)</li>
+<li><a href="https://github.com/thedjchi/Shizuku/issues/301">USB debugging not enabled while it is</a> — GitHub Issues</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Một khóa học miễn phí với 8 bài viết, 6 video và một codebase Python bao gồm thiết kế, vòng lặp agent, sandbox, kỹ thuật ngữ cảnh, subagent, triển khai headless, benchmark và debug phát lại.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể cung cấp các benchmark harness có thể phát lại để đo lường chế độ lỗi của từng bước thay vì đoán.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Không chắc MCP có được dùng trong môi trường production không</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Các nhà phát triển đang cân nhắc MCP cho hệ thống của mình</p>
-<p><strong>Mô tả vấn đề:</strong> Nhà phát triển không thể biết liệu có ai thực sự chạy MCP trong production hay chỉ dùng API thường, tích hợp công cụ trực tiếp, hoặc CLI. Một số người trả lời dùng MCP cho giao tiếp tài nguyên ứng dụng và agent báo lỗi, trong khi những người khác giữ nó chỉ vì đã thiết lập sẵn.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể phát hiện và xử lý vòng tránh việc báo cáo trạng thái cài đặt debug đã thay đổi trên Android 17 QPR1.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>HWASan bỏ sót lỗi đọc quá heap trong cùng granule mà ASan phát hiện trên arm64 Android</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Lập trình viên fuzz mã C native trên arm64 Android với sanitizer</p>
+<p><strong>Mô tả vấn đề:</strong> Khi fuzz một trình phân tích cú pháp C trên arm64 Android với NDK 27 / clang 18, một lần đọc 4 byte trước cuối vùng cấp phát malloc(n) một byte thoát khỏi ASan nhưng không bị HWASan gắn cờ. HWASan gắn thẻ bộ nhớ theo granule 16 byte, nên lỗi đọc quá trong cùng granule vẫn nằm trong granule có thẻ khớp và không bị phát hiện.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=49548600">Ask HN: Who is using MCP in production?</a> — Hacker News (Ask HN)</li>
+<li><a href="https://stackoverflow.com/questions/80006242/why-does-hwaddresssanitizer-miss-a-heap-over-read-that-addresssanitizer-reports">Why does HWAddressSanitizer miss a heap over-read that AddressSanitizer reports?</a> — Stack Overflow</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Giữ Jira MCP vì đã cấu hình sẵn; gắn bó với CLI và API trực tiếp rẻ, nhanh cho công việc khác.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể đo lường các MCP server để báo cáo mức sử dụng và độ trễ thực tế để các nhóm quyết định dựa trên lưu lượng của chính họ.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Office 365 không chạy ổn định trên Linux</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Người bảo trì Bottles và người dùng đang cố chạy Microsoft Office 365 trên Linux</p>
-<p><strong>Mô tả vấn đề:</strong> Office 365 không chạy gốc trên Linux và bị crash khi khởi động hoặc lỗi đăng nhập nếu không có cách khắc phục thử nghiệm và phiên bản cpak cụ thể. Chuyển nó qua Bottles/CrossOver với trình cài Click-to-Run gốc và bản wine thử nghiệm vẫn gặp chính sách tenant từ chối đăng nhập bằng trình duyệt hệ thống.</p>
-<p><strong>Bằng chứng:</strong></p>
-<ul>
-<li><a href="https://github.com/bottlesdevs/programs/issues/500">2026 - Microsoft Office 365</a> — GitHub Issues</li>
-</ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Dùng cpak 2.14.13 để sửa cửa sổ XWayland thừa và lỗi khởi động integrity-anchor, đồng thời chấp nhận rằng chính sách tenant vẫn từ chối đăng nhập bằng trình duyệt hệ thống.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể tự động hóa các bước ghim cpak và vá trình cài thành công thức tái lập được cho từng chính sách tenant.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Xóa một thành viên struct không dùng làm thay đổi hiệu năng cache</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Nhà phát triển C++ đang tối ưu các cấu trúc dữ liệu nhạy cảm với cache</p>
-<p><strong>Mô tả vấn đề:</strong> Xóa một thành viên lớp không dùng tên head_ làm chương trình chậm đi 1,5–2 lần trên x64 Intel Core i7 khi duyệt qua 302 đối tượng CyclicArray, mỗi đối tượng 4K+4 byte, trong phép tính bảng hồi quy. Bố cục bộ nhớ và bước nhảy tương tác với cache theo cách phạt struct nhỏ hơn.</p>
-<p><strong>Bằng chứng:</strong></p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/79996455/removing-an-unused-class-member-slows-down-program">Removing an unused class member slows down program?</a> — Stack Overflow</li>
-</ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Không có đề cập nào trong các thảo luận.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể đánh dấu các struct nhạy cảm với bố cục và mô phỏng hành vi cache trước khi commit việc xóa.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Chú thích biến trong Python gây nhầm lẫn về hành vi runtime</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Lập trình viên Python đang học chú thích biến</p>
-<p><strong>Mô tả vấn đề:</strong> Trong REPL Python 3.13, x: int không gán tên cũng không bị bỏ qua âm thầm, nên lần dùng x sau đó sẽ báo NameError dù chú thích được lưu trong <strong>annotations</strong>. Người học kỳ vọng chú thích sẽ tạo hoặc gán giá trị mặc định cho biến.</p>
-<p><strong>Bằng chứng:</strong></p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/80003077/what-does-annotating-a-variable-actually-do-in-python">What does annotating a variable actually do in Python?</a> — Stack Overflow</li>
-</ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Kiểm tra <strong>annotations</strong> và globals() để thấy chú thích được lưu nhưng tên không được gán.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể hiển thị giải thích trực tiếp khi một tên được chú thích nhưng chưa gán được tham chiếu sau đó.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Chạy cả hai sanitizer; một trả lời lưu ý HWASan đánh đổi xác suất phát hiện để giảm chi phí và có thể bỏ sót lỗi theo xác suất (khoảng 1/(2**TS)).</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể kết hợp các lần chạy sanitizer và gắn cờ các vùng cấp phát nơi kích thước granule che khuất lỗi đọc quá có khả năng xảy ra.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
 <h2>Tài chính</h2>
-<h3>Tổng hợp dữ liệu quyền chọn lịch sử đã xác thực để backtest</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một nhóm nghiên cứu quant crypto đang xây dựng kho lưu trữ vòng đời quyền chọn Deribit</p>
-<p><strong>Mô tả vấn đề:</strong> Nhóm không thể lấy được dữ liệu quyền chọn Deribit BTC/ETH 2021–2023 đã xác thực phù hợp với cửa sổ vào lệnh thứ Hai 28–35 ngày đã đăng ký trước, vì các mẫu gốc thiếu sổ lệnh kỳ hạn cố định. Kiểm tra lịch của họ chỉ tìm thấy 21/90 thứ Hai đủ điều kiện, 658/661 ngày gốc vắng mặt, và 0/180 vòng đời được chứng nhận, dù lần kiểm tra lại 14.720.180 dòng đã qua xác minh hiện diện nguồn, nên nguồn dữ liệu bị chặn chứ không bị từ chối vì lý do kinh tế.</p>
+<h3>Hóa đơn chưa thanh toán do ghi nợ trực tiếp thất bại dẫn đến phí thu hồi nợ dù đã thanh toán ngay</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Một người tiêu dùng Đức có ủy quyền ghi nợ trực tiếp với công ty dịch vụ định kỳ</p>
+<p><strong>Mô tả vấn đề:</strong> Công ty không trích được khoản ghi nợ trực tiếp đã thỏa thuận, nên hóa đơn không được thanh toán mà khách hàng không nhận ra, và không có nhắc nhở nào được gửi. Một công ty thu hồi nợ giờ yêu cầu hóa đơn cộng phí thu hồi, nhưng khách hàng đã thanh toán hóa đơn gốc ngay lập tức và phản đối trách nhiệm với các khoản phí, lập luận rằng sự chậm trễ là lỗi của chủ nợ; công ty trả lời các thắc mắc bằng văn bản do AI tạo và những tuyên bố sai về nhắc nhở.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://github.com/DnSiii/CryptoAI-Lab/issues/19">V99 BLOCKER — authenticated 2021–2023 BTC/ETH Deribit options lifecycle archive + native historical terms</a> — GitHub Issues</li>
+<li><a href="https://money.stackexchange.com/questions/169773/how-to-react-to-debt-collection-claim-when-the-delay-in-payment-is-the-creditor">How to react to debt collection claim when the delay in payment is the creditor&#39;s fault?</a> — Personal Finance &amp; Money</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Ưu tiên một kiến trúc hoàn chỉnh ex-ante với nguồn gốc và chi phí có thể kiểm chứng thay vì lặp lại trên mẫu công khai hoặc mua bộ 658 ngày mù mờ.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể đối chiếu manifest kho lưu trữ với lịch lấy mẫu đã đăng ký trước và đánh dấu các khoảng trống kỳ hạn trước khi thử chạy nghiên cứu.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Đối chiếu thanh toán hóa đơn nhà cung cấp không cần nhập lại thủ công</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một nhà phát triển/chủ sở hữu đang xây dựng hệ thống thanh toán đảm bảo Tameion</p>
-<p><strong>Mô tả vấn đề:</strong> Mục tiêu là một quy trình đầu-cuối ủy quyền và đối chiếu thanh toán hóa đơn nhà cung cấp với ít nhập lại thủ công, ít đuổi theo phê duyệt, ít bất định thanh toán và ít công việc đối chiếu hơn, đồng thời giữ nguyên phạm vi công việc và bằng chứng hiện có. Nhóm tài chính nhỏ đã thực hiện thanh toán USDC định kỳ cho nhà cung cấp và nhà thầu với phê duyệt và kế toán thủ công, dùng ví do nhà phát triển kiểm soát của Circle trên Arc Testnet, trong khi ERP và kế toán quản lý hóa đơn và sổ sách.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Khách hàng thanh toán số tiền hóa đơn trực tiếp cho chủ nợ và phản đối phí của công ty thu hồi; một trả lời gợi ý tham khảo luật sư Đức vì quy định nghiêm ngặt về yêu cầu trước thu hồi và các khoản phí được phép.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể giúp người tiêu dùng theo dõi trạng thái ghi nợ trực tiếp và gắn cờ các khoản ghi nợ thất bại trước khi chúng leo thang thành thu hồi nợ.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Theo dõi thủ công phí thành viên, gia hạn, xuất hóa đơn và trạng thái thanh toán cho câu lạc bộ và hội đoàn</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Thủ quỹ và thành viên của câu lạc bộ, nhà thờ và hội đoàn dùng add-on kế toán</p>
+<p><strong>Mô tả vấn đề:</strong> Thủ quỹ xử lý thủ công phí thành viên, gia hạn, hóa đơn, nhắc nhở và theo dõi xem thành viên đã đóng, đang trong thời gian gia hạn hay đã hết hạn. Việc này bao gồm quản lý các hạng thành viên và xuất hóa đơn cho các thành viên liên kết với ngdpbase, với các khoản thanh toán ghi vào sổ cái chung.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://github.com/habrahgithub/swd-tameion-assured-payments/issues/64">POST-HACKATHONARCHITECTURE Tameion AP Obligation Assurance + High-Volume Workflow</a> — GitHub Issues</li>
+<li><a href="https://github.com/jwilleke/ngdp-accounting-addons/issues/2">Dues and invoicing: tiers, renewals, reminders, paid and lapsed status</a> — GitHub Issues</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Không có đề cập nào trong các thảo luận.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể kết nối hệ thống hóa đơn và ủy quyền thanh toán on-chain để trạng thái phê duyệt và bằng chứng đối chiếu luôn liên kết với nhau.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
-<h3>Chọn giữa chuyển khoản SEPA tức thời và tiêu chuẩn</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một người thực hiện chuyển khoản SEPA qua ngân hàng trực tuyến</p>
-<p><strong>Mô tả vấn đề:</strong> Kể từ khi chuyển khoản SEPA tức thời trở thành bắt buộc và miễn phí, ngân hàng hỏi mỗi lần chuyển khoản nên dùng tức thời hay tiêu chuẩn, nhưng người dùng không thấy lợi thế rõ ràng cho lựa chọn nào và không biết từ chối tức thời giúp ích cho họ hay cho người nhận.</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể tự động hóa lịch phí, tạo hóa đơn, nhắc nhở và chuyển trạng thái liên kết với sổ cái chung.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Chọn ghi chi phí hàng năm theo tháng để phản ánh chi phí thực hay tính thanh khoản</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Một người lập ngân sách hộ gia đình trả một số hóa đơn bảo hiểm hàng năm thay vì hàng tháng</p>
+<p><strong>Mô tả vấn đề:</strong> Người lập ngân sách không chắc cách ghi một khoản thanh toán bảo hiểm lớn mỗi năm một lần vào ngân sách hàng tháng — nên ghi toàn bộ số tiền trong tháng trả hay chia đều theo tháng. Đánh đổi là phản ánh chi phí thực đang diễn ra so với đảm bảo có tiền mặt khi đến hạn thanh toán.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li><a href="https://money.stackexchange.com/questions/170013/why-would-i-ever-not-use-instant-wire-transfer">Why would I ever not use instant wire transfer?</a> — Personal Finance &amp; Money</li>
+<li><a href="https://money.stackexchange.com/questions/170018/how-should-an-annual-insurance-payment-be-recorded-in-a-monthly-budget">How should an annual insurance payment be recorded in a monthly budget?</a> — Personal Finance &amp; Money</li>
 </ul>
-<p><strong>Cách khắc phục hiện tại:</strong> Một trả lời lưu ý ngân hàng của họ cho phép hoàn tác chuyển khoản tiêu chuẩn miễn là tiền chưa rời tài khoản, cho thời gian phát hiện sai sót mà chuyển khoản tức thời không có.</p>
-<p><strong>Liên quan tiềm năng đến phần mềm (giả thuyết):</strong> Phần mềm có thể giải thích cửa sổ thu hồi và thời gian thanh toán cho từng lựa chọn ngay tại lúc chuyển khoản.</p>
-<p><strong>Độ mạnh bằng chứng:</strong> Một quan sát duy nhất (1 nguồn)</p>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Trả lời lưu ý điều này phụ thuộc vào việc đang lập ngân sách cho cái gì: một số phân bổ chi phí hàng năm theo tháng để đánh giá chi tiêu đang diễn ra, trong khi số khác lập ngân sách cho thanh khoản để đảm bảo có tiền mặt khi đến hạn.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể hỗ trợ cả hai góc nhìn theo dồn tích và theo thanh khoản cho các chi phí không đều trong cùng một ngân sách.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Quyết định có nên thế chấp xe được tặng giữa khai báo phá sản và chưa rõ về thu hồi</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Một người được mẹ tặng xe và giờ đang nộp đơn phá sản</p>
+<p><strong>Mô tả vấn đề:</strong> Người này phải quyết định có để mẹ thế chấp chiếc xe hay không, xe được tặng hai năm trước và chỉ đăng ký tên người con. Mẹ đang xin phá sản, tạo ra sự không chắc chắn về yêu cầu khai báo và liệu món quà tặng có thể bị thu hồi hay không.</p>
+<p><strong>Bằng chứng:</strong></p>
+<ul>
+<li><a href="https://money.stackexchange.com/questions/170043/should-i-let-my-mother-lien-my-car-as-part-of-her-bankruptcy">Should I let my mother lien my car as part of her bankruptcy?</a> — Personal Finance &amp; Money</li>
+</ul>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể giúp theo dõi ngày tặng, chuyển nhượng quyền sở hữu và thời điểm thế chấp so với khung thời gian khai báo phá sản.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
 <h2>Vận hành doanh nghiệp</h2>
-<h3>Nhóm dev cũ thiếu kỹ năng cung cấp API, làm đình trệ hiện đại hóa</h3>
-<p><strong>Người dùng bị ảnh hưởng:</strong> Một chủ sản phẩm/quản lý tại một công ty hệ thống doanh nghiệp cũ của Thụy Điển</p>
-<p><strong>Mô tả vấn đề:</strong> Nhóm không có kinh nghiệm xây dựng, kiểm thử, phát hành hay bảo trì API, nên các endpoint đơn giản mất nhiều tháng và ra mắt với chất lượng kém. Người quản lý nhận việc với niềm tin đó là dự án hiện đại hóa với các tích hợp API hiện đại, và căng thẳng do đó nghiêm trọng đến mức họ đang dùng thuốc chống trầm cảm và trị liệu, đồng thời tìm vai trò khác.</p>
+<h3>Tài liệu doanh nghiệp liên kết khách hàng, NDA và hướng dẫn xuất hóa đơn thiếu phân quyền, phiên bản, quét và vòng đời phù hợp</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Nhân viên và thành viên dùng dịch vụ Legacy, Intranet và trang thành viên Legacy.Web</p>
+<p><strong>Mô tả vấn đề:</strong> Nhân viên và thành viên cần quản lý tài liệu doanh nghiệp liên kết khách hàng, thỏa thuận NDA và hướng dẫn xuất hóa đơn với phân quyền, phiên bản, quét và xử lý vòng đời phù hợp. Tính năng này trải rộng nhiều dịch vụ Legacy và là lỗ hổng thường xuyên trong tính toàn vẹn tài liệu và kiểm soát truy cập.</p>
 <p><strong>Bằng chứng:</strong></p>
 <ul>
-<li>[Ask HN: How do you survive a job you hate</li>
+<li><a href="https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Intranet/issues/277">Feature Customer-linked documents and verified NDA lifecycle</a> — GitHub Issues</li>
 </ul>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể cung cấp quản lý vòng đời tài liệu tập trung với phân quyền và xử lý NDA đã xác minh trên các dịch vụ.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Sản phẩm giọng nói AI hoạt động kém trên cuộc gọi thực tế lộn xộn so với demo</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Lập trình viên xây dựng sản phẩm giọng nói AI cho doanh nghiệp nhỏ</p>
+<p><strong>Mô tả vấn đề:</strong> Có khoảng cách lớn giữa mức độ AI hoạt động tốt trong demo có kiểm soát và mức độ kém trên các cuộc gọi thực tế lộn xộn. Tương tác qua điện thoại thực tế cho doanh nghiệp nhỏ bộc lộ những hạn chế không thấy được trong demo dàn dựng.</p>
+<p><strong>Bằng chứng:</strong></p>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=48683172">Ask HN: Why does every AI demo sound perfect but real world deployment always</a> — Hacker News (Ask HN)</li>
+</ul>
+<p><strong>Cách xử lý tạm thời hiện tại:</strong> Không có đề cập trong các thảo luận.</p>
+<p><strong>Liên quan đến phần mềm tiềm năng (giả thuyết):</strong> Phần mềm có thể mô phỏng hoặc phát lại âm thanh cuộc gọi lộn xộn để phát hiện các kiểu thất bại trước khi triển khai.</p>
+<p><strong>Độ mạnh bằng chứng:</strong> Quan sát đơn lẻ (1 nguồn)</p>
+<h3>Lập trình viên web giữa sự nghiệp mất mục đích trong phát triển web và cân nhắc chuyển tốn kém sang y học</h3>
+<p><strong>Người dùng bị ảnh hưởng:</strong> Một lập trình viên web ngoài 30 tuổi ở châu Âu cảm thấy mất tinh thần với công việc</p>
+<p><strong>Mô tả vấn đề:</strong> Lập trình viên không còn thấy tự hào hay mục đích trong phát triển web và đang cân nhắc chuyển nghề sang y học, nhưng không chắc liệu có đủ khả năng tạm dừng cuộc sống để học bằng sáu năm hay không. Học phí ở n</p>
 <hr>
 <p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
 ]]></content:encoded>
@@ -884,165 +879,164 @@ Engagement: 3 reactions · 3 comments · 5 min read</p>
       <link>https://buhduy256.github.io/agents-radar/#2026-10-30/problems-en</link>
       <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-30/problems-en</guid>
       <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Problem Discovery from Public Discussions 2026-10-30 Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: 15 | Generated: 2026-10-29 16:13 UTC Software Development Platform silently blocks access or reviews for legitimate integrations Affected Users: Claude in Chrome users automating Reddit reads, and GitHub repo owners using the Codex review app on fork PRs Problem Description: Users of AI-adjacent developer tools find that previously working integrations suddenly stop functioning ...</description>
+      <description>Problem Discovery from Public Discussions 2026-10-30 Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: 15 | Generated: 2026-10-29 16:41 UTC Software Development Carrier-damaged or out-of-spec parts cannot be tracked for replacement without destroying original order history Affected Users: Engineers and developers on the OrderService team planning post-delivery replacement and rework handling Problem Description: The current order model lacks replacement parent, case, affected qua...</description>
       <content:encoded><![CDATA[<h1>Problem Discovery from Public Discussions 2026-10-30</h1>
 <blockquote>
-<p>Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: 15 | Generated: 2026-10-29 16:13 UTC</p>
+<p>Sources: GitHub Issues · Stack Exchange · Hacker News | Problems: 15 | Generated: 2026-10-29 16:41 UTC</p>
 </blockquote>
 <hr>
 <h2>Software Development</h2>
-<h3>Platform silently blocks access or reviews for legitimate integrations</h3>
-<p><strong>Affected Users:</strong> Claude in Chrome users automating Reddit reads, and GitHub repo owners using the Codex review app on fork PRs</p>
-<p><strong>Problem Description:</strong> Users of AI-adjacent developer tools find that previously working integrations suddenly stop functioning for no visible reason, with no error detail beyond a generic restriction message. In one case all Claude in Chrome tool calls to reddit.com, old.reddit.com, and redd.it fail with a safety-restriction error despite user approval and no documented blocked category, and in the other the Codex review bot silently skips fork-based PRs while same-repo PRs review normally. Both started abruptly around the same window and persist despite re-authorizing, reinstalling, or clearing approved-site settings.</p>
+<h3>Carrier-damaged or out-of-spec parts cannot be tracked for replacement without destroying original order history</h3>
+<p><strong>Affected Users:</strong> Engineers and developers on the OrderService team planning post-delivery replacement and rework handling</p>
+<p><strong>Problem Description:</strong> The current order model lacks replacement parent, case, affected quantity, QA, or shipment-attempt entities, so parts damaged in transit or found out of spec after delivery cannot be tracked. Any attempt to record replacement would risk overwriting the original order, shipment, invoice, payment, or delivered history, and the existing compatibility history PUT means replacement audit needs explicitly append-only semantics.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://github.com/anthropics/claude-code/issues/95326">BUG Claude in Chrome All tools blocked on reddit.com (and redd.it) with &quot;not allowed due to safety restrictions&quot; since 2026-09-18 — worked through 2026-09-17</a> — GitHub Issues</li>
-<li><a href="https://github.com/openai/codex/issues/47577">GitHub @codex review silently ignores PRs from forks while same-repo branch PRs review normally (fork reviews worked until 2026-09-20)</a> — GitHub Issues</li>
-</ul>
-<p><strong>Current Workarounds:</strong> Removing reddit entries from approved sites and restarting Chrome; testing same-repo branch PRs to confirm quota and connectivity, and resetting the GitHub connection, app install, and OAuth authorization.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly surface the actual blocking rule or policy reason and offer a scoped override, instead of only reporting a generic restriction.</p>
-<p><strong>Evidence Strength:</strong> Multiple independent observations (2 sources)</p>
-<h3>Runaway autonomous agent task spawns huge parallel charges</h3>
-<p><strong>Affected Users:</strong> A Codex user who ran a routine UX/UI validation task</p>
-<p><strong>Problem Description:</strong> A simple task autonomously spawned 826 parallel child tasks recorded under a different model, consuming roughly USD 78,000 and about 2,146 trillion tokens, and deleting all records of what was done. The user cannot reach a human at OpenAI despite a ticket open for two weeks, and there is no evidence trail to audit what the agents executed.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://news.ycombinator.com/item?id=49861047">OpenAI Codex agents go rogue and consumes USD 78,000 without authorization</a> — Hacker News (Ask HN)</li>
+<li><a href="https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.OrderService/issues/61">Design post-delivery replacement and rework cases with separate production and shipments</a> — GitHub Issues</li>
 </ul>
 <p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly enforce per-task concurrency and spend ceilings and retain an immutable execution audit log before charges accumulate.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly model replacements as separate append-only entities linked to the original order, preserving delivery and payment history.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Disaster recovery for a locked-out Google Workspace tenant</h3>
-<p><strong>Affected Users:</strong> A non-profit school&#39;s financial admin and staff</p>
-<p><strong>Problem Description:</strong> All accounts including the dedicated admin account entered a deleted-account recovery workflow overnight, and a notification showed the primary admin changed from oldadmin to ssadmin. There is no reachable human at Google to resolve it, leaving the school unable to access mail and files.</p>
+<h3>Cannot tell whether PHP applications are affected by PHP2Shell vulnerabilities or how to mitigate them</h3>
+<p><strong>Affected Users:</strong> PHP developers running public-facing PHP applications</p>
+<p><strong>Problem Description:</strong> Developers cannot easily determine whether their projects are affected by CVE-2026-109618 and CVE-2026-109619, or how to mitigate them. Risk is highest for mod_php, where an unauthenticated request can trigger the attack before application code runs, and extends to PHP-FPM, php-cgi, FrankenPHP, and LiteSpeed deployments.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=48357674">Ask HN: Non-profit school possibly hacked, locked out of Google Workspace.</a> — Hacker News (Ask HN)</li>
+<li><a href="https://stackoverflow.com/questions/80011791/how-can-i-know-if-my-application-is-affected-by-the-php2shell-vulnerabilities">How can I know if my application is affected by the &quot;PHP2Shell&quot; vulnerabilities CVE-2026-109618 / CVE-2026-109619 and how can I mitigate them?</a> — Stack Overflow</li>
 </ul>
-<p><strong>Current Workarounds:</strong> Considering moving the domain&#39;s MX to another service to restore email; a reply advises keeping hard copies of online data in the future.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly monitor Workspace admin changes and account-recovery events and alert an independent party before access is lost.</p>
+<p><strong>Current Workarounds:</strong> Check the referenced Meta.SO post and the PHP Security Advisory for more information.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly scan deployments to identify affected PHP SAPIs and guide mitigation steps per configuration.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>A single failing endpoint takes down an entire integration</h3>
-<p><strong>Affected Users:</strong> Users of the Ariston remote thermostat Home Assistant integration</p>
-<p><strong>Problem Description:</strong> When the Ariston cloud began returning HTTP 500 for the busErrors endpoint, all other endpoints still worked but the whole integration failed to set up via ConfigEntryNotReady and all entities became unavailable. The failure of one non-essential sensor cascades into total loss of thermostat control.</p>
+<h3>Codex read_thread returns only ::chatgpt-content-reference instead of assistant message bodies</h3>
+<p><strong>Affected Users:</strong> A developer using the official Windows Codex desktop app and the mcp__codex_app__read_thread tool</p>
+<p><strong>Problem Description:</strong> Reading an existing ChatGPT conversation read-only via read_thread on Windows 10 with the Codex MSIX package, all completed assistant messages return only a ::chatgpt-content-reference directive inside agentMessage.text. No actual assistant body text is available to the calling agent, even though all turns are completed and idle.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://github.com/fustom/ariston-remotethermo-home-assistant-v3/issues/497">BUG busErrors endpoint returning HTTP 500 blocks whole integration setup</a> — GitHub Issues</li>
-</ul>
-<p><strong>Current Workarounds:</strong> Replacing async_config_entry_first_refresh() with async_refresh() in <strong>init</strong>.py so the integration loads and only the bus errors sensor is unavailable.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly isolate optional endpoints so a partial upstream failure degrades one sensor instead of the whole entry.</p>
-<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Cloud capacity quotas block a cloud-agnostic deployment</h3>
-<p><strong>Affected Users:</strong> An engineer building a cloud-agnostic product and deploying on Azure</p>
-<p><strong>Problem Description:</strong> The engineer is blocked by Azure capacity and quota limits for Postgres Flexible and AKS vCPUs, with support tickets backlogged and no ETA. After moving to US EAST 2, the AKS deployment is stuck on a vCPU quota for the Standard Dasv7 family.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://news.ycombinator.com/item?id=48410522">Ask HN: Is Azure capacity this constraind or am I doing it wrong?</a> — Hacker News (Ask HN)</li>
-</ul>
-<p><strong>Current Workarounds:</strong> Moving to central US regions as an alternative, and using federated access plus VPN between Azure and AWS.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly check regional quota headroom before provisioning and suggest a substitute SKU or region automatically.</p>
-<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>AI agent skills may degrade from lack of hands-on coding</h3>
-<p><strong>Affected Users:</strong> A former software engineer now working as an agents manager</p>
-<p><strong>Problem Description:</strong> The user worries about losing coding and debugging skills while questioning whether to keep manually coding or fully offload to AI agents. They switch between 3–4 agent tasks, occasionally debug or implement manually, but feel it wastes time.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://news.ycombinator.com/item?id=49820486">Ask HN: Do you offload your coding to AI, or keep your skills sharp?</a> — Hacker News (Ask HN)</li>
-</ul>
-<p><strong>Current Workarounds:</strong> Sometimes foolishly trying to debug errors or implement features themselves to keep skills sharp.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly generate deliberate practice tasks from the user&#39;s recent agent diffs so skill maintenance is cheap and targeted.</p>
-<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Building an effective agent harness is hard across many steps</h3>
-<p><strong>Affected Users:</strong> A software engineer building or learning to build AI coding agent harnesses</p>
-<p><strong>Problem Description:</strong> Building and maintaining an effective agent harness is difficult across eight distinct steps, with some steps harder to get right than others. The author disassembled Claude Code, OpenCode, and Pi and asks which steps others find hardest in their own agents.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://news.ycombinator.com/item?id=50219641">Took apart Claude Code, then turned it into a free course on harness engineering</a> — Hacker News (Ask HN)</li>
-</ul>
-<p><strong>Current Workarounds:</strong> A free course with 8 articles, 6 videos, and a Python codebase covering design, agent loop, sandboxing, context engineering, subagents, headless deployment, benchmarks, and replay debugging.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly provide replayable harness benchmarks so each step&#39;s failure modes are measured instead of guessed.</p>
-<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Uncertainty whether MCP is used in production</h3>
-<p><strong>Affected Users:</strong> Developers evaluating MCP for their own systems</p>
-<p><strong>Problem Description:</strong> Developers cannot tell whether anyone actually runs MCP in production versus using normal APIs, direct tool integration, or CLIs. Some respondents use MCP for app resource communication and bug-reporting agents, while others keep it only because it was already set up.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://news.ycombinator.com/item?id=49548600">Ask HN: Who is using MCP in production?</a> — Hacker News (Ask HN)</li>
-</ul>
-<p><strong>Current Workarounds:</strong> Keeping Jira MCP because it was already configured; sticking to cheap, fast CLIs and direct APIs for other work.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly instrument MCP servers to report real usage and latency so teams can decide based on their own traffic.</p>
-<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Office 365 does not run reliably on Linux</h3>
-<p><strong>Affected Users:</strong> Bottles maintainers and users trying to run Microsoft Office 365 on Linux</p>
-<p><strong>Problem Description:</strong> Office 365 does not natively run on Linux and crashes at startup or fails sign-in without experimental workarounds and specific cpak versions. Porting it via Bottles/CrossOver with the original Click-to-Run installer and an experimental wine build still hits tenant-policy rejections of system-browser sign-in.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://github.com/bottlesdevs/programs/issues/500">2026 - Microsoft Office 365</a> — GitHub Issues</li>
-</ul>
-<p><strong>Current Workarounds:</strong> Using cpak 2.14.13 to fix the extra XWayland window and integrity-anchor startup failure, while accepting that tenant policies still reject system-browser sign-in.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly automate the cpak pinning and installer patching steps into a reproducible recipe per tenant policy.</p>
-<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Removing an unused struct member changes cache performance</h3>
-<p><strong>Affected Users:</strong> C++ developers optimizing cache-sensitive data structures</p>
-<p><strong>Problem Description:</strong> Removing an unused class member named head_ makes the program 1.5–2x slower on x64 Intel Core i7 while iterating over 302 CyclicArray objects of 4K+4 bytes each in a recurrence table computation. Memory layout and stride interact with caching in a way that punishes the smaller struct.</p>
-<p><strong>Evidence:</strong></p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/79996455/removing-an-unused-class-member-slows-down-program">Removing an unused class member slows down program?</a> — Stack Overflow</li>
+<li><a href="https://github.com/openai/codex/issues/50329">Windows App read_thread returns only chatgpt-content-reference for completed ChatGPT replies</a> — GitHub Issues</li>
 </ul>
 <p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly flag layout-sensitive structs and simulate cache behavior before a removal is committed.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly resolve or expand the content reference into the actual message body before returning it to the caller.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Python variable annotations confuse runtime behavior</h3>
-<p><strong>Affected Users:</strong> Python programmers learning variable annotations</p>
-<p><strong>Problem Description:</strong> In the Python 3.13 REPL, x: int neither binds the name nor is silently ignored, so later use of x raises NameError even though the annotation is stored in <strong>annotations</strong>. Learners expect the annotation to create or default the variable.</p>
+<h3>LLM-assisted work is mentally taxing due to fast pace and constant context maintenance</h3>
+<p><strong>Affected Users:</strong> Developers and users working with LLMs like Claude for coding and other tasks</p>
+<p><strong>Problem Description:</strong> Working with an LLM can be mentally draining because the work moves quickly, forcing constant proofing and context maintenance when refusing to vibe code. This cognitive load is experienced daily alongside the productivity gains the tools provide.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://stackoverflow.com/questions/80003077/what-does-annotating-a-variable-actually-do-in-python">What does annotating a variable actually do in Python?</a> — Stack Overflow</li>
+<li><a href="https://news.ycombinator.com/item?id=48098821">Ask HN: Why do people hate using AI so much?</a> — Hacker News (Ask HN)</li>
 </ul>
-<p><strong>Current Workarounds:</strong> Checking <strong>annotations</strong> and globals() to see the annotation is stored but the name is unbound.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly show an inline explanation when an annotated-but-unbound name is later referenced.</p>
+<p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly surface context changes and review checkpoints to reduce the burden of keeping up with fast LLM output.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>vLLM-Omni roadmap items lack confirmed owners and scopes</h3>
+<p><strong>Affected Users:</strong> The vLLM-Omni community and maintainers planning the Q4 2026 roadmap</p>
+<p><strong>Problem Description:</strong> Multiple roadmap items, including world-model integration, tool calling improvements, and API split work, remain unassigned and need coordination. The community discussion solicits input on priorities for Q4 2026 across world models, omni serving APIs, and full-duplex tool calling.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://github.com/vllm-project/vllm-omni/issues/8264">RFC: vLLM-Omni Q4 2026 Roadmap — Community Discussion</a> — GitHub Issues</li>
+</ul>
+<p><strong>Current Workarounds:</strong> Community members are asked to open new issues and ping maintainers to join the roadmap.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly track roadmap items, owners, and scopes in a shared board with clear status.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>Uncertainty about UTC versus local time arithmetic in C++20 chrono</h3>
+<p><strong>Affected Users:</strong> C++ developers using C++20 <chrono> for time handling</p>
+<p><strong>Problem Description:</strong> Developers are uncertain whether the common advice to stick to UTC for storage, logging, and internal logic still holds in C++20, and how to correctly compute and store local time with time zones. Backend scenarios like modeling a restaurant&#39;s daily opening hours require robust daylight saving handling.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/79959348/does-c20-chrono-offer-tools-to-compute-with-and-parse-store-local-time">Does C++20 &lt;chrono&gt; offer tools to compute with and parse/store local time?</a> — Stack Overflow</li>
+</ul>
+<p><strong>Current Workarounds:</strong> Use C++20 local time arithmetic as the right tool for certain jobs, while generally keeping UTC arithmetic as the default.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly provide well-tested patterns or linting for choosing UTC versus local time in C++20 chrono code.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>Shizuku reports USB debugging not enabled on Android 17 QPR1 despite it being on</h3>
+<p><strong>Affected Users:</strong> Shizuku users on Android 17 QPR1 (e.g. Pixel 8 Pro)</p>
+<p><strong>Problem Description:</strong> Shizuku version 13.7.0 on Android 17 QPR1 reports that USB debugging is not enabled when starting in adb mode, even though the setting is actually on and toggling it off and on does not fix it. This occurs after stopping and restarting Shizuku from within the app.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://github.com/thedjchi/Shizuku/issues/301">USB debugging not enabled while it is</a> — GitHub Issues</li>
+</ul>
+<p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly detect and work around the changed debug-setting state reporting on Android 17 QPR1.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>HWASan misses intra-granule heap over-reads that ASan detects on arm64 Android</h3>
+<p><strong>Affected Users:</strong> Developers fuzzing native C code on arm64 Android with sanitizers</p>
+<p><strong>Problem Description:</strong> Fuzzing a C parser on arm64 Android with NDK 27 / clang 18, a 4-byte read one byte before the end of a malloc(n) allocation escapes ASan but is not flagged by HWASan. HWASan tags memory in 16-byte granules, so intra-granule over-reads stay within a matching-tagged granule and go undetected.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/80006242/why-does-hwaddresssanitizer-miss-a-heap-over-read-that-addresssanitizer-reports">Why does HWAddressSanitizer miss a heap over-read that AddressSanitizer reports?</a> — Stack Overflow</li>
+</ul>
+<p><strong>Current Workarounds:</strong> Run both sanitizers; a reply notes HWASan trades detection probability for lower overhead and can miss bugs probabilistically (~1/(2**TS) chance).</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly combine sanitizer runs and flag allocations where granule size masks likely over-reads.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
 <h2>Finance</h2>
-<h3>Assembling authenticated historical options data for backtesting</h3>
-<p><strong>Affected Users:</strong> A crypto quant research team building a Deribit options lifecycle archive</p>
-<p><strong>Problem Description:</strong> The team cannot obtain authenticated 2021–2023 BTC/ETH Deribit options data adequate for their preregistered 28–35d Monday entry window, because original samples lack fixed-tenor books. Their calendar audits found only 21/90 eligible Mondays, 658/661 original days absent, and 0/180 certified lifecycles, even though a 14,720,180-row transport recheck passed source-presence verification, so the data source is blocked rather than economically rejected.</p>
+<h3>Unpaid invoice from failed direct debit leads to debt collection fees despite immediate payment</h3>
+<p><strong>Affected Users:</strong> A German consumer with a direct debit authorization with a recurring service company</p>
+<p><strong>Problem Description:</strong> The company failed to pull an agreed direct debit, so the invoice went unpaid without the customer noticing, and no reminders were sent. A debt collection agency now demands the invoice plus collection fees, but the customer paid the original invoice immediately and disputes liability for the fees, arguing the delay was the creditor&#39;s fault; the company responds to inquiries with AI-generated text and false claims about reminders.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://github.com/DnSiii/CryptoAI-Lab/issues/19">V99 BLOCKER — authenticated 2021–2023 BTC/ETH Deribit options lifecycle archive + native historical terms</a> — GitHub Issues</li>
+<li><a href="https://money.stackexchange.com/questions/169773/how-to-react-to-debt-collection-claim-when-the-delay-in-payment-is-the-creditor">How to react to debt collection claim when the delay in payment is the creditor&#39;s fault?</a> — Personal Finance &amp; Money</li>
 </ul>
-<p><strong>Current Workarounds:</strong> Prioritizing one ex-ante complete architecture with verifiable native sources and costs instead of looping on public samples or buying the blind 658-day set.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly reconcile archive manifests against preregistered sampling calendars and flag tenure gaps before a research run is attempted.</p>
+<p><strong>Current Workarounds:</strong> The customer paid the invoice amount directly to the creditor and disputed the collector&#39;s fees; a reply suggests consulting a local German attorney given strict rules on pre-collection requirements and permitted fees.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly help consumers track direct debit status and flag failed debits before they escalate to collections.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Reconciling supplier invoice payments without manual re-entry</h3>
-<p><strong>Affected Users:</strong> A developer/owner building the Tameion assured-payments system</p>
-<p><strong>Problem Description:</strong> The goal is an end-to-end workflow that authorizes and reconciles supplier invoice payments with less manual re-entry, approval chasing, payment uncertainty, and reconciliation work, while preserving exact existing job scope and evidence. The small finance team already makes recurring supplier and contractor USDC payments with manual approval and accounting, using Circle developer-controlled wallets on Arc Testnet, while ERP and accounting own the invoices and books.</p>
+<h3>Manual membership dues, renewals, invoicing, and payment status tracking for clubs and associations</h3>
+<p><strong>Affected Users:</strong> Treasurers and members of clubs, churches, and associations using the accounting add-on</p>
+<p><strong>Problem Description:</strong> Treasurers manually handle membership dues, renewals, invoices, reminders, and tracking whether members are paid, in grace, or lapsed. This spans managing membership tiers and invoicing across members linked to ngdpbase, with payments posting to a shared ledger.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://github.com/habrahgithub/swd-tameion-assured-payments/issues/64">POST-HACKATHONARCHITECTURE Tameion AP Obligation Assurance + High-Volume Workflow</a> — GitHub Issues</li>
+<li><a href="https://github.com/jwilleke/ngdp-accounting-addons/issues/2">Dues and invoicing: tiers, renewals, reminders, paid and lapsed status</a> — GitHub Issues</li>
 </ul>
 <p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly bridge invoice systems and on-chain payment authorization so approval state and reconciliation evidence stay linked.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly automate dues scheduling, invoice generation, reminders, and status transitions linked to the shared ledger.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
-<h3>Choosing between instant and standard SEPA transfers</h3>
-<p><strong>Affected Users:</strong> A person making SEPA wire transfers via online banking</p>
-<p><strong>Problem Description:</strong> Since instant SEPA transfers became mandatory and free, the bank asks on every transfer whether to use instant or standard, but the user sees no clear advantage to either choice and cannot tell whether declining instant helps them or the receiver.</p>
+<h3>Choosing whether to record annual expenses monthly to reflect true cost versus liquidity</h3>
+<p><strong>Affected Users:</strong> A household budgeter who pays some insurance bills annually rather than monthly</p>
+<p><strong>Problem Description:</strong> The budgeter is uncertain how to record a large once-a-year insurance payment in a monthly budget — whether to record the full amount in the month it is paid or spread it monthly. The trade-off is reflecting true ongoing cost versus ensuring cash is available when the bill is due.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://money.stackexchange.com/questions/170013/why-would-i-ever-not-use-instant-wire-transfer">Why would I ever not use instant wire transfer?</a> — Personal Finance &amp; Money</li>
+<li><a href="https://money.stackexchange.com/questions/170018/how-should-an-annual-insurance-payment-be-recorded-in-a-monthly-budget">How should an annual insurance payment be recorded in a monthly budget?</a> — Personal Finance &amp; Money</li>
 </ul>
-<p><strong>Current Workarounds:</strong> A reply notes their bank allows reverting a standard transfer as long as it hasn&#39;t left the account, giving time to catch mistakes that instant transfer would not.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly explain the recall window and settlement timing for each option at the moment of transfer.</p>
+<p><strong>Current Workarounds:</strong> The reply notes it depends on what is being budgeted: some allocate yearly costs monthly to gauge ongoing spending, while others budget for liquidity to ensure cash is available when due.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly support both accrual-style and liquidity-style views of irregular expenses in a single budget.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>Deciding whether to lien a gifted car amid bankruptcy disclosure and clawback uncertainty</h3>
+<p><strong>Affected Users:</strong> A person whose mother gifted them a car and is now filing for bankruptcy</p>
+<p><strong>Problem Description:</strong> The person must decide whether to let their mother put a lien on the car, which was gifted two years ago and is registered only in the child&#39;s name. The mother is petitioning for bankruptcy, creating uncertainty about disclosure requirements and whether the gift could be clawed back.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://money.stackexchange.com/questions/170043/should-i-let-my-mother-lien-my-car-as-part-of-her-bankruptcy">Should I let my mother lien my car as part of her bankruptcy?</a> — Personal Finance &amp; Money</li>
+</ul>
+<p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly help track gift dates, title transfers, and lien timing against bankruptcy disclosure windows.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
 <h2>Business Operations</h2>
-<h3>Legacy dev team lacks API delivery skills, stalling modernization</h3>
-<p><strong>Affected Users:</strong> A product owner/manager at a Swedish legacy enterprise system company</p>
-<p><strong>Problem Description:</strong> The team has no experience building, testing, shipping, or maintaining APIs, so simple endpoints take many months and ship with poor quality. The manager took the job believing it was a modernization project with modern API integrations, and the resulting stress is severe enough that they are receiving antidepressants and therapy and looking for another role.</p>
+<h3>Customer-linked corporate documents, NDAs, and invoicing instructions lack proper permissions, versioning, scanning, and lifecycle</h3>
+<p><strong>Affected Users:</strong> Staff and members using Legacy services, Intranet, and the Legacy.Web member site</p>
+<p><strong>Problem Description:</strong> Staff and members need to manage customer-linked corporate documents, NDA agreements, and invoicing instructions with proper permissions, versioning, scanning, and lifecycle handling. This feature spans multiple Legacy services and is a recurring gap in document integrity and access control.</p>
 <p><strong>Evidence:</strong></p>
 <ul>
-<li><a href="https://news.ycombinator.com/item?id=49533073">Ask HN: How do you survive a job you hate which is slowly making you sick?</a> — Hacker News (Ask HN)</li>
+<li><a href="https://github.com/MALIEV-Co-Ltd/Legacy.Maliev.Intranet/issues/277">Feature Customer-linked documents and verified NDA lifecycle</a> — GitHub Issues</li>
 </ul>
-<p><strong>Current Workarounds:</strong> Receiving antidepressants and therapy, and searching for another role.</p>
-<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly scaffold API contracts, tests, and deployment pipelines so a team without API experience produces working endpoints faster.</p>
+<p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly provide centralized document lifecycle management with permissioning and verified NDA handling across the services.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>AI voice products perform poorly on messy real-world phone calls versus demos</h3>
+<p><strong>Affected Users:</strong> Developers building AI voice products for small businesses</p>
+<p><strong>Problem Description:</strong> There is a large gap between how well AI performs in controlled demos and how poorly it performs on messy real-world phone calls. Real-world phone interactions for small businesses expose limitations not visible in staged demos.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=48683172">Ask HN: Why does every AI demo sound perfect but real world deployment always</a> — Hacker News (Ask HN)</li>
+</ul>
+<p><strong>Current Workarounds:</strong> None mentioned in the discussions.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly simulate or replay messy call audio to surface failure modes before deployment.</p>
+<p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
+<h3>Mid-career web developer loses purpose in web development and weighs a costly switch to medicine</h3>
+<p><strong>Affected Users:</strong> A mid-30s web developer in Europe feeling demoralized about their job</p>
+<p><strong>Problem Description:</strong> The developer no longer finds pride or purpose in web development and is considering a career change to medicine, but is unsure whether they can afford to pause their life for the six-year degree. Tuition is manageable in their country, but the long pause is a major obstacle.</p>
+<p><strong>Evidence:</strong></p>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=49466597">Ask HN: Should I leave web development to study medicine in my mid-30s?</a> — Hacker News (Ask HN)</li>
+</ul>
+<p><strong>Current Workarounds:</strong> Replies suggest healthcare-adjacent paths like nursing, psychotherapy, or physical therapy that require less training.</p>
+<p><strong>Potential Software Relevance (hypothesis):</strong> Software could possibly help compare career transition paths by time, cost, and prerequisites.</p>
 <p><strong>Evidence Strength:</strong> Single observation (1 source)</p>
 <hr>
 <p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
