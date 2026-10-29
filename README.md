@@ -363,7 +363,7 @@ Pipeline (`src/problem-discovery.ts`):
 
 `PROBLEMS_COLLECT_ONLY=1 pnpm problems` runs collection only (no LLM key needed) and writes `digests/problem-collection.json` for inspection. A `digests/problem-state.json` file records which discussions were already mined so repeated runs do not re-process them.
 
-The report is published through the same manifest/RSS/Web UI path as the digests. It runs from its own GitHub Actions workflow (`.github/workflows/problem-discovery.yml`, `workflow_dispatch`), independent of the daily digest.
+The report is published through the same manifest/RSS/Web UI path as the digests. It runs from its own GitHub Actions workflow (`.github/workflows/problem-discovery.yml`, `workflow_dispatch`), independent of the daily digest. When Telegram secrets are configured, the pipeline also posts its own Telegram message (the three strongest problems, Vietnamese) to the same channel — a separate message from the daily digest, sent after the report is published.
 
 ---
 

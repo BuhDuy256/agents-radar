@@ -360,7 +360,7 @@ pnpm problems
 
 `PROBLEMS_COLLECT_ONLY=1 pnpm problems` 只执行采集（无需 LLM key），并写出 `digests/problem-collection.json` 供检查。`digests/problem-state.json` 记录已挖掘过的讨论，避免重复处理。
 
-报告通过与简报相同的 manifest/RSS/Web UI 路径发布，并由独立的 GitHub Actions 工作流（`.github/workflows/problem-discovery.yml`，`workflow_dispatch`）运行，与每日简报互不干扰。
+报告通过与简报相同的 manifest/RSS/Web UI 路径发布，并由独立的 GitHub Actions 工作流（`.github/workflows/problem-discovery.yml`，`workflow_dispatch`）运行，与每日简报互不干扰。若配置了 Telegram 密钥，该流程还会在报告发布后向同一频道单独推送一条 Telegram 消息（越南语，最强的三个问题），与每日简报的消息相互独立。
 
 ---
 

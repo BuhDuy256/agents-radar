@@ -12,7 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { NOTIFY_READ_MORE, NOTIFY_SECTIONS, NOTIFY_TITLE } from "./i18n.ts";
+import { NOTIFY_PROBLEMS_TITLE, NOTIFY_READ_MORE, NOTIFY_SECTIONS, NOTIFY_TITLE } from "./i18n.ts";
 import { toCstDateStr } from "./date.ts";
 import type { ReportHighlights } from "./prompts-data.ts";
 
@@ -42,7 +42,7 @@ function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-async function sendTelegram(text: string): Promise<void> {
+export async function sendTelegram(text: string): Promise<void> {
   const BOT_TOKEN = process.env["TELEGRAM_BOT_TOKEN"] ?? "";
   const CHAT_ID = process.env["TELEGRAM_CHAT_ID"] || "@agents_radar";
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
@@ -123,6 +123,43 @@ export function buildMessage(
     last.items.pop();
     if (last.items.length === 0) sections.pop();
     text = render();
+  }
+  return text;
+}
+
+/**
+ * Build the Problem Discovery Telegram message — one section, Vietnamese
+ * preferred with English fallback, at most three problem titles, and a single
+ * "Read more" link to the problems report. Separate from the daily digest
+ * message (`buildMessage`) because Problem Discovery is its own pipeline on its
+ * own schedule. Returns "" when there is nothing worth sending.
+ */
+export function buildProblemsMessage(
+  date: string,
+  highlights: { vi: string[]; en: string[] },
+  pagesUrl?: string,
+  cacheKey?: string,
+): string {
+  const PAGES_URL = (pagesUrl ?? process.env["PAGES_URL"] ?? PAGES_URL_DEFAULT).replace(/\/$/, "");
+  const baseUrl = cacheKey ? `${PAGES_URL}/?v=${encodeURIComponent(cacheKey)}` : `${PAGES_URL}/`;
+
+  const raw = highlights.vi?.length ? highlights.vi : highlights.en;
+  const items = (raw ?? []).map((h) => h.trim()).filter((h) => h.length > 0);
+  const unique = [...new Set(items)].slice(0, MAX_HIGHLIGHTS_PER_SECTION);
+  if (unique.length === 0) return "";
+
+  const header = `${NOTIFY_PROBLEMS_TITLE.vi} · ${date}`;
+  const render = (list: string[]): string =>
+    [
+      header,
+      ...list.map((item) => `• ${escapeHtml(item)}`),
+      `<a href="${baseUrl}#${date}/problems">${NOTIFY_READ_MORE.vi}</a>`,
+    ].join("\n");
+
+  let text = render(unique);
+  while (text.length > TELEGRAM_MAX_CHARS && unique.length > 1) {
+    unique.pop();
+    text = render(unique);
   }
   return text;
 }

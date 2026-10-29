@@ -1,5 +1,11 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { buildMessage, TELEGRAM_MAX_CHARS, type Highlights, type LegacyHighlights } from "../notify.ts";
+import {
+  buildMessage,
+  buildProblemsMessage,
+  TELEGRAM_MAX_CHARS,
+  type Highlights,
+  type LegacyHighlights,
+} from "../notify.ts";
 
 const BASE_URL = "https://example.com/radar";
 
@@ -167,5 +173,40 @@ describe("buildMessage", () => {
     const links = msg.match(/<a href="[^"]+">Đọc chi tiết<\/a>/g) ?? [];
     expect(links.length).toBeGreaterThan(0);
     expect(msg.endsWith("</a>")).toBe(true);
+  });
+});
+
+describe("buildProblemsMessage", () => {
+  it("builds a Vietnamese problems message with one link to the problems report", () => {
+    const msg = buildProblemsMessage(
+      "2026-03-09",
+      { vi: ["Đối soát thanh toán thủ công", "CI hay hỏng"], en: ["Manual payment reconciliation"] },
+      BASE_URL,
+    );
+    expect(msg).toContain("🔎 Vấn đề đáng giải quyết · 2026-03-09");
+    expect(msg).toContain("• Đối soát thanh toán thủ công");
+    expect(msg).toContain(`<a href="${BASE_URL}/#2026-03-09/problems">Đọc chi tiết</a>`);
+    expect(msg).not.toContain("Read more");
+  });
+
+  it("falls back to en titles when vi is empty", () => {
+    const msg = buildProblemsMessage("2026-03-09", { vi: [], en: ["Flaky CI pipelines"] }, BASE_URL);
+    expect(msg).toContain("• Flaky CI pipelines");
+  });
+
+  it("caps at three highlights and escapes HTML", () => {
+    const msg = buildProblemsMessage("2026-03-09", { vi: ["Một <b>", "Hai", "Ba", "Bốn"], en: [] }, BASE_URL);
+    expect(msg).toContain("• Một &lt;b&gt;");
+    expect(msg).toContain("• Ba");
+    expect(msg).not.toContain("• Bốn");
+  });
+
+  it("returns an empty string when there is nothing to send", () => {
+    expect(buildProblemsMessage("2026-03-09", { vi: [], en: [] }, BASE_URL)).toBe("");
+  });
+
+  it("versions the link to defeat the Pages cache", () => {
+    const msg = buildProblemsMessage("2026-03-09", { vi: ["X"], en: [] }, BASE_URL, "key123");
+    expect(msg).toContain(`${BASE_URL}/?v=key123#2026-03-09/problems`);
   });
 });

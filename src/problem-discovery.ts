@@ -38,6 +38,7 @@ import {
   LLM_TOKENS_LISTING,
 } from "./report.ts";
 import { createGitHubIssue } from "./github.ts";
+import { buildJsonTranslationPrompt } from "./prompts.ts";
 import { toCstDateStr, toUtcStr } from "./date.ts";
 import { type Lang, PROBLEMS_REPORT, PROBLEMS_ISSUE_LABELS } from "./i18n.ts";
 
@@ -45,6 +46,8 @@ const LANGS: Lang[] = ["vi", "en"];
 const EXTRACTION_BATCH = 6;
 /** Final problems kept in the report — the upper end of the 5-15 target. */
 const MAX_PROBLEMS = 15;
+/** Strongest problems surfaced as Telegram highlights. */
+const TELEGRAM_HIGHLIGHTS = 3;
 
 export type EvidenceStrength = "single" | "multiple" | "insufficient";
 
@@ -276,6 +279,53 @@ async function saveReport(
 }
 
 // ---------------------------------------------------------------------------
+// Telegram highlights
+// ---------------------------------------------------------------------------
+
+/** File name for the bilingual Telegram highlights, read by `notify-problems.ts`. */
+export const PROBLEMS_HIGHLIGHTS_FILE = "problems-highlights.json";
+
+export interface ProblemHighlights {
+  vi: string[];
+  en: string[];
+}
+
+/**
+ * Write the strongest problem titles for the Telegram message. Problem
+ * Discovery runs on its own schedule, so it posts its own message to the same
+ * channel (not folded into the daily digest message). The actual send happens
+ * in a separate workflow step (`notify-problems.ts`) *after* the report is
+ * committed and pushed, mirroring the daily digest — so the "Read more" link
+ * resolves. `problems` is already ranked strongest-first by `resolveProblems`.
+ */
+async function writeTelegramHighlights(problems: ResolvedProblem[], dateStr: string): Promise<void> {
+  if (problems.length === 0) return;
+
+  const en = problems
+    .slice(0, TELEGRAM_HIGHLIGHTS)
+    .map((p) => sanitizeLinkText(p.title))
+    .filter((t) => t.length > 0);
+  if (en.length === 0) return;
+
+  // Vietnamese titles via the shared JSON-translation prompt; fall back to the
+  // English titles so the message is never empty if translation misbehaves.
+  let vi = en;
+  try {
+    const translated = parseLlmJson<string[]>(
+      await callLlm(buildJsonTranslationPrompt(JSON.stringify(en)), 1024),
+    );
+    if (Array.isArray(translated) && translated.some((t) => typeof t === "string" && t.trim())) {
+      vi = translated.map((t) => (typeof t === "string" ? t.trim() : "")).filter(Boolean);
+    }
+  } catch (err) {
+    console.error(`  [problems] highlight translation failed, using English: ${err}`);
+  }
+
+  const highlights: ProblemHighlights = { vi, en };
+  console.log(`  Saved ${saveFile(JSON.stringify(highlights, null, 2), dateStr, PROBLEMS_HIGHLIGHTS_FILE)}`);
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -349,6 +399,11 @@ async function main(): Promise<void> {
 
   assertLlmHealthy("report");
   saveProblemState(state);
+
+  // 6. Write Telegram highlights; the workflow sends them after the push, so
+  // the message links to an already-published report (see writeTelegramHighlights).
+  await writeTelegramHighlights(problems, dateStr);
+
   reportLlmHealth();
   console.log("Done!");
 }

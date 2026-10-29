@@ -77,3 +77,13 @@ jobs:
             git pull --rebase
             git push
           fi
+
+      # Sent after the push so the "Read more" link points to an already
+      # published report, mirroring the daily digest's notify step. A separate
+      # message in the same channel — Problem Discovery is its own pipeline.
+      - name: Send Telegram notification
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PAGES_URL: https://buhduy256.github.io/agents-radar
+        run: pnpm exec tsx src/notify-problems.ts

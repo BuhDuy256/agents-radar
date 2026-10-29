@@ -256,3 +256,7 @@ export const NOTIFY_SECTIONS: Record<string, Record<Lang, string>> = {
 
 export const NOTIFY_TITLE = t("📡 Bản tin công nghệ", "📡 Tech digest");
 export const NOTIFY_READ_MORE = t("Đọc chi tiết", "Read more");
+
+// Problem Discovery is a separate pipeline from the daily digest and sends its
+// own Telegram message (same channel). This is that message's title/heading.
+export const NOTIFY_PROBLEMS_TITLE = t("🔎 Vấn đề đáng giải quyết", "🔎 Problems worth solving");
