@@ -1,0 +1,54 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code hookify stop/prompt event rules never fire do lỗi ánh xạ trường trong config_loader.py; PR #32751 được đề xuất nhưng chưa merge.",
+      "OpenCode v2.2.1 bổ sung /goal để giữ phiên chạy đến khi người đánh giá xác nhận mục tiêu đã đạt.",
+      "Pi đã merge PR #11577 giúp resizeImageInProcess trả về kết quả đúng sau khi thay đổi kích thước ảnh."
+    ],
+    "ai-trending": [
+      "Khung kỹ năng tác tử obra/superpowers tăng 1.037 sao hôm nay.",
+      "pbakaus/impeccable bổ sung từ vựng thiết kế cho tác tử lập trình, tăng 2.881 sao hôm nay.",
+      "Graphify biến cơ sở mã, tài liệu và PDF thành đồ thị tri thức truy vấn được với 138.415 sao."
+    ],
+    "ai-web": [
+      "Anthropic mở rộng chương trình AI for Science tới 20 tổ chức khoa học và nhóm nghiên cứu, cấp tín dụng Claude miễn phí.",
+      "OpenAI đăng một trang tại slug how-we-detect-frontier-model-misalignment, nhưng chỉ lấy được siêu dữ liệu."
+    ],
+    "ai-hn": [
+      "Google công bố Gemini 4 Carbon, đứng đầu Artificial Analysis Intelligence Index v5 với 59 điểm, chỉ mở cho chuyên gia phòng thủ mạng tin cậy.",
+      "Mistral phát hành trọng số mở cho Mistral Large 4, mô hình đa phương thức 1 nghìn tỷ tham số với ba chế độ suy luận.",
+      "Cursor phát hành Agent SDK để định nghĩa và triển khai tác tử bằng mã, phổ dụng từ hôm nay."
+    ],
+    "ai-community": [
+      "Một lượt kiểm chứng bằng Sonnet phát hiện 71% lỗ hổng bàn giao trong lệnh công việc với khoảng 0,07 USD mỗi lần chạy.",
+      "Giữ ghim mô hình trong một sổ đăng ký có phiên bản theo tên tác vụ logic thay vì rải rác ở các điểm gọi.",
+      "Kiểm tra đoạn cited_text từ kết quả tìm kiếm phát hiện con số mà URL hợp lệ bỏ sót, như tuyên bố '32 triệu ngôi nhà' không được hỗ trợ."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code hookify stop/prompt event rules never fire due to config_loader.py field mapping bug; PR #32751 proposed but unmerged.",
+      "OpenCode v2.2.1 adds /goal to keep a session running until a reviewer confirms the objective is met.",
+      "Pi merged PR #11577 making resizeImageInProcess return correct results after resizing images."
+    ],
+    "ai-trending": [
+      "obra/superpowers agentic skills framework gains 1,037 stars today.",
+      "pbakaus/impeccable adds design vocabulary to coding agents, up 2,881 stars today.",
+      "Graphify turns codebases, docs, and PDFs into a queryable knowledge graph with 138,415 stars."
+    ],
+    "ai-web": [
+      "Anthropic expanded its AI for Science program to 20 scientific foundations and research groups, granting free Claude credits.",
+      "OpenAI published a page at the slug how-we-detect-frontier-model-misalignment, but only metadata was retrievable."
+    ],
+    "ai-hn": [
+      "Google announced Gemini 4 Carbon, ranking first on Artificial Analysis Intelligence Index v5 at 59, with access limited to trusted cyber defenders.",
+      "Mistral released open weights for Mistral Large 4, a 1-trillion-parameter multimodal model with three reasoning modes.",
+      "Cursor released its Agent SDK for defining and deploying agents in code, generally available today."
+    ],
+    "ai-community": [
+      "A falsifier pass using Sonnet caught 71% of handoff gaps in work orders for about $0.07 per run.",
+      "Keep model pins in one versioned registry keyed by logical task name instead of scattering them across call sites.",
+      "Checking cited_text passages from search results catches numbers that valid URLs alone miss, such as an unsupported '32 million homes' claim."
+    ]
+  }
+}
