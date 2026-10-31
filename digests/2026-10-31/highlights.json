@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Tiện ích mở rộng Claude Code cho VS Code phiên bản 2.1.312 và 2.1.313 có backdoor đã bị gỡ khỏi Cursor Marketplace sau khi phát hiện SSH backdoor.",
+      "Mistral phát hành trọng số mở của Mistral Large 4, mô hình đa phương thức 1 nghìn tỷ tham số có tên Le Chonk.",
+      "Google công bố Gemini 4 Carbon, đứng đầu Artificial Analysis Intelligence Index v5.0 với 59 điểm."
+    ],
+    "ai-trending": [
+      "thedotmack/claude-mem bổ sung bộ nhớ phiên liên tục xuyên suốt Claude Code, Codex, Gemini, Copilot và OpenCode, tăng 1.140 sao hôm nay.",
+      "obra/superpowers cung cấp khung kỹ năng tác tử và phương pháp phát triển phần mềm, tăng 1.259 sao hôm nay.",
+      "mattpocock/skills chia sẻ các định nghĩa kỹ năng có sẵn từ thư mục .agents của tác giả, tăng 876 sao hôm nay."
+    ],
+    "ai-web": [
+      "Trang giá Claude của Anthropic nay ghi \"Không giới hạn 5 giờ\" và 200 đô la mỗi tháng tín dụng API, tăng từ 100 đô la, cho gói 200 đô la.",
+      "Anthropic mô tả Managed Agents, dịch vụ lưu trữ cho tác tử tầm xa trên Claude Platform.",
+      "Bài blog thực hành tốt nhất về Claude Code tháng 4/2025 đã bị thay thế; Anthropic hướng độc giả đến code.claude.com/docs/en/best-practices."
+    ],
+    "ai-hn": [
+      "Mistral phát hành trọng số mở của Mistral Large 4 (Le Chonk), mô hình đa phương thức 1 nghìn tỷ tham số huấn luyện trên hạ tầng châu Âu.",
+      "Google công bố Gemini 4 Carbon, tuyên bố đứng đầu Artificial Analysis Intelligence Index v5.0 với 59 điểm và dẫn đầu SEC-bench Pro với 88,2%.",
+      "Blackstone nay dự đoán Anthropic sẽ nhận xếp hạng rác \"cao\" sau IPO, trong khoảng double-B, không phải hạng đầu tư."
+    ],
+    "ai-community": [
+      "Script chỉ đọc 7 bước kiểm tra giúp rà soát máy tìm SSH backdoor của tiện ích anthropic.claude-code bị cài trojan.",
+      "Vicem ghi trạng thái làm việc của repo vào .vicem/BATON.md để bạn chuyển giữa Claude Code, Codex và Cursor khi đang làm.",
+      "Chuyển tải MoE chọn lọc với --n-cpu-moe của llama.cpp vượt chuyển tải theo lớp trên 2 trong 5 mô hình với RTX 4090 Laptop 16GB."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Backdoored Claude Code for VS Code extension 2.1.312 and 2.1.313 pulled from Cursor Marketplace after SSH backdoor found.",
+      "Mistral released open weights of Mistral Large 4, a 1-trillion-parameter multimodal model called Le Chonk.",
+      "Google announced Gemini 4 Carbon, ranking first on Artificial Analysis Intelligence Index v5.0 at 59."
+    ],
+    "ai-trending": [
+      "thedotmack/claude-mem adds persistent session memory across Claude Code, Codex, Gemini, Copilot and OpenCode runs, gaining 1,140 stars today.",
+      "obra/superpowers provides an agentic skills framework and software development methodology, up 1,259 stars today.",
+      "mattpocock/skills shares ready-made skill definitions from the author's .agents directory, up 876 stars today."
+    ],
+    "ai-web": [
+      "Anthropic's Claude pricing page now lists \"No 5-hour limit\" and $200 a month in API credits, up from $100, for the $200 tier.",
+      "Anthropic described Managed Agents, a hosted service for long-horizon agents on the Claude Platform.",
+      "The April 2025 Claude Code best-practices blog post is superseded; Anthropic points readers to code.claude.com/docs/en/best-practices."
+    ],
+    "ai-hn": [
+      "Mistral released open weights of Mistral Large 4 (Le Chonk), a 1-trillion-parameter multimodal model trained on European infrastructure.",
+      "Google announced Gemini 4 Carbon, claiming first on Artificial Analysis Intelligence Index v5.0 at 59 and leading SEC-bench Pro at 88.2%.",
+      "Blackstone now expects Anthropic to get a \"high\" junk rating after its IPO, in the double-B range, not investment grade."
+    ],
+    "ai-community": [
+      "A 7-check read-only script lets you audit a machine for the trojanized anthropic.claude-code extension's SSH backdoor.",
+      "Vicem writes a repo's working state to .vicem/BATON.md so you can switch mid-task between Claude Code, Codex, and Cursor.",
+      "Selective MoE offloading with llama.cpp's --n-cpu-moe beat layer offloading on 2 of 5 models on a 16GB RTX 4090 Laptop."
+    ]
+  }
+}
