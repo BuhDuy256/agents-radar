@@ -1,0 +1,42 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Qwen Code v0.26.5 cung cấp truy vấn lịch sử SQL có giới hạn cho H2 cục bộ được quản lý và MySQL lưu trữ, cho phép phân trang tin nhắn gần đây và giao dịch nhật ký.",
+      "Pi đề xuất PR #11642 để ngăn phản hồi màu Windows/ConPTY rò rỉ vào dấu nhắc và mở trình soạn thảo bên ngoài."
+    ],
+    "ai-trending": [
+      "thedotmack/claude-mem đạt 1.723 sao hôm nay nhờ bộ nhớ phiên nén AI liên tục trên Claude Code, Codex, Gemini, Copilot và OpenCode."
+    ],
+    "ai-web": [
+      "Anthropic mở biểu mẫu bày tỏ quan tâm cho nhà nghiên cứu muốn truy cập dữ liệu sử dụng Claude tổng hợp qua công cụ Anthropic Insights bảo vệ quyền riêng tư."
+    ],
+    "ai-hn": [
+      "Mistral phát hành trọng số mở cho Mistral Large 4, mô hình đa phương thức 1 nghìn tỷ tham số dẫn đầu chuẩn mã hóa trọng số mở.",
+      "Tiện ích Claude Code VS Code bị cài cửa sau (phiên bản 2.1.312/2.1.313) trên Cursor Marketplace đã cài cửa sau SSH; Cursor đã gỡ bỏ ngày 30 tháng 10.",
+      "VOLTA infostealer gửi dữ liệu đánh cắp đến LLM OpenRouter để xếp hạng nạn nhân theo giá trị trong mục 'WHAT THEY'RE WORTH'."
+    ],
+    "ai-community": [
+      "Thử nghiệm phía nhà cung cấp cho thấy hủy yêu cầu HTTP LLM có thể không dừng suy luận hoặc tính phí, với các lần hủy DeepSeek sau đó tốn kém tương ứng hơn."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Qwen Code v0.26.5 ships bounded SQL history queries for Managed local H2 and Hosted MySQL, enabling paged recent messages and journal transactions.",
+      "Pi proposes PR #11642 to stop Windows/ConPTY color replies leaking into the prompt and opening the external editor."
+    ],
+    "ai-trending": [
+      "thedotmack/claude-mem gained 1,723 stars today for persistent AI-compressed session memory across Claude Code, Codex, Gemini, Copilot, and OpenCode."
+    ],
+    "ai-web": [
+      "Anthropic opened an expression-of-interest form for researchers wanting access to aggregate Claude usage data via its privacy-preserving Anthropic Insights tool."
+    ],
+    "ai-hn": [
+      "Mistral released open weights for Mistral Large 4, a 1-trillion-parameter natively multimodal flagship that leads open-weight coding benchmarks.",
+      "A backdoored Claude Code VS Code extension (versions 2.1.312/2.1.313) on the Cursor Marketplace installed an SSH backdoor; Cursor removed it October 30.",
+      "VOLTA infostealer sends stolen data to an OpenRouter LLM to rank victims by worth in a 'WHAT THEY'RE WORTH' section."
+    ],
+    "ai-community": [
+      "A provider-side test found aborting an LLM HTTP request may not stop inference or billing, with later DeepSeek aborts costing proportionally more."
+    ]
+  }
+}
