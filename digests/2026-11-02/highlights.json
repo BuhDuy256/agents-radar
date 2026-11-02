@@ -1,0 +1,42 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Điều khiển từ xa Claude Code Windows resume có thể ghi đè bản ghi cục bộ, làm mất khoảng 150 tin nhắn trong sáu tệp phiên.",
+      "OpenAI đã tạm dừng phát hành Bazel artifacts sau khi thu hồi khóa BuildBuddy, chỉ còn lại Cargo artifacts.",
+      "Bản sửa lỗi Gemini CLI được đề xuất ngăn tham chiếu @file loại bỏ khoảng trắng đầu và cuối trong tệp đính kèm."
+    ],
+    "ai-trending": [
+      "thedotmack/claude-mem đạt 1.526 sao hôm nay cho bộ nhớ liên tục trên Claude Code, Codex, Gemini và các agent khác.",
+      "Graphify-Labs/graphify biến codebase, tài liệu, lược đồ SQL và PDF thành đồ thị tri thức có thể truy vấn không cần vector store."
+    ],
+    "ai-hn": [
+      "Mistral đã phát hành trọng số mở cho Mistral Large 4, mô hình đa phương thức 1 nghìn tỷ tham số với ba chế độ suy luận.",
+      "Google giới hạn quyền truy cập Gemini 4 Carbon cho một số chuyên gia phòng thủ mạng qua Fairwind Program trước khi phát hành rộng rãi.",
+      "Phorion phát hiện backdoor SSH dai dẳng trong Claude Code cho VS Code phiên bản 2.1.312 và 2.1.313 trên Cursor Marketplace, đã bị gỡ bỏ."
+    ],
+    "ai-community": [
+      "Một câu cảnh báo trong system prompt giảm vấn đề ẩn trong tấn công log chèn chỉ dẫn từ 28% xuống 10% và đề xuất lệnh xấu từ 57% xuống 24%.",
+      "Watermark thống kê của Claude Opus 4.6 và Sonnet 4.6 chỉ kích hoạt ở temperature, top_p và top_k mặc định; lấy mẫu tùy chỉnh sẽ bỏ qua chúng."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code Windows remote-control resume can overwrite local transcripts, dropping roughly 150 messages across six session files.",
+      "OpenAI paused Bazel release artifacts after a revoked BuildBuddy key, leaving only Cargo artifacts.",
+      "Proposed Gemini CLI fix stops @file references from stripping leading and trailing whitespace in attached files."
+    ],
+    "ai-trending": [
+      "thedotmack/claude-mem gained 1,526 stars today for persistent memory across Claude Code, Codex, Gemini and other agents.",
+      "Graphify-Labs/graphify turns a codebase, docs, SQL schemas and PDFs into a queryable knowledge graph with no vector store."
+    ],
+    "ai-hn": [
+      "Mistral released open weights for Mistral Large 4, a natively multimodal 1-trillion-parameter model with three reasoning modes.",
+      "Google limited Gemini 4 Carbon access to a subset of cyber defenders via the Fairwind Program before wider release.",
+      "Phorion found a persistent SSH backdoor in Claude Code for VS Code versions 2.1.312 and 2.1.313 on the Cursor Marketplace, since removed."
+    ],
+    "ai-community": [
+      "One warning sentence in a system prompt cut hidden problems in planted-instruction log attacks from 28% to 10% and bad command recommendations from 57% to 24%.",
+      "Claude Opus 4.6 and Sonnet 4.6 statistical watermarks only activate at default temperature, top_p and top_k; custom sampling skips them."
+    ]
+  }
+}
