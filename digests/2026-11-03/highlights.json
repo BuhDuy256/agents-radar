@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.317 cảnh báo khi các tác vụ đám mây theo lịch nhận được trình kết nối không được yêu cầu và xác nhận trước khi gửi email tài khoản của bạn.",
+      "Tiện ích mở rộng Claude Code cho VS Code bị cài cửa hậu (2.1.312-2.1.313) đã bị gỡ khỏi Cursor Marketplace sau khi thêm khóa SSH của kẻ tấn công.",
+      "Lịch sử trò chuyện theo phạm vi không gian làm việc của OpenAI Codex VS Code là yêu cầu mở hàng đầu tại #25319, với 58 bình luận và 127 lượt thích."
+    ],
+    "ai-trending": [
+      "vercel-labs/agent-desktop bổ sung CLI sử dụng máy tính để tác nhân điều khiển các ứng dụng GUI trên máy tính, đạt 2.275 sao hôm nay."
+    ],
+    "ai-web": [
+      "Anthropic công bố FlashProve, một hệ thống nghiên cứu để chứng minh mỗi phản hồi đến từ mô hình đã cam kết, kèm các hạn chế đã nêu.",
+      "Claude thiết kế các chất gắn kết protein nhắm vào 15 mục tiêu và thành công với 14 mục tiêu, với 22-35% thiết kế gắn kết thành công."
+    ],
+    "ai-hn": [
+      "Mistral phát hành trọng số của Mistral Large 4, một mô hình mở đa phương thức gốc 1 nghìn tỷ tham số, với ba chế độ suy luận.",
+      "Một cửa hậu đã được tìm thấy trong tiện ích mở rộng Claude Code cho VS Code phiên bản 2.1.312 và 2.1.313 trên Cursor Marketplace; cả hai đã bị gỡ bỏ.",
+      "Doanh thu quý 3 của Anthropic tăng 5,2 tỷ đô la so với quý trước, giảm từ 6,8 tỷ đô la trong quý 2, làm dấy lên câu hỏi về nhu cầu AI."
+    ],
+    "ai-community": [
+      "Một bộ công cụ Python stdlib giờ nằm giữa bước phản tư của tác nhân và tệp ký ức của nó, yêu cầu mỗi mục ký ức trích dẫn nguyên văn lời người dùng."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.317 warns when scheduled cloud tasks receive unrequested connectors and confirms before sending your account email.",
+      "A backdoored Claude Code for VS Code extension (2.1.312-2.1.313) was pulled from the Cursor Marketplace after adding attacker SSH keys.",
+      "OpenAI Codex VS Code workspace-scoped chat history is the top open request at #25319, with 58 comments and 127 thumbs up."
+    ],
+    "ai-trending": [
+      "vercel-labs/agent-desktop adds a computer use CLI so agents can drive desktop GUI apps, gaining 2,275 stars today."
+    ],
+    "ai-web": [
+      "Anthropic published FlashProve, a research system for proving each response came from the committed model, with stated limitations.",
+      "Claude designed protein binders against 15 targets and succeeded against 14, with 22-35% of designs binding successfully."
+    ],
+    "ai-hn": [
+      "Mistral released the weights of Mistral Large 4, a 1-trillion-parameter natively multimodal open model, with three reasoning modes.",
+      "A backdoor was found in Claude Code for VS Code extension versions 2.1.312 and 2.1.313 on the Cursor Marketplace; both were removed.",
+      "Anthropic's Q3 revenue rose $5.2 billion sequentially, down from $6.8 billion in Q2, raising AI demand questions."
+    ],
+    "ai-community": [
+      "A Python stdlib kit now sits between an agent's reflection step and its memory file, requiring each memory item quote the user's exact words."
+    ]
+  }
+}
