@@ -1,0 +1,54 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Codex bật unified_image_budget theo mặc định, tăng độ trung thực hình ảnh và bỏ tham số detail khỏi view_image.",
+      "Gemini CLI nightly sửa lỗi tải xuống dạng luồng và giữ nguyên mô hình gemini-2.5-flash được ghim rõ ràng.",
+      "Claude Code v2.1.318 ghi lại câu trả lời của bạn khi hỏi có bật mod do phiên viết hay không."
+    ],
+    "ai-trending": [
+      "vercel-labs/agent-desktop tăng 3.791 sao hôm nay nhờ CLI dùng máy tính điều khiển desktop từ dòng lệnh.",
+      "Headroom nén đầu ra công cụ, log, tệp và đoạn RAG trước khi tới LLM, đạt 78.777 sao."
+    ],
+    "ai-web": [
+      "Anthropic công bố FlashProve, bằng chứng mật mã rằng phản hồi đến từ mô hình được nêu, cùng EPFL, MIT và StarkWare.",
+      "Trang giá của Claude không còn dòng cửa sổ ngữ cảnh 1M; hãy kiểm tra lại giới hạn trong tài liệu chính thức.",
+      "OpenAI đăng ba mục chỉ mục, gồm thông báo giám đốc đối ngoại và một URL trùng lặp."
+    ],
+    "ai-hn": [
+      "Postman 12.33.4 tự cài plugin vào Codex và Claude Code, rồi ghi hash tin cậy cho hook của chính nó.",
+      "Nợ AI ngoài bảng cân đối của các ông lớn công nghệ Mỹ tăng khoảng 90% trong sáu tháng lên khoảng 3,2 nghìn tỷ USD, gần 80% tài sản.",
+      "Revolut cắt chi phí lập trình AI khoảng 90% bằng cách tự vận hành GLM-5.3 trên 56 GPU B200 thay vì dùng Claude."
+    ],
+    "ai-community": [
+      "Rollback ảnh chụp tại bước phân kỳ sớm nhất giúp mô hình 27B đạt 80,2 điểm trên OSWorld Verified.",
+      "Chính sách cổng không chặn được tuyến agent mà nó không thấy; hãy kiểm tra Sent Items và dấu vết tin nhắn tenant.",
+      "Bảy GGUF dưới llama.cpp cộng một trên Strata: top mười chỉ cách nhau năm phần trăm điểm."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Codex enables unified_image_budget by default, raising image fidelity and removing the detail parameter from view_image.",
+      "Gemini CLI nightly fixes stream-download failures and preserves an explicitly pinned gemini-2.5-flash model.",
+      "Claude Code v2.1.318 records your answer when it asks to enable session-written mods."
+    ],
+    "ai-trending": [
+      "vercel-labs/agent-desktop gained 3,791 stars today for its computer-use CLI that drives desktops from the command line.",
+      "Headroom compresses tool outputs, logs, files and RAG chunks before they hit the LLM, at 78,777 stars."
+    ],
+    "ai-web": [
+      "Anthropic published FlashProve, cryptographic proofs that a response came from the claimed model, with EPFL, MIT and StarkWare.",
+      "Claude's pricing page no longer lists the 1M context window line; re-check limits in official documentation.",
+      "OpenAI posted three index items, including a chief corporate affairs officer announcement and one duplicate URL."
+    ],
+    "ai-hn": [
+      "Postman 12.33.4 auto-installed plugins into Codex and Claude Code, then wrote a trusted hash for its own hook.",
+      "US tech giants' off-balance-sheet AI debt rose about 90% in six months to roughly $3.2T, near 80% of assets.",
+      "Revolut cut AI coding costs about 90% by self-hosting GLM-5.3 on 56 B200 GPUs instead of Claude."
+    ],
+    "ai-community": [
+      "Snapshot rollback at the earliest divergence step let a 27B model score 80.2 on OSWorld Verified.",
+      "A gateway policy can't stop agent routes it never sees; verify against Sent Items and the tenant message trace.",
+      "Seven GGUFs under llama.cpp plus one on Strata: the top ten sit within five hundredths of a point."
+    ]
+  }
+}
