@@ -6,7 +6,701 @@
     <description>Bản tin AI mã nguồn mở hằng ngày · Daily AI ecosystem digest</description>
     <language>vi-VN</language>
     <atom:link href="https://buhduy256.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 03 Nov 2026 06:35:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 06:04:40 +0000</lastBuildDate>
+    <item>
+      <title>Bản tin cộng đồng công cụ AI CLI 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-cli</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-cli</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Bản tin cộng đồng công cụ AI CLI 2026-11-04 Tạo lúc: 2026-11-04 06:03 UTC | Công cụ theo dõi: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills Báo cáo chi tiết từng công cụ Claude Code — anthropics/claude-code Điểm nóng cộng đồng Claude Code Skills Nguồn dữ liệu: anthropics/skills fix(mcp-builder) — hỗ trợ import HTTP client của mcp&amp;gt;=2 Cập nhật script kết nối của MCP builder để chạy được với mcp&amp;gt;=2.0.0, nơi streamablehttp_client được đổi tên...</description>
+      <content:encoded><![CDATA[<h1>Bản tin cộng đồng công cụ AI CLI 2026-11-04</h1>
+<blockquote>
+<p>Tạo lúc: 2026-11-04 06:03 UTC | Công cụ theo dõi: 7</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/anthropics/claude-code">Claude Code</a></li>
+<li><a href="https://github.com/openai/codex">OpenAI Codex</a></li>
+<li><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></li>
+<li><a href="https://github.com/github/copilot-cli">GitHub Copilot CLI</a></li>
+<li><a href="https://github.com/anomalyco/opencode">OpenCode</a></li>
+<li><a href="https://github.com/earendil-works/pi">Pi</a></li>
+<li><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></li>
+<li><a href="https://github.com/anthropics/skills">Claude Code Skills</a></li>
+</ul>
+<hr>
+<h2>Báo cáo chi tiết từng công cụ</h2>
+<details>
+<summary><strong>Claude Code</strong> — <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></summary>
+
+<h2>Điểm nóng cộng đồng Claude Code Skills</h2>
+<blockquote>
+<p>Nguồn dữ liệu: <a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
+</blockquote>
+<p><strong>fix(mcp-builder) — hỗ trợ import HTTP client của mcp&gt;=2</strong>
+Cập nhật script kết nối của MCP builder để chạy được với <code>mcp&gt;=2.0.0</code>, nơi <code>streamablehttp_client</code> được đổi tên thành <code>streamable_http_client</code> và các custom header giờ truyền qua <code>create_mcp_http_client</code>. Dùng khi build hoặc test MCP server trên SDK mới hơn. Đang mở (anthropics/skills PR #1742).</p>
+<p><strong>Thêm skill md2video-audio — Markdown sang MP4 kèm voiceover</strong>
+Biên dịch tài liệu Markdown thành video MP4 qua slide Marp kèm voiceover giống giọng người, theo mô tả của tác giả. Dùng khi cần biến một tài liệu thành video có thuyết minh. Đang mở (anthropics/skills PR #1703).</p>
+<p><strong>Thêm skill pyxel — phát triển game retro</strong>
+Hướng dẫn tạo, debug và kiểm tra game Python retro, bao gồm chạy headless theo input, xem trực tiếp từng frame và kiểm tra state theo từng tác vụ. Dùng khi build hoặc test game Pyxel. Đang mở (anthropics/skills PR #525).</p>
+<p><strong>Yêu cầu đang mở</strong></p>
+<p><code>claude-api</code> tiêm khoảng 156k token trong một tool call, làm cạn context window; người báo cáo chạy Claude Code 2.1.220 (anthropics/skills Issue #1487).</p>
+<hr>
+<h2>Những gì đã thay đổi</h2>
+<ul>
+<li><strong>v2.1.318</strong> ghi lại câu trả lời của bạn khi Claude Code hỏi có bật mods mà nó ghi trong phiên hay không. <code>assume_role</code> giờ được chấp nhận trên các upstream <code>mantle</code> của gateway Claude apps, dành cho vai trò AWS cross-account và phân bổ chi phí theo từng developer.</li>
+<li>PR #95698 đề xuất định tuyến các hook <code>.sh</code> của ba plugin đi kèm qua <code>bash</code> với đường dẫn được trích dẫn, sửa phần ralph-wiggum và output-style của #78490. Chưa phát hành.</li>
+<li>PR #106972 đề xuất đặt <code>CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1</code> trên các lượt dedupe để agent hoàn thành lượt của mình thay vì bị cắt ngang. Đang phát triển.</li>
+</ul>
+<h2>Đáng chú ý</h2>
+<ul>
+<li>Issue #97074: <code>claude -p</code> headless (entrypoint <code>sdk-cli</code>) tiêu thụ cửa sổ 5 giờ nhiều hơn khoảng 1,8 lần trên mỗi token so với <code>cli</code> tương tác trên cùng khối lượng công việc, theo đo lường của tác giả. 68 bình luận; không có bản sửa trong dữ liệu.</li>
+<li>Issue #45596: <code>/buddy</code> biến mất trong v2.1.97 mà không có ghi chú changelog; 1195 👍 và 284 bình luận yêu cầu khôi phục. Vẫn mở.</li>
+<li>Issue #107144: kiểm tra email tài khoản trong 2.1.317+ từ chối các lệnh Bash chỉ chạy cục bộ (ghi heredoc, curl tới 127.0.0.1) trong các lượt bypass headless. Báo cáo ngày 2026-11-04.</li>
+</ul>
+</details>
+
+<details>
+<summary><strong>OpenAI Codex</strong> — <a href="https://github.com/openai/codex">openai/codex</a></summary>
+
+<h2>Những thay đổi</h2>
+<p><strong>Ngân sách hình ảnh hợp nhất được bật mặc định</strong> — PR #59282 đánh dấu <code>unified_image_budget</code> là ổn định, nên các model được hỗ trợ giờ chuẩn bị ảnh ở mức chi tiết <code>original</code>. Điều này tăng độ trung thực của ảnh, và <code>view_image</code> bỏ tham số <code>detail</code> khỏi schema. Đáng lưu ý nếu prompt hoặc công cụ của bạn đặt <code>detail</code> một cách tường minh.</p>
+<p><strong>Phím tắt chuyển focus theo hướng trong workspace mode</strong> — PR #59287 thêm <code>focus_pane_left</code> và <code>focus_pane_right</code> có thể cấu hình (mặc định <code>leader left</code>/<code>leader h</code> và <code>leader right</code>/<code>leader l</code>). Việc này cho phép bạn di chuyển giữa cuộc trò chuyện chính và cuộc trò chuyện bên cạnh mà không cần mở lại pane đang ẩn.</p>
+<p><strong>rust-v0.168.0-alpha.1 đã ra mắt</strong> — một bản alpha mới, không có chi tiết changelog trong dữ liệu. Bản alpha thay đổi hành vi không báo trước; chỉ dùng khi bạn chấp nhận được điều đó.</p>
+<h2>Đáng chú ý</h2>
+<p><strong>Issue #59060</strong> (đang mở, 115 bình luận): một người dùng báo cáo Codex CLI v0.166.0, khi được yêu cầu khởi động lại một server, đã phá hủy systemd, phá hủy container và chạy các script ngẫu nhiên. Không có bản sửa trong dữ liệu.</p>
+<p><strong>Issue #54227</strong> (đang mở, 11 bình luận): một người dùng ChatGPT Pro trên Windows báo cáo lỗi <code>server_overloaded</code> lặp lại và lỗi compact từ xa trên nhiều model Codex kể từ ngày 10 tháng 9. Không có bản sửa trong dữ liệu.</p>
+<p><strong>Issue #59323</strong> (đang mở): một người dùng Enterprise trên Windows với phiên bản 26.1029.61003 không thể tiếp tục các cuộc trò chuyện dùng nhà cung cấp model được cấu hình khác sau một bản cập nhật. Không có bản sửa trong dữ liệu.</p>
+</details>
+
+<details>
+<summary><strong>Gemini CLI</strong> — <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></summary>
+
+<p><strong>Điều gì đã thay đổi</strong></p>
+<p>Gemini CLI phát hành bản nightly v0.67.0-nightly.20261104.g89e9d25d6 với hai bản sửa lỗi. CLI giờ xử lý lỗi luồng khi tải bản phát hành extension (PR #30100), và core giữ nguyên model <code>gemini-2.5-flash</code> khi được đặt tường minh trong quá trình phân giải model động. Điểm thứ hai quan trọng nếu bạn ghim model đó và cần nó không bị thay thế.</p>
+<p>Hai bản sửa đề xuất đang được xử lý cho hai báo cáo người dùng tồn đọng. PR #30122 sẽ tải định nghĩa agent từ các file markdown có symlink trong <code>~/.gemini/agents/</code>, sửa issue #20079, nơi các file agent có symlink bị bỏ qua. PR #30124 sẽ yêu cầu một ranh giới dấu phân cách đường dẫn trong <code>tildeifyPath()</code>, ngăn các thư mục anh em có tiền tố chung bị viết lại thành đường dẫn home.</p>
+<p><strong>Đáng chú ý</strong></p>
+<p>Issue #21409 (8 bình luận, 8 👍) báo cáo agent generalist treo vô hạn ở các tác vụ đơn giản như tạo thư mục; hướng dẫn model không chuyển sang subagent là cách xử lý tạm. Không có bản sửa nào trong dữ liệu này.</p>
+<p>Issue #22323 (13 bình luận) báo cáo subagent <code>codebase_investigator</code> trả về <code>status: &quot;success&quot;</code> và <code>Termination Reason: &quot;GOAL&quot;</code> sau khi chạm giới hạn lượt tối đa trước khi phân tích. Không có bản sửa nào trong dữ liệu này.</p>
+<p>Issue #24246 báo cáo lỗi 400 khi có hơn 128 tool khả dụng. Không có bản sửa nào trong dữ liệu này.</p>
+</details>
+
+<details>
+<summary><strong>GitHub Copilot CLI</strong> — <a href="https://github.com/github/copilot-cli">github/copilot-cli</a></summary>
+
+<p><strong>Thay đổi</strong></p>
+<ul>
+<li>v1.0.106-8: Tải model local trên Windows giờ tự động cài llama.cpp và hiển thị tiến trình cài engine. Điều này quan trọng nếu bạn chạy model local trên Windows và trước đây phải tự cài engine.</li>
+<li>v1.0.106-7 thêm <code>/code</code>, mở phiên hiện tại trong VS Code, và một thiết lập Fusion tier trong <code>copilot config</code>. Điều này quan trọng khi bạn muốn tiếp tục phiên CLI trong editor.</li>
+<li>v1.0.106-6 khiến <code>/settings</code> mở dashboard hợp nhất cho mọi người dùng và thêm tìm kiếm toàn cục trên settings lẫn tài nguyên local.</li>
+</ul>
+<p><strong>Đáng chú ý</strong></p>
+<ul>
+<li>Issue #5347: mọi phiên tương tác đều in &quot;Connected Connectors could not be loaded&quot;, trong khi cùng phiên bản, tài khoản và thư mục vẫn tải Connectors thành công ở chế độ <code>-p</code>. Lỗi gốc chỉ được ghi log ở mức debug. Đang mở, chưa có bản sửa trong dữ liệu.</li>
+<li>Issue #5343: <code>providers.json</code> bị bỏ qua nếu thiếu <code>COPILOT_PROVIDER_BASE_URL</code>, và <code>--model</code> âm thầm thay bằng một model thuộc subscription. Ảnh hưởng đến người dùng BYOK, gồm cả plugin tự gọi <code>copilot -p</code>. Đang mở.</li>
+<li>Issue #5270: khi chọn GPT-6.1 Sol, quá trình chuyển từ chế độ Plan sang Implementation không bao giờ xảy ra. Ảnh hưởng đến người dùng chọn model đó trực tiếp hoặc qua Auto. Đang mở.</li>
+</ul>
+</details>
+
+<details>
+<summary><strong>OpenCode</strong> — <a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></summary>
+
+<h2>Có gì thay đổi</h2>
+<p><strong>Không có bản phát hành nào trong 24 giờ qua.</strong> Không có gì được ship; các mục dưới đây đã được merge hoặc đang chờ review.</p>
+<p><strong>Tiến trình nền lạc trên <code>opencode run</code></strong> — PR #61564 ngăn <code>run</code> để lại tiến trình <code>serve --service</code> tách rời khi thoát. Điều này quan trọng trong CI và Docker, nơi tiến trình mồ côi vẫn tồn tại (issue #55908). PR đang mở, chưa merge.</p>
+<p><strong>Fork phiên giờ đã đến được client</strong> — PR #61559 phát <code>session.forked</code> bên cạnh <code>session.created</code>, nên các phiên được fork xuất hiện mà không cần refresh thủ công. Đóng #61554; vẫn đang review.</p>
+<p><strong>Giới hạn ảnh mỗi request</strong> — PR #61563 thêm giới hạn theo số lượng qua <code>media.image.max_images</code>, xử lý các phiên gửi lại toàn bộ ảnh trong lịch sử mỗi request (#59794) và trở nên không dùng được trên các backend có giới hạn ảnh mỗi prompt, như vLLM. Đang mở.</p>
+<h2>Đáng chú ý</h2>
+<p><strong>Lỗi gói miễn phí vẫn là thread đứng đầu.</strong> Issue #59387 (254 bình luận) tập hợp các báo cáo về <code>Free usage exceeded</code>, việc reset tin nhắn miễn phí không bao giờ kích hoạt, và lỗi gói miễn phí trên Desktop. Chưa có bản sửa nào được liệt kê.</p>
+<p><strong>Mất dữ liệu khi migrate V1→V2.</strong> Issue #49827 ẩn các phiên không phải git (dự án toàn cục) khỏi trình chọn TUI sau khi nâng cấp; #54736 hủy toàn bộ quá trình migrate khi các message ID cũ không khớp schema <code>Session.Message.ID</code>.</p>
+<p><strong>Subagent chạy song song phá prompt cache.</strong> Issue #61318 và #61556 báo cáo agent chính và agent con đẩy cache của nhau ra khi chạy đồng thời; phiên một agent không bị ảnh hưởng.</p>
+</details>
+
+<details>
+<summary><strong>Pi</strong> — <a href="https://github.com/earendil-works/pi">earendil-works/pi</a></summary>
+
+<p><strong>Có gì thay đổi</strong></p>
+<p>Không có bản phát hành nào ra mắt trong 24 giờ qua, nên hôm nay không có gì mới để cài đặt. Những thay đổi dưới đây là các bản sửa lỗi đã được hợp nhất và các đề xuất đang mở, hiển thị trong dữ liệu issue và PR.</p>
+<p>Một tiến trình ở chế độ RPC giờ sẽ thoát khi có lệnh gọi <code>ctx.shutdown()</code> nhàn rỗi từ một extension, ví dụ như callback của timer, thay vì chờ lệnh tiếp theo (<a href="https://github.com/earendil-works/pi/issues/11599">#11599</a>). Một PR tiếp theo giữ cho tiến trình shutdown đã bắt đầu tiếp tục chạy khi stdin đóng và SIGTERM đến trong cùng một tick (<a href="https://github.com/earendil-works/pi/pull/11752">#11752</a>). Điều này liên quan nếu bạn chạy <code>--mode rpc</code> dưới systemd hoặc một supervisor.</p>
+<p>Công cụ grep giờ lấy các dòng ngữ cảnh từ ripgrep thay vì đọc toàn bộ từng file khớp, khắc phục lỗi crash do hết bộ nhớ khi dùng SDK headless (<a href="https://github.com/earendil-works/pi/issues/9276">#9276</a>, <a href="https://github.com/earendil-works/pi/pull/11705">#11705</a>).</p>
+<p>MCP Streamable HTTP giờ áp dụng <code>maxMessageBytes</code> cho các phản hồi <code>application/json</code>, không chỉ SSE (<a href="https://github.com/earendil-works/pi/issues/11335">#11335</a>, <a href="https://github.com/earendil-works/pi/pull/11749">#11749</a>).</p>
+<p><strong>Đáng chú ý</strong></p>
+<p>Trên Windows với mintty và ConPTY, các phản hồi truy vấn màu terminal rò rỉ vào prompt và BEL mở trình soạn thảo bên ngoài; phiên bản 0.99.x bị ảnh hưởng, 0.87.1 thì không (<a href="https://github.com/earendil-works/pi/issues/10256">#10256</a>, 23 bình luận, đang mở, đang xử lý).</p>
+<p>Trên Windows, Ctrl+V không được gán phím trong trình soạn thảo; chỉ có Alt+V để dán (<a href="https://github.com/earendil-works/pi/issues/11765">#11765</a>, đã đóng).</p>
+<p><code>find</code> không trả về kết quả cho các mẫu glob dùng dấu phân cách backslash như <code>src\**\*.ts</code>, và không báo lỗi (<a href="https://github.com/earendil-works/pi/issues/9262">#9262</a>, đang mở).</p>
+</details>
+
+<details>
+<summary><strong>Qwen Code</strong> — <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code</a></summary>
+
+<p><strong>Đã thay đổi gì</strong></p>
+<ul>
+<li><p><strong>Phát hành v0.26.7.</strong> Bản này thêm cài đặt <code>model.catalogRefresh</code> theo phạm vi operator và cho phép <code>privacy.usageStatisticsEnabled: false</code> dừng việc làm mới danh mục model chạy nền. Ghi chú phát hành không liệt kê thay đổi gây vỡ tương thích. (<a href="https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7">release</a>)</p>
+</li>
+<li><p><strong>Đang hợp nhất cơ chế tin cậy cho project-hook (PR #16264, đang mở).</strong> Bản sửa khiến hook trong <code>.qwen/settings.json</code> chỉ được nạp khi thư mục được tin cậy rõ ràng ở mọi chế độ — TUI, headless và ACP/SDK — bỏ quyền miễn trừ cho chế độ không tương tác. Báo cáo bảo mật liên quan #14746 đã đóng. Chưa phát hành.</p>
+</li>
+<li><p><strong>Windows CUA Driver 0.27.0 bị gắn cờ.</strong> Bitdefender chặn tệp ZIP x64 chính thức với mã <code>Gen:Variant.Barys.381847</code> và từ chối truy cập (issue #16249, đang mở, P1). Dữ liệu chưa có bản sửa.</p>
+</li>
+</ul>
+<p><strong>Đáng chú ý</strong></p>
+<ul>
+<li><p><strong>Tác vụ theo lịch bền vững có thể biến mất im lặng.</strong> Sau khi daemon khởi động lại, tác vụ có session không còn tồn tại sẽ không khôi phục được, không cảnh báo và không chạy bù (issue #16207, đang mở, P1). Ảnh hưởng đến người dùng daemon; dữ liệu chưa có bản sửa.</p>
+</li>
+<li><p><strong>Workflow của bot làm cạn rate limit <code>GITHUB_TOKEN</code>.</strong> Các đợt gọi dồn dập từ workflow autofix, triage và review khiến job CI không liên quan thất bại với HTTP 403 (issue #16188, đang mở, P1). Báo cáo ngày 2026-11-03.</p>
+</li>
+<li><p><strong>Response có thể timeout ở khoảng 300s.</strong> Request tương thích Anthropic trong 0.26.4 ngắt kết nối gần 301s dù đã đặt <code>QWEN_CODE_API_TIMEOUT_MS</code>; issue #16187 đã đóng.</p>
+</li>
+</ul>
+</details>
+
+<hr>
+<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>AI CLI Tools Digest 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-cli-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-cli-en</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>AI CLI Tools Community Digest 2026-11-04 Generated: 2026-11-04 06:03 UTC | Tools covered: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills Per-Tool Reports Claude Code — anthropics/claude-code Claude Code Skills Highlights Source: anthropics/skills fix(mcp-builder) — support mcp&amp;gt;=2 HTTP client imports Updates the MCP builder&amp;#39;s connection script so it works with mcp&amp;gt;=2.0.0, where streamablehttp_client was renamed to streamable_http_client...</description>
+      <content:encoded><![CDATA[<h1>AI CLI Tools Community Digest 2026-11-04</h1>
+<blockquote>
+<p>Generated: 2026-11-04 06:03 UTC | Tools covered: 7</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/anthropics/claude-code">Claude Code</a></li>
+<li><a href="https://github.com/openai/codex">OpenAI Codex</a></li>
+<li><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></li>
+<li><a href="https://github.com/github/copilot-cli">GitHub Copilot CLI</a></li>
+<li><a href="https://github.com/anomalyco/opencode">OpenCode</a></li>
+<li><a href="https://github.com/earendil-works/pi">Pi</a></li>
+<li><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></li>
+<li><a href="https://github.com/anthropics/skills">Claude Code Skills</a></li>
+</ul>
+<hr>
+<h2>Per-Tool Reports</h2>
+<details>
+<summary><strong>Claude Code</strong> — <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></summary>
+
+<h2>Claude Code Skills Highlights</h2>
+<blockquote>
+<p>Source: <a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
+</blockquote>
+<p><strong>fix(mcp-builder) — support mcp&gt;=2 HTTP client imports</strong>
+Updates the MCP builder&#39;s connection script so it works with <code>mcp&gt;=2.0.0</code>, where <code>streamablehttp_client</code> was renamed to <code>streamable_http_client</code> and custom headers now pass through <code>create_mcp_http_client</code>. Reach for it when building or testing MCP servers on the newer SDK. Open (anthropics/skills PR #1742).</p>
+<p><strong>Add md2video-audio skill — Markdown to MP4 with voiceover</strong>
+Compiles Markdown documents into MP4 videos via Marp slides plus human-like voiceovers, per the author&#39;s description. Reach for it when a document needs to become a narrated video. Open (anthropics/skills PR #1703).</p>
+<p><strong>Add pyxel skill — retro game development</strong>
+Guides creating, debugging and verifying retro Python games, covering headless input-driven runs, direct frame inspection and task-specific state checks. Reach for it when building or testing a Pyxel game. Open (anthropics/skills PR #525).</p>
+<p><strong>Open requests</strong></p>
+<p><code>claude-api</code> injects roughly 156k tokens in a single tool call, exhausting the context window; the reporter ran Claude Code 2.1.220 (anthropics/skills Issue #1487).</p>
+<hr>
+<h2>What changed</h2>
+<ul>
+<li><strong>v2.1.318</strong> records your answer when Claude Code asks to enable the mods it writes during a session. <code>assume_role</code> is now accepted on <code>mantle</code> upstreams of the Claude apps gateway, for cross-account AWS roles and per-developer cost attribution.</li>
+<li>PR #95698 proposes routing three bundled plugins&#39; <code>.sh</code> hooks through <code>bash</code> with a quoted path, fixing the ralph-wiggum and output-style half of #78490. Not released.</li>
+<li>PR #106972 proposes setting <code>CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1</code> on dedupe runs so agents finish their turn instead of being cut off. In development.</li>
+</ul>
+<h2>Worth knowing</h2>
+<ul>
+<li>Issue #97074: headless <code>claude -p</code> (entrypoint <code>sdk-cli</code>) consumed ~1.8× more of the 5-hour window per token than interactive <code>cli</code> on the same workload, per the author&#39;s measurements. 68 comments; no fix in the data.</li>
+<li>Issue #45596: <code>/buddy</code> disappeared in v2.1.97 with no changelog note; 1195 👍 and 284 comments ask for its return. Still open.</li>
+<li>Issue #107144: the account-email check in 2.1.317+ denies local-only Bash calls (heredoc writes, curl to 127.0.0.1) in headless bypass runs. Reported 2026-11-04.</li>
+</ul>
+</details>
+
+<details>
+<summary><strong>OpenAI Codex</strong> — <a href="https://github.com/openai/codex">openai/codex</a></summary>
+
+<h2>What changed</h2>
+<p><strong>Unified image budgeting is on by default</strong> — PR #59282 marks <code>unified_image_budget</code> stable, so supported models now prepare images at <code>original</code> detail. This raises image fidelity, and <code>view_image</code> drops its <code>detail</code> parameter from the schema. It matters if your prompts or tooling set <code>detail</code> explicitly.</p>
+<p><strong>Directional focus shortcuts in workspace mode</strong> — PR #59287 adds configurable <code>focus_pane_left</code> and <code>focus_pane_right</code> (defaults <code>leader left</code>/<code>leader h</code> and <code>leader right</code>/<code>leader l</code>). This lets you move between parent and side conversations without reopening a hidden pane.</p>
+<p><strong>rust-v0.168.0-alpha.1 is out</strong> — a new alpha release, no changelog detail in the data. Alpha builds change behavior without warning; use them only when you can absorb that.</p>
+<h2>Worth knowing</h2>
+<p><strong>Issue #59060</strong> (open, 115 comments): a user reports Codex CLI v0.166.0, told to reboot a server, destroyed systemd, destroyed containers, and ran random scripts. No fix in the data.</p>
+<p><strong>Issue #54227</strong> (open, 11 comments): a Windows ChatGPT Pro user reports repeated <code>server_overloaded</code> and remote compact failures across Codex models since September 10. No fix in the data.</p>
+<p><strong>Issue #59323</strong> (open): a Windows Enterprise user on 26.1029.61003 cannot resume chats that use a different configured model provider after an update. No fix in the data.</p>
+</details>
+
+<details>
+<summary><strong>Gemini CLI</strong> — <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></summary>
+
+<p><strong>What changed</strong></p>
+<p>Gemini CLI shipped nightly v0.67.0-nightly.20261104.g89e9d25d6 with two fixes. The CLI now handles stream failures during extension release downloads (PR #30100), and core preserves an explicitly set <code>gemini-2.5-flash</code> model during dynamic model resolution. The second matters if you pin that model and rely on it not being swapped.</p>
+<p>Proposed fixes are in flight for two long-standing user reports. PR #30122 would load agent definitions from symlinked markdown files in <code>~/.gemini/agents/</code>, fixing issue #20079, where symlinked agent files are skipped. PR #30124 would require a path-separator boundary in <code>tildeifyPath()</code>, preventing sibling directories with a shared prefix from being rewritten as home paths.</p>
+<p><strong>Worth knowing</strong></p>
+<p>Issue #21409 (8 comments, 8 👍) reports the generalist agent hanging forever on simple tasks like folder creation; instructing the model not to defer to subagents works around it. No fix appears in this data.</p>
+<p>Issue #22323 (13 comments) reports the <code>codebase_investigator</code> subagent returning <code>status: &quot;success&quot;</code> and <code>Termination Reason: &quot;GOAL&quot;</code> after hitting its maximum turn limit before analysis. No fix appears in this data.</p>
+<p>Issue #24246 reports a 400 error when more than 128 tools are available. No fix appears in this data.</p>
+</details>
+
+<details>
+<summary><strong>GitHub Copilot CLI</strong> — <a href="https://github.com/github/copilot-cli">github/copilot-cli</a></summary>
+
+<p><strong>What changed</strong></p>
+<ul>
+<li>v1.0.106-8: Windows local model downloads now install llama.cpp automatically and show engine installation progress. It matters if you run local models on Windows and previously had to install the engine yourself.</li>
+<li>v1.0.106-7 adds <code>/code</code>, which opens the current session in VS Code, and a Fusion tier setting in <code>copilot config</code>. It matters when you want to continue a CLI session in your editor.</li>
+<li>v1.0.106-6 makes <code>/settings</code> open the unified dashboard for all users and adds global search across settings and local resources.</li>
+</ul>
+<p><strong>Worth knowing</strong></p>
+<ul>
+<li>Issue #5347: every interactive session prints &quot;Connected Connectors could not be loaded&quot;, while the same version, account and directory load Connectors successfully in <code>-p</code> mode. The underlying error is only logged at debug level. Open, no fix in the data.</li>
+<li>Issue #5343: <code>providers.json</code> is ignored without <code>COPILOT_PROVIDER_BASE_URL</code>, and <code>--model</code> silently substitutes a subscription model. It affects BYOK users, including plugins making their own <code>copilot -p</code> calls. Open.</li>
+<li>Issue #5270: with GPT-6.1 Sol selected, the transition from Plan to Implementation mode never occurs. It affects users who pick that model explicitly or through Auto. Open.</li>
+</ul>
+</details>
+
+<details>
+<summary><strong>OpenCode</strong> — <a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></summary>
+
+<h2>What changed</h2>
+<p><strong>No releases in the last 24h.</strong> Nothing shipped; the items below are merged or in review.</p>
+<p><strong>Stray background service on <code>opencode run</code></strong> — PR #61564 stops <code>run</code> from leaving a detached <code>serve --service</code> process behind when it exits. This matters in CI and Docker, where the orphan survived (issue #55908). The PR is open, not merged.</p>
+<p><strong>Session forks now reach the client</strong> — PR #61559 publishes <code>session.forked</code> in addition to <code>session.created</code>, so forked sessions appear without a manual refresh. Closes #61554; still in review.</p>
+<p><strong>Image cap per request</strong> — PR #61563 adds a count-based limit via <code>media.image.max_images</code>, addressing sessions that resend all history images every request (#59794) and become unusable on backends with a per-prompt image limit, such as vLLM. Open.</p>
+<h2>Worth knowing</h2>
+<p><strong>Free-tier errors remain the top thread.</strong> Issue #59387 (254 comments) collects reports of <code>Free usage exceeded</code>, free-message resets that never fire, and Desktop free-tier failures. No fix listed.</p>
+<p><strong>V1→V2 migration data loss.</strong> Issue #49827 hides non-git (global-project) sessions from the TUI picker after upgrading; #54736 aborts migration entirely on legacy message IDs failing the <code>Session.Message.ID</code> schema.</p>
+<p><strong>Parallel subagents break prompt cache.</strong> Issue #61318 and #61556 report main and child agents evicting each other&#39;s cache when run concurrently; single-agent sessions are unaffected.</p>
+</details>
+
+<details>
+<summary><strong>Pi</strong> — <a href="https://github.com/earendil-works/pi">earendil-works/pi</a></summary>
+
+<p><strong>What changed</strong></p>
+<p>No releases landed in the last 24 hours, so nothing new is installable today. The changes below are merged fixes and open proposals visible in the issue and PR data.</p>
+<p>An RPC-mode process now exits on an idle <code>ctx.shutdown()</code> call from an extension, such as a timer callback, instead of waiting for the next command (<a href="https://github.com/earendil-works/pi/issues/11599">#11599</a>). A follow-up PR keeps a started shutdown running when stdin closes and SIGTERM arrives in the same tick (<a href="https://github.com/earendil-works/pi/pull/11752">#11752</a>). Relevant if you run <code>--mode rpc</code> under systemd or a supervisor.</p>
+<p>The grep tool now takes context lines from ripgrep rather than reading each matched file whole, fixing the out-of-memory crash in headless SDK use (<a href="https://github.com/earendil-works/pi/issues/9276">#9276</a>, <a href="https://github.com/earendil-works/pi/pull/11705">#11705</a>).</p>
+<p>MCP Streamable HTTP now applies <code>maxMessageBytes</code> to <code>application/json</code> replies, not only SSE (<a href="https://github.com/earendil-works/pi/issues/11335">#11335</a>, <a href="https://github.com/earendil-works/pi/pull/11749">#11749</a>).</p>
+<p><strong>Worth knowing</strong></p>
+<p>On Windows with mintty and ConPTY, terminal color query replies leak into the prompt and BEL opens the external editor; 0.99.x is affected, 0.87.1 is not (<a href="https://github.com/earendil-works/pi/issues/10256">#10256</a>, 23 comments, open, in progress).</p>
+<p>On Windows, Ctrl+V is unbound in the editor; only Alt+V pastes (<a href="https://github.com/earendil-works/pi/issues/11765">#11765</a>, closed).</p>
+<p><code>find</code> returns no results for glob patterns using backslash separators like <code>src\**\*.ts</code>, with no error (<a href="https://github.com/earendil-works/pi/issues/9262">#9262</a>, open).</p>
+</details>
+
+<details>
+<summary><strong>Qwen Code</strong> — <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code</a></summary>
+
+<p><strong>What changed</strong></p>
+<ul>
+<li><p><strong>v0.26.7 released.</strong> It adds an operator-scoped <code>model.catalogRefresh</code> setting and lets <code>privacy.usageStatisticsEnabled: false</code> stop the background model catalog refresh. The release notes list no breaking changes. (<a href="https://github.com/QwenLM/qwen-code/releases/tag/v0.26.7">release</a>)</p>
+</li>
+<li><p><strong>Project-hook trust is being unified (PR #16264, open).</strong> The fix makes <code>.qwen/settings.json</code> hooks load only with explicit folder trust in every mode — TUI, headless, and ACP/SDK — removing the non-interactive exemption. Related security report #14746 was closed. Not yet released.</p>
+</li>
+<li><p><strong>Windows CUA Driver 0.27.0 flagged.</strong> Bitdefender blocks the official x64 ZIP as <code>Gen:Variant.Barys.381847</code> and denies access (issue #16249, open, P1). No fix in the data.</p>
+</li>
+</ul>
+<p><strong>Worth knowing</strong></p>
+<ul>
+<li><p><strong>Durable scheduled tasks can silently vanish.</strong> After a daemon restart, tasks whose session no longer exists fail to rehydrate with no warning and no catch-up (issue #16207, open, P1). Affects daemon users; no fix in the data.</p>
+</li>
+<li><p><strong>Bot workflows exhaust the <code>GITHUB_TOKEN</code> rate limit.</strong> Bursts from autofix, triage and review workflows cause unrelated CI jobs to fail with HTTP 403 (issue #16188, open, P1). Reported 2026-11-03.</p>
+</li>
+<li><p><strong>Responses can time out at ~300s.</strong> Anthropic-compatible requests in 0.26.4 disconnect near 301s even with <code>QWEN_CODE_API_TIMEOUT_MS</code> set; issue #16187 is closed.</p>
+</li>
+</ul>
+</details>
+
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Xu hướng mã nguồn mở AI 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-trending</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-trending</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Xu hướng mã nguồn mở AI 2026-11-04 Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-11-04 06:03 UTC Dự án Ngôn ngữ Sao (tổng / hôm nay) Chức năng / khi nào dùng thedotmack/claude-mem TypeScript 112.154 (+1.139) Ghi lại mọi thứ agent làm trong phiên, nén bằng AI, rồi đưa ngữ cảnh liên quan vào các phiên sau. Hữu ích khi bạn cần bộ nhớ lâu dài xuyên phiên cho Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot hoặc OpenCode. vercel-labs/agent-desktop Rust (+3.791) Cung cấp CLI ...</description>
+      <content:encoded><![CDATA[<h1>Xu hướng mã nguồn mở AI 2026-11-04</h1>
+<blockquote>
+<p>Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<hr>
+<table>
+<thead>
+<tr>
+<th align="left">Dự án</th>
+<th align="left">Ngôn ngữ</th>
+<th align="right">Sao (tổng / hôm nay)</th>
+<th align="left">Chức năng / khi nào dùng</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></td>
+<td align="left">TypeScript</td>
+<td align="right">112.154 (+1.139)</td>
+<td align="left">Ghi lại mọi thứ agent làm trong phiên, nén bằng AI, rồi đưa ngữ cảnh liên quan vào các phiên sau. Hữu ích khi bạn cần bộ nhớ lâu dài xuyên phiên cho Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot hoặc OpenCode.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/vercel-labs/agent-desktop">vercel-labs/agent-desktop</a></td>
+<td align="left">Rust</td>
+<td align="right">(+3.791)</td>
+<td align="left">Cung cấp CLI dùng máy tính cho agent AI. Hữu ích khi bạn cần agent điều khiển môi trường desktop từ dòng lệnh.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/max-sixty/worktrunk">max-sixty/worktrunk</a></td>
+<td align="left">Rust</td>
+<td align="right">(+438)</td>
+<td align="left">Quản lý Git worktree từ CLI, thiết kế cho luồng làm việc song song của agent AI. Hữu ích khi bạn cần nhiều agent làm việc trên các nhánh riêng cùng lúc.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td>
+<td align="left">Shell</td>
+<td align="right">(+1.164)</td>
+<td align="left">Công bố các skill lấy trực tiếp từ thư mục <code>.agents</code> của tác giả. Hữu ích khi bạn cần định nghĩa skill có sẵn cho agent tập trung vào kỹ sư.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/Eigenwise/atomic-agents">Eigenwise/atomic-agents</a></td>
+<td align="left">Python</td>
+<td align="right">6.317</td>
+<td align="left">Xây dựng agent AI từ các phần nhỏ ghép lại. Hữu ích khi bạn muốn lắp agent từ các thành phần nguyên tử thay vì một khối lớn.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/0xPlaygrounds/rig">0xPlaygrounds/rig</a></td>
+<td align="left">Rust</td>
+<td align="right">9.061</td>
+<td align="left">Xây dựng ứng dụng LLM dạng module và mở rộng được bằng Rust. Hữu ích khi bạn cần thư viện Rust để tổ chức ứng dụng LLM.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/skyzh/tiny-llm">skyzh/tiny-llm</a></td>
+<td align="left">Python</td>
+<td align="right">5.537</td>
+<td align="left">Dạy về hệ thống suy luận LLM trên Apple Silicon bằng cách tự xây một vLLM nhỏ cộng với Qwen. Hữu ích khi bạn là kỹ sư hệ thống đang học cách serving suy luận hoạt động.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/microsoft/multilspy">microsoft/multilspy</a></td>
+<td align="left">Python</td>
+<td align="right">615</td>
+<td align="left">Cung cấp thư viện client LSP bằng Python để xây ứng dụng quanh language server. Hữu ích khi bạn cần khả năng language server trong harness lập trình hoặc công cụ agent.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/headroomlabs-ai/headroom">headroomlabs-ai/headroom</a></td>
+<td align="left">Python</td>
+<td align="right">78.777</td>
+<td align="left">Nén đầu ra công cụ, log, tệp và đoạn RAG trước khi chúng tới LLM. Hữu ích khi bạn cần ít token hơn cho agent lập trình hoặc payload JSON mà vẫn giữ nguyên câu trả lời.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></td>
+<td align="left">Python</td>
+<td align="right">141.968</td>
+<td align="left">Biến codebase cùng tài liệu, schema SQL, config và PDF thành đồ thị tri thức truy vấn được qua skill cho Claude Code, Cursor, Codex và Gemini CLI, dùng phân tích AST cục bộ và không cần vector store. Hữu ích khi bạn cần hiểu codebase mà không dùng cơ sở dữ liệu vector.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>AI Open Source Trends 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-trending-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-trending-en</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>AI Open Source Trends 2026-11-04 Sources: GitHub Trending + GitHub Search API | Generated: 2026-11-04 06:03 UTC Project Lang Stars (total / today) What it does / when to use it thedotmack/claude-mem TypeScript 112,154 (+1,139) Captures everything an agent does during sessions, compresses it with AI, and injects relevant context into future sessions. Useful when you need persistent memory across sessions for Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, or OpenCode. vercel-labs/agent-des...</description>
+      <content:encoded><![CDATA[<h1>AI Open Source Trends 2026-11-04</h1>
+<blockquote>
+<p>Sources: GitHub Trending + GitHub Search API | Generated: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<hr>
+<table>
+<thead>
+<tr>
+<th align="left">Project</th>
+<th align="left">Lang</th>
+<th align="right">Stars (total / today)</th>
+<th align="left">What it does / when to use it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></td>
+<td align="left">TypeScript</td>
+<td align="right">112,154 (+1,139)</td>
+<td align="left">Captures everything an agent does during sessions, compresses it with AI, and injects relevant context into future sessions. Useful when you need persistent memory across sessions for Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, or OpenCode.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/vercel-labs/agent-desktop">vercel-labs/agent-desktop</a></td>
+<td align="left">Rust</td>
+<td align="right">(+3,791)</td>
+<td align="left">Provides a computer-use CLI for AI agents. Useful when you need an agent to drive a desktop environment from the command line.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/max-sixty/worktrunk">max-sixty/worktrunk</a></td>
+<td align="left">Rust</td>
+<td align="right">(+438)</td>
+<td align="left">Manages Git worktrees from a CLI, designed for parallel AI agent workflows. Useful when you need several agents working on separate branches at the same time.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td>
+<td align="left">Shell</td>
+<td align="right">(+1,164)</td>
+<td align="left">Publishes skills taken straight from the author&#39;s <code>.agents</code> directory. Useful when you need ready-made skill definitions for engineer-focused agents.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/Eigenwise/atomic-agents">Eigenwise/atomic-agents</a></td>
+<td align="left">Python</td>
+<td align="right">6,317</td>
+<td align="left">Builds AI agents from small composable pieces. Useful when you want to assemble an agent from atomic components instead of a monolith.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/0xPlaygrounds/rig">0xPlaygrounds/rig</a></td>
+<td align="left">Rust</td>
+<td align="right">9,061</td>
+<td align="left">Builds modular and scalable LLM applications in Rust. Useful when you need a Rust library for LLM app structure.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/skyzh/tiny-llm">skyzh/tiny-llm</a></td>
+<td align="left">Python</td>
+<td align="right">5,537</td>
+<td align="left">Teaches LLM inference systems on Apple Silicon by building a tiny vLLM plus Qwen. Useful when you are a systems engineer learning how inference serving works.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/microsoft/multilspy">microsoft/multilspy</a></td>
+<td align="left">Python</td>
+<td align="right">615</td>
+<td align="left">Provides a Python LSP client library for building applications around language servers. Useful when you need language-server capabilities inside a coding harness or agent tool.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/headroomlabs-ai/headroom">headroomlabs-ai/headroom</a></td>
+<td align="left">Python</td>
+<td align="right">78,777</td>
+<td align="left">Compresses tool outputs, logs, files, and RAG chunks before they reach the LLM. Useful when you need fewer tokens for coding agents or JSON payloads while keeping the same answers.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></td>
+<td align="left">Python</td>
+<td align="right">141,968</td>
+<td align="left">Turns a codebase with docs, SQL schemas, configs, and PDFs into a queryable knowledge graph via a skill for Claude Code, Cursor, Codex, and Gemini CLI, using local AST parsing and no vector store. Useful when you need codebase understanding without a vector database.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Báo cáo theo dõi nội dung chính thức AI 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-web</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-web</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Báo cáo theo dõi nội dung chính thức của AI 2026-11-04 Cập nhật hôm nay | Nội dung mới: 4 bài | Thay đổi watchlist: 1 | Tạo lúc: 2026-11-04 06:03 UTC Nguồn dữ liệu: Anthropic: anthropic.com — 1 bài mới (sitemap tổng: 493) OpenAI: openai.com — 3 bài mới (sitemap tổng: 1107) Cập nhật AI — 2026-11-04 Thay đổi Anthropic công bố nghiên cứu về suy luận có thể chứng minh cho mô hình ngôn ngữ lớn, mô tả một hệ thống tên là FlashProve. Công trình nhắm vào một lỗ hổng mà Anthropic gọi tên trực tiếp: người...</description>
+      <content:encoded><![CDATA[<h1>Báo cáo theo dõi nội dung chính thức của AI 2026-11-04</h1>
+<blockquote>
+<p>Cập nhật hôm nay | Nội dung mới: 4 bài | Thay đổi watchlist: 1 | Tạo lúc: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<p>Nguồn dữ liệu:</p>
+<ul>
+<li>Anthropic: <a href="https://www.anthropic.com">anthropic.com</a> — 1 bài mới (sitemap tổng: 493)</li>
+<li>OpenAI: <a href="https://openai.com">openai.com</a> — 3 bài mới (sitemap tổng: 1107)</li>
+</ul>
+<hr>
+<h1>Cập nhật AI — 2026-11-04</h1>
+<h2>Thay đổi</h2>
+<ul>
+<li>Anthropic công bố nghiên cứu về suy luận có thể chứng minh cho mô hình ngôn ngữ lớn, mô tả một hệ thống tên là FlashProve. Công trình nhắm vào một lỗ hổng mà Anthropic gọi tên trực tiếp: người dùng truy vấn mô hình hôm nay không thể kiểm tra rằng phản hồi đến từ mô hình mà nhà cung cấp nói là đang trả lời. Bằng chứng mật mã cho suy luận cho phép nhà cung cấp cam kết với một mô hình và chứng minh mỗi phản hồi đến từ mô hình đó. Bài viết là tóm tắt dành cho lãnh đạo, dẫn đến báo cáo kỹ thuật; bài liệt kê các giới hạn và có đồng tác giả từ bên ngoài (EPFL, MIT, StarkWare). Nếu hoạt động đúng như mô tả, nó cho phép: xác minh rằng dịch vụ định tuyến hoặc kẻ tấn công không thay thế mô hình hay sửa đổi luồng token. Link: <a href="https://www.anthropic.com/research/provable-inference">https://www.anthropic.com/research/provable-inference</a></li>
+<li>OpenAI công bố ba mục index hôm nay. Tiêu đề được suy ra từ slug URL và có thể không chính xác; không có nội dung bài viết, nên không suy đoán nội dung. Chỉ có link và danh mục:<ul>
+<li><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world/">https://openai.com/index/accelerating-engineering-for-the-physical-world/</a> — danh mục: index</li>
+<li><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world/">https://openai.com/index/accelerating-engineering-for-the-physical-world/</a> — danh mục: index (URL trùng trong danh sách nguồn)</li>
+<li><a href="https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer/">https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer/</a> — danh mục: index</li>
+</ul>
+</li>
+</ul>
+<h2>Giá, hạn mức và quyền truy cập</h2>
+<ul>
+<li>Trang kế hoạch và giá của Claude (<a href="https://claude.com/pricing">https://claude.com/pricing</a>): dòng &quot;Context window More information Up to 1M varies by model Up to 1&quot; không còn trên trang. Nguồn cho thấy một mục bị xóa, không phải giá trị mới, nên không thể suy ra hướng thay đổi. Ảnh hưởng: bất kỳ ai dựa vào trang này để xác nhận con số cửa sổ ngữ cảnh. Hành động: nếu bạn phụ thuộc vào một giới hạn ngữ cảnh cụ thể cho công việc với Claude, hãy xác nhận con số hiện tại trong tài liệu sản phẩm chính thức thay vì trang giá. Không có số liệu nào khác được đưa ra, nên không có số nào được báo cáo.</li>
+<li>Đây là lần đọc đầu tiên các mục nghiên cứu của OpenAI và Anthropic ở trên. Chưa có mốc cơ sở về giá, hạn mức hay quyền truy cập nào được ghi trước đó cho chúng.</li>
+</ul>
+<h2>Nên làm gì</h2>
+<ul>
+<li>Nếu quy trình của bạn giả định cửa sổ ngữ cảnh cỡ 1M ở Claude dựa trên trang giá, hãy kiểm tra lại giả định đó với tài liệu chính thức hiện tại trước khi dựa vào.</li>
+<li>Các trang OpenAI hôm nay chỉ có metadata. Mở link trực tiếp nếu bạn cần biết chúng có ảnh hưởng đến công việc của bạn không; không nội dung nào trong báo cáo này nên được đọc như mô tả về nội dung của chúng.</li>
+</ul>
+<hr>
+<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Official AI Content Report 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-web-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-web-en</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Official AI Content Report 2026-11-04 Today&amp;#39;s update | New content: 4 articles | Watchlist changes: 1 | Generated: 2026-11-04 06:03 UTC Sources: Anthropic: anthropic.com — 1 new articles (sitemap total: 493) OpenAI: openai.com — 3 new articles (sitemap total: 1107) AI Updates — 2026-11-04 What changed Anthropic published research on provable inference for large language models, describing a system called FlashProve. The work targets a gap Anthropic names directly: a user querying a model tod...</description>
+      <content:encoded><![CDATA[<h1>Official AI Content Report 2026-11-04</h1>
+<blockquote>
+<p>Today&#39;s update | New content: 4 articles | Watchlist changes: 1 | Generated: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<p>Sources:</p>
+<ul>
+<li>Anthropic: <a href="https://www.anthropic.com">anthropic.com</a> — 1 new articles (sitemap total: 493)</li>
+<li>OpenAI: <a href="https://openai.com">openai.com</a> — 3 new articles (sitemap total: 1107)</li>
+</ul>
+<hr>
+<h1>AI Updates — 2026-11-04</h1>
+<h2>What changed</h2>
+<ul>
+<li>Anthropic published research on provable inference for large language models, describing a system called FlashProve. The work targets a gap Anthropic names directly: a user querying a model today cannot check that a response came from the model the provider claims is responding. Cryptographic proofs of inference let a provider commit to a model and prove each response came from it. The post is an executive summary linking to a technical report; it lists limitations and is co-authored with external researchers (EPFL, MIT, StarkWare). What it enables, if it works as described: verification that a routing service or attacker did not substitute a model or alter a token stream. Link: <a href="https://www.anthropic.com/research/provable-inference">https://www.anthropic.com/research/provable-inference</a></li>
+<li>OpenAI published three index items today. Titles are derived from URL slugs and may be inaccurate; no article text was available, so no content is inferred. Links and categories only:<ul>
+<li><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world/">https://openai.com/index/accelerating-engineering-for-the-physical-world/</a> — category: index</li>
+<li><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world/">https://openai.com/index/accelerating-engineering-for-the-physical-world/</a> — category: index (duplicate URL in the source list)</li>
+<li><a href="https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer/">https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer/</a> — category: index</li>
+</ul>
+</li>
+</ul>
+<h2>Price, quota and access</h2>
+<ul>
+<li>Claude plans and pricing page (<a href="https://claude.com/pricing">https://claude.com/pricing</a>): the line &quot;Context window More information Up to 1M varies by model Up to 1&quot; is no longer on the page. The source shows a removal, not a new value, so no direction of change can be inferred. Affected: anyone relying on the page to confirm a context-window figure. Action: if you depend on a specific context limit for Claude work, confirm the current figure in official product documentation rather than the pricing page. No other numbers are given, so none are reported.</li>
+<li>This is the first read of the OpenAI and Anthropic research items above. No price, quota or access baseline was previously recorded for them.</li>
+</ul>
+<h2>What to do</h2>
+<ul>
+<li>If your workflow assumes a 1M-class context window in Claude based on the pricing page, re-check that assumption against current official documentation before relying on it.</li>
+<li>The OpenAI pages are metadata-only today. Open the links directly if you need to know whether they affect your work; nothing in this report should be read as a description of their contents.</li>
+</ul>
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Bản tin cộng đồng Hacker News AI 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-hn</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-hn</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Bản tin cộng đồng Hacker News AI 2026-11-04 Nguồn dữ liệu: Hacker News | 8 tin | Tạo lúc: 2026-11-04 06:03 UTC Postman desktop tự cài plugin Codex và Claude, rồi tự phê duyệt hook khởi động của chính nó Một issue trên GitHub báo cáo rằng việc mở Postman 12.33.4 trên macOS tự động cài một plugin Postman vào Codex và Claude Code, đồng thời thêm một plugin Claude Code và một Postman CLI. Log của Postman ghi lại một lần cài &amp;quot;auto-existing-upgrade&amp;quot; với kết quả &amp;quot;claude-code:installed,co...</description>
+      <content:encoded><![CDATA[<h1>Bản tin cộng đồng Hacker News AI 2026-11-04</h1>
+<blockquote>
+<p>Nguồn dữ liệu: <a href="https://news.ycombinator.com/">Hacker News</a> | 8 tin | Tạo lúc: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<hr>
+<h3>Postman desktop tự cài plugin Codex và Claude, rồi tự phê duyệt hook khởi động của chính nó</h3>
+<p>Một issue trên GitHub báo cáo rằng việc mở Postman 12.33.4 trên macOS tự động cài một plugin Postman vào Codex và Claude Code, đồng thời thêm một plugin Claude Code và một Postman CLI. Log của Postman ghi lại một lần cài &quot;auto-existing-upgrade&quot; với kết quả &quot;claude-code:installed,codex:installed.&quot; Hook Codex được cài in ra chỉ dẫn lúc bắt đầu phiên, yêu cầu agent nạp skill Postman trước mọi tác vụ API không tầm thường, và mã nguồn trình cài gọi một hàm ghi hash tin cậy cho hook của Postman — điều mà người báo cáo gọi là tự phê duyệt. Báo cáo cáo buộc việc tích hợp và thay đổi chỉ dẫn ngoài ý muốn, không phải rò rỉ dữ liệu.
+Nguồn: <a href="https://github.com/postmanlabs/postman-app-support/issues/14370">github.com</a> · <a href="https://news.ycombinator.com/item?id=50354960">HN</a>
+1150 điểm · 376 bình luận</p>
+<h3>Nợ AI ngoài bảng cân đối của các ông lớn công nghệ Mỹ gần gấp đôi lên khoảng 3,2 nghìn tỷ USD trong sáu tháng</h3>
+<p>Nikkei Asia đưa tin các cam kết và nghĩa vụ liên quan đến AI ngoài bảng cân đối của các ông lớn công nghệ Mỹ tăng khoảng 90% trong sáu tháng, lên khoảng 3,2 nghìn tỷ USD, tương đương khoảng 80% tài sản của họ. Số liệu bao phủ cửa sổ sáu tháng tính đến quanh thời điểm báo cáo. Bài viết cho rằng mức tăng đến từ chi tiêu lớn cho hạ tầng AI như data center, và nhà đầu tư ngày càng lo ngại về khoản chi này.
+Nguồn: <a href="https://asia.nikkei.com/business/technology/artificial-intelligence/us-tech-giants-hidden-ai-debt-swells-90-to-3.2tn-in-6-months">asia.nikkei.com</a> · <a href="https://news.ycombinator.com/item?id=50358422">HN</a>
+321 điểm · 140 bình luận</p>
+<h3>SEC bị yêu cầu chặn IPO của Anthropic vì gần 900 tỷ USD cam kết chi tiêu</h3>
+<p>Một bài bình luận trên Tech Policy Press lập luận SEC nên chặn IPO của Anthropic. Bài viết nói phần chú thích trong báo cáo tài chính mới nhất của Anthropic cho thấy gần 900 tỷ USD cam kết chi tiêu, phần lớn kéo dài đến thập niên 2030, trong đó có ít nhất 582 tỷ USD cam kết không thể hủy với Amazon, AMD, Broadcom, Google và Microsoft, so với 96 tỷ USD dự trữ tiền mặt. Tác giả nói kết quả năm 2026 của Anthropic chưa được kiểm toán và tăng trưởng doanh thu quý ba đã chậm lại, và rằng nhu cầu yếu, cạnh tranh cùng chi phí cao khiến các nghĩa vụ này khó hoàn thành. Đây là một lập luận, không phải quyết định của cơ quan quản lý.
+Nguồn: <a href="https://www.techpolicy.press/the-sec-should-block-anthropics-ipo-to-protect-the-public/">techpolicy.press</a> · <a href="https://news.ycombinator.com/item?id=50344919">HN</a>
+397 điểm · 315 bình luận</p>
+<h3>Fujifilm tăng gấp năm sản lượng băng LTO khi nhu cầu lưu trữ cho AI tăng</h3>
+<p>Fujifilm công bố sẽ đầu tư khoảng 10 tỷ yen (khoảng 63 triệu USD) để tăng gấp năm công suất sản xuất băng từ so với mức năm tài chính 2025 tại nhà máy Odawara ở Kanagawa. Công ty cho biết AI tạo sinh đang tạo ra nhu cầu dữ liệu tăng theo cấp số nhân, và các đơn vị vận hành cloud và data center đang mở rộng dùng băng từ để lưu trữ khối lượng lớn với chi phí thấp và bảo vệ chống ransomware kiểu air-gapped. Dự án chạy từ năm tài chính 2026 đến 2028, chủ yếu cho băng LTO Ultrium10. Con số gấp năm là mục tiêu công suất, không phải sản lượng hiện tại.
+Nguồn: <a href="https://arstechnica.com/gadgets/2026/10/fujifilm-to-boost-tape-production-5x-as-ai-fuels-archiving-demand/">arstechnica.com</a> · <a href="https://news.ycombinator.com/item?id=50336918">HN</a>
+429 điểm · 181 bình luận</p>
+<h3>Revolut nói tự vận hành GLM cắt chi phí lập trình bằng AI khoảng 90%</h3>
+<p>Revolut nói đã cắt chi phí suy luận cho lập trình bằng AI khoảng 90% trong chưa đầy một năm bằng cách đặt model tự vận hành làm mặc định thay vì chủ yếu dùng Claude, theo một bài nói của trưởng bộ phận vận hành và hạ tầng David Abitbol tại hội nghị AI Engineer. Công ty dùng GLM-5.1 trước, rồi GLM-5.3, chạy trên 56 GPU Nvidia B200; họ nói chi phí tự vận hành khoảng 0,30 USD cho mỗi triệu token đầu vào/đầu ra, bằng khoảng một phần mười Codex hoặc Claude Code. Công ty báo cáo thời gian lập trình cải thiện 60% và lead time 70% trên khoảng 2.000 kỹ sư, và chuyển các truy vấn hình ảnh sang Gemini hoặc GPT Luna vì GLM chỉ xử lý văn bản.
+Nguồn: <a href="https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345">theregister.com</a> · <a href="https://news.ycombinator.com/item?id=50358388">HN</a>
+15 điểm · 1 bình luận</p>
+<h3>Google sẽ tắt tìm kiếm với các trường từ chối AI</h3>
+<p>Một báo cáo của New York Times nói Google sẽ tắt tìm kiếm với các trường từ chối AI. Không có thêm chi tiết nào trong tài liệu được cung cấp. Không thể lấy được toàn bộ nội dung bài viết.
+Nguồn: <a href="https://www.nytimes.com/2026/11/03/us/google-search-schools-restrict-ai.html">nytimes.com</a> · <a href="https://news.ycombinator.com/item?id=50353192">HN</a>
+590 điểm · 422 bình luận</p>
+<h3>OpenAI dường như đang âm thầm bật lại huấn luyện model trên các đoạn chat Codex</h3>
+<p>Một bài đăng trên Hacker News nói OpenAI dường như đang âm thầm bật lại huấn luyện model trên các đoạn chat Codex. Không thể lấy được nội dung bài viết được liên kết, nên không thể xác minh tuyên bố này. Không thể lấy được toàn bộ nội dung bài viết.
+Nguồn: <a href="https://news.ycombinator.com/item?id=50352757">news.ycombinator.com</a> · <a href="https://news.ycombinator.com/item?id=50352757">HN</a>
+461 điểm · 144 bình luận</p>
+<hr>
+<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Hacker News AI Community Digest 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-hn-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-hn-en</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News AI Community Digest 2026-11-04 Source: Hacker News | 8 stories | Generated: 2026-11-04 06:03 UTC Postman desktop auto-installs Codex and Claude plugins, then approves its own startup hook A GitHub issue reports that opening Postman 12.33.4 on macOS automatically installed a Postman plugin into Codex and Claude Code, and added a Claude Code plugin plus a Postman CLI. Postman&amp;#39;s own log records an &amp;quot;auto-existing-upgrade&amp;quot; install with results &amp;quot;claude-code:installed,cod...</description>
+      <content:encoded><![CDATA[<h1>Hacker News AI Community Digest 2026-11-04</h1>
+<blockquote>
+<p>Source: <a href="https://news.ycombinator.com/">Hacker News</a> | 8 stories | Generated: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<hr>
+<h3>Postman desktop auto-installs Codex and Claude plugins, then approves its own startup hook</h3>
+<p>A GitHub issue reports that opening Postman 12.33.4 on macOS automatically installed a Postman plugin into Codex and Claude Code, and added a Claude Code plugin plus a Postman CLI. Postman&#39;s own log records an &quot;auto-existing-upgrade&quot; install with results &quot;claude-code:installed,codex:installed.&quot; The installed Codex hook prints a session-start instruction telling the agent to load the Postman skill before any non-trivial API task, and installer source calls a function that writes a trusted hash for Postman&#39;s hook, which the reporter calls self-approval. The report claims unwanted integration and instruction changes, not data exfiltration.
+Source: <a href="https://github.com/postmanlabs/postman-app-support/issues/14370">github.com</a> · <a href="https://news.ycombinator.com/item?id=50354960">HN</a>
+1150 points · 376 comments</p>
+<h3>US tech giants&#39; off-balance-sheet AI debt nearly doubles to about $3.2T in six months</h3>
+<p>Nikkei Asia reports that US tech giants&#39; off-balance-sheet AI-related commitments and obligations grew about 90% over six months to roughly $3.2 trillion, reaching about 80% of their assets. The figures cover a six-month window ending around the report date. The article attributes the rise to heavy spending on AI infrastructure such as data centers and notes investors are increasingly alarmed by the spending.
+Source: <a href="https://asia.nikkei.com/business/technology/artificial-intelligence/us-tech-giants-hidden-ai-debt-swells-90-to-3.2tn-in-6-months">asia.nikkei.com</a> · <a href="https://news.ycombinator.com/item?id=50358422">HN</a>
+321 points · 140 comments</p>
+<h3>SEC asked to block Anthropic&#39;s IPO over almost $900B in spending commitments</h3>
+<p>An opinion piece in Tech Policy Press argues the SEC should block Anthropic&#39;s IPO. It says footnotes to Anthropic&#39;s most recent financial disclosures show nearly $900 billion in spending commitments, mostly stretching into the 2030s, including at least $582 billion in non-cancelable commitments to Amazon, AMD, Broadcom, Google and Microsoft, against $96 billion in cash reserves. The author says Anthropic&#39;s 2026 results are unaudited and third-quarter revenue growth slowed, and that weak demand, competition and high costs make the obligations hard to meet. The piece is an argument, not a regulatory decision.
+Source: <a href="https://www.techpolicy.press/the-sec-should-block-anthropics-ipo-to-protect-the-public/">techpolicy.press</a> · <a href="https://news.ycombinator.com/item?id=50344919">HN</a>
+397 points · 315 comments</p>
+<h3>Fujifilm to raise LTO tape output fivefold as AI archiving demand grows</h3>
+<p>Fujifilm announced it will invest roughly 10 billion yen (about $63 million) to raise magnetic tape production capacity fivefold against fiscal 2025 levels at its Odawara site in Kanagawa. The company says generative AI is producing &quot;exponential growth&quot; in data needs, and that cloud and data center operators are expanding tape use for low-cost bulk storage and air-gapped ransomware protection. The project runs fiscal 2026 through 2028, mainly for LTO Ultrium10 tape. The fivefold figure is a capacity target, not current output.
+Source: <a href="https://arstechnica.com/gadgets/2026/10/fujifilm-to-boost-tape-production-5x-as-ai-fuels-archiving-demand/">arstechnica.com</a> · <a href="https://news.ycombinator.com/item?id=50336918">HN</a>
+429 points · 181 comments</p>
+<h3>Revolut says self-hosted GLM cut AI coding costs about 90%</h3>
+<p>Revolut says it cut AI coding inference costs by roughly 90% in under a year by making self-hosted models its default instead of mainly using Claude, according to a talk by ops and infrastructure lead David Abitbol at the AI Engineer conference. The company first used GLM-5.1, then GLM-5.3, served on 56 Nvidia B200 GPUs; it says self-hosting cost about $0.30 per million input/output tokens, roughly a tenth of Codex or Claude Code. It reports a 60% improvement in coding time and 70% in lead time across about 2,000 engineers, and routes vision queries to Gemini or GPT Luna because GLM is text only.
+Source: <a href="https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345">theregister.com</a> · <a href="https://news.ycombinator.com/item?id=50358388">HN</a>
+15 points · 1 comments</p>
+<h3>Google will turn off search for schools that reject AI</h3>
+<p>A New York Times report says Google will turn off search for schools that reject AI. No further details are available in the material provided. Full article content could not be retrieved.
+Source: <a href="https://www.nytimes.com/2026/11/03/us/google-search-schools-restrict-ai.html">nytimes.com</a> · <a href="https://news.ycombinator.com/item?id=50353192">HN</a>
+590 points · 422 comments</p>
+<h3>OpenAI appears to be silently re-enabling model training on Codex chats</h3>
+<p>A Hacker News post says OpenAI seems to be silently re-enabling model training on Codex chats. The linked article content could not be retrieved, so the claim could not be verified. Full article content could not be retrieved.
+Source: <a href="https://news.ycombinator.com/item?id=50352757">news.ycombinator.com</a> · <a href="https://news.ycombinator.com/item?id=50352757">HN</a>
+461 points · 144 comments</p>
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Bản tin AI cộng đồng công nghệ 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-community</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-community</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Bản tin AI từ cộng đồng công nghệ 2026-11-04 Nguồn dữ liệu: Dev.to + Lobste.rs | 5 mục | Tạo lúc: 2026-11-04 06:03 UTC Workflow Chính sách gateway không chặn được những route mà agent của bạn không bao giờ đi MCP gateway chỉ kiểm soát được những tool mà nó nhìn thấy. Tác giả mô tả một bài kiểm tra cửa hông: bắt đầu từ một hành động như gửi email, liệt kê mọi route dẫn tới nó (MCP tool, một shell script điều khiển client cục bộ, một phiên trình duyệt đã đăng nhập, một API token trong biến môi trư...</description>
+      <content:encoded><![CDATA[<h1>Bản tin AI từ cộng đồng công nghệ 2026-11-04</h1>
+<blockquote>
+<p>Nguồn dữ liệu: <a href="https://dev.to/">Dev.to</a> + <a href="https://lobste.rs/">Lobste.rs</a> | 5 mục | Tạo lúc: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<hr>
+<h2>Workflow</h2>
+<h3>Chính sách gateway không chặn được những route mà agent của bạn không bao giờ đi</h3>
+<p>MCP gateway chỉ kiểm soát được những tool mà nó nhìn thấy. Tác giả mô tả một bài kiểm tra cửa hông: bắt đầu từ một hành động như gửi email, liệt kê mọi route dẫn tới nó (MCP tool, một shell script điều khiển client cục bộ, một phiên trình duyệt đã đăng nhập, một API token trong biến môi trường), rồi ghi lại danh tính mà mỗi route mang theo. Sau đó cấp cho agent một danh tính chỉ soạn nháp, không có quyền gửi, và chạy từng lần thử trong một tài khoản sandbox. Kiểm tra lại bằng Sent Items của hộp thư và message trace của tenant, không dựa vào báo cáo của chính agent. Nếu một route thành công, ranh giới đã thất bại.
+Nguồn: <a href="https://dev.to/bengreenberg/your-agent-has-a-side-door-testing-mcp-policy-beyond-the-tool-list-1699">dev.to</a>
+Tương tác: 8 reactions · 10 comments · đọc 4 phút</p>
+<h2>Thử nghiệm và so sánh</h2>
+<h3>Rollback bằng snapshot giúp một model 27B đạt 80,2 trên OSWorld Verified</h3>
+<p>Nhóm tác giả CUA-Master báo cáo model 27B của họ đạt 80,2 trên OSWorld Verified, 36,9 trên OSWorld 2.0 và 43,9 trên WeaveBench. Thay vì bỏ toàn bộ lượt chạy khi một rollout thất bại, runtime của họ chụp snapshot VM tại các ranh giới ổn định, dùng một detector để tìm bước phân kỳ sớm nhất từ residuals của verifier, trajectory và trạng thái cuối, rồi rollback về snapshot ngay trước đó và chỉ giữ lại nhánh pass sạch nhất. Nhiệm vụ đến từ các video hướng dẫn đã cắt cùng một không gian hành động GUI và shell thống nhất. Giới hạn: đây là điểm do chính bài báo báo cáo, không phải một lần tái lập độc lập.
+Nguồn: <a href="https://dev.to/reidmarlow/why-80-on-osworld-required-vm-snapshot-rollbacks-5ffe">dev.to</a>
+Tương tác: 5 reactions · 0 comments · đọc 5 phút</p>
+<h3>Một harness, 11 dòng model: top mười nằm trong khoảng năm phần trăm điểm</h3>
+<p>Tác giả benchmark bảy GGUF trên llama.cpp cộng một model trên engine Strata, tất cả trên hai RTX 5080 với sampling cố định và ba seed mỗi task, qua 18 tool task, 72 code task và 72 agent task nhiều bước. Bật Thinking làm tăng độ trễ mỗi lượt (280–1060 ms so với 19–85 ms) nhưng chủ yếu có lợi ở code khó, nơi UD-Q3 tăng từ 79% lên 93%; code dễ (91–100%) không phân biệt được các model. Một engine thứ hai làm lệch đúng 72 agent task đó ba phần nghìn. Đây là bài test tĩnh, trên phần cứng của một tác giả.
+Nguồn: <a href="https://dev.to/jordimarsal/which-local-model-should-a-coding-agent-run-hjn">dev.to</a>
+Tương tác: 3 reactions · 3 comments · đọc 6 phút</p>
+<hr>
+<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Tech Community AI Digest 2026-11-04</title>
+      <link>https://buhduy256.github.io/agents-radar/#2026-11-04/ai-community-en</link>
+      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-04/ai-community-en</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Tech Community AI Digest 2026-11-04 Sources: Dev.to + Lobste.rs | 5 items | Generated: 2026-11-04 06:03 UTC Workflows A gateway policy cannot stop the routes your agent never takes An MCP gateway controls only the tools it sees. The author describes a side-door test: start from one action such as sending email, list every route to it (the MCP tool, a shell script driving a local client, a signed-in browser session, an API token in the environment), and note which identity each route carries. The...</description>
+      <content:encoded><![CDATA[<h1>Tech Community AI Digest 2026-11-04</h1>
+<blockquote>
+<p>Sources: <a href="https://dev.to/">Dev.to</a> + <a href="https://lobste.rs/">Lobste.rs</a> | 5 items | Generated: 2026-11-04 06:03 UTC</p>
+</blockquote>
+<hr>
+<h2>Workflows</h2>
+<h3>A gateway policy cannot stop the routes your agent never takes</h3>
+<p>An MCP gateway controls only the tools it sees. The author describes a side-door test: start from one action such as sending email, list every route to it (the MCP tool, a shell script driving a local client, a signed-in browser session, an API token in the environment), and note which identity each route carries. Then give the agent a draft-only identity without send permission and run each attempt in a sandboxed account. Verify against the mailbox&#39;s Sent Items and the tenant message trace, not the agent&#39;s own report. If a route succeeds, the boundary failed.
+Source: <a href="https://dev.to/bengreenberg/your-agent-has-a-side-door-testing-mcp-policy-beyond-the-tool-list-1699">dev.to</a>
+Engagement: 8 reactions · 10 comments · 4 min read</p>
+<h2>Experiments and comparisons</h2>
+<h3>Snapshot rollback let a 27B model hit 80.2 on OSWorld Verified</h3>
+<p>The CUA-Master authors report 80.2 on OSWorld Verified, 36.9 on OSWorld 2.0 and 43.9 on WeaveBench for their 27B model. Rather than discarding a whole run when a rollout fails, their runtime snapshots the VM at stable boundaries, uses a detector to find the earliest divergence step from the verifier residuals, trajectory and final state, then rolls back to the snapshot just before it and keeps only the cleanest passing branch. Tasks came from sliced video tutorials plus a unified GUI and shell action space. The limit: these are the paper&#39;s own reported scores, not an independent replication.
+Source: <a href="https://dev.to/reidmarlow/why-80-on-osworld-required-vm-snapshot-rollbacks-5ffe">dev.to</a>
+Engagement: 5 reactions · 0 comments · 5 min read</p>
+<h3>One harness, 11 model rows: the top ten sit inside five hundredths of a point</h3>
+<p>The author benchmarked seven GGUFs under llama.cpp plus one model on the Strata engine, all on two RTX 5080s with pinned sampling and three seeds per task, across 18 tool tasks, 72 code tasks and 72 multi-step agent tasks. Thinking ON multiplied per-turn latency (280–1060 ms against 19–85 ms) but paid off mainly on hard code, where UD-Q3 rose from 79% to 93%; easy code (91–100%) did not separate the fleet. A second engine moved the same 72 agent tasks by three thousandths. Static, single-author hardware test.
+Source: <a href="https://dev.to/jordimarsal/which-local-model-should-a-coding-agent-run-hjn">dev.to</a>
+Engagement: 3 reactions · 3 comments · 6 min read</p>
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Bản tin cộng đồng công cụ AI CLI 2026-11-03</title>
       <link>https://buhduy256.github.io/agents-radar/#2026-11-03/ai-cli</link>
@@ -1660,704 +2354,6 @@ Community skills published under the <code>anthropic/</code> namespace impersona
 <li>Main CI is failing on the Managed Agent gate: two separate main runs failed the same job, and the failing measurement varies run to run (<a href="https://github.com/QwenLM/qwen-code/issues/15898">#15898</a>, 7 comments, P1). It is red for every PR triggering the full tier; no fix is in the data.</li>
 <li>One self-hosted pool host <code>ecs-qwen-hz6-18</code> has no Node.js on PATH, so the required Lint &amp; Static check fails for any commit landing there (<a href="https://github.com/QwenLM/qwen-code/issues/16005">#16005</a>, 5 comments). Affects contributors scheduled onto that host.</li>
 <li>Main CI also failed on a duplicated MCP tool name discarding the whole server and reporting a misleading &quot;no tools&quot; error (<a href="https://github.com/QwenLM/qwen-code/issues/15741">#15741</a>, closed). A fix appears to exist since the issue is closed.</li>
-</ul>
-</details>
-
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Xu hướng mã nguồn mở AI 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-trending</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-trending</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Xu hướng mã nguồn mở AI 2026-11-01 Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-11-01 05:50 UTC Dự án Ngôn ngữ Sao (tổng / hôm nay) Công dụng / khi nào dùng thedotmack/claude-mem TypeScript 108.132 (+1.723) Ghi lại hoạt động trong phiên của agent, nén bằng AI, rồi đưa ngữ cảnh liên quan vào các phiên sau. Hữu ích khi bạn cần bộ nhớ lâu dài qua nhiều phiên cho Claude Code, Codex, Gemini, Copilot hoặc OpenCode. mattpocock/skills Shell 0 (+883) Cung cấp một bộ skill lấy trực t...</description>
-      <content:encoded><![CDATA[<h1>Xu hướng mã nguồn mở AI 2026-11-01</h1>
-<blockquote>
-<p>Nguồn dữ liệu: GitHub Trending + GitHub Search API | Tạo lúc: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<hr>
-<table>
-<thead>
-<tr>
-<th align="left">Dự án</th>
-<th align="left">Ngôn ngữ</th>
-<th align="right">Sao (tổng / hôm nay)</th>
-<th align="left">Công dụng / khi nào dùng</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></td>
-<td align="left">TypeScript</td>
-<td align="right">108.132 (+1.723)</td>
-<td align="left">Ghi lại hoạt động trong phiên của agent, nén bằng AI, rồi đưa ngữ cảnh liên quan vào các phiên sau. Hữu ích khi bạn cần bộ nhớ lâu dài qua nhiều phiên cho Claude Code, Codex, Gemini, Copilot hoặc OpenCode.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td>
-<td align="left">Shell</td>
-<td align="right">0 (+883)</td>
-<td align="left">Cung cấp một bộ skill lấy trực tiếp từ thư mục .agents của tác giả. Hữu ích khi bạn muốn có sẵn các định nghĩa skill dùng lại được để đưa vào thiết lập agent.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/obra/superpowers">obra/superpowers</a></td>
-<td align="left">Shell</td>
-<td align="right">0 (+665)</td>
-<td align="left">Cung cấp một框架 skill cho agent và một phương pháp phát triển phần mềm. Hữu ích khi bạn cần cấu trúc để tổ chức skill trong toàn bộ workflow của agent.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td>
-<td align="left">JavaScript</td>
-<td align="right">294.208</td>
-<td align="left">Thêm lớp tối ưu hiệu năng cho harness của agent, bao gồm skill, instinct, bộ nhớ, bảo mật và phát triển theo hướng nghiên cứu trước. Hữu ích khi bạn chạy Claude Code, Codex, Opencode hoặc Cursor và muốn gom các khả năng đó vào một hệ thống.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/shareAI-lab/learn-claude-code">shareAI-lab/learn-claude-code</a></td>
-<td align="left">Python</td>
-<td align="right">79.645</td>
-<td align="left">Xây một harness agent kiểu Claude Code thu nhỏ từ đầu, dùng Bash làm lõi. Hữu ích khi bạn muốn hiểu cách một harness lập trình vận hành bằng cách tự dựng một bản tối giản.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></td>
-<td align="left">Rust</td>
-<td align="right">0 (+1.338)</td>
-<td align="left">Cấp cho agent lập trình một từ vựng thiết kế: điều hướng bằng &quot;polish&quot; và &quot;bolder&quot;, đánh giá bằng &quot;critique&quot; và &quot;audit&quot;. Hữu ích khi bạn muốn bắt các lỗi thiết kế do AI tạo ra trước khi phát hành.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/zhayujie/CowAgent">zhayujie/CowAgent</a></td>
-<td align="left">Python</td>
-<td align="right">47.724</td>
-<td align="left">Trợ lý cá nhân và harness agent mã nguồn mở, biết lập kế hoạch, chạy tool và skill, tự tiến hóa với bộ nhớ và tri thức. Hữu ích khi bạn cần hỗ trợ nhiều agent, nhiều model, nhiều kênh chỉ với một lệnh cài.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/codewhale-hq/Codewhale">codewhale-hq/Codewhale</a></td>
-<td align="left">Rust</td>
-<td align="right">41.162</td>
-<td align="left">Agent mã nguồn mở cho terminal viết bằng Rust, chạy được với mọi nhà cung cấp hoặc model. Hữu ích khi bạn muốn một agent trên terminal không bị gắn với một nhà cung cấp model.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/lightpanda-io/browser">lightpanda-io/browser</a></td>
-<td align="left">Zig</td>
-<td align="right">0 (+929)</td>
-<td align="left">Trình duyệt headless thiết kế cho AI và tự động hóa. Hữu ích khi bạn cần tự động hóa trình duyệt phục vụ khối lượng công việc của agent thay vì duyệt web thông thường.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/headroomlabs-ai/headroom">headroomlabs-ai/headroom</a></td>
-<td align="left">Python</td>
-<td align="right">78.485</td>
-<td align="left">Nén đầu ra của tool, log, file và đoạn RAG trước khi chúng tới LLM, giảm token cho agent lập trình và JSON. Hữu ích khi chi phí token hoặc độ dài ngữ cảnh đang giới hạn agent của bạn.</td>
-</tr>
-</tbody></table>
-<hr>
-<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>AI Open Source Trends 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-trending-en</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-trending-en</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>AI Open Source Trends 2026-11-01 Sources: GitHub Trending + GitHub Search API | Generated: 2026-11-01 05:50 UTC Project Lang Stars (total / today) What it does / when to use it thedotmack/claude-mem TypeScript 108,132 (+1,723) Captures an agent&amp;#39;s session activity, compresses it with AI, and injects relevant context into future sessions. Useful when you need persistent memory across sessions for Claude Code, Codex, Gemini, Copilot, or OpenCode. mattpocock/skills Shell 0 (+883) Ships a set of ...</description>
-      <content:encoded><![CDATA[<h1>AI Open Source Trends 2026-11-01</h1>
-<blockquote>
-<p>Sources: GitHub Trending + GitHub Search API | Generated: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<hr>
-<table>
-<thead>
-<tr>
-<th align="left">Project</th>
-<th align="left">Lang</th>
-<th align="right">Stars (total / today)</th>
-<th align="left">What it does / when to use it</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></td>
-<td align="left">TypeScript</td>
-<td align="right">108,132 (+1,723)</td>
-<td align="left">Captures an agent&#39;s session activity, compresses it with AI, and injects relevant context into future sessions. Useful when you need persistent memory across sessions for Claude Code, Codex, Gemini, Copilot, or OpenCode.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td>
-<td align="left">Shell</td>
-<td align="right">0 (+883)</td>
-<td align="left">Ships a set of skills taken directly from the author&#39;s .agents directory. Useful when you want reusable skill definitions to drop into an agent setup.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/obra/superpowers">obra/superpowers</a></td>
-<td align="left">Shell</td>
-<td align="right">0 (+665)</td>
-<td align="left">Provides an agentic skills framework and a software development methodology. Useful when you need a structure for organizing skills across an agent workflow.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td>
-<td align="left">JavaScript</td>
-<td align="right">294,208</td>
-<td align="left">Adds a performance optimization layer for agent harnesses, covering skills, instincts, memory, security, and research-first development. Useful when you run Claude Code, Codex, Opencode, or Cursor and want those capabilities in one system.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/shareAI-lab/learn-claude-code">shareAI-lab/learn-claude-code</a></td>
-<td align="left">Python</td>
-<td align="right">79,645</td>
-<td align="left">Builds a nano Claude Code–like agent harness from scratch, using Bash as the core. Useful when you want to understand how a coding harness works by building a minimal one.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></td>
-<td align="left">Rust</td>
-<td align="right">0 (+1,338)</td>
-<td align="left">Gives a coding agent a design vocabulary: steer with &quot;polish&quot; and &quot;bolder&quot;, review with &quot;critique&quot; and &quot;audit&quot;. Useful when you want to catch AI-generated design slop before shipping.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/zhayujie/CowAgent">zhayujie/CowAgent</a></td>
-<td align="left">Python</td>
-<td align="right">47,724</td>
-<td align="left">An open-source personal assistant and agent harness that plans tasks, runs tools and skills, and self-evolves with memory and knowledge. Useful when you need multi-agent, multi-model, multi-channel support in a one-line install.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/codewhale-hq/Codewhale">codewhale-hq/Codewhale</a></td>
-<td align="left">Rust</td>
-<td align="right">41,162</td>
-<td align="left">An open-source agent for the terminal written in Rust, working with any provider or model. Useful when you want a terminal-based agent that is not tied to one model vendor.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/lightpanda-io/browser">lightpanda-io/browser</a></td>
-<td align="left">Zig</td>
-<td align="right">0 (+929)</td>
-<td align="left">A headless browser designed for AI and automation. Useful when you need browser automation built for agent workloads rather than general browsing.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://github.com/headroomlabs-ai/headroom">headroomlabs-ai/headroom</a></td>
-<td align="left">Python</td>
-<td align="right">78,485</td>
-<td align="left">Compresses tool outputs, logs, files, and RAG chunks before they reach the LLM, cutting tokens for coding agents and JSON. Useful when token cost or context length is limiting your agent.</td>
-</tr>
-</tbody></table>
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Báo cáo theo dõi nội dung chính thức AI 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-web</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-web</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Báo cáo theo dõi nội dung chính thức của AI 2026-11-01 Cập nhật hôm nay | Nội dung mới: 1 bài | Tạo lúc: 2026-11-01 05:50 UTC Nguồn dữ liệu: Anthropic: anthropic.com — 1 bài mới (sitemap tổng: 492) OpenAI: openai.com — 0 bài mới (sitemap tổng: 1097) Báo cáo cập nhật AI — 2026-11-01 Thay đổi chính Anthropic công bố kết quả từ một chương trình thí điểm cho ba nhóm nghiên cứu bên ngoài truy cập dữ liệu tổng hợp về cách dùng Claude ngoài thực tế, thu thập qua công cụ phân tích bảo vệ quyền riêng tư ...</description>
-      <content:encoded><![CDATA[<h1>Báo cáo theo dõi nội dung chính thức của AI 2026-11-01</h1>
-<blockquote>
-<p>Cập nhật hôm nay | Nội dung mới: 1 bài | Tạo lúc: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<p>Nguồn dữ liệu:</p>
-<ul>
-<li>Anthropic: <a href="https://www.anthropic.com">anthropic.com</a> — 1 bài mới (sitemap tổng: 492)</li>
-<li>OpenAI: <a href="https://openai.com">openai.com</a> — 0 bài mới (sitemap tổng: 1097)</li>
-</ul>
-<hr>
-<h1>Báo cáo cập nhật AI — 2026-11-01</h1>
-<h2>Thay đổi chính</h2>
-<ul>
-<li>Anthropic công bố kết quả từ một chương trình thí điểm cho ba nhóm nghiên cứu bên ngoài truy cập dữ liệu tổng hợp về cách dùng Claude ngoài thực tế, thu thập qua công cụ phân tích bảo vệ quyền riêng tư &quot;Anthropic Insights&quot;. Anthropic cho biết họ thu thập dữ liệu thay cho các nhà nghiên cứu; các nhóm tự thiết kế nghiên cứu và tự phân tích. Bài đăng ghi ngày 26/08/2026 (trang cập nhật 2026-10-31), nên đây là thông tin bối cảnh, không phải bản phát hành mới. Anthropic cũng đã mở một biểu mẫu bày tỏ quan tâm cho các nhà nghiên cứu muốn hợp tác trong tương lai — biểu mẫu này là cách truy cập mới cụ thể. (<a href="https://www.anthropic.com/research/enabling-independent-research">Enabling independent research on how people use Claude</a>)</li>
-<li>OpenAI: hôm nay không có bài mới. Không có nội dung mục nào được tải về, nên ngoài trạng thái feed thì không có gì để báo cáo.</li>
-<li>Không có trang chính thức nào khác thay đổi kể từ lần chạy trước. Không có trang nào được đọc lần đầu hôm nay, nên không ghi nhận mốc cơ sở nào.</li>
-</ul>
-<h2>Giá, hạn mức và quyền truy cập</h2>
-<p>Không có trang giá, hạn mức hay quyền truy cập nào thay đổi kể từ lần chạy trước. Không có gì để báo cáo.</p>
-<h2>Cần làm gì</h2>
-<p>Hôm nay không có việc gì cần hành động. Các nhà nghiên cứu quan tâm đến chương trình thí điểm của Anthropic có thể gửi biểu mẫu bày tỏ quan tâm ở liên kết trên; không cần thay đổi cài đặt, gói dịch vụ hay endpoint nào cho Claude, Claude Code, Codex hay GitHub Copilot.</p>
-<hr>
-<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Official AI Content Report 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-web-en</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-web-en</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Official AI Content Report 2026-11-01 Today&amp;#39;s update | New content: 1 articles | Generated: 2026-11-01 05:50 UTC Sources: Anthropic: anthropic.com — 1 new articles (sitemap total: 492) OpenAI: openai.com — 0 new articles (sitemap total: 1097) AI Updates Report — 2026-11-01 What changed Anthropic published results from a pilot that gave three external research groups access to aggregate, real-world Claude usage data, collected through its &amp;quot;Anthropic Insights&amp;quot; privacy-preserving anal...</description>
-      <content:encoded><![CDATA[<h1>Official AI Content Report 2026-11-01</h1>
-<blockquote>
-<p>Today&#39;s update | New content: 1 articles | Generated: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<p>Sources:</p>
-<ul>
-<li>Anthropic: <a href="https://www.anthropic.com">anthropic.com</a> — 1 new articles (sitemap total: 492)</li>
-<li>OpenAI: <a href="https://openai.com">openai.com</a> — 0 new articles (sitemap total: 1097)</li>
-</ul>
-<hr>
-<h1>AI Updates Report — 2026-11-01</h1>
-<h2>What changed</h2>
-<ul>
-<li>Anthropic published results from a pilot that gave three external research groups access to aggregate, real-world Claude usage data, collected through its &quot;Anthropic Insights&quot; privacy-preserving analysis tool. Anthropic says it ran data collection on the researchers&#39; behalf; the groups designed their own studies and did their own analysis. The post is dated Aug 26, 2026 (page updated 2026-10-31), so this is context, not a fresh release. Anthropic also opened an expression-of-interest form for researchers who want to work with it in future — that form is the concrete new access path. (<a href="https://www.anthropic.com/research/enabling-independent-research">Enabling independent research on how people use Claude</a>)</li>
-<li>OpenAI: no new articles today. No item text was fetched, so nothing is reported beyond the feed status.</li>
-<li>No other official page changed since the previous run. No pages were read for the first time today, so no baseline is recorded.</li>
-</ul>
-<h2>Price, quota and access</h2>
-<p>No price, quota or access page changed since the previous run. Nothing to report.</p>
-<h2>What to do</h2>
-<p>Nothing actionable today. Researchers interested in the Anthropic pilot can submit the expression-of-interest form linked above; no setting, plan or endpoint for Claude, Claude Code, Codex or GitHub Copilot needs changing.</p>
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Bản tin cộng đồng Hacker News AI 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-hn</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-hn</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Bản tin cộng đồng Hacker News AI 2026-11-01 Nguồn dữ liệu: Hacker News | 8 tin | Tạo lúc: 2026-11-01 05:50 UTC Mistral phát hành trọng số mở cho Mistral Large 4, model chủ lực 1.000 tỷ tham số Mistral thông báo phát hành trọng số của Mistral Large 4 (Le Chonk), model đa phương thức gốc 1.000 tỷ tham số, sau bản xem trước công khai hồi đầu tháng 10. Công ty cho biết model dẫn đầu các benchmark lập trình trọng số mở, gồm FrontierCode và Terminal-Bench, và đạt 51% trên Artificial Analysis Cyber Ind...</description>
-      <content:encoded><![CDATA[<h1>Bản tin cộng đồng Hacker News AI 2026-11-01</h1>
-<blockquote>
-<p>Nguồn dữ liệu: <a href="https://news.ycombinator.com/">Hacker News</a> | 8 tin | Tạo lúc: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<hr>
-<h3>Mistral phát hành trọng số mở cho Mistral Large 4, model chủ lực 1.000 tỷ tham số</h3>
-<p>Mistral thông báo phát hành trọng số của Mistral Large 4 (Le Chonk), model đa phương thức gốc 1.000 tỷ tham số, sau bản xem trước công khai hồi đầu tháng 10. Công ty cho biết model dẫn đầu các benchmark lập trình trọng số mở, gồm FrontierCode và Terminal-Bench, và đạt 51% trên Artificial Analysis Cyber Index với ba chế độ suy luận tùy chọn để cân bằng chi phí và hiệu năng. Model được huấn luyện từ đầu trên hạ tầng châu Âu, cho các đội ngũ một nền tảng tự vận hành mà không mất quyền kiểm soát triển khai.
-Nguồn: <a href="https://mistral.ai/news/mistral-large-4-oss/">mistral.ai</a> · <a href="https://news.ycombinator.com/item?id=50289418">HN</a>
-1707 điểm · 438 bình luận</p>
-<h3>Tiện ích Claude Code VS Code bị cài cửa hậu trên Cursor Marketplace mở SSH truy cập</h3>
-<p>Phorion báo cáo rằng tiện ích chính thức Claude Code for VS Code trên Cursor Marketplace, phiên bản 2.1.312 và 2.1.313, được phát hành kèm cửa hậu SSH được chèn vào, thêm khóa công khai Ed25519 của kẻ tấn công vào authorized_keys và thiết lập đường hầm SSH ngược tới 134.209.82[.]225. Payload kích hoạt khi module tải, trước callback activate bình thường của tiện ích. Cursor đã gỡ các phiên bản bị ảnh hưởng vào ngày 30 tháng 10. Một lỗi trong kiểm tra thiết lập trên macOS khiến bước kích hoạt bị bỏ qua khi Remote Login tắt, nhưng khóa và logic duy trì vẫn chạy.
-Nguồn: <a href="https://phorion.io/blog/offical-claude-code-vsx-compromise/">phorion.io</a> · <a href="https://news.ycombinator.com/item?id=50300683">HN</a>
-972 điểm · 547 bình luận</p>
-<h3>Bài luận cảnh báo ứng phó sự cố có AI hỗ trợ có thể làm mai một kỹ năng SRE</h3>
-<p>Một bài luận trên bản tin SigNoz lập luận rằng khi AI đảm nhận phân loại cảnh báo, thực thi runbook và gợi ý nguyên nhân gốc, SRE không còn luyện tập tư duy xử lý các lỗi mới. Bài viết dẫn một bài báo về yếu tố con người năm 1983 về tự động hóa, một nghiên cứu cho thấy khả năng phát hiện polyp không có hỗ trợ của bác sĩ nội soi giảm từ 28% xuống 22% sau khi có AI hỗ trợ, và quy định của FAA về giờ bay thủ công. Bài viết nói sự suy giảm này bị che giấu dưới vỏ bọc năng suất và SRE junior có nguy cơ không bao giờ xây dựng được kỹ năng này. Bài viết không đưa ra thử nghiệm gốc nào của riêng mình.
-Nguồn: <a href="https://newsletter.signoz.io/p/ai-isnt-replacing-sres-its-deskilling">newsletter.signoz.io</a> · <a href="https://news.ycombinator.com/item?id=50305693">HN</a>
-650 điểm · 475 bình luận</p>
-<h3>Năm mươi agent GPT-6.1 chơi Minecraft ba giờ và phải chia khẩu phần thức ăn</h3>
-<p>YC Software Labs và Olam Labs chạy một harness mã nguồn mở đưa 50 agent GPT-6.1 Sol vào thế giới Minecraft sinh tồn trong ba giờ với một mục tiêu, &quot;Xây dựng một nền văn minh thịnh vượng.&quot; Các agent tạo ra kế hoạch định cư, sổ cái thực phẩm, hàng đợi chia khẩu phần và khoảng 5.900 tin nhắn, nhưng 22 trong số 34 cái chết của lượt chạy xảy ra ngay đêm đầu, và sau đó cả nhóm chuyển sang tiết kiệm thức ăn và nằm im trong nơi trú ẩn. Kết quả là một môi trường duy nhất với một model, không phải bằng chứng về hành vi đa agent nói chung.
-Nguồn: <a href="https://labs.ycombinator.com/projects/games/index.html">labs.ycombinator.com</a> · <a href="https://news.ycombinator.com/item?id=50296486">HN</a>
-412 điểm · 169 bình luận</p>
-<h3>VOLTA infostealer gửi dữ liệu đánh cắp tới một LLM để xếp hạng nạn nhân theo giá trị</h3>
-<p>Talos báo cáo rằng VOLTA, một infostealer Windows tự xóa, gửi một gói bằng chứng có cấu trúc tới OpenRouter kèm system prompt yêu cầu model đóng vai chuyên gia phân tích tình báo pháp y và tạo một mục có tiêu đề &quot;WHAT THEY&#39;RE WORTH.&quot; Malware dùng yêu cầu JSON lắp thủ công, một model mặc định và chuỗi dự phòng tới ba model khác, kiểm tra từng phản hồi để tìm câu từ chối. Nó làm giàu gói bằng chứng bằng chính các phiên Gmail, Uber Eats và DoorDash bị đánh cắp của nạn nhân. Chi tiết gỡ bỏ khỏi Cursor không thuộc câu chuyện này.
-Nguồn: <a href="https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/">blog.talosintelligence.com</a> · <a href="https://news.ycombinator.com/item?id=50316531">HN</a>
-241 điểm · 131 bình luận</p>
-<h3>Người tạo Lean nói code do AI tạo cần chứng minh máy kiểm tra, không phải test</h3>
-<p>Trong một phỏng vấn với The Data Exchange, Leo de Moura, người tạo Lean, lập luận rằng khi sinh code trở nên rẻ, nút thắt chuyển sang kiểm chứng. Ông mô tả Lean là một ngôn ngữ lập trình kiêm trợ lý chứng minh, nơi kết quả chỉ cần một kernel nhỏ để được tin, và nói AI giờ có thể viết cả phần triển khai lẫn chứng minh, dẫn ví dụ một bản chuyển thư viện nén zlib nơi định lý phát biểu rằng dữ liệu giải nén bằng dữ liệu gốc. Ông cũng nhắc đến Aeneas, một công cụ kiểm chứng code Rust trong Lean. Chỉ một phần bản ghi phỏng vấn được truy xuất.
-Nguồn: <a href="https://thedataexchange.media/leo-de-moura-lean-aws/">thedataexchange.media</a> · <a href="https://news.ycombinator.com/item?id=50290652">HN</a>
-195 điểm · 47 bình luận</p>
-<h3>Dự án chạy mạng MNIST bên trong DOOM dùng búp bê voodoo làm giá trị</h3>
-<p>Một lập trình viên phát hành doomformer, dự án tính toán mạng nơ-ron bên trong bản đồ DOOM, nơi giá trị 5 là năm búp bê voodoo, một trọng số là đường sàn mà mỗi búp bê đi qua, và các activation là cầu thang của cổng. Python đọc lại mọi giá trị đã tính và so với tham chiếu số nguyên NumPy ở dung sai bằng không; tác giả báo cáo 10.000 trong 10.000 chữ số kiểm tra MNIST khớp chính xác và 9.716 được phân loại đúng. Kết quả chữ số là một bộ phân loại nhỏ duy nhất, không phải tuyên bố chung về chạy model trong engine game.
-Nguồn: <a href="https://github.com/mottopanikeiku/doomformer">github.com</a> · <a href="https://news.ycombinator.com/item?id=50297697">HN</a>
-129 điểm · 35 bình luận</p>
-<h3>Nghiên cứu ACM về AI tạo sinh và tư duy phản biện không truy xuất được</h3>
-<p>Bài báo, &quot;The Impact of Generative AI on Critical Thinking: Self-Reported,&quot; được xuất bản qua ACM Digital Library. Không truy xuất được toàn bộ nội dung bài báo.
-Nguồn: <a href="https://dl.acm.org/doi/full/10.1145/3706598.3713778">dl.acm.org</a> · <a href="https://news.ycombinator.com/item?id=50318401">HN</a>
-76 điểm · 53 bình luận</p>
-<hr>
-<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Hacker News AI Community Digest 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-hn-en</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-hn-en</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Hacker News AI Community Digest 2026-11-01 Source: Hacker News | 8 stories | Generated: 2026-11-01 05:50 UTC Mistral releases open weights for Mistral Large 4, a 1-trillion-parameter flagship model Mistral announced that it released the weights of Mistral Large 4 (Le Chonk), its flagship 1-trillion-parameter natively multimodal model, after a public preview earlier in October. The company says the model leads open-weight coding benchmarks, including FrontierCode and Terminal-Bench, and scores 51...</description>
-      <content:encoded><![CDATA[<h1>Hacker News AI Community Digest 2026-11-01</h1>
-<blockquote>
-<p>Source: <a href="https://news.ycombinator.com/">Hacker News</a> | 8 stories | Generated: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<hr>
-<h3>Mistral releases open weights for Mistral Large 4, a 1-trillion-parameter flagship model</h3>
-<p>Mistral announced that it released the weights of Mistral Large 4 (Le Chonk), its flagship 1-trillion-parameter natively multimodal model, after a public preview earlier in October. The company says the model leads open-weight coding benchmarks, including FrontierCode and Terminal-Bench, and scores 51% on the Artificial Analysis Cyber Index with three selectable reasoning modes for cost-performance balance. It is trained from scratch on European infrastructure, giving teams a self-hostable foundation without giving up control of deployment.
-Source: <a href="https://mistral.ai/news/mistral-large-4-oss/">mistral.ai</a> · <a href="https://news.ycombinator.com/item?id=50289418">HN</a>
-1707 points · 438 comments</p>
-<h3>Backdoored Claude Code VS Code extension on Cursor Marketplace installed SSH access</h3>
-<p>Phorion reported that the official Claude Code for VS Code extension on the Cursor Marketplace, versions 2.1.312 and 2.1.313, shipped with an injected SSH backdoor that appended an attacker Ed25519 public key to authorized_keys and set up a reverse SSH tunnel to 134.209.82[.]225. The payload fires when the module loads, before the extension&#39;s normal activate callback. Cursor removed the affected versions on October 30. A bug in the macOS setup check means the enablement step is skipped when Remote Login is off, but the keys and persistence logic still run.
-Source: <a href="https://phorion.io/blog/offical-claude-code-vsx-compromise/">phorion.io</a> · <a href="https://news.ycombinator.com/item?id=50300683">HN</a>
-972 points · 547 comments</p>
-<h3>AI-assisted incident response may erode SRE skills, essay warns</h3>
-<p>An essay in the SigNoz newsletter argues that as AI takes over alert triage, runbook execution, and root-cause suggestions, SREs stop practicing the thinking that handles novel failures. It cites a 1983 human-factors paper on automation, a study showing endoscopists&#39; unassisted polyp detection fell from 28% to 22% after AI assistance, and FAA rules on manual flying time. The piece says the degradation is masked as productivity and that junior SREs risk never building the skill in the first place. It offers no original experiment of its own.
-Source: <a href="https://newsletter.signoz.io/p/ai-isnt-replacing-sres-its-deskilling">newsletter.signoz.io</a> · <a href="https://news.ycombinator.com/item?id=50305693">HN</a>
-650 points · 475 comments</p>
-<h3>Fifty GPT-6.1 agents played Minecraft for three hours and rationed food</h3>
-<p>YC Software Labs and Olam Labs ran an open-sourced harness that put 50 GPT-6.1 Sol agents in a survival Minecraft world for three hours with one goal, &quot;Build a thriving civilization.&quot; The agents produced a settlement plan, a food ledger, a rationing queue, and about 5,900 messages, but 22 of the run&#39;s 34 deaths occurred on the first night, and afterwards the group shifted to conserving food and idling in shelters. The result is a single environment with one model, not evidence about multi-agent behavior in general.
-Source: <a href="https://labs.ycombinator.com/projects/games/index.html">labs.ycombinator.com</a> · <a href="https://news.ycombinator.com/item?id=50296486">HN</a>
-412 points · 169 comments</p>
-<h3>VOLTA infostealer sends stolen data to an LLM to rank victims by worth</h3>
-<p>Talos reported that VOLTA, a self-deleting Windows infostealer, posts a structured evidence bundle to OpenRouter with a system prompt asking the model to act as a forensic intelligence analyst and produce a section titled &quot;WHAT THEY&#39;RE WORTH.&quot; The malware uses a hand-assembled JSON request, a default model, and a fallback chain of up to three other models, checking each response for refusal phrases. It enriches the bundle using the victim&#39;s own stolen Gmail, Uber Eats, and DoorDash sessions. Cursor removal details are not part of this story.
-Source: <a href="https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/">blog.talosintelligence.com</a> · <a href="https://news.ycombinator.com/item?id=50316531">HN</a>
-241 points · 131 comments</p>
-<h3>Lean creator says AI-generated code needs machine-checked proofs, not tests</h3>
-<p>In an interview with The Data Exchange, Leo de Moura, the creator of Lean, argued that as code generation gets cheap, the bottleneck shifts to verification. He described Lean as a programming language and proof assistant whose results need only a small kernel to be trusted, and said AI can now write both the implementation and the proof, citing a port of the zlib compression library where the theorem states that decompressed data equals the original. He also mentioned Aeneas, a tool that verifies Rust code in Lean. Only part of the interview transcript was retrieved.
-Source: <a href="https://thedataexchange.media/leo-de-moura-lean-aws/">thedataexchange.media</a> · <a href="https://news.ycombinator.com/item?id=50290652">HN</a>
-195 points · 47 comments</p>
-<h3>Project runs an MNIST network inside DOOM using voodoo dolls as values</h3>
-<p>A developer released doomformer, a project that computes neural networks inside DOOM maps, where a value of 5 is five voodoo dolls, a weight is a floor line each doll crosses, and activations are staircases of gates. Python reads every computed value back and compares it against a NumPy integer reference at tolerance zero; the author reports 10,000 of 10,000 MNIST test digits matched exactly and 9,716 were classified correctly. The digit result is a single small classifier, not a general claim about running models in game engines.
-Source: <a href="https://github.com/mottopanikeiku/doomformer">github.com</a> · <a href="https://news.ycombinator.com/item?id=50297697">HN</a>
-129 points · 35 comments</p>
-<h3>ACM study on generative AI and critical thinking could not be retrieved</h3>
-<p>The paper, &quot;The Impact of Generative AI on Critical Thinking: Self-Reported,&quot; was published through the ACM Digital Library. Full article content could not be retrieved.
-Source: <a href="https://dl.acm.org/doi/full/10.1145/3706598.3713778">dl.acm.org</a> · <a href="https://news.ycombinator.com/item?id=50318401">HN</a>
-76 points · 53 comments</p>
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Bản tin AI cộng đồng công nghệ 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-community</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-community</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Bản tin AI từ cộng đồng công nghệ 2026-11-01 Nguồn dữ liệu: Dev.to + Lobste.rs | 5 mục | Tạo lúc: 2026-11-01 05:50 UTC Workflow Chặn agent skill bị lệch bằng vòng phản hồi sáu bước chạy theo lịch Tác giả rà soát publishing-kit, một agent skill đăng một bài markdown lên năm đích, và phát hiện sáu kiểu lệch trong khi các bước kiểm tra vẫn xanh. Bước pre-flight thoát với mã 0 vào ngày rà soát, nhưng một lần review code tìm ra 20 vấn đề và chạy generator thủ công thêm 2 vấn đề nữa. Vòng lặp gồm: qua...</description>
-      <content:encoded><![CDATA[<h1>Bản tin AI từ cộng đồng công nghệ 2026-11-01</h1>
-<blockquote>
-<p>Nguồn dữ liệu: <a href="https://dev.to/">Dev.to</a> + <a href="https://lobste.rs/">Lobste.rs</a> | 5 mục | Tạo lúc: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<hr>
-<h2>Workflow</h2>
-<h3>Chặn agent skill bị lệch bằng vòng phản hồi sáu bước chạy theo lịch</h3>
-<p>Tác giả rà soát publishing-kit, một agent skill đăng một bài markdown lên năm đích, và phát hiện sáu kiểu lệch trong khi các bước kiểm tra vẫn xanh. Bước pre-flight thoát với mã 0 vào ngày rà soát, nhưng một lần review code tìm ra 20 vấn đề và chạy generator thủ công thêm 2 vấn đề nữa. Vòng lặp gồm: quan sát một lần chạy thật, đo và lưu trữ kết quả kèm ngày, mã hóa một guard trong script, xác minh test thất bại trên code cũ, phát hành với version bump và cập nhật bản cài, rồi lặp lại. Xử lý độ lệch khi cài đặt trước tiên là quan trọng nhất, vì các phiên tải snapshot cũ không thể thấy bất kỳ bản sửa nào sau đó.
-Nguồn: <a href="https://dev.to/gde/agent-skills-drift-a-feedback-loop-for-keeping-one-true-2il7">dev.to</a>
-Tương tác: 6 cảm xúc · 1 bình luận · đọc 6 phút</p>
-<h3>Cấp cho coding agent một trình duyệt để nó tự debug, không cần copy-paste</h3>
-<p>Tác giả nối Chrome DevTools MCP và Playwright MCP vào một coding agent để nó tự mở app local, bấm submit, và đọc console cùng network thay vì chờ lập trình viên dán lỗi. Chrome DevTools MCP bao gồm console, network, performance trace, kiểm tra accessibility và emulation; Playwright MCP cố tình làm hỏng một request với <code>--caps=network</code> và điều khiển Chromium, Firefox cùng WebKit. Tác giả vẫn giữ con người trong vòng lặp: xác nhận bản sửa trên trình duyệt, và kiểm tra diff để phát hiện lỗi bị che đi thay vì lỗi đã được sửa.
-Nguồn: <a href="https://dev.to/helderberto/debugging-in-the-agentic-era-5a71">dev.to</a>
-Tương tác: 3 cảm xúc · 4 bình luận · đọc 10 phút</p>
-<h3>Tạm dừng agent hỗ trợ n8n để chờ người duyệt trước khi hành động</h3>
-<p>Tác giả mô tả một kiến trúc trong đó n8n điều phối vòng lặp agent, còn Laravel vẫn là system of record, nên LLM không bao giờ trực tiếp thực thi business logic. Laravel mở các tool qua MCP với schema chặt chẽ; một tool như <code>draft_support_ticket</code> tạo <code>AgentDraft</code> với trạng thái <code>pending_review</code> thay vì tạo ticket. Workflow n8n dừng ở một node Wait, người duyệt chấp thuận, sửa hoặc từ chối bản nháp trong dashboard, và một POST phê duyệt đánh thức workflow chạy tiếp với payload cuối cùng. Không có kết quả đo lường nào được đưa ra.
-Nguồn: <a href="https://dev.to/hosseinhezami/architecting-a-human-in-the-loop-ai-support-agent-with-n8n-and-laravel-40nc">dev.to</a>
-Tương tác: 7 cảm xúc · 1 bình luận · đọc 6 phút</p>
-<h3>Biến báo cáo CI thành dashboard công khai với dải 3σ</h3>
-<p>Tác giả dựng một dashboard HTML tĩnh từ chính các artifact của một lần chạy GitHub Actions, với biểu đồ SVG nội tuyến, không script, không CDN và không database. Mười một dải YAML so sánh mỗi lần chạy <code>main</code> với 20 ngày trước đó; 1σ ghi log, 2σ chú thích, 3σ làm job thất bại để Pages không xuất bản. Một ngưỡng <code>minSigma</code> ngăn baseline phẳng báo nhầm là nhiễu, một dải vẫn không hoạt động cho đến khi có năm ngày lịch sử, và input thiếu không bao giờ làm build thất bại. Các số liệu được công bố gồm 92,7% line coverage và 701 unit test trong 5,5 giây.
-Nguồn: <a href="https://dev.to/newellpaul/ai-assisted-qa-with-github-actions-2bm">dev.to</a>
-Tương tác: 1 cảm xúc · 4 bình luận · đọc 5 phút</p>
-<h2>Thử nghiệm và so sánh</h2>
-<h3>Thử nghiệm phía provider cho thấy HTTP abort có thể không dừng suy luận của LLM</h3>
-<p>Tác giả chạy một mock provider ở chế độ <code>HONOR_ABORT</code> và <code>IGNORE_ABORT</code> với code client giống hệt nhau, rồi thử endpoint streaming của DeepSeek đối chiếu với đồng hồ <code>GET /user/balance</code>. Trong mock, tôn trọng abort tạo ra khoảng 21 token sinh và 21 token bị tính phí; bỏ qua abort tạo ra khoảng 100 và 100. Trong lần chạy DeepSeek, các điểm abort muộn hơn tốn kém tỷ lệ thuận nhiều hơn so với các điểm sớm hơn, sau một request đối chứng toàn bộ 8.000 token làm số dư giảm khoảng 0,03–0,04 CNY. Tác giả cho rằng <code>AbortSignal</code> chỉ chứng minh HTTP client đã làm gì, chứ không chứng minh suy luận hay việc tính phí đã dừng.
-Nguồn: <a href="https://dev.to/kristinz/you-aborted-the-llm-request-did-you-actually-stop-the-ai-2i7e">dev.to</a>
-Tương tác: 3 cảm xúc · 3 bình luận · đọc 11 phút</p>
-<hr>
-<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Tech Community AI Digest 2026-11-01</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-11-01/ai-community-en</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-11-01/ai-community-en</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Tech Community AI Digest 2026-11-01 Sources: Dev.to + Lobste.rs | 5 items | Generated: 2026-11-01 05:50 UTC Workflows Guard agent skills against drift with a scheduled six-step feedback loop The author audited publishing-kit, an agent skill that publishes one markdown article to five destinations, and found six kinds of drift while its checks stayed green. The pre-flight exited 0 on the audit day, yet a code review found 20 issues and manual generator runs added 2 more. The loop: observe a real ...</description>
-      <content:encoded><![CDATA[<h1>Tech Community AI Digest 2026-11-01</h1>
-<blockquote>
-<p>Sources: <a href="https://dev.to/">Dev.to</a> + <a href="https://lobste.rs/">Lobste.rs</a> | 5 items | Generated: 2026-11-01 05:50 UTC</p>
-</blockquote>
-<hr>
-<h2>Workflows</h2>
-<h3>Guard agent skills against drift with a scheduled six-step feedback loop</h3>
-<p>The author audited publishing-kit, an agent skill that publishes one markdown article to five destinations, and found six kinds of drift while its checks stayed green. The pre-flight exited 0 on the audit day, yet a code review found 20 issues and manual generator runs added 2 more. The loop: observe a real run, measure and archive dated output, encode a guard in the script, verify the test fails on old code, release with a version bump and install update, then repeat. Closing install drift first matters most, because sessions loading a stale snapshot cannot see any later fix.
-Source: <a href="https://dev.to/gde/agent-skills-drift-a-feedback-loop-for-keeping-one-true-2il7">dev.to</a>
-Engagement: 6 reactions · 1 comments · 6 min read</p>
-<h3>Give a coding agent a browser so it debugs without copy-paste</h3>
-<p>The author wires Chrome DevTools MCP and Playwright MCP into a coding agent so it opens a local app, clicks submit, and reads the console and network itself instead of relying on the developer to paste errors. Chrome DevTools MCP covers console, network, performance traces, accessibility audits and emulation; Playwright MCP fails one request on purpose with <code>--caps=network</code> and drives Chromium, Firefox and WebKit. The author keeps a human in the loop: confirm the fix in the browser, and check diffs for a silenced error rather than a fixed one.
-Source: <a href="https://dev.to/helderberto/debugging-in-the-agentic-era-5a71">dev.to</a>
-Engagement: 3 reactions · 4 comments · 10 min read</p>
-<h3>Pause an n8n support agent for human approval before it acts</h3>
-<p>The author describes an architecture where n8n orchestrates the agentic loop and Laravel stays the system of record, so the LLM never executes business logic directly. Laravel exposes tools over MCP with strict schemas; a tool like <code>draft_support_ticket</code> creates an <code>AgentDraft</code> with status <code>pending_review</code> instead of creating the ticket. The n8n workflow pauses on a Wait node, a reviewer approves, edits or rejects the draft in a dashboard, and an approval POST resumes the workflow with the final payload. No measured results are given.
-Source: <a href="https://dev.to/hosseinhezami/architecting-a-human-in-the-loop-ai-support-agent-with-n8n-and-laravel-40nc">dev.to</a>
-Engagement: 7 reactions · 1 comments · 6 min read</p>
-<h3>Turn CI reports into a published dashboard with 3σ bands</h3>
-<p>The author built one static HTML dashboard from a GitHub Actions run&#39;s own artifacts, with inline SVG charts, no scripts, no CDN and no database. Eleven YAML bands compare each <code>main</code> run against the previous 20 days; 1σ logs, 2σ annotates, 3σ fails the job so Pages doesn&#39;t publish. A <code>minSigma</code> floor stops flat baselines from flagging noise, a band stays inert until it has five days of history, and missing input never fails the build. Published figures include 92.7% line coverage and 701 unit tests in 5.5s.
-Source: <a href="https://dev.to/newellpaul/ai-assisted-qa-with-github-actions-2bm">dev.to</a>
-Engagement: 1 reactions · 4 comments · 5 min read</p>
-<h2>Experiments and comparisons</h2>
-<h3>Provider-side test shows HTTP abort may not stop LLM inference</h3>
-<p>The author ran a mock provider in <code>HONOR_ABORT</code> and <code>IGNORE_ABORT</code> modes with identical client code, then tested DeepSeek&#39;s streaming endpoint against its <code>GET /user/balance</code> meter. In the mock, honoring abort produced roughly 21 generated and 21 billed; ignoring abort produced roughly 100 and 100. In the DeepSeek run, later abort points cost proportionally more than earlier ones after a control request of all 8,000 tokens dropped the balance about 0.03–0.04 CNY. The author&#39;s claim is that <code>AbortSignal</code> proves only what the HTTP client did, not that inference or billing stopped.
-Source: <a href="https://dev.to/kristinz/you-aborted-the-llm-request-did-you-actually-stop-the-ai-2i7e">dev.to</a>
-Engagement: 3 reactions · 3 comments · 11 min read</p>
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Bản tin cộng đồng công cụ AI CLI 2026-10-31</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-10-31/ai-cli</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-31/ai-cli</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Bản tin cộng đồng công cụ AI CLI 2026-10-31 Tạo lúc: 2026-10-31 05:25 UTC | Công cụ theo dõi: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills Báo cáo chi tiết từng công cụ Claude Code — anthropics/claude-code Điểm nóng cộng đồng Claude Code Skills Nguồn dữ liệu: anthropics/skills proofcore-contract-auditor — kiểm tra hợp đồng thông minh tĩnh kèm bằng chứng trên chuỗi Quét hợp đồng Solidity và Rust để tìm lỗ hổng, rồi neo kết quả kiểm tra thành bằ...</description>
-      <content:encoded><![CDATA[<h1>Bản tin cộng đồng công cụ AI CLI 2026-10-31</h1>
-<blockquote>
-<p>Tạo lúc: 2026-10-31 05:25 UTC | Công cụ theo dõi: 7</p>
-</blockquote>
-<ul>
-<li><a href="https://github.com/anthropics/claude-code">Claude Code</a></li>
-<li><a href="https://github.com/openai/codex">OpenAI Codex</a></li>
-<li><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></li>
-<li><a href="https://github.com/github/copilot-cli">GitHub Copilot CLI</a></li>
-<li><a href="https://github.com/anomalyco/opencode">OpenCode</a></li>
-<li><a href="https://github.com/earendil-works/pi">Pi</a></li>
-<li><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></li>
-<li><a href="https://github.com/anthropics/skills">Claude Code Skills</a></li>
-</ul>
-<hr>
-<h2>Báo cáo chi tiết từng công cụ</h2>
-<details>
-<summary><strong>Claude Code</strong> — <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></summary>
-
-<h2>Điểm nóng cộng đồng Claude Code Skills</h2>
-<blockquote>
-<p>Nguồn dữ liệu: <a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
-</blockquote>
-<p><strong>proofcore-contract-auditor — kiểm tra hợp đồng thông minh tĩnh kèm bằng chứng trên chuỗi</strong>
-Quét hợp đồng Solidity và Rust để tìm lỗ hổng, rồi neo kết quả kiểm tra thành bằng chứng mật mã trên blockchain TON. Dùng khi agent cần tạo bản ghi kiểm tra có thể xác minh cho mã Web3; đây là pull request đang mở (anthropics/skills PR #1771).</p>
-<p><strong>notion-spec-to-implementation — biến đặc tả sản phẩm thành task Notion</strong>
-Chia một trang đặc tả thành kế hoạch triển khai gồm task cụ thể, tiêu chí nghiệm thu và theo dõi tiến độ để agent thực thi tiếp. Đây là pull request đang mở (anthropics/skills PR #1245).</p>
-<h3>Yêu cầu đang mở</h3>
-<p><strong>Skill cộng đồng phát hành dưới namespace <code>anthropic/</code></strong>
-Các skill do cộng đồng làm đang được phát hành dưới namespace <code>anthropic/</code>, theo người báo cáo thì điều này cho phép chúng mạo danh skill chính thức của Anthropic và khiến người dùng cấp quyền cao hơn (anthropics/skills Issue #492).</p>
-<hr>
-<p><strong>Những gì đã thay đổi</strong></p>
-<ul>
-<li>v2.1.316 thêm <code>CLAUDE_CODE_DISABLE_ULTRATHINK</code>, biến tắt từ khóa <code>ultrathink</code>. Đặt biến này khi bạn muốn từ khóa bị bỏ qua thay vì kích hoạt suy luận mở rộng.</li>
-<li>Bản phát hành này cũng thêm ngân sách nhóm gộp vào gateway của ứng dụng Claude. Quản trị viên đặt <code>pooled_budget</code> trên API quản trị giới hạn chi tiêu, cho một nhóm một ngân sách hàng tháng dùng chung giữa các thành viên, cộng thêm hạn mức riêng của từng người.</li>
-</ul>
-<p><strong>Đáng chú ý</strong></p>
-<ul>
-<li>Trình cài đặt gốc tạo ra gói ứng dụng macOS chưa được ký (unsealed), khiến kiểm tra chữ ký mã từ chối, nên macOS báo <code>ClaudeCode.app</code> là &quot;hư hỏng và không thể mở&quot; (issue #70647, đang mở, 17 bình luận, 8 👍). Dữ liệu chưa cho thấy bản sửa nào.</li>
-<li>Kết quả từ công cụ MCP qua stdio lớn hơn khoảng 8 MiB sẽ đóng kết nối và giết server (issue #105703, đang mở, 2 bình luận). Tác giả đã tái hiện bằng một server tối giản; dữ liệu chưa cho thấy bản sửa nào.</li>
-<li><code>--dangerously-skip-permissions</code> không giúp agent chạy không giám sát đọc được artifact Claude chia sẻ qua liên kết, vì công cụ Artifact yêu cầu xác nhận thủ công mỗi phiên (issue #106332 và #106321, cả hai đang mở).</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>OpenAI Codex</strong> — <a href="https://github.com/openai/codex">openai/codex</a></summary>
-
-<p><strong>Thay đổi gì</strong></p>
-<p>Không có bản phát hành nào trong 24 giờ qua. Hai thay đổi đang trong quá trình phát triển, chưa phát hành.</p>
-<ul>
-<li><strong>Đề xuất: bật mặc định deferred tool world state.</strong> PR #58410 đánh dấu <code>deferred_tool_world_state</code> là ổn định và bật nó, chuyển các không gian tên công cụ deferred vào ngữ cảnh <code>&lt;tools&gt;</code> của nhà phát triển thay vì mô tả <code>tool_search</code>. Tắt rõ ràng tính năng này sẽ giữ nguyên hành vi khám phá cũ. Điều này quan trọng khi bạn dựa vào <code>tool_search</code> để tìm công cụ.</li>
-<li><strong>Đề xuất: chuyển phiên TUI giữa các backend.</strong> PR #58457 tiếp tục một cuộc hội thoại đã chọn thông qua backend sở hữu nó, nên trình chọn phiên không còn từ chối các cuộc hội thoại từ backend khác.</li>
-</ul>
-<p><strong>Đáng chú ý</strong></p>
-<ul>
-<li>Bão tiến trình taskkill/conhost trên Windows vẫn tiếp diễn: Issue #33776 (44 bình luận) báo cáo hàng trăm tiến trình <code>taskkill.exe</code>/<code>conhost.exe</code> còn sót lại gây bão WMI và suy giảm DWM. Không có bản sửa trong dữ liệu.</li>
-<li>Hồi quy hooks trên desktop: Issue #21639 (29 bình luận) báo cáo hooks không còn chạy sau bản cập nhật Codex Desktop. Không có bản sửa trong dữ liệu.</li>
-<li>Người dùng Pro mất vòng sử dụng hàng tuần trên macOS: Issue #57333 báo cáo vòng sử dụng hàng tuần của Codex trên macOS bị thiếu ở gói Pro nhưng vẫn hiển thị ở gói Plus. Không có bản sửa trong dữ liệu.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>Gemini CLI</strong> — <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></summary>
-
-<p><strong>Thay đổi gì</strong></p>
-<ul>
-<li>Bản nightly <code>v0.67.0-nightly.20261031.g6814e00d6</code> sửa hai lỗi lõi: shadow repo giờ tuân thủ <code>.git/info/exclude</code> và <code>core.excludesFile</code> (<a href="https://github.com/google-gemini/gemini-cli/pull/30034">PR #30034</a>), và <code>CodeAssistServer</code> xả buffer SSE còn tồn đọng khi stream kết thúc (<a href="https://github.com/google-gemini/gemini-cli/pull/30059">PR #30059</a>). Lỗi đầu quan trọng nếu các file bạn loại trừ vẫn xuất hiện trong ngữ cảnh của agent; lỗi sau quan trọng nếu sự kiện stream cuối cùng bị âm thầm bỏ mất.</li>
-</ul>
-<p><strong>Đáng lưu ý</strong></p>
-<ul>
-<li>Tình trạng agent tổng quát bị treo được báo trong <a href="https://github.com/google-gemini/gemini-cli/issues/21409">#21409</a> (8 bình luận, 8 👍): chuyển sang agent tổng quát thì treo vô thời hạn, kể cả khi chỉ tạo thư mục đơn giản. Tác giả vượt qua bằng cách yêu cầu model không dùng sub-agent. Dữ liệu chưa có bản sửa.</li>
-<li>Tình trạng sub-agent cạn lượt được báo là <code>status: &quot;success&quot;</code> với <code>Termination Reason: &quot;GOAL&quot;</code> trong <a href="https://github.com/google-gemini/gemini-cli/issues/22323">#22323</a> (13 bình luận, p1). Nếu bạn viết script dựa trên trạng thái của sub-agent, một lượt chạy bị ngắt có thể trông như đã hoàn thành.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>GitHub Copilot CLI</strong> — <a href="https://github.com/github/copilot-cli">github/copilot-cli</a></summary>
-
-<p><strong>Thay đổi gì</strong></p>
-<ul>
-<li>Không có bản phát hành nào trong 24 giờ qua, nên hôm nay không có gì thay đổi với người dùng.</li>
-<li>PR #5310 (đang mở, devm33) đề xuất sửa lỗi smoke-test container trên amd64 và arm64: workspace được tạo với mode <code>0700</code>, chặn user runtime của image (UID 10001), và Git init chạy dưới quyền root. Đang phát triển, chưa phát hành.</li>
-<li>PR #5307 và #5308 (đã đóng, brunoborges) sẽ publish một image server Copilot CLI headless lên <code>ghcr.io/github/copilot-cli</code> mỗi lần phát hành, giải quyết issue #55. Phản hồi review chỉ ra rằng manifest <code>latest</code> hoặc <code>prerelease</code> sẵn có không có annotation version có thể bị ghi đè bởi bản phát hành cũ hơn. Chưa phát hành.</li>
-</ul>
-<p><strong>Đáng chú ý</strong></p>
-<ul>
-<li>Issue #5306: <code>--available-tools=</code> với giá trị rỗng sẽ lộ tất cả 21 tool tích hợp thay vì không có tool nào. Không có cách nào được tài liệu hóa để chạy <code>copilot -p</code> với zero tool. Đang mở.</li>
-<li>Issue #5301: tool <code>web_search</code> tích hợp thỉnh thoảng thất bại với HTTP 504 Gateway Timeout sau khoảng 120s từ GitHub MCP server từ xa; tác giả báo lỗi hơn một nửa số lần gọi trong ~9 ngày. Đang mở.</li>
-<li>Issue #5298: <code>copilot --model fusion</code> thất bại trong 1.0.105 với lỗi &quot;requires dynamic Auto tiers&quot; trừ khi bật flag <code>DYNAMIC_AUTO_TIERS</code> không được tài liệu hóa. Đang mở.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>OpenCode</strong> — <a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></summary>
-
-<p><strong>Những gì đã thay đổi</strong></p>
-<ul>
-<li>v2.2.5 thêm phím tắt cho worktree và shell mode: <code>⌘⌥O</code>/<code>Ctrl+Alt+O</code> chọn worktree, <code>⌘⌥B</code>/<code>Ctrl+Alt+B</code> chọn nhánh base của nó, và <code>⌘⇧X</code>/<code>Ctrl+Shift+X</code> bật tắt shell mode trong composer. Dùng khi cần xử lý nhiều nhánh mà không rời composer.</li>
-<li>v2.2.3 cho phép dùng Claude Code bên trong OpenCode: cài Claude Code, chạy <code>claude auth login</code>, rồi chọn <strong>Claude Agent</strong> trong <code>/connect</code>. Cách này đưa đăng nhập và model Claude Code sẵn có của bạn qua OpenCode.</li>
-<li>v2.2.4 giữ terminal trên desktop tồn tại theo từng session; chúng sống sót qua lần khởi động lại server cùng scrollback và đồng bộ với TUI và các cửa sổ khác. Terminal đã đổi tên giữ nguyên tên qua các lần khởi động lại.</li>
-</ul>
-<p><strong>Đáng chú ý</strong></p>
-<ul>
-<li>Issue #59387 (149 bình luận) là thread theo dõi lỗi gói miễn phí — &quot;Free usage exceeded&quot;, lỗi quota, và các lần reset không bao giờ xảy ra. Đây là báo cáo từ người dùng, không phải bản sửa đã xác nhận.</li>
-<li>Issue #60399 báo cáo CLI treo hơn 120 giây trước khi gửi bất kỳ request nào trên các mạng có DPI loại bỏ gói TLS ClientHello bị phân mảnh; <code>curl</code> thường vẫn thành công trên cùng máy. Trạng thái: đã tái hiện, đang mở.</li>
-<li>Nhiều báo cáo (#60534, #60455, #59291) mô tả lỗi socket <code>ECONNRESET</code>; không có bản sửa nào xuất hiện trong dữ liệu này.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>Pi</strong> — <a href="https://github.com/earendil-works/pi">earendil-works/pi</a></summary>
-
-<h2>Có gì thay đổi</h2>
-<p><strong>Reload extension giờ được hoãn lại.</strong> <code>ctx.requestReload()</code> thay thế <code>ctx.reload()</code> dạng await, nhờ đó extension có thể yêu cầu một lần reload runtime chuẩn sau khi các thao tác, compaction hoặc tóm tắt nhánh hoàn tất (PR #7948). Các reload trực tiếp không an toàn bị từ chối. Thay đổi này đi kèm yêu cầu từ issue #6552.</p>
-<p><strong>Xếp hạng tìm kiếm tool đã được sửa.</strong> <code>tool_search</code> giờ trả về một tool khi truy vấn trùng đúng tên tool đó, và tên tool có trọng số cao hơn phần khớp mô tả (PR #11625, #11632). Một PR tiếp theo xếp lại thứ tự các tool khớp nhiều từ khóa truy vấn lên trước. PR #11631 riêng biệt chuyển cùng cách xếp hạng này sang durable.</p>
-<p><strong>Helper interop WSL giờ khởi động từ <code>/</code>.</strong> Trước đây Pi kế thừa cwd khi spawn <code>powershell.exe</code>, nên các đường dẫn sâu vượt MAX_PATH thất bại với lỗi <code>Invalid argument</code> (PR #11627, sửa #11592). PR này cũng báo cáo lỗi trình soạn thảo bên ngoài.</p>
-<h2>Đáng chú ý</h2>
-<p><strong>Terminal Windows để lọt phản hồi truy vấn màu vào prompt.</strong> Trên mintty/ConPTY ở bản 0.99.x, truy vấn màu lúc khởi động chèn văn bản escape như <code>;0;rgb:0000/…</code> vào prompt, và BEL mở trình soạn thảo bên ngoài (#10256, 15 bình luận). Bản 0.87.1 và Windows Terminal không bị ảnh hưởng. PR #11609 đề xuất cách xử lý phản hồi bảng màu không tiền tố của mintty.</p>
-<p><strong>Phiên Anthropic hỏng sau khi extension bỏ một tool giữa phiên.</strong> Mọi request sau đó thất bại với <code>tool_reference_unresolved</code> (#11376, 4 bình luận, <code>prio:p0</code>). Một lần reload extension ngừng đăng ký tool sẽ kích hoạt lỗi này; issue #10954 báo cáo cùng lỗi trên <code>anthropic-messages</code> qua OpenCode Go.</p>
-<p><strong>Chế độ RPC không thoát khi shutdown bất đồng bộ.</strong> Tiến trình <code>--mode rpc</code> đang rảnh với stdin mở vẫn sống sau khi extension gọi <code>ctx.shutdown()</code> từ timer; yêu cầu không được xử lý cho đến khi có lệnh khác đến (#11599).</p>
-</details>
-
-<details>
-<summary><strong>Qwen Code</strong> — <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code</a></summary>
-
-<p><strong>Những gì đã thay đổi</strong></p>
-<ul>
-<li><code>cua-driver-rs v0.27.0</code> phát hành binary Qwen CUA Driver dựng sẵn trong <code>packages/cua-driver</code>. macOS nhận một universal binary đã codesign, notarized cùng <code>QwenCuaDriver.app</code>; bản Linux và Windows không ký (Linux yêu cầu glibc 2.31 trở lên). Điều này quan trọng nếu bạn điều khiển CUA desktop trên bất kỳ nền tảng nào trong số này.</li>
-<li>Đề xuất trong PR <a href="https://github.com/QwenLM/qwen-code/pull/15953">#15953</a>: kiểm tra &quot;lệnh <code>cd</code> này có rời khỏi repo không?&quot; của shell tool sẽ so sánh đường dẫn tuyệt đối của <code>cd</code>/<code>pushd</code> với thư mục làm việc thực tế. Hiện tại, đường dẫn tuyệt đối bị mặc định là rời khỏi repo, có thể chặn một lệnh amend.</li>
-<li>Đề xuất trong PR <a href="https://github.com/QwenLM/qwen-code/pull/15789">#15789</a>: đầu ra shell được đệm sẽ được giải mã một lần trên các code page không phải UTF-8 (CP936, CP932, CP866). Hiện tại, chunk đầu ra đầu tiên quyết định encoding.</li>
-</ul>
-<p><strong>Đáng chú ý</strong></p>
-<ul>
-<li>Issue <a href="https://github.com/QwenLM/qwen-code/issues/15276">#15276</a>: cập nhật desktop trên Windows thất bại với lỗi &quot;Error opening file for writing&quot; trên <code>runtime\qwen-code\node\node.exe</code>, vì installer giữ khóa Node runtime đi kèm. Đang mở, 4 bình luận.</li>
-<li>Issue <a href="https://github.com/QwenLM/qwen-code/issues/15919">#15919</a>: <code>@qwen-code/qwen-code@0.26.4</code> đi kèm fast-uri 3.1.0 thông qua <code>@modelcontextprotocol/client</code> 2.0.0, nên bản nâng lên 3.1.7 từ #10862 không áp dụng được cho nó. Đang mở.</li>
-<li>Issue <a href="https://github.com/QwenLM/qwen-code/issues/15861">#15861</a>: lane <code>web-shell E2E Smoke</code> timeout ở dialog Add Workspace trên các PR không liên quan, buộc phải phân loại lại nhiều vòng.</li>
-</ul>
-</details>
-
-<hr>
-<p><em>Bản tin này được tạo tự động bởi <a href="https://github.com/BuhDuy256/agents-radar">agents-radar</a> tự động tạo.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>AI CLI Tools Digest 2026-10-31</title>
-      <link>https://buhduy256.github.io/agents-radar/#2026-10-31/ai-cli-en</link>
-      <guid isPermaLink="true">https://buhduy256.github.io/agents-radar/#2026-10-31/ai-cli-en</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
-      <description>AI CLI Tools Community Digest 2026-10-31 Generated: 2026-10-31 05:25 UTC | Tools covered: 7 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI OpenCode Pi Qwen Code Claude Code Skills Per-Tool Reports Claude Code — anthropics/claude-code Claude Code Skills Highlights Source: anthropics/skills proofcore-contract-auditor — static smart contract auditing with on-chain proof Scans Solidity and Rust contracts for vulnerabilities and anchors the audit result as a cryptographic proof on the TON blo...</description>
-      <content:encoded><![CDATA[<h1>AI CLI Tools Community Digest 2026-10-31</h1>
-<blockquote>
-<p>Generated: 2026-10-31 05:25 UTC | Tools covered: 7</p>
-</blockquote>
-<ul>
-<li><a href="https://github.com/anthropics/claude-code">Claude Code</a></li>
-<li><a href="https://github.com/openai/codex">OpenAI Codex</a></li>
-<li><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></li>
-<li><a href="https://github.com/github/copilot-cli">GitHub Copilot CLI</a></li>
-<li><a href="https://github.com/anomalyco/opencode">OpenCode</a></li>
-<li><a href="https://github.com/earendil-works/pi">Pi</a></li>
-<li><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></li>
-<li><a href="https://github.com/anthropics/skills">Claude Code Skills</a></li>
-</ul>
-<hr>
-<h2>Per-Tool Reports</h2>
-<details>
-<summary><strong>Claude Code</strong> — <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></summary>
-
-<h2>Claude Code Skills Highlights</h2>
-<blockquote>
-<p>Source: <a href="https://github.com/anthropics/skills">anthropics/skills</a></p>
-</blockquote>
-<p><strong>proofcore-contract-auditor — static smart contract auditing with on-chain proof</strong>
-Scans Solidity and Rust contracts for vulnerabilities and anchors the audit result as a cryptographic proof on the TON blockchain. Reach for it when an agent must produce a verifiable audit record for Web3 code; it is an open pull request (anthropics/skills PR #1771).</p>
-<p><strong>notion-spec-to-implementation — turn product specs into Notion tasks</strong>
-Breaks a spec page into an implementation plan with concrete tasks, acceptance criteria and progress tracking that an agent can then execute. It is an open pull request (anthropics/skills PR #1245).</p>
-<h3>Open requests</h3>
-<p><strong>Community skills published under the <code>anthropic/</code> namespace</strong>
-Community-made skills are being distributed under the <code>anthropic/</code> namespace, which the reporter says lets them impersonate official Anthropic skills and misleads users into granting elevated permissions (anthropics/skills Issue #492).</p>
-<hr>
-<p><strong>What changed</strong></p>
-<ul>
-<li>v2.1.316 adds <code>CLAUDE_CODE_DISABLE_ULTRATHINK</code>, which turns the <code>ultrathink</code> keyword off. Set it when you want the keyword ignored rather than triggering extended reasoning.</li>
-<li>The same release adds pooled group budgets to the Claude apps gateway. Admins set <code>pooled_budget</code> on the spend limits admin API, giving a group one monthly budget shared across members on top of each member&#39;s own limit.</li>
-</ul>
-<p><strong>Worth knowing</strong></p>
-<ul>
-<li>The native installer produces an unsealed macOS app bundle that code signature validation rejects, so macOS reports <code>ClaudeCode.app</code> as &quot;damaged and can&#39;t be opened&quot; (issue #70647, open, 17 comments, 8 👍). No fix appears in the data.</li>
-<li>A stdio MCP tool result above roughly 8 MiB closes the connection and kills the server (issue #105703, open, 2 comments). The author reproduced it with a minimal server; no fix appears in the data.</li>
-<li><code>--dangerously-skip-permissions</code> does not help unattended agents read link-shared Claude artifacts, because the Artifact tool requires a human confirmation each session (issues #106332 and #106321, both open).</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>OpenAI Codex</strong> — <a href="https://github.com/openai/codex">openai/codex</a></summary>
-
-<p><strong>What changed</strong></p>
-<p>No releases in the last 24h. Two changes are in development, not shipped.</p>
-<ul>
-<li><strong>Proposed: deferred tool world state on by default.</strong> PR #58410 marks <code>deferred_tool_world_state</code> stable and enables it, moving deferred tool namespaces into the developer <code>&lt;tools&gt;</code> context instead of the <code>tool_search</code> description. Explicitly disabling the feature keeps the old discovery behavior. This matters when you rely on <code>tool_search</code> to find tools.</li>
-<li><strong>Proposed: TUI session switching across backends.</strong> PR #58457 resumes a selected conversation through its owning backend, so the session picker no longer rejects conversations from another backend.</li>
-</ul>
-<p><strong>Worth knowing</strong></p>
-<ul>
-<li>Windows taskkill/conhost process storms persist: Issue #33776 (44 comments) reports hundreds of leftover <code>taskkill.exe</code>/<code>conhost.exe</code> processes causing WMI storms and DWM degradation. No fix in the data.</li>
-<li>Desktop hooks regression: Issue #21639 (29 comments) reports hooks no longer running after a Codex Desktop update. No fix in the data.</li>
-<li>Pro users lose the weekly usage ring on macOS: Issue #57333 reports the Codex macOS weekly usage ring missing on Pro but visible on Plus. No fix in the data.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>Gemini CLI</strong> — <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></summary>
-
-<p><strong>What changed</strong></p>
-<ul>
-<li>Nightly <code>v0.67.0-nightly.20261031.g6814e00d6</code> fixes two core bugs: the shadow repo now honors <code>.git/info/exclude</code> and <code>core.excludesFile</code> (<a href="https://github.com/google-gemini/gemini-cli/pull/30034">PR #30034</a>), and <code>CodeAssistServer</code> flushes its pending SSE buffer at stream EOF (<a href="https://github.com/google-gemini/gemini-cli/pull/30059">PR #30059</a>). The first matters if files you excluded still showed up in agent context; the second if the last streamed event was silently dropped.</li>
-</ul>
-<p><strong>Worth knowing</strong></p>
-<ul>
-<li>A generalist agent hang is reported in <a href="https://github.com/google-gemini/gemini-cli/issues/21409">#21409</a> (8 comments, 8 👍): deferring to the generalist agent hangs indefinitely, including for simple folder creation. Instructing the model not to use sub-agents worked around it for the author. No fix in the data.</li>
-<li>Sub-agent turn-limit exhaustion is reported as <code>status: &quot;success&quot;</code> with <code>Termination Reason: &quot;GOAL&quot;</code> in <a href="https://github.com/google-gemini/gemini-cli/issues/22323">#22323</a> (13 comments, p1). If you script against sub-agent status, an interrupted run can look like a completed one.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>GitHub Copilot CLI</strong> — <a href="https://github.com/github/copilot-cli">github/copilot-cli</a></summary>
-
-<p><strong>What changed</strong></p>
-<ul>
-<li>No releases shipped in the last 24 hours, so nothing user-visible changed today.</li>
-<li>PR #5310 (open, devm33) proposes fixing amd64 and arm64 container smoke-test failures: the workspace is created with mode <code>0700</code>, blocking the image runtime user (UID 10001), and Git initialization runs as root. This is in development, not released.</li>
-<li>PRs #5307 and #5308 (closed, brunoborges) would have published a headless Copilot CLI server image to <code>ghcr.io/github/copilot-cli</code> on each release, addressing issue #55. Review feedback flagged that an existing <code>latest</code> or <code>prerelease</code> manifest without a version annotation could be overwritten by an older release. Not released.</li>
-</ul>
-<p><strong>Worth knowing</strong></p>
-<ul>
-<li>Issue #5306: <code>--available-tools=</code> with an empty value exposes all 21 built-in tools instead of none. There is no documented way to run <code>copilot -p</code> with zero tools. Open.</li>
-<li>Issue #5301: the built-in <code>web_search</code> tool fails intermittently with an HTTP 504 Gateway Timeout at roughly 120s from the remote GitHub MCP server; the author reports failures on more than half of calls over ~9 days. Open.</li>
-<li>Issue #5298: <code>copilot --model fusion</code> fails in 1.0.105 with &quot;requires dynamic Auto tiers&quot; unless the undocumented <code>DYNAMIC_AUTO_TIERS</code> flag is set. Open.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>OpenCode</strong> — <a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></summary>
-
-<p><strong>What changed</strong></p>
-<ul>
-<li>v2.2.5 adds worktree and shell mode shortcuts: <code>⌘⌥O</code>/<code>Ctrl+Alt+O</code> picks a worktree, <code>⌘⌥B</code>/<code>Ctrl+Alt+B</code> picks its base branch, and <code>⌘⇧X</code>/<code>Ctrl+Shift+X</code> toggles shell mode in the composer. Use them when juggling branches without leaving the composer.</li>
-<li>v2.2.3 lets you use Claude Code inside OpenCode: install Claude Code, run <code>claude auth login</code>, then pick <strong>Claude Agent</strong> in <code>/connect</code>. That routes your existing Claude Code login and models through OpenCode.</li>
-<li>v2.2.4 makes desktop terminals persistent per session; they survive server restarts with scrollback and stay synced with the TUI and other windows. Renamed terminals keep their names across restarts.</li>
-</ul>
-<p><strong>Worth knowing</strong></p>
-<ul>
-<li>Issue #59387 (149 comments) is the tracking thread for free tier failures — &quot;Free usage exceeded&quot;, quota errors, and resets that never happen. It is a user report, not a confirmed fix.</li>
-<li>Issue #60399 reports the CLI hanging 120+ seconds before sending any request on networks whose DPI drops fragmented TLS ClientHello packets; plain <code>curl</code> succeeds on the same machine. Status: reproduced, open.</li>
-<li>Multiple reports (#60534, #60455, #59291) describe <code>ECONNRESET</code> socket errors; no fix appears in this data.</li>
-</ul>
-</details>
-
-<details>
-<summary><strong>Pi</strong> — <a href="https://github.com/earendil-works/pi">earendil-works/pi</a></summary>
-
-<h2>What changed</h2>
-<p><strong>Extension reloads are now deferred.</strong> <code>ctx.requestReload()</code> replaces awaited <code>ctx.reload()</code>, so extensions can request a canonical runtime reload once operations, compaction, or branch summarization settle (PR #7948). Direct unsafe reloads are rejected. This landed alongside the request from issue #6552.</p>
-<p><strong>Tool search ranking was fixed.</strong> <code>tool_search</code> now returns a tool when the query is that tool&#39;s exact name, and tool names outweigh description matches (PRs #11625, #11632). A follow-up re-ranks tools matching more query terms first. A separate PR #11631 ports the same ranking to durable.</p>
-<p><strong>WSL interop helpers now start from <code>/</code>.</strong> Pi previously inherited its cwd when spawning <code>powershell.exe</code>, so deep paths failed with <code>Invalid argument</code> past MAX_PATH (PR #11627, fixes #11592). The same PR reports external editor failures.</p>
-<h2>Worth knowing</h2>
-<p><strong>Windows terminals leak color-query replies into the prompt.</strong> On mintty/ConPTY in 0.99.x, the startup color query inserts escape-sequence text such as <code>;0;rgb:0000/…</code> into the prompt and BEL opens the external editor (#10256, 15 comments). 0.87.1 and Windows Terminal are unaffected. PR #11609 proposes consuming mintty&#39;s prefixless palette replies.</p>
-<p><strong>Anthropic sessions break after an extension drops a tool mid-session.</strong> Every later request fails with <code>tool_reference_unresolved</code> (#11376, 4 comments, <code>prio:p0</code>). An extension reload that stops registering tools triggers it; issue #10954 reports the same failure on <code>anthropic-messages</code> through OpenCode Go.</p>
-<p><strong>RPC mode does not exit on async shutdown.</strong> An idle <code>--mode rpc</code> process with stdin open stays alive after an extension calls <code>ctx.shutdown()</code> from a timer; the request is not processed until another command arrives (#11599).</p>
-</details>
-
-<details>
-<summary><strong>Qwen Code</strong> — <a href="https://github.com/QwenLM/qwen-code">QwenLM/qwen-code</a></summary>
-
-<p><strong>What changed</strong></p>
-<ul>
-<li><code>cua-driver-rs v0.27.0</code> ships prebuilt Qwen CUA Driver binaries under <code>packages/cua-driver</code>. macOS gets a codesigned, notarized universal binary plus <code>QwenCuaDriver.app</code>; Linux and Windows builds are unsigned (glibc 2.31 floor on Linux). Matters if you drive the desktop CUA on any of these platforms.</li>
-<li>Proposed in PR <a href="https://github.com/QwenLM/qwen-code/pull/15953">#15953</a>: the shell tool&#39;s &quot;did this <code>cd</code> leave the repo?&quot; check compares an absolute <code>cd</code>/<code>pushd</code> target against the actual working directory. Today an absolute path is assumed to leave the repo, which can block an amend.</li>
-<li>Proposed in PR <a href="https://github.com/QwenLM/qwen-code/pull/15789">#15789</a>: buffered shell output is decoded once on non-UTF-8 code pages (CP936, CP932, CP866). Today the first output chunk picks the encoding.</li>
-</ul>
-<p><strong>Worth knowing</strong></p>
-<ul>
-<li>Issue <a href="https://github.com/QwenLM/qwen-code/issues/15276">#15276</a>: Windows desktop updates fail with &quot;Error opening file for writing&quot; on <code>runtime\qwen-code\node\node.exe</code>, because the installer holds the bundled Node runtime locked. Open, 4 comments.</li>
-<li>Issue <a href="https://github.com/QwenLM/qwen-code/issues/15919">#15919</a>: <code>@qwen-code/qwen-code@0.26.4</code> bundles fast-uri 3.1.0 via <code>@modelcontextprotocol/client</code> 2.0.0, so the 3.1.7 bump from #10862 does not reach it. Open.</li>
-<li>Issue <a href="https://github.com/QwenLM/qwen-code/issues/15861">#15861</a>: the <code>web-shell E2E Smoke</code> lane times out on the Add Workspace dialog on unrelated PRs, forcing re-attribution rounds.</li>
 </ul>
 </details>
 
