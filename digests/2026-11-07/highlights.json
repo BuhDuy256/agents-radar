@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "User-Agent của Claude Code làm rò rỉ địa chỉ email người dùng cho bên thứ ba trong tìm kiếm web, ảnh hưởng mọi người dùng đến khi được sửa.",
+      "Claude Code v2.1.319 thay đổi chế độ tự động sau cổng LLM: các cuộc gọi không xác minh được sẽ bị hỏi hoặc từ chối, không có bộ phân loại dự phòng.",
+      "Kỹ năng claude-api chèn ~156k token trong một lần gọi công cụ, làm cạn cửa sổ ngữ cảnh ngay lập tức."
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill tăng 2.548 sao trong một ngày nhờ kỹ năng coding-agent chạy kiểm tra bảo mật đã xác minh.",
+      "mattpocock/skills thêm 2.070 sao nhờ các kỹ năng agent có sẵn lấy từ thư mục .agents của tác giả.",
+      "google/skills gói các kỹ năng agent cho sản phẩm Google, tăng 534 sao."
+    ],
+    "ai-web": [
+      "Trang giá của Claude không còn liệt kê dòng cửa sổ ngữ cảnh 1M, nên người dùng nên kiểm tra giới hạn hiện tại của mô hình.",
+      "Anthropic phác thảo kiến trúc bộ nhớ agent phản ánh nhật ký, giúp các phiên Claude Code dài sửa lỗi trong thời gian rảnh.",
+      "OpenAI chỉ đăng metadata để đo cách agent AI xử lý khoa học phòng thí nghiệm ướt; không có nội dung bài viết."
+    ],
+    "ai-hn": [
+      "Google phát hành Gemini Omni 1.2 Flash với video 15 giây và giảm giá 30% còn $0,07 mỗi giây cho 720p.",
+      "Guarding Jev với Claude Opus đạt độ chính xác biên ở chi phí thấp hơn hơn 4 lần khi chấm điểm phân giải danh tính.",
+      "Người mua IPO của Anthropic thảo luận định giá thấp tới $1,1 nghìn tỷ trước tiếp thị chính thức tuần tới."
+    ],
+    "ai-community": [
+      "Rò rỉ email User-Agent của Claude Code vẫn tồn tại trên v2.1.318 dù có cc-plugin-privacy tích hợp trong v2.1.317.",
+      "Ba plugin sơ đồ kiến trúc được thử trên codebase năm repo: tất cả bỏ sót lỗ hổng OAuth mà agent đọc code thường tìm thấy.",
+      "Chỉnh sửa không gian trọng số sửa mô hình nhỏ nhưng chỉ cải thiện suy luận LLM 0,8B 1,2 lần so với chỉnh sửa 29 lần tái tạo."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code's User-Agent leaks users' email addresses to third parties during web searches, affecting all users until fixed.",
+      "Claude Code v2.1.319 changes auto mode behind LLM gateways: unverifiable calls are now asked or denied, with no fallback classifier.",
+      "The claude-api skill injects ~156k tokens in one tool call, exhausting the context window immediately."
+    ],
+    "ai-trending": [
+      "cloudflare/security-audit-skill gains 2,548 stars in a day for a coding-agent skill that runs verified security audits.",
+      "mattpocock/skills adds 2,070 stars for ready-made agent skills taken from the author's .agents directory.",
+      "google/skills bundles agent skills for Google products, gaining 534 stars."
+    ],
+    "ai-web": [
+      "Claude's pricing page no longer lists the 1M context window line, so users should verify their model's current limit.",
+      "Anthropic outlined a log-reflection agent memory architecture, letting long Claude Code sessions fix mistakes during idle time.",
+      "OpenAI posted only metadata for measuring how AI agents handle wet lab science; no article text was available."
+    ],
+    "ai-hn": [
+      "Google released Gemini Omni 1.2 Flash with 15-second video and a 30% price drop to $0.07 per second for 720p.",
+      "Guarding Jev with Claude Opus matched frontier accuracy at over 4x lower cost on identity-resolution grading.",
+      "Anthropic IPO buyers discuss valuations as low as $1.1 trillion ahead of formal marketing next week."
+    ],
+    "ai-community": [
+      "Claude Code's User-Agent email leak persists on v2.1.318 despite the built-in cc-plugin-privacy block shipped in v2.1.317.",
+      "Three architecture-diagram plugins tested on a five-repo codebase: all missed an OAuth hole a plain code-reading agent found.",
+      "Weight-space edits fixed small models but moved an 0.8B LLM's reasoning only 1.2x versus a reproduced 29x edit."
+    ]
+  }
+}
