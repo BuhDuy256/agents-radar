@@ -63,6 +63,7 @@
     "Price Search Per 1,000 successful requests $0.75"
   ],
   "https://claude.com/pricing": [
+    "& Enterprise API Individual Free Try Claude $0",
     "$100 Per seat / month if billed annually. $125",
     "$20 Per seat / month if billed annually. $25",
     "20 seat",
@@ -77,7 +78,6 @@
     "No 5-hour limit ‡ 10x Pro usage every week* $200 a month in API credits, up from $100 on Ma",
     "seat 5x more usage than standard seats* $100 Per seat / month if billed annually",
     "Seat price + usage at API rates US$20/seat/month, billed annually, 20 seat min",
-    "Team & Enterprise API Free Try Claude $0",
     "traffic times Ultra For your longest tasks $200 Per month Try Claude Everything in Max, plus",
     "Yes Yes Yes New Monthly API credits † No No $100/month $200/month Priority access at high"
   ]

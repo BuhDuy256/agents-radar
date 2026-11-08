@@ -1,0 +1,52 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code headless `claude -p` dùng hơn ~1,8× hạn mức 5 giờ mỗi token so với chế độ tương tác, issue đang mở",
+      "Qwen Code v0.27.0 phát hành phiên managed-agent trả lời nhiều câu hỏi con theo bất kỳ thứ tự nào",
+      "Qwen Code microcompaction thay đường dẫn output lưu trữ, digest sha256 và bản xem trước bằng một placeholder đã xóa trống"
+    ],
+    "ai-trending": [
+      "security-audit-skill của Cloudflare thêm kỹ năng kiểm tra bảo mật agent nhiều giai đoạn, tạo phát hiện đã xác minh dạng máy đọc",
+      "ranxianglei/billion-context nén các phiên kéo dài cả tháng, tuyên bố ít hơn 5 lần token cho cửa sổ ngữ cảnh 100K",
+      "headroom nén đầu ra công cụ và log trước LLM, tuyên bố giảm 20% token cho coding agent và 60-95% cho JSON"
+    ],
+    "ai-web": [
+      "Anthropic công bố nghiên cứu về chương trình ba bước dạy AI xây dựng mô hình khoa học; không thay đổi sản phẩm hay giá"
+    ],
+    "ai-hn": [
+      "Issue GitHub cáo buộc Claude Code gửi địa chỉ email người dùng trong header yêu cầu web; Anthropic phát hành chặn cc-plugin-privacy bật mặc định ở v2.1.317",
+      "Google phát hành Gemini Omni 1.2 Flash với clip gốc 15 giây và giảm giá 30% còn $0,07 mỗi giây cho 720p",
+      "Nhóm AI Frontiers của Microsoft Research đóng cửa sau tái cơ cấu vào Microsoft AI, theo John Langford"
+    ],
+    "ai-community": [
+      "Hook Stop của Claude Code trả mã thoát 2 sẽ chặn lượt cho đến khi build đạt, buộc agent tự xác minh chỉnh sửa của mình",
+      "GPT-6 Astra nhận diện trò chơi và mô hình khuếch tán đã huấn luyện từ trọng số thô, và một chỉnh sửa trọng số nâng Qwen3.5-0.8B MATH-500 từ 7,9% lên 48,1%",
+      "Agent trực Déjà Vu giảm recall từ 56 ký ức trong 5,3 giây xuống ~23 trong 6 giây bằng lưu các biện pháp thất bại thành tài liệu riêng"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code headless `claude -p` uses ~1.8× more of the 5-hour quota per token than interactive mode, issue open",
+      "Qwen Code v0.27.0 ships managed-agent sessions answering multiple child questions in any order",
+      "Qwen Code microcompaction replaces persisted-output paths, sha256 digests and previews with a bare cleared placeholder"
+    ],
+    "ai-trending": [
+      "Cloudflare's security-audit-skill adds a multi-phase agent security audit skill producing machine-readable verified findings",
+      "ranxianglei/billion-context compresses month-long sessions claiming 5x fewer tokens for 100K context windows",
+      "headroom compresses tool outputs and logs before the LLM, claiming 20% fewer tokens for coding agents and 60-95% for JSON"
+    ],
+    "ai-web": [
+      "Anthropic published research on a three-step program for teaching AI to build scientific models; no product or price change"
+    ],
+    "ai-hn": [
+      "GitHub issue alleges Claude Code sent users' email addresses in web request headers; Anthropic shipped a default-on cc-plugin-privacy block in v2.1.317",
+      "Google released Gemini Omni 1.2 Flash with 15-second native clips and a 30% price cut to $0.07 per second for 720p",
+      "Microsoft Research's AI Frontiers group shut down after reorg into Microsoft AI, per John Langford"
+    ],
+    "ai-community": [
+      "A Claude Code Stop hook returning exit code 2 blocks the turn until the build passes, forcing the agent to verify its own edits",
+      "GPT-6 Astra identified trained games and diffusion models from raw weights, and a weight edit raised Qwen3.5-0.8B MATH-500 from 7.9% to 48.1%",
+      "Déjà Vu on-call agent cut recall from 56 memories in 5.3s to ~23 in 6s by storing failed mitigations as separate documents"
+    ]
+  }
+}
