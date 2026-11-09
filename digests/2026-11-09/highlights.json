@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Theo nghiên cứu của Apiiro, \"Don't Ask Again\" của Claude Code để lộ mật khẩu trong 1.122 tệp GitHub công khai.",
+      "Claude Code gửi địa chỉ email của người dùng đến bên thứ ba trong tiêu đề User-Agent khi tìm kiếm web mà không được phép.",
+      "OpenCode đề xuất giữ các công cụ MCP được liệt kê sau khi kết nối bị ngắt thay vì biến mất khỏi /mcps."
+    ],
+    "ai-trending": [
+      "ECC dẫn đầu các dự án thịnh hành, bổ sung lớp hiệu năng với kỹ năng, bộ nhớ và bảo mật cho agent harnesses.",
+      "firecrawl cung cấp dữ liệu web trực tiếp cho AI agent thông qua thu thập và trích xuất, gần đạt 200k sao.",
+      "claude-mem ghi lại và nén các phiên agent, sau đó đưa ngữ cảnh liên quan vào các phiên sau."
+    ],
+    "ai-hn": [
+      "Goldman Sachs hạn chế Claude Code và GitHub Copilot cho khoảng 12.000 kỹ sư, cắt quyền truy cập của trader và banker.",
+      "OpenAI huy động khoảng 11 tỷ USD với định giá 1,25 nghìn tỷ USD, thấp hơn mục tiêu 1,4 nghìn tỷ USD được báo cáo.",
+      "Google phát hành Gemini Omni 1.2 Flash với video 15 giây, chỉnh sửa nhiều lượt và giá thấp hơn 30%."
+    ],
+    "ai-community": [
+      "Gemma 4 chạy cục bộ qua Ollama đổi tên ảnh chụp màn hình và gắn cờ mật khẩu thử nghiệm giả, sau khi giới hạn đầu ra 40 token giúp giảm thời gian mỗi ảnh xuống khoảng 9 giây.",
+      "GPT-6 Astra chỉnh sửa 0,016% trọng số Qwen3.5-0.8B không dùng gradient, nâng MATH-500 từ 7,9% lên 48,1%.",
+      "AI SDK 7.0.163 thêm các phần luồng ping và tin nhắn điều hướng trong bản vá, phá vỡ switch đầy đủ dưới TypeScript 7.0.2."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code's \"Don't Ask Again\" exposed passwords in 1,122 public GitHub files, per Apiiro research.",
+      "Claude Code sent users' email addresses to third parties in the User-Agent header during web searches without permission.",
+      "OpenCode proposed keeping MCP tools listed after a dropped connection instead of disappearing from /mcps."
+    ],
+    "ai-trending": [
+      "ECC leads trending projects, adding a performance layer with skills, memory and security for agent harnesses.",
+      "firecrawl supplies live web data to AI agents through crawling and extraction, nearing 200k stars.",
+      "claude-mem captures and compresses agent sessions, then injects relevant context into later sessions."
+    ],
+    "ai-hn": [
+      "Goldman Sachs restricted Claude Code and GitHub Copilot to its roughly 12,000 engineers, cutting off traders and bankers.",
+      "OpenAI closed about $11B at a $1.25T valuation, below the reported $1.4T target.",
+      "Google released Gemini Omni 1.2 Flash with 15-second video, multi-turn editing and a 30% lower price."
+    ],
+    "ai-community": [
+      "Gemma 4 running locally through Ollama renamed screenshots and flagged a fake test password, after capping output at 40 tokens cut per-image time to about 9 seconds.",
+      "GPT-6 Astra edited 0.016% of Qwen3.5-0.8B weights without gradients, lifting MATH-500 from 7.9% to 48.1%.",
+      "AI SDK 7.0.163 added ping and steering-message stream parts in a patch, breaking exhaustive switches under TypeScript 7.0.2."
+    ]
+  }
+}
