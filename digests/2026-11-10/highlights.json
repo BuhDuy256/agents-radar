@@ -1,0 +1,52 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Fable 5.2 trở thành mô hình Fable mặc định với ngữ cảnh 1M ở mức $8/$40 mỗi Mtok.",
+      "GitHub Copilot CLI v1.0.109-1 bổ sung quy tắc CIDR IPv4/IPv6 và Fable 5.2 vào danh sách chọn.",
+      "Qwen Code v0.27.1 đã phát hành, ghi tên shell đang hoạt động trong ngữ cảnh khởi động."
+    ],
+    "ai-trending": [
+      "anthropics/skills đạt 1.038 sao hôm nay như một repo tham chiếu Agent Skills công khai.",
+      "vercel-labs/agent-browser thêm 916 sao cho CLI tự động hóa trình duyệt cho AI-agent bằng Rust.",
+      "claude-mem lưu giữ ngữ cảnh phiên nén qua Claude Code, Codex, Gemini và Copilot."
+    ],
+    "ai-web": [
+      "Anthropic cho biết Claude Fable 5.2 đã thiết kế ba thiết bị phần cứng điện tử từ đầu đến cuối với Diode Computers.",
+      "Anthropic công bố FlashProve, chứng minh mỗi phản hồi mô hình đến từ mô hình đã cam kết."
+    ],
+    "ai-hn": [
+      "Anthropic phát hành Fable 5.2 và Mythos 5.2 ở mức $8/$40 mỗi Mtok, nhanh hơn tới 30%.",
+      "Goldman Sachs hạn chế Claude Code và GitHub cho khoảng 12.000 kỹ sư, cắt quyền truy cập của trader và banker.",
+      "'Don't Ask Again' của Claude Code bị liên hệ với mật khẩu lộ trong 1.122 tệp GitHub công khai."
+    ],
+    "ai-community": [
+      "Một thử nghiệm prompt-injection 125 lần cho thấy agent không bị lừa, nhưng chính sách và phê duyệt chưa được kiểm chứng.",
+      "Một khảo sát vận hành biến ý tưởng định danh agent không khóa thành JWT với danh sách ID agent bị thu hồi lưu đệm tối đa 60 giây."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Fable 5.2 becomes default Fable model with 1M context at $8/$40 per Mtok.",
+      "GitHub Copilot CLI v1.0.109-1 adds IPv4/IPv6 CIDR rules and Fable 5.2 to the picker.",
+      "Qwen Code v0.27.1 released, naming the active shell in startup context."
+    ],
+    "ai-trending": [
+      "anthropics/skills gained 1,038 stars today as a public Agent Skills reference repo.",
+      "vercel-labs/agent-browser added 916 stars for its AI-agent browser automation CLI in Rust.",
+      "claude-mem persists compressed session context across Claude Code, Codex, Gemini and Copilot."
+    ],
+    "ai-web": [
+      "Anthropic says Claude Fable 5.2 designed three electronic hardware devices end to end with Diode Computers.",
+      "Anthropic published FlashProve, which proves each model response came from the committed model."
+    ],
+    "ai-hn": [
+      "Anthropic released Fable 5.2 and Mythos 5.2 at $8/$40 per Mtok, up to 30% faster.",
+      "Goldman Sachs restricted Claude Code and GitHub to its ~12,000 engineers, cutting off traders and bankers.",
+      "Claude Code's 'Don't Ask Again' was linked to exposed passwords in 1,122 public GitHub files."
+    ],
+    "ai-community": [
+      "A 125-run prompt-injection test found the agent never fooled, but policy and approvals were never exercised.",
+      "An operator survey turned a keyless agent-identity idea into JWTs with a revoked-agent-ID list cached up to 60 seconds."
+    ]
+  }
+}
