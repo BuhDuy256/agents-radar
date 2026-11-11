@@ -1,0 +1,48 @@
+{
+  "vi": {
+    "ai-cli": [
+      "DISABLE_TELEMETRY=1 của Claude Code ẩn Fable 5.2 khỏi trình chọn /model; vấn đề đang mở, chưa có bản sửa.",
+      "OpenAI Codex đã phát hành rust-v0.167.1, bản vá trên v0.167.0 không có mục changelog.",
+      "Gemini CLI v0.69.0-preview.0 thêm bản đồ nhiệt /stats hiển thị token dùng mỗi ngày ngay trong CLI."
+    ],
+    "ai-trending": [
+      "anthropics/skills tăng 1.679 sao hôm nay nhờ là kho tham chiếu Agent Skills công khai."
+    ],
+    "ai-web": [
+      "Anthropic khởi động roadshow cho IPO 825M cổ phiếu giá $70–$78, niêm yết trên Nasdaq với mã ANT; chưa có hiệu lực.",
+      "Dòng GitHub Copilot Standalone $10 mỗi người dùng mỗi tháng không còn trên trang Plans & pricing; có thể đã đổi từ ngữ."
+    ],
+    "ai-hn": [
+      "Anthropic phát hành Claude Fable 5.2 và Mythos 5.2, nhanh hơn tới 30%, giá $8 đầu vào và $40 đầu ra mỗi triệu token.",
+      "Goldman Sachs giới hạn Claude Code và GitHub cho khoảng 12.000 kỹ sư, chặn trader và banker.",
+      "Amazon thay Claude Sonnet 4.6 bằng Strands Decider E4B để gắn nhãn ticket, giảm chi phí mỗi triệu ticket từ ~$22.200 xuống ~$500."
+    ],
+    "ai-community": [
+      "Script RAG 160 dòng trên tài liệu KEDA nâng Qwen3 8B cục bộ từ 1/10 lên 6/10 với câu hỏi KEDA nghiêm ngặt, đạt 8/10 nhờ tìm kiếm hybrid.",
+      "Script Bash cập nhật Claude Code, Codex CLI và Antigravity CLI, hub và IDE trong một lần chạy, có --check và script riêng từng agent."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code's DISABLE_TELEMETRY=1 hides Fable 5.2 from the /model picker; issue open, no fix.",
+      "OpenAI Codex shipped rust-v0.167.1, a patch release over v0.167.0 with no changelog entries.",
+      "Gemini CLI v0.69.0-preview.0 adds /stats heatmap showing per-day token usage without leaving the CLI."
+    ],
+    "ai-trending": [
+      "anthropics/skills gained 1,679 stars today as the public Agent Skills reference repository."
+    ],
+    "ai-web": [
+      "Anthropic launched the roadshow for its IPO of 825M shares at $70–$78, listing on Nasdaq as ANT; not yet effective.",
+      "GitHub Copilot's Standalone $10 per user per month line no longer appears on the Plans & pricing page; wording may have changed."
+    ],
+    "ai-hn": [
+      "Anthropic released Claude Fable 5.2 and Mythos 5.2, up to 30% faster, at $8 input and $40 output per million tokens.",
+      "Goldman Sachs restricted Claude Code and GitHub to its ~12,000 engineers, cutting off traders and bankers.",
+      "Amazon replaced Claude Sonnet 4.6 with Strands Decider E4B for ticket labeling, cutting cost per million tickets from ~$22,200 to ~$500."
+    ],
+    "ai-community": [
+      "A 160-line RAG script over KEDA docs took a local Qwen3 8B from 1/10 to 6/10 on strict KEDA questions, hitting 8/10 with hybrid search.",
+      "Bash scripts update Claude Code, Codex CLI and Antigravity CLI, hub and IDE in one run, with --check and per-agent scripts."
+    ]
+  }
+}
