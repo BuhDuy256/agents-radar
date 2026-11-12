@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "GitHub Copilot CLI v1.0.110-3 sửa lỗi popup đăng nhập Microsoft Entra cho tài khoản tổ chức.",
+      "Codex 0.167.2 gửi cập nhật công cụ theo từng phần mặc định trên Google Cloud Vertex AI, giảm kích thước payload.",
+      "Pi sửa ba lỗi: đầu ra bash trống, mất công cụ MCP sau khi khôi phục, và liên kết OSC 8 hỏng trong bản xuất."
+    ],
+    "ai-trending": [
+      "meta/astryx tăng 2.776 sao hôm nay như một hệ thống thiết kế mã nguồn mở, sẵn sàng cho agent.",
+      "shadcn/improve dùng mô hình tốt nhất để kiểm tra mã và mô hình rẻ hơn để thực thi kế hoạch.",
+      "openai/codex-security ra mắt CLI và SDK TypeScript để tìm và sửa lỗ hổng bảo mật."
+    ],
+    "ai-hn": [
+      "Anthropic ra mắt Fable 5.2 và Mythos 5.2, nhanh hơn tới 30% với giá $8/$40 mỗi triệu token.",
+      "Kỹ sư Amazon giảm 98% chi phí gắn nhãn ticket bằng cách thay Sonnet 4.6 bằng một mô hình quyết định.",
+      "United Airlines cấm agent AI bên thứ ba đặt vé máy bay, với lý do rủi ro bảo mật chia sẻ thông tin đăng nhập."
+    ],
+    "ai-community": [
+      "Cổng đánh giá chặn pull request trong CI khi agent đạt dưới 4/5 về chất lượng phản hồi tùy chỉnh.",
+      "Kiro CLI xem xét diff pull request trong GitHub Action và đăng phát hiện thành một bình luận PR.",
+      "Trạng thái agent lưu trên máy chủ chính xác qua 1.500 bước, trong khi chat lưu lại trượt ở lượt 223."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "GitHub Copilot CLI v1.0.110-3 fixes Microsoft Entra sign-in error popups for organization accounts.",
+      "Codex 0.167.2 sends tool updates incrementally by default on Google Cloud Vertex AI, cutting payload size.",
+      "Pi fixes three bugs: empty bash output, dropped MCP tools after resume, and broken OSC 8 links in exports."
+    ],
+    "ai-trending": [
+      "meta/astryx gains 2,776 stars today as an open source, agent-ready design system.",
+      "shadcn/improve uses your best model to audit code and cheaper models to execute the plans.",
+      "openai/codex-security ships a CLI and TypeScript SDK for finding and fixing vulnerabilities."
+    ],
+    "ai-hn": [
+      "Anthropic launches Fable 5.2 and Mythos 5.2, up to 30% faster at $8/$40 per million tokens.",
+      "Amazon engineers cut ticket labeling cost 98% by swapping Sonnet 4.6 for a decision model.",
+      "United Airlines bans third-party AI agents from booking flights, citing credential-sharing security risks."
+    ],
+    "ai-community": [
+      "Eval gate makes CI block a pull request when an agent scores below 4/5 on custom response quality.",
+      "Kiro CLI reviews pull request diffs in a GitHub Action and posts findings as a single PR comment.",
+      "Host-held agent state stayed exact across 1,500 steps where a kept chat slipped at turn 223."
+    ]
+  }
+}
