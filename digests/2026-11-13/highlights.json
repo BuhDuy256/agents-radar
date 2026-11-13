@@ -1,0 +1,50 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.323 thêm Code Mode thử nghiệm dạng opt-in, cho phép agent viết JavaScript để gọi chính các công cụ của nó.",
+      "OpenAI Codex CLI 0.168.0 thêm trình duyệt nhà cung cấp mô hình và các khung chat song song `features.tui_workspace`.",
+      "GitHub Copilot CLI v1.0.111-0 thêm hỗ trợ regex cho các quy tắc quyền Shell, Bash và PowerShell do doanh nghiệp quản lý."
+    ],
+    "ai-trending": [
+      "meta/astryx, hệ thống thiết kế mã nguồn mở sẵn sàng cho agent, tăng 1.830 sao trong một ngày.",
+      "addyosmani/agent-skills, kỹ năng cấp sản xuất cho agent lập trình AI, tăng 816 sao hôm nay.",
+      "GoogleChrome/modern-web-guidance-src giúp agent lập trình cập nhật thực hành web hiện đại, thêm 739 sao."
+    ],
+    "ai-web": [
+      "Anthropic đã nộp Form S-1 lên SEC cho đề xuất IPO và dự định niêm yết trên Nasdaq với mã \"ANT.\""
+    ],
+    "ai-hn": [
+      "Anthropic mở roadshow IPO, nhắm niêm yết Nasdaq với mã \"ANT\", dự kiến định giá ngày 18 tháng 11.",
+      "Google ra mắt Gemini 4 Hydrogen trên Gemini API, ứng dụng, Search và Antigravity, giá $1,50/$7,50 mỗi triệu token.",
+      "United Airlines cấm các agent AI bên thứ ba không được phép đặt vé và xuất vé trên nền tảng của mình."
+    ],
+    "ai-community": [
+      "Tiện ích mở rộng Rust gốc Rails qua `magnus` giúp tiền xử lý markdown nhanh hơn ~54 lần và xếp hạng feed nhanh hơn 20 lần mà không rời Rails.",
+      "Gói lập trình giá rẻ của MiMo tốn $0,81 mỗi thay đổi được chấp nhận so với $0,71 của GPT-6.1 Sol trong 20 ngày, do phải làm lại."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.323 adds experimental opt-in Code Mode that lets the agent write JavaScript to call its own tools.",
+      "OpenAI Codex CLI 0.168.0 adds a model provider browser and `features.tui_workspace` side-by-side chat panes.",
+      "GitHub Copilot CLI v1.0.111-0 adds regex support to enterprise-managed Shell, Bash, and PowerShell permission rules."
+    ],
+    "ai-trending": [
+      "meta/astryx, an open-source agent-ready design system, gained 1,830 stars in a day.",
+      "addyosmani/agent-skills, production-grade skills for AI coding agents, gained 816 stars today.",
+      "GoogleChrome/modern-web-guidance-src keeps coding agents current with modern web best practices, adding 739 stars."
+    ],
+    "ai-web": [
+      "Anthropic filed a Form S-1 with the SEC for a proposed IPO and intends to list on Nasdaq under the symbol \"ANT.\""
+    ],
+    "ai-hn": [
+      "Anthropic opened its IPO roadshow, targeting a Nasdaq listing under ticker \"ANT\" with pricing expected November 18.",
+      "Google launched Gemini 4 Hydrogen across the Gemini API, app, Search and Antigravity, priced $1.50/$7.50 per million tokens.",
+      "United Airlines banned unauthorized third-party AI agents from booking and ticketing on its platforms."
+    ],
+    "ai-community": [
+      "A Rails-native Rust extension via `magnus` cut markdown pre-processing ~54x faster and feed ranking 20x faster without leaving Rails.",
+      "MiMo's cheap coding plan cost $0.81 per accepted change versus $0.71 for GPT-6.1 Sol over 20 days, driven by rework."
+    ]
+  }
+}
