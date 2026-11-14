@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.325 sửa lỗi bảo mật khi giải mã phản hồi nén zstd; hãy cập nhật nếu bạn dựa vào phản hồi nén.",
+      "Claude Code v2.1.323 đã xóa cài đặt subagentStatusLine mà không có thay thế, ẩn ngữ cảnh, chi phí, model và effort của từng agent.",
+      "Qwen Code CLI có thể bị treo khi xác minh đăng nhập trên Linux headless sau khi đăng nhập bằng trình duyệt từ máy khác."
+    ],
+    "ai-trending": [
+      "GoogleChrome/modern-web-guidance-src tăng 1.925 sao hôm nay, định hướng coding agent theo hướng dẫn nền tảng web hiện tại.",
+      "OpenAI codex-security cung cấp Codex Security CLI và TypeScript SDK để tìm, xác thực và sửa lỗ hổng.",
+      "ChromeDevTools/chrome-devtools-mcp mở Chrome DevTools cho coding agent qua một MCP server."
+    ],
+    "ai-web": [
+      "Claude Sonnet 5 ra mắt là Sonnet có tính agent cao nhất từ trước tới nay, hiệu năng gần Opus 4.8 với giá thấp hơn.",
+      "Biện pháp bảo vệ sinh học của Claude Fable 5 giảm fallback khoảng 85%; virus học, độc chất học và thiết kế phân tử vẫn chuyển sang Opus 5.",
+      "Claude Code auto mode được thêm làm lựa chọn an toàn hơn --dangerously-skip-permissions cho quyết định quyền."
+    ],
+    "ai-hn": [
+      "Anthropic mở roadshow IPO với doanh thu quý 17,0 tỷ USD và lỗ ròng 23,3 tỷ USD; dự kiến giao dịch ngày 19 tháng 11.",
+      "Google thêm Gemini 4 Hydrogen và chế độ Orchestrator vào Antigravity, tuyên bố giảm 24% hạn mức và hoàn thành nhanh hơn 19%.",
+      "smolmaxxing vá llama.cpp để chạy model 80 tỷ tham số trên điện thoại với khoảng 3GB trống, đạt 2,6-3,1 tok/s."
+    ],
+    "ai-community": [
+      "NestDaddy thấy 89,6% trong 37.383 MCP server từ xa phản hồi kiểm tra kết nối hằng ngày, với 401/403 được tính là hoạt động.",
+      "Một ứng dụng học trên trình duyệt chạy Liquid AI LFM3-1.7B ngoại tuyến qua Transformers.js và WebGPU, chỉ trả lời từ ghi chú đã kiểm.",
+      "Gemma 4 31B trên API miễn phí của AMD Token Lab có 10 điểm cho 30 ngày và giới hạn 20 yêu cầu mỗi phút."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.325 fixes a security issue in decoding zstd-compressed responses; update if you rely on compressed responses.",
+      "Claude Code v2.1.323 removed the subagentStatusLine setting with no replacement, hiding per-agent context, cost, model and effort.",
+      "Qwen Code CLI can hang at login verification on headless Linux after browser login from another machine."
+    ],
+    "ai-trending": [
+      "GoogleChrome/modern-web-guidance-src gains 1,925 stars today, grounding coding agents in current web platform guidance.",
+      "OpenAI codex-security offers a Codex Security CLI and TypeScript SDK for finding, validating and fixing vulnerabilities.",
+      "ChromeDevTools/chrome-devtools-mcp exposes Chrome DevTools to coding agents through an MCP server."
+    ],
+    "ai-web": [
+      "Claude Sonnet 5 launched as the most agentic Sonnet yet, near Opus 4.8 performance at lower prices.",
+      "Claude Fable 5 biology safeguards cut fallbacks about 85%; virology, toxicology and molecular design still route to Opus 5.",
+      "Claude Code auto mode added as a safer alternative to --dangerously-skip-permissions for permission decisions."
+    ],
+    "ai-hn": [
+      "Anthropic opened its IPO roadshow with $17.0B quarterly revenue and a $23.3B net loss; trading expected November 19.",
+      "Google added Gemini 4 Hydrogen and an Orchestrator mode to Antigravity, claiming 24% less quota and 19% faster completion.",
+      "smolmaxxing patches llama.cpp to run 80B-parameter models on phones with about 3GB free, hitting 2.6-3.1 tok/s."
+    ],
+    "ai-community": [
+      "NestDaddy found 89.6% of 37,383 remote MCP servers answered a daily connectivity check, with 401/403 counted as live.",
+      "A browser study app runs Liquid AI LFM3-1.7B offline via Transformers.js and WebGPU, answering only from checked notes.",
+      "Gemma 4 31B on AMD Token Lab's free API came with 10 points for 30 days and a 20 requests-per-minute limit."
+    ]
+  }
+}
