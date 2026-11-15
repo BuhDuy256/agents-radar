@@ -1,0 +1,44 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Gemini CLI của Google đề xuất chuyển tiếp cài đặt contextManagement, sửa ngưỡng che 400.000 token bị loại bỏ.",
+      "Các luồng đã lưu trữ của OpenAI Codex giờ chỉ đọc trong TUI, dùng `U` để bỏ lưu trữ và tiếp tục.",
+      "Token xác thực GitHub Copilot CLI ngừng làm mới trong tiến trình chạy dài, mọi lời nhắc thất bại không thể /login khôi phục."
+    ],
+    "ai-trending": [
+      "open-code-review của Alibaba đăng nhận xét đánh giá LLM theo dòng với quy tắc NPE, XSS và SQL injection tích hợp.",
+      "Graphify biến cơ sở mã, tài liệu, lược đồ và PDF thành đồ thị tri thức truy vấn được không cần vector store."
+    ],
+    "ai-hn": [
+      "Google phát hành Gemini 4 Hydrogen: ngữ cảnh 1M token, 1,50/7,50 USD mỗi triệu token, nhanh gấp 2,5 lần 3.8 Flash.",
+      "Antigravity Orchestrator chuyển giữa Gemini 4 Carbon và Hydrogen giữa phiên, giảm 24% hạn ngạch sử dụng.",
+      "Sự cố Claude đã được khắc phục sau khi lỗi xác thực ảnh hưởng claude.ai, Claude Code và Console."
+    ],
+    "ai-community": [
+      "Thêm dòng người gửi giảm tuyên bố sai 'chúng ta đang nói chuyện' của tác nhân theo lịch từ 20/23 xuống 2/24.",
+      "Lượng tử hóa KV cache sang q8_0 vừa mô hình 32B 19,5GB trên 24GB VRAM nhờ giảm một nửa bộ nhớ cache.",
+      "Swizzle Runtime v0.1.0 báo cáo 209 tok/s và 43ms TTFT trên GPU laptop 4GB."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Google's Gemini CLI proposes forwarding contextManagement settings, fixing a discarded 400,000-token masking threshold.",
+      "OpenAI Codex archived threads are now read-only in the TUI, with `U` to unarchive and resume.",
+      "GitHub Copilot CLI auth token stops refreshing in long-running processes, failing every prompt with no /login recovery."
+    ],
+    "ai-trending": [
+      "Alibaba's open-code-review posts line-level LLM review comments with built-in NPE, XSS and SQL injection rules.",
+      "Graphify turns codebases, docs, schemas and PDFs into a queryable knowledge graph with no vector store."
+    ],
+    "ai-hn": [
+      "Google releases Gemini 4 Hydrogen: 1M-token context, $1.50/$7.50 per million tokens, 2.5x faster than 3.8 Flash.",
+      "Antigravity Orchestrator switches between Gemini 4 Carbon and Hydrogen mid-session, cutting quota use 24%.",
+      "Claude outage resolved after authentication errors hit claude.ai, Claude Code and Console."
+    ],
+    "ai-community": [
+      "Adding a sender line cut a scheduled agent's false 'we are talking' claims from 20 of 23 to 2 of 24.",
+      "Quantizing the KV cache to q8_0 fits a 19.5GB 32B model on 24GB VRAM by halving cache memory.",
+      "Swizzle Runtime v0.1.0 reports 209 tok/s and 43ms TTFT on a 4GB laptop GPU."
+    ]
+  }
+}
