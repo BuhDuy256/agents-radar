@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Các phiên Windows Remote Control vẫn hỏng sau khi ứng dụng desktop khởi động lại hoặc cập nhật âm thầm, chuyển các phiên đang kết nối vào Archive.",
+      "PR của Gemini CLI đề xuất giữ lại lý do kết thúc subagent để lỗi MAX_TURNS không còn báo thành công.",
+      "Codex alpha phát hành rust-v0.171.0-alpha.6 và alpha.7 chỉ với tăng phiên bản, không có tính năng nào được xác nhận."
+    ],
+    "ai-trending": [
+      "google-labs-code/stitch-skills tăng 247 sao cho Agent Skills dùng được trên Antigravity, Gemini CLI, Claude Code và Cursor.",
+      "ChromeDevTools/chrome-devtools-mcp tăng 717 sao, mở Chrome DevTools cho coding agent qua MCP.",
+      "alibaba/open-code-review tăng 691 sao cho review mã lai LLM với quy tắc NPE, XSS và SQL injection theo dòng."
+    ],
+    "ai-hn": [
+      "Bài blog Qwen4-Max lên vị trí thứ hai trên HN với 316 điểm và 106 bình luận.",
+      "NVIDIA bị cáo buộc tài trợ startup AI để mua GPU của mình, duy trì cảm nhận nhu cầu; Kress bị thúc cắt thỏa thuận OpenAI 250 tỷ USD.",
+      "Ứng dụng Harbor chưa phát hành của Apple gom Mac qua Thunderbolt 5 thành máy chủ suy luận riêng cho mô hình mở."
+    ],
+    "ai-community": [
+      "Hook Claude Code thay quy tắc CLAUDE.md: hook PreToolUse chặn sửa tệp bí mật bằng thoát mã 2.",
+      "Các khung agent review riêng phát hiện lỗi builder khi sự kiện kích hoạt mỗi lần test đạt thay vì một lần.",
+      "Giao thức agent phân theo tầng: MCP cho công cụ, A2A cho agent, AG-UI/A2UI cho hiển thị, UCP thương mại, AP2 thanh toán."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Windows Remote Control sessions stay broken after desktop app restarts or silent updates, moving connected sessions to Archive.",
+      "Gemini CLI PR proposes preserving subagent terminate reason so MAX_TURNS failures stop reporting as success.",
+      "Codex alpha releases rust-v0.171.0-alpha.6 and alpha.7 land with version bumps only, no confirmed features."
+    ],
+    "ai-trending": [
+      "google-labs-code/stitch-skills gains 247 stars for Agent Skills usable across Antigravity, Gemini CLI, Claude Code and Cursor.",
+      "ChromeDevTools/chrome-devtools-mcp adds 717 stars, exposing Chrome DevTools to coding agents over MCP.",
+      "alibaba/open-code-review gains 691 stars for hybrid LLM code review with line-level NPE, XSS and SQL injection rules."
+    ],
+    "ai-hn": [
+      "Qwen4-Max blog post reaches HN second place with 316 points and 106 comments.",
+      "NVIDIA allegedly funded AI startups to buy its GPUs, sustaining demand perception; Kress pushed to cut $250 billion OpenAI deal.",
+      "Apple's unreleased Harbor app pools Macs over Thunderbolt 5 into a private inference server for open-weight models."
+    ],
+    "ai-community": [
+      "Claude Code hooks replace CLAUDE.md rules: PreToolUse hook blocks secret file edits by exiting with code 2.",
+      "Separate reviewer agent panes caught a builder bug where an event fired on every test pass instead of once.",
+      "Agent protocols mapped by layer: MCP for tools, A2A for agents, AG-UI/A2UI for display, UCP commerce, AP2 payments."
+    ]
+  }
+}
