@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.326 bật Code Mode khi nhóm tác nhân hoạt động, tự động chuyển các quy trình nhóm hiện có sang Code Mode.",
+      "GitHub Copilot CLI v1.0.113-1 cho phép quản trị viên tắt Browser Use tích hợp qua features.browserUse, kể cả trong phiên đang chạy.",
+      "Gói nightly Gemini CLI đạt 25,2 MB và lỗi 413 từ 2026-11-05; đề xuất bản sửa xóa bundle/ trước esbuild."
+    ],
+    "ai-trending": [
+      "alibaba/open-code-review tăng 951 sao hôm nay nhờ đánh giá mã theo dòng bằng LLM với bộ quy tắc đa ngôn ngữ.",
+      "NVIDIA/SkillEvaluator tăng 873 sao hôm nay nhờ đánh giá kỹ năng tác nhân AI bằng cổng chất lượng và phát hiện trùng ngữ nghĩa.",
+      "ChromeDevTools/chrome-devtools-mcp tăng 841 sao hôm nay, đưa Chrome DevTools đến tác nhân lập trình qua MCP."
+    ],
+    "ai-web": [
+      "Anthropic rút cửa sổ công bố lỗ hổng xuống 30 ngày cho vấn đề cao và nghiêm trọng, áp dụng cho báo cáo từ ngày 1 tháng 1 năm 2027.",
+      "GitHub Copilot Standalone hiện niêm yết ở mức 10 USD mỗi người dùng; hãy kiểm tra SKU bị tính phí trước khi gia hạn.",
+      "Anthropic sẽ chuyển đến điều phối viên lỗ hổng bên ngoài sau 15 ngày không có phản hồi từ người bảo trì, giảm từ 30."
+    ],
+    "ai-hn": [
+      "Kubernetes 1.38, dự kiến ngày 16 tháng 12, đưa lập lịch nhóm và cấp phát tăng tốc về mức ổn định cho tác vụ huấn luyện AI.",
+      "Anthropic nói với nhà đầu tư IPO rằng Claude Mythos Preview tích hợp GPU AMD MI355X trong khoảng ba ngày, viết gần 100% kernel.",
+      "MissionControlAggregator.dll của Windows 11 ghi lại tác nhân lập trình bạn chạy, gồm codex.exe và claude.exe, theo phân tích ngược."
+    ],
+    "ai-community": [
+      "11 người không phải kỹ sư tại epilot giao việc cho tác nhân lập trình và phát hành 40 pull request đã merge trong 60 ngày.",
+      "Một tác nhân quản lý chạy lại script verify của CI phát hiện 17 lỗi kiểu trong PR mà npm test đã đạt.",
+      "Một giám khảo riêng trong vòng lập kế hoạch/xây dựng bác bỏ trạng thái 200 vì sai tuân thủ đặc tả; trình xây dựng tự chấm dừng ở trạng thái sai."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.326 enables Code Mode when agent teams are active, shifting existing team workflows into Code Mode automatically.",
+      "GitHub Copilot CLI v1.0.113-1 lets admins disable built-in Browser Use via features.browserUse, even in running sessions.",
+      "Gemini CLI nightly tarball hit 25.2 MB and 413 errors since 2026-11-05; a fix clearing bundle/ before esbuild is proposed."
+    ],
+    "ai-trending": [
+      "alibaba/open-code-review gained 951 stars today for LLM-based line-level code review with a multi-language ruleset.",
+      "NVIDIA/SkillEvaluator gained 873 stars today for evaluating AI agent skills with quality gates and semantic overlap detection.",
+      "ChromeDevTools/chrome-devtools-mcp gained 841 stars today, exposing Chrome DevTools to coding agents via MCP."
+    ],
+    "ai-web": [
+      "Anthropic cut its vulnerability disclosure window to 30 days for high and critical issues, effective for reports on or after January 1, 2027.",
+      "GitHub Copilot Standalone is now listed at $10 USD per user; verify your billed SKU before renewal.",
+      "Anthropic will escalate to an external vulnerability coordinator after 15 days of no maintainer response, down from 30."
+    ],
+    "ai-hn": [
+      "Kubernetes 1.38, due December 16, moves gang scheduling and accelerator allocation toward stable for AI training jobs.",
+      "Anthropic told IPO investors Claude Mythos Preview onboarded AMD MI355X GPUs in about three days, writing almost 100% of kernels.",
+      "Windows 11's MissionControlAggregator.dll records which coding agents you run, including codex.exe and claude.exe, per reverse engineering."
+    ],
+    "ai-community": [
+      "11 non-engineers at epilot assigned tasks to coding agents and shipped 40 merged pull requests in 60 days.",
+      "A manager agent re-running CI's verify script caught 17 type errors in a PR whose npm test had passed.",
+      "A separate judge in a plan/build loop rejected a 200 status for wrong spec compliance; the self-grading builder stopped at the wrong status."
+    ]
+  }
+}
