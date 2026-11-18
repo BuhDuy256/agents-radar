@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.327 thêm lời nhắc xác nhận trước khi /install-github-app sửa đổi kho lưu trữ, cùng với claude mcp add-json đọc JSON từ stdin.",
+      "OpenAI Codex rust-v0.170.0 thêm cuộc gọi thoại WebRTC, tự động làm mới tiêu đề xác thực OpenTelemetry và máy chủ MCP cùng tên thử nghiệm trên các môi trường.",
+      "Gemini CLI không có bản phát hành nào trong 24h; đề xuất sửa lỗi phân tích bất đồng bộ Windows PowerShell (PR #30334) và sửa lỗi Git SSH core.sshCommand (PR #30335)."
+    ],
+    "ai-trending": [
+      "obra/superpowers tăng 1.917 sao hôm nay cho khung kỹ năng tác nhân và phương pháp phát triển phần mềm.",
+      "ag-ui-protocol/ag-ui tăng 1.445 sao hôm nay cho Giao thức Tương tác Tác nhân-Người dùng kết nối tác nhân với giao diện.",
+      "elementalsouls/Claude-BugHunter tăng 1.005 sao hôm nay cho 82 kỹ năng Claude Code và 15 lệnh slash để săn lỗi."
+    ],
+    "ai-web": [
+      "Anthropic ra mắt tiện ích bổ sung Excel bản beta cho Claude chạy trong thanh bên, đọc và sửa sổ làm việc, liên kết giải thích với ô đã thay đổi.",
+      "Trang định giá Codex liệt kê GPT-6.2 Astra ở mức 8 đô la mỗi triệu token đầu vào và GPT-6.2 Sol ở 2 đô la đầu vào / 0,10 đô la lưu đệm / 10 đô la đầu ra mỗi triệu.",
+      "Trang gói của GitHub Copilot không còn hiển thị Copilot Standalone ở mức 10 đô la Mỹ mỗi người dùng; không có giá thay thế nào được đưa ra."
+    ],
+    "ai-hn": [
+      "OpenAI phát hành GPT-6.2 Astra và Sol, thu hút 1.221 điểm và 761 bình luận trên Hacker News, dù trang thông báo trả về HTTP 403.",
+      "Microsoft công bố MAI Code 2 và MAI Code 2 Flash, tuyên bố đạt 98% hiệu năng GPT 6.1 Sol với 40% chi phí cho lập trình doanh nghiệp hàng ngày.",
+      "Bài làm việc Harvard khảo sát 718 công ty phát hiện tác nhân lập trình AI thêm 30% mã, nhưng thời gian PR-đến-merge tăng 49% và yêu cầu thay đổi tăng 12 điểm."
+    ],
+    "ai-community": [
+      "Cổng chứng minh Python xác định từ chối PR tác nhân tuyên bố sửa lỗi nhưng làm hỏng bài kiểm tra gốc, rồi chấp nhận là TRUSTED sau phản hồi và thử lại best-of-3.",
+      "Cổng hồi quy prompt chặn chỉnh sửa 'gọn gàng' làm giảm độ chính xác quy tắc hoàn tiền từ 10/10 xuống 3/10 trên 16 trường hợp với ba mô hình nhỏ.",
+      "Cộng thô span ngây thơ nhân đôi số token của tác nhân lên 101.464; chỉ đếm span lá mang usage đã sửa tổng."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.327 adds a confirmation prompt before /install-github-app modifies a repository, plus claude mcp add-json reading JSON from stdin.",
+      "OpenAI Codex rust-v0.170.0 adds WebRTC voice calls, automatic OpenTelemetry auth-header refresh, and experimental same-named MCP servers across environments.",
+      "Gemini CLI has no releases in 24h; proposed Windows PowerShell async parsing fix (PR #30334) and Git SSH core.sshCommand fix (PR #30335)."
+    ],
+    "ai-trending": [
+      "obra/superpowers gained 1,917 stars today for an agentic skills framework and software development methodology.",
+      "ag-ui-protocol/ag-ui added 1,445 stars today for the Agent-User Interaction Protocol linking agents to frontends.",
+      "elementalsouls/Claude-BugHunter added 1,005 stars today for 82 Claude Code skills and 15 slash commands for bug hunting."
+    ],
+    "ai-web": [
+      "Anthropic launched a beta Excel add-in for Claude that runs in a sidebar, reads and modifies workbooks, and links explanations to changed cells.",
+      "Codex pricing page lists GPT-6.2 Astra at $8 per million input tokens and GPT-6.2 Sol at $2 input / $0.10 cached / $10 output per million.",
+      "GitHub Copilot's plans page no longer shows Copilot Standalone at $10 USD per user; no substitute price is given."
+    ],
+    "ai-hn": [
+      "OpenAI released GPT-6.2 Astra and Sol, drawing 1,221 points and 761 comments on Hacker News, though the announcement page returned HTTP 403.",
+      "Microsoft announced MAI Code 2 and MAI Code 2 Flash, claiming 98% of GPT 6.1 Sol performance at 40% of the cost for everyday enterprise coding.",
+      "Harvard working paper covering 718 firms found AI coding agents added 30% more code, but PR-to-merge time rose 49% and change requests rose 12 points."
+    ],
+    "ai-community": [
+      "A deterministic Python proof gate rejected an agent PR that claimed a fix but broke an original test, then passed it as TRUSTED after feedback and best-of-3 retries.",
+      "A prompt regression gate blocked a 'tidy' edit that cut refund-rule accuracy from 10/10 to 3/10 on 16 cases across three small models.",
+      "Naive span summing doubled an agent's token count to 101,464; counting only leaf spans carrying usage fixed the total."
+    ]
+  }
+}
