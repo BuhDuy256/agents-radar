@@ -1,0 +1,56 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.328 bắt đầu phiên tương tác ở chế độ tự động theo mặc định trên Bedrock, Google Cloud, Microsoft Foundry và cổng Claude, phân loại lời nhắc cấp quyền.",
+      "Chế độ tự động của Claude Code chặn công việc được người dùng cho phép, với lỗi hồi quy từ khoảng 23/9 được báo trong issue #108905 và #97613, chưa có bản sửa trong dữ liệu.",
+      "Codex đề xuất trường model tùy chọn trên yêu cầu thread/sample thử nghiệm để một thread có thể được lấy mẫu với model khác."
+    ],
+    "ai-trending": [
+      "Anthropic định giá IPO ở mức 83,00 USD/cổ phiếu cho 980.000.000 cổ phiếu, giao dịch trên Nasdaq với mã ANT từ ngày 19/11/2026.",
+      "Anthropic mở rộng Chương trình Xác minh An ninh mạng thành ba bậc truy cập, cấp cho chuyên gia bảo mật đủ điều kiện bộ phân loại chặn giảm và quyền truy cập Opus 5.5.",
+      "Anthropic nói Claude Fable 5.2 đã giải hai bài toán mở trong vật lý lỗ đen, gồm phép tính được đặt ra hơn 20 năm trước."
+    ],
+    "ai-web": [
+      "Anthropic định giá IPO ở mức 83,00 USD/cổ phiếu, với 980.000.000 cổ phiếu và giao dịch trên Nasdaq với mã ANT từ ngày 19/11/2026.",
+      "Chương trình Xác minh An ninh mạng của Anthropic nay có ba bậc cấp cho chuyên gia bảo mật đủ điều kiện quyền truy cập mạng nâng cao và bộ phân loại chặn giảm.",
+      "Anthropic công bố thử nghiệm đối chứng ngẫu nhiên về việc giao suy nghĩ cho AI có ngăn phát triển kỹ năng lập trình của lập trình viên."
+    ],
+    "ai-hn": [
+      "Google phát hành Gemini 4 Neon với ngữ cảnh 1M token ở mức 3 USD/triệu token đầu vào và 0,15 USD cho bộ nhớ đệm, xếp hạng #3 trên Artificial Analysis.",
+      "Microsoft công bố bảy model tại Ignite, tuyên bố MAI Cyber 2 Flash đánh bại GPT-6 Astra với chi phí dưới 2% mỗi tác vụ.",
+      "Anthropic định giá IPO ở mức 83 USD/cổ phiếu cho 980.000.000 cổ phiếu, giao dịch trên Nasdaq bắt đầu ngày 19/11 với mã ANT."
+    ],
+    "ai-community": [
+      "Code Mode cắt thử nghiệm MCP của một công ty từ 150.000 token xuống 2.000 nhưng ẩn giá trị runtime khỏi bộ phân loại chế độ tự động, cần có quy tắc hoặc hook.",
+      "Một lát bảng xếp hạng THOL gồm 4.310 lần chạy cho thấy danh sách 13 công cụ tốn thêm 41% token mỗi tác vụ giải được, còn danh sách 8 và 30 công cụ nằm trong nhiễu.",
+      "Mười một model khớp lựa chọn công cụ đầu tiên của ba ông lớn ở 17/20 hạng mục, nhưng xác thực tách rõ với Auth.js, Clerk và đăng nhập tùy chỉnh."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.328 starts interactive sessions in auto mode by default on Bedrock, Google Cloud, Microsoft Foundry and the Claude gateway, classifying permission prompts.",
+      "Claude Code auto mode blocks user-authorized work, with regressions since ~Sep 23 reported in issues #108905 and #97613, no fix in the data.",
+      "Codex proposes an optional model field on the experimental thread/sample request so a thread can be sampled with a different model."
+    ],
+    "ai-trending": [
+      "Anthropic priced its IPO at $83.00 per share for 980,000,000 shares, with Nasdaq trading under symbol ANT starting November 19, 2026.",
+      "Anthropic expanded its Cyber Verification Program to three access tiers, granting qualifying security professionals reduced blocking classifiers and Opus 5.5 access.",
+      "Anthropic says Claude Fable 5.2 solved two open problems in black hole physics, including a calculation set up over 20 years ago."
+    ],
+    "ai-web": [
+      "Anthropic priced its IPO at $83.00 per share, with 980,000,000 shares and Nasdaq trading under symbol ANT starting November 19, 2026.",
+      "Anthropic's Cyber Verification Program now has three tiers giving qualifying security professionals advanced cyber access and reduced blocking classifiers.",
+      "Anthropic published a randomized controlled trial on whether offloading thinking to AI prevents developers' coding-skill growth."
+    ],
+    "ai-hn": [
+      "Google released Gemini 4 Neon with a 1M-token context at $3 per million input tokens and $0.15 cached, ranking #3 on Artificial Analysis.",
+      "Microsoft announced seven models at Ignite, claiming MAI Cyber 2 Flash beats GPT-6 Astra at under 2% of the cost per task.",
+      "Anthropic priced its IPO at $83 per share for 980,000,000 shares, with Nasdaq trading starting November 19 under symbol ANT."
+    ],
+    "ai-community": [
+      "Code Mode cut a company's MCP test from 150,000 tokens to 2,000 but hides runtime values from the auto-mode classifier, requiring rule or hook coverage.",
+      "A THOL leaderboard slice of 4,310 runs found a 13-tool list cost 41% more tokens per solved task, while 8 and 30 tool lists stayed within noise.",
+      "Eleven models matched the big three's first tool pick in 17 of 20 categories, but auth split sharply with Auth.js, Clerk and custom logins."
+    ]
+  }
+}
