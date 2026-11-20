@@ -1,0 +1,52 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.329 bổ sung khả năng hiển thị hook vào cài đặt được quản lý, nêu tên thư mục khai báo hook của một phiên.",
+      "OpenAI Codex rust-v0.171.0 thêm GPT-6.2 Sol và Astra vào danh mục, với Sol là lựa chọn mặc định.",
+      "Pi hiện gửi công cụ nghiêm ngặt tới 18 mô hình GitHub Copilot Responses, sửa lỗi đối số công cụ tùy chọn rỗng."
+    ],
+    "ai-trending": [
+      "obra/superpowers tăng 2.028 sao hôm nay nhờ khung kỹ năng tác tử và phương pháp phát triển.",
+      "elementalsouls/Claude-BugHunter gói 82 kỹ năng Claude Code và 15 lệnh slash để săn lỗi.",
+      "firecrawl/firecrawl cung cấp cho tác tử tìm kiếm, thu thập dữ liệu và hơn 550 nhà cung cấp qua một API."
+    ],
+    "ai-web": [
+      "Anthropic cho biết Claude đã tạo ra chứng minh hình thức cấp hợp ngữ về thuộc tính bảo mật cho hơn 100 thư viện mã nguồn mở với Theorem."
+    ],
+    "ai-hn": [
+      "Anthropic ra mắt trên Nasdaq với khoản huy động 81 tỷ USD ở định giá 1,5 nghìn tỷ USD.",
+      "Google phát hành Gemini 4 Neon với ngữ cảnh 1 triệu token, giá 3/15 USD, và điểm 61 trên Chỉ số Trí tuệ Artificial Analysis.",
+      "Microsoft ra mắt bảy mô hình, gồm MAI Cyber 2 Flash, mà họ nói vượt GPT-6 Astra với chi phí mỗi tác vụ dưới 2%."
+    ],
+    "ai-community": [
+      "Chỉ những liên kết có văn bản là mã nội tuyến mới được bóc tách; xóa khoảng mã nội tuyến trước tiên đã thêm 41 dấu liên kết LinkedIn giả cho 4 mục tiêu thật.",
+      "Gemma 4 E4B đạt 0,9272–0,9439 trên GSM8K, với chế độ suy nghĩ chỉ đạt ý nghĩa trong một trong bốn lần chạy.",
+      "Một chữ o Kirin (U+043E) trong tên công cụ vượt qua kiểm tra thị giác nhưng không khớp chính xác với ASCII retrieve_policy."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.329 adds hook visibility to managed settings, naming the folder where a session's hooks are declared.",
+      "OpenAI Codex rust-v0.171.0 adds GPT-6.2 Sol and Astra to catalogs, with Sol as the default selection.",
+      "Pi now sends strict tools to 18 GitHub Copilot Responses models, fixing empty optional tool arguments."
+    ],
+    "ai-trending": [
+      "obra/superpowers gained 2,028 stars today for its agentic skills framework and development methodology.",
+      "elementalsouls/Claude-BugHunter bundles 82 Claude Code skills and 15 slash commands for bug hunting.",
+      "firecrawl/firecrawl offers agents search, scraping and 550+ data providers through one API."
+    ],
+    "ai-web": [
+      "Anthropic says Claude produced assembly-level formal proofs of security properties across 100+ open-source libraries with Theorem."
+    ],
+    "ai-hn": [
+      "Anthropic debuted on Nasdaq in an $81bn raise at a $1.5tn valuation.",
+      "Google released Gemini 4 Neon with 1M-token context, $3/$15 pricing, and a 61 score on the Artificial Analysis Intelligence Index.",
+      "Microsoft launched seven models, including MAI Cyber 2 Flash, which it says beats GPT-6 Astra at under 2% of the cost per task."
+    ],
+    "ai-community": [
+      "Only links whose text is inline code were unwrapped; removing inline code spans first added 41 bogus LinkedIn link marks for 4 real targets.",
+      "Gemma 4 E4B scored 0.9272–0.9439 on GSM8K, with thinking on passing significance in only one of four runs.",
+      "A Cyrillic o (U+043E) in a tool name passed visual inspection but failed exact matching against ASCII retrieve_policy."
+    ]
+  }
+}
