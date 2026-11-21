@@ -1,0 +1,52 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Pi v1.6.0 phát hành GPT-6.2 Astra và Sol, Sol hiện là mặc định trên các nhà cung cấp openai, azure và openai-codex.",
+      "Lỗi p0 của Pi: --thinking high trên các mô hình GPT-6 gửi reasoning.effort medium, ghi đè mức effort đã chọn.",
+      "Anthropic /login thất bại trên ghế Claude Team với Unknown scope, chặn xác thực."
+    ],
+    "ai-trending": [
+      "obra/superpowers tăng 890 sao hôm nay, một framework kỹ năng agentic cho coding agent.",
+      "thedotmack/claude-mem ghi lại và nén các phiên agent để tiêm ngữ cảnh xuyên phiên.",
+      "cursor/plugins công bố đặc tả plugin Cursor và các plugin chính thức."
+    ],
+    "ai-web": [
+      "Anthropic cho biết Claude đã tạo ra chứng minh hình thức trên hơn 100 thư viện mã nguồn mở, gồm cả hợp ngữ RISC-V.",
+      "Anthropic đóng IPO 1.127.000.000 cổ phiếu Class A ở mức $83,00, huy động khoảng $93,5 tỷ gross."
+    ],
+    "ai-hn": [
+      "Google công bố Gemini 4 Neon: $3/$15 mỗi triệu token vào/ra, ngữ cảnh 1M, #3 trên Artificial Analysis.",
+      "Architect Labs nói AI thiết kế CPU Frostbite với mức tăng hiệu năng trên watt 4,59 lần.",
+      "Nasdaq xóa sạch mọi mức tăng 2026 khi cổ phiếu Anthropic giảm 9% xuống $88,30 trong ngày giao dịch thứ hai."
+    ],
+    "ai-community": [
+      "Benchmark SWE-sweep cho agent repo thật không có báo cáo lỗi; mô hình tốt nhất chỉ sửa 4,7 phần trăm trong 4.068 lỗi.",
+      "Các orchestrator hỗn hợp trong benchmark Strands tốn tới 192,8% token mô hình so với baseline Graph thuần."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Pi v1.6.0 ships GPT-6.2 Astra and Sol, Sol now default across openai, azure and openai-codex providers.",
+      "Pi p0 bug: --thinking high on GPT-6 models sends reasoning.effort medium, overriding selected effort.",
+      "Anthropic /login fails on Claude Team seats with Unknown scope, blocking authentication."
+    ],
+    "ai-trending": [
+      "obra/superpowers gained 890 stars today, an agentic skills framework for coding agents.",
+      "thedotmack/claude-mem captures and compresses agent sessions to inject context across sessions.",
+      "cursor/plugins published the Cursor plugin specification and official plugins."
+    ],
+    "ai-web": [
+      "Anthropic says Claude produced formal proofs across 100+ open-source libraries, including RISC-V assembly.",
+      "Anthropic closed its IPO of 1,127,000,000 Class A shares at $83.00, raising about $93.5 billion gross."
+    ],
+    "ai-hn": [
+      "Google announces Gemini 4 Neon: $3/$15 per million input/output tokens, 1M context, #3 on Artificial Analysis.",
+      "Architect Labs says AI designed Frostbite CPU with 4.59x performance-per-watt gain.",
+      "Nasdaq erases all 2026 gains as Anthropic shares fall 9% to $88.30 on second trading day."
+    ],
+    "ai-community": [
+      "SWE-sweep benchmark gives agents real repos with no bug report; best model fixed only 4.7 percent of 4,068 bugs.",
+      "Mixed orchestrators in Strands benchmark cost up to 192.8% more model tokens than the pure Graph baseline."
+    ]
+  }
+}
