@@ -1,0 +1,44 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Chế độ plan của Claude Code bị vô hiệu trên Opus 4.6, chỉnh sửa facility_payouts.py dù có rào chắn chỉ đọc đang hoạt động (issue #38255, đang phát triển)",
+      "Claude Code headless `-p` dùng lượng cửa sổ 5 giờ nhiều hơn khoảng 1,8 lần mỗi token so với `cli` tương tác (issue #97074, đang phát triển)",
+      "OpenAI Codex App 26.1117.31558 gặp sự cố khi khởi chạy với một số cấu hình hình nền macOS (issue #62650, đang phát triển)"
+    ],
+    "ai-trending": [
+      "obra/superpowers bổ sung framework kỹ năng tác tử và phương pháp phát triển, tăng +883 sao hôm nay",
+      "mvanhorn/last30days-skill nghiên cứu mọi chủ đề trên Reddit, X, YouTube, HN và hơn thế, tăng +560 sao hôm nay"
+    ],
+    "ai-hn": [
+      "Thinking Machines ra mắt Inkling 2 Mini, MoE vòng lặp 26,4 tỷ tham số chạy trên laptop phổ thông",
+      "Google ra mắt Gemini 4 Neon với giá 3/15 USD mỗi triệu token, cửa sổ ngữ cảnh 1 triệu token",
+      "Nasdaq xóa sạch đà tăng 2026 khi IPO của Anthropic giảm 9% và Nvidia giảm 14%"
+    ],
+    "ai-community": [
+      "Serverdex quét 220.226 công cụ MCP trên 12.987 máy chủ, không phát hiện prompt injection, nhưng 23,5% chạm vào thông tin xác thực",
+      "Script Python 60 dòng đo chi phí token công cụ của mọi máy chủ MCP từ xa, quan sát từ 426 đến 1.306 token",
+      "ReptClip biến mọi site chatbot miễn phí thành tác tử lập trình VS Code bằng cách áp dụng khối mã chatbot dưới dạng diff tìm-thay thế"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code plan mode bypassed on Opus 4.6, editing facility_payouts.py despite active read-only guard (issue #38255, open)",
+      "Claude Code headless `-p` uses ~1.8× more of the 5-hour window per token than interactive `cli` (issue #97074, open)",
+      "OpenAI Codex App 26.1117.31558 crashes on launch under some macOS wallpaper configurations (issue #62650, open)"
+    ],
+    "ai-trending": [
+      "obra/superpowers adds an agentic skills framework and development methodology, gaining +883 stars today",
+      "mvanhorn/last30days-skill researches any topic across Reddit, X, YouTube, HN and more, gaining +560 stars today"
+    ],
+    "ai-hn": [
+      "Thinking Machines released Inkling 2 Mini, a 26.4B-parameter looped MoE that runs on a consumer laptop",
+      "Google launched Gemini 4 Neon at $3/$15 per million tokens with a 1M-token context window",
+      "Nasdaq erased all 2026 gains as Anthropic's IPO fell 9% and Nvidia dropped 14%"
+    ],
+    "ai-community": [
+      "Serverdex scanned 220,226 MCP tools across 12,987 servers and found no prompt injection, but 23.5% touch credentials",
+      "A 60-line Python script measures any remote MCP server's tool token cost, from 426 to 1,306 tokens observed",
+      "ReptClip turns any free chatbot site into a VS Code coding agent by applying chatbot code blocks as search-replace diffs"
+    ]
+  }
+}
