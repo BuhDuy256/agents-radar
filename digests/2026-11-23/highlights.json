@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Tải lên Claude Code Skills thất bại với 'Internal server error' trên Web và Desktop (Issue #26310, đang mở, 30 bình luận).",
+      "Tính toán giới hạn tốc độ của OpenAI Codex vẫn là vấn đề mở hàng đầu khi hạn ngạch và tín dụng cạn kiệt nhanh hơn dự đoán (#41220).",
+      "Qwen Code v0.28.4 đã phát hành với bản dựng desktop-v0.28.4 và ChatSurface dùng chung trong Web Shell"
+    ],
+    "ai-trending": [
+      "elementalsouls/Claude-BugHunter tăng 1.716 sao hôm nay, gồm 82 kỹ năng Claude Code và 681 mẫu báo cáo đã công bố để kiểm thử bảo mật.",
+      "obra/superpowers tăng 788 sao cho khung kỹ năng tác tử và phương pháp phát triển phần mềm của nó."
+    ],
+    "ai-web": [],
+    "ai-hn": [
+      "Thinking Machines phát hành Inkling 2 Mini, transformer MoE lặp 26,4B chạy trên laptop với tổng dung lượng khoảng 20GB.",
+      "Google ra mắt Gemini 4 Neon với giá 3/15 USD mỗi triệu token và cửa sổ ngữ cảnh 1 triệu token.",
+      "Nasdaq xóa sạch mọi mức tăng năm 2026 khi đợt bán tháo AI ập đến ngày giao dịch thứ hai của Anthropic; Anthropic giảm 9% xuống 88,30 USD."
+    ],
+    "ai-community": [
+      "Một phiên Waymark v0.4 cho thấy Claude xin phê duyệt trước lệnh shell và lưu luồng, một luồng bị từ chối vì bước thụt lề.",
+      "JoeBro chia sẻ một bộ nhớ MCP dùng SQLite qua Claude Code, Codex và OpenCode với phân rã chu kỳ bán rã 30 ngày và bản tóm tắt phiên 400 token.",
+      "Một kỹ năng otomode cho phép Claude Code chạy không giám sát 8 giờ, hoàn thành 16 tác vụ với khoảng 25 commit và từ chối 15 lời nhắc."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code Skills uploads fail with 'Internal server error' on Web and Desktop (Issue #26310, open, 30 comments).",
+      "OpenAI Codex rate-limit accounting remains top open issue as quota and credits deplete faster than baselines predict (#41220).",
+      "Qwen Code v0.28.4 released with desktop-v0.28.4 build and shared ChatSurface in Web Shell"
+    ],
+    "ai-trending": [
+      "elementalsouls/Claude-BugHunter gained 1,716 stars today, bundling 82 Claude Code skills and 681 disclosed-report patterns for security testing.",
+      "obra/superpowers gained 788 stars for its agentic skills framework and software development methodology."
+    ],
+    "ai-web": [],
+    "ai-hn": [
+      "Thinking Machines released Inkling 2 Mini, a 26.4B looped transformer MoE running on a laptop at about 20GB total footprint.",
+      "Google launched Gemini 4 Neon at $3/$15 per million tokens with a 1 million-token context window.",
+      "Nasdaq erased all 2026 gains as AI sell-off hit Anthropic's second trading day; Anthropic fell 9% to $88.30."
+    ],
+    "ai-community": [
+      "A Waymark v0.4 session showed Claude asking approval before shell commands and saving flows, with one refused for an indented step.",
+      "JoeBro shares one SQLite-backed MCP memory across Claude Code, Codex and OpenCode with 30-day half-life decay and a 400-token session brief.",
+      "An otomode skill let Claude Code run unattended 8 hours, finishing 16 tasks with about 25 commits and denying 15 prompts."
+    ]
+  }
+}
