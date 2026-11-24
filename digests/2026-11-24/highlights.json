@@ -1,0 +1,52 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code đã gửi email người dùng đến bên thứ ba trong header User-Agent khi tìm kiếm web, issue đang mở với 124 bình luận",
+      "OpenAI Codex 0.172.0 bổ sung tính năng theo dõi liên kết luồng và Tab completion cho lệnh slash",
+      "GitHub Copilot CLI v1.0.115-8 nhóm việc dùng subagent theo tên và báo cáo số lần khởi chạy"
+    ],
+    "ai-trending": [
+      "Claude-BugHunter gói 84 kỹ năng Claude Code và 15 lệnh slash để săn lỗi, tăng 2029 sao hôm nay",
+      "HKUDS/CLI-Anything biến phần mềm thành agent-native qua một CLI hub, tăng 790 sao hôm nay",
+      "obra/superpowers bổ sung khung kỹ năng agentic và phương pháp phát triển phần mềm, tăng 840 sao hôm nay"
+    ],
+    "ai-web": [
+      "Nghiên cứu thực địa của Anthropic với 66 cuộc phỏng vấn 58 khách hàng doanh nghiệp cho thấy hầu hết AI tăng sản lượng chứ không cắt giảm chi phí",
+      "Trang interpretability của Anthropic dẫn Natural Language Autoencoders tháng 5/2026 chuyển biểu diễn nội bộ của Claude thành văn bản"
+    ],
+    "ai-hn": [
+      "OpenAI và Cisco ra mắt Shirudo, runtime eBPF mã nguồn mở chặn khai thác Java4Shell mà không cần khởi động lại Elasticsearch",
+      "Jakub Pachocki của OpenAI đề xuất perplexity làm chỉ số an toàn chung giữa các lab, theo dõi GPT-3.5 từ gần 0.99 xuống dưới 0.8",
+      "Anthropic ra mắt Claude Ship bản beta với các agent PR Steward và Claude Approvals để review và sửa pull request"
+    ],
+    "ai-community": [
+      "Ranh giới chấm điểm của SplitBench đã loại 75% tấn công thích ứng trên 168 lượt agent hoàn thành",
+      "Code Mode của Bifrost giảm token đầu vào định nghĩa công cụ MCP tới 92,8% trong benchmark 508 công cụ"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code sent user emails to third parties in the User-Agent header during web searches, issue open with 124 comments",
+      "OpenAI Codex 0.172.0 adds thread-link following and Tab completion for slash commands",
+      "GitHub Copilot CLI v1.0.115-8 groups subagent usage by name and reports launch counts"
+    ],
+    "ai-trending": [
+      "Claude-BugHunter bundles 84 Claude Code skills and 15 slash commands for bug hunting, up 2029 stars today",
+      "HKUDS/CLI-Anything makes software agent-native through a CLI hub, up 790 stars today",
+      "obra/superpowers adds an agentic skills framework and software development methodology, up 840 stars today"
+    ],
+    "ai-web": [
+      "Anthropic field study of 66 interviews with 58 enterprise customers finds most AI uses added output, not cost cuts",
+      "Anthropic interpretability page cites May 2026 Natural Language Autoencoders translating Claude's internal representations to text"
+    ],
+    "ai-hn": [
+      "OpenAI and Cisco launch Shirudo, an open-source eBPF runtime that blocked a Java4Shell exploit without restarting Elasticsearch",
+      "OpenAI's Jakub Pachocki proposes perplexity as a shared cross-lab safety metric, tracking GPT-3.5 near 0.99 to below 0.8",
+      "Anthropic launches Claude Ship in beta with PR Steward and Claude Approvals agents for pull request review and fixes"
+    ],
+    "ai-community": [
+      "SplitBench's grading boundary rejected 75% of adaptive attacks on 168 completed agent attempts",
+      "Bifrost's Code Mode cut MCP tool-definition input tokens by up to 92.8% in a 508-tool benchmark"
+    ]
+  }
+}
