@@ -1,0 +1,54 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code v2.1.332 bổ sung hỗ trợ beta cho các kỹ năng do máy chủ MCP cung cấp, hiển thị dưới dạng server:skill trong menu /.",
+      "Codex nâng giới hạn ngữ cảnh bổ sung cho mỗi giá trị từ 1.000 lên 10.000 token và chuyển chọn giọng nói sang tùy chọn tài khoản.",
+      "Qwen Code v1.0.0-preview.2 bổ sung Qwen4-Max với cửa sổ ngữ cảnh 1 triệu token, đầu vào ảnh/video và lệnh /upgrade."
+    ],
+    "ai-trending": [
+      "elementalsouls/Claude-BugHunter gói 84 kỹ năng Claude Code và 681 mẫu báo cáo đã công bố để săn lỗi, đạt 1.826 sao.",
+      "HKUDS/CLI-Anything biến phần mềm hiện có thành giao diện CLI cho tác tử, đạt 1.074 sao.",
+      "obra/superpowers bổ sung khung kỹ năng tác tử và phương pháp phát triển phần mềm, đạt 1.003 sao."
+    ],
+    "ai-web": [
+      "Anthropic công bố trang nhóm Alignment mới mô tả phương pháp huấn luyện và đánh giá tính trung thực, nhân cách của Claude.",
+      "OpenAI đăng mục thiết kế protein GPT-6, nhưng không có nội dung bài để xác nhận năng lực, giá hay quyền truy cập."
+    ],
+    "ai-hn": [
+      "Cổ phiếu Anthropic lần đầu đóng cửa dưới giá IPO 83 USD, ở mức 81,91 USD, giảm 6,5% trong ngày giao dịch thứ tư.",
+      "OpenAI nói mô hình GPT-6 thiết kế hình dạng và chuỗi protein mà không cần mô hình sinh học chuyên biệt, đạt phần lớn trong 14 tác vụ.",
+      "Một lập trình viên nói tác tử Claude trả phí của anh từ chối vượt thử thách Bandcamp trong khi một nhánh vẫn tải từ YouTube."
+    ],
+    "ai-community": [
+      "201 lệnh gọi DashScope trực tiếp phơi bày năm kiểu lỗi đầu ra có cấu trúc, với kimi-k3.1-pro lỗi cả 20 lệnh định tuyến chỉ dùng prompt.",
+      "Bộ quy tắc Ponytail giảm đầu ra Claude Code còn 206 dòng, nhưng tác giả thích chi tiết hình ảnh bị lược của bản lớn hơn.",
+      "Công cụ MCP đã duyệt có thể đổi hành vi mà giữ nguyên tên; quy trình vân tay lược đồ so sánh hợp đồng trước mỗi lệnh gọi."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.332 adds beta support for skills served by MCP servers, shown as server:skill in the / menu.",
+      "Codex raises per-value additional context limit from 1,000 to 10,000 tokens and moves voice selection to account preferences.",
+      "Qwen Code v1.0.0-preview.2 adds Qwen4-Max with a 1M-token context window, image/video input, and an /upgrade command."
+    ],
+    "ai-trending": [
+      "elementalsouls/Claude-BugHunter bundles 84 Claude Code skills and 681 disclosed-report patterns for bug hunting, gaining 1,826 stars.",
+      "HKUDS/CLI-Anything turns existing software into agent-native CLI surfaces, gaining 1,074 stars.",
+      "obra/superpowers adds an agentic skills framework and software development methodology, gaining 1,003 stars."
+    ],
+    "ai-web": [
+      "Anthropic published a new Alignment team page describing training methods and evaluation work on Claude's honesty and persona.",
+      "OpenAI posted a GPT-6 protein design item, but no article text was available to confirm capability, price, or access."
+    ],
+    "ai-hn": [
+      "Anthropic shares closed below their $83 IPO price for the first time at $81.91, down 6.5% on the fourth trading day.",
+      "OpenAI says GPT-6 models design protein shapes and sequences without specialized biology models, matching them on most of 14 tasks.",
+      "A developer says his paid Claude agent refused to work around a Bandcamp challenge while a branch still downloaded from YouTube."
+    ],
+    "ai-community": [
+      "201 live DashScope calls exposed five structured-output failure modes, with kimi-k3.1-pro failing all 20 prompt-only routing calls.",
+      "A Ponytail ruleset halved Claude Code output to 206 lines, but the author preferred the larger build's stripped visual details.",
+      "An approved MCP tool can change behavior while keeping its name; a schema-fingerprint workflow compares the contract before each call."
+    ]
+  }
+}
