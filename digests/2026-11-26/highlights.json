@@ -1,0 +1,54 @@
+{
+  "vi": {
+    "ai-cli": [
+      "OpenCode v2.4.2 phát hành system prompt GPT-6.2 cho các alias Sol, Astra và gpt-latest.",
+      "Qwen Code v0.28.6 bổ sung tính năng tạm dừng phiên có quản lý, giúp phiên tồn tại qua khởi động lại Harness và phục hồi lạnh.",
+      "GitHub Copilot CLI v1.0.117-0 cho phép agent tùy chỉnh chọn dùng công cụ qua phơi bày tường minh."
+    ],
+    "ai-trending": [
+      "cathrynlavery/diagram-design tạo sơ đồ kiểu biên tập dưới dạng HTML/SVG độc lập với 52 loại, tăng 1.141 sao hôm nay.",
+      "HKUDS/CLI-Anything biến phần mềm thành CLI gốc agent qua CLI-Hub, tăng 1.106 sao hôm nay.",
+      "mvanhorn/last30days-skill nghiên cứu chủ đề trên Reddit, X, YouTube, HN và Polymarket, tăng 945 sao hôm nay."
+    ],
+    "ai-web": [
+      "Anthropic chuyển Messages API từ Python sang Rust, giảm CPU mỗi yêu cầu khoảng 70% và thời gian trung bình đến token đầu khoảng 20%.",
+      "Việc chuyển Messages API quan trọng với người dùng Claude Code vì đây là giao diện chính cho ứng dụng của Anthropic."
+    ],
+    "ai-hn": [
+      "OpenAI cho biết lỗi tính phí khi ra mắt sẽ khiến GPT-6.2 Astra đạt giới hạn sử dụng nhanh hơn 40% và Sol nhanh hơn 25%.",
+      "Các mô hình GPT-6 đã thiết kế protein và kháng thể cho thấy liên kết trong thử nghiệm, với 35 trong 322 minibinder dương tính.",
+      "The New York Times yêu cầu nhiếp ảnh gia tự do tránh Photoshop 2027 vì gắn thẻ siêu dữ liệu AI ẩn đánh dấu ảnh là do AI tạo."
+    ],
+    "ai-community": [
+      "Cổng quyết định 2B chặn 7 trong 11 yêu cầu hoàn tiền xấu, còn Amazon Nova Pro chặn 9, theo thử nghiệm 16 trường hợp.",
+      "Độ chính xác gọi công cụ của Gemma 4 trên RTX 3050 8GB phụ thuộc cài đặt lấy mẫu, không phải kích thước mô hình, qua 840 bài toán BFCL.",
+      "Thiết kế kiểm toán agent được làm lại để chuyển ràng buộc sang cấu hình vận hành, để agent bị điều hướng không thể bỏ chính sách của mình."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "OpenCode v2.4.2 ships a GPT-6.2 system prompt for Sol, Astra, and gpt-latest aliases.",
+      "Qwen Code v0.28.6 adds managed-session parking so sessions survive Harness restarts and cold-recover.",
+      "GitHub Copilot CLI v1.0.117-0 lets custom agents opt in to tools via explicit exposure."
+    ],
+    "ai-trending": [
+      "cathrynlavery/diagram-design generates editorial-style diagrams as self-contained HTML/SVG across 52 types, gaining 1,141 stars today.",
+      "HKUDS/CLI-Anything turns software into agent-native CLIs via a CLI-Hub, up 1,106 stars today.",
+      "mvanhorn/last30days-skill researches a topic across Reddit, X, YouTube, HN, and Polymarket, up 945 stars today."
+    ],
+    "ai-web": [
+      "Anthropic moved its Messages API from Python to Rust, cutting CPU per request ~70% and median time to first token ~20%.",
+      "The Messages API migration matters to Claude Code users because it is the primary interface for Anthropic's own apps."
+    ],
+    "ai-hn": [
+      "OpenAI says a fixed launch billing error will make GPT-6.2 Astra hit usage limits 40% faster and Sol 25% faster.",
+      "GPT-6 models designed proteins and antibodies that showed binding in lab tests, with 35 of 322 minibinders positive.",
+      "The New York Times told freelance photographers to avoid Photoshop 2027 over hidden AI metadata tagging photos as AI-generated."
+    ],
+    "ai-community": [
+      "A 2B decider gate stopped 7 of 11 bad refund requests, while Amazon Nova Pro stopped 9, per a 16-case test.",
+      "Gemma 4 tool-call accuracy on an 8GB RTX 3050 depended on sampling settings, not model size, across 840 BFCL problems.",
+      "An agent audit design was rebuilt to move constraints to operator config so a steered agent cannot omit its own policy."
+    ]
+  }
+}
