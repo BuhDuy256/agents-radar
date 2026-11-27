@@ -1,0 +1,46 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Claude Code WSL bị treo: issue #26224 báo cáo tình trạng đóng băng 5–20 phút khi nhập prompt, vẫn mở và chưa có bản sửa.",
+      "Claude Code v2.1.332 nhảy giới hạn sử dụng 5 giờ từ 0% lên 100% khi reset hoặc chỉ một prompt (lỗi hồi quy trên Linux).",
+      "Lỗi hồi quy sandbox Codex trên Windows: rg đi kèm báo Access Denied và thao tác Git HTTPS bị crash, cả hai vẫn mở."
+    ],
+    "ai-trending": [
+      "obra/superpowers tăng 854 sao hôm nay nhờ framework kỹ năng agentic và phương pháp phát triển của nó.",
+      "Panniantong/Agent-Reach cho agent một CLI để đọc Twitter, Reddit, YouTube, GitHub, Bilibili và XiaoHongShu.",
+      "cathrynlavery/diagram-design tạo sơ đồ biên tập dạng HTML/SVG độc lập với 52 loại, tăng 955 sao hôm nay."
+    ],
+    "ai-hn": [
+      "Lỗi tính phí của OpenAI tính thiếu dung lượng GPT-6.2, nên các gói nay chạm giới hạn nhanh hơn 40% trên Astra và 25% trên Sol.",
+      "Anthropic công bố chứng minh Lean 4 cho GRH với hàm L Dirichlet, được máy kiểm tra từ khoảng 76.000 dòng.",
+      "The New York Times yêu cầu nhiếp ảnh gia tự do tránh Photoshop 2027 vì tính năng AI có thể gắn thẻ ảnh là do AI tạo."
+    ],
+    "ai-community": [
+      "Một MCP server giờ có thể công bố kỹ năng để Claude Code tự tải, qua skills/list và skills/get ở revision 2026-07-28.",
+      "Bản viết lại bằng Rust của Anthropic cho Messages API vượt 98% bài kiểm thử nhưng chỉ khớp 25% lưu lượng thực tế.",
+      "Đánh giá Gemma 4 E2B: nhớ lại 52 trong 80 dữ kiện ở 16k token, giảm còn 14 ở 32k."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code WSL hangs: issue #26224 reports 5–20 minute freezes on prompts, still open with no fix.",
+      "Claude Code v2.1.332 jumps the 5-hour usage limit from 0% to 100% on reset or a single prompt (Linux regression).",
+      "Codex Windows sandbox regressions: bundled rg fails with Access Denied and Git HTTPS operations crash, both open."
+    ],
+    "ai-trending": [
+      "obra/superpowers gains 854 stars today for its agentic skills framework and development methodology.",
+      "Panniantong/Agent-Reach gives agents one CLI to read Twitter, Reddit, YouTube, GitHub, Bilibili and XiaoHongShu.",
+      "cathrynlavery/diagram-design generates editorial diagrams as self-contained HTML/SVG across 52 types, up 955 stars today."
+    ],
+    "ai-hn": [
+      "OpenAI's billing error undercharged GPT-6.2 usage, so plans now hit limits 40% faster on Astra and 25% faster on Sol.",
+      "Anthropic published a Lean 4 proof of GRH for Dirichlet L-functions, machine-checked from about 76,000 lines.",
+      "The New York Times tells freelance photographers to avoid Photoshop 2027 because its AI features can tag images as AI-generated."
+    ],
+    "ai-community": [
+      "An MCP server can now publish skills Claude Code loads by itself, via skills/list and skills/get over revision 2026-07-28.",
+      "Anthropic's Rust rewrite of the Messages API passed 98% of tests but matched only 25% of production traffic.",
+      "Benchmarking Gemma 4 E2B: 52 of 80 facts recalled at 16k tokens, dropping to 14 at 32k."
+    ]
+  }
+}
