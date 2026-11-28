@@ -1,0 +1,44 @@
+{
+  "vi": {
+    "ai-cli": [
+      "Pi v1.7.0 bổ sung khả năng khôi phục phiên terminal, cho phép các terminal tương thích mở lại phiên pi với hồ sơ và hướng dẫn ban đầu.",
+      "Vấn đề Claude Code trên Windows #64804: phím Enter chèn dòng mới thay vì gửi, và ghi đè keybindings.json bị bỏ qua.",
+      "Vấn đề Claude Code #111336: 78 yêu cầu bị chặn bởi biện pháp bảo vệ reasoning_extraction dương tính giả từ 2026-11-13 đến 2026-11-20."
+    ],
+    "ai-trending": [
+      "obra/superpowers tăng 922 sao trong một ngày nhờ framework kỹ năng tác tử và phương pháp phát triển phần mềm.",
+      "mvanhorn/last30days-skill tăng 675 sao nhờ nghiên cứu chủ đề trên Reddit, X, YouTube, HN, Polymarket và web."
+    ],
+    "ai-hn": [
+      "OpenAI cho biết lỗi tính phí GPT-6.2 thu thiếu, nên giới hạn hiện đạt nhanh hơn 40% trên Astra và 25% trên Sol.",
+      "Google sẽ yêu cầu lưu lượng tác tử đến Workspace đi qua máy chủ MCP từ tháng 2 năm 2027, với lệnh gọi REST API giảm xuống hạn mức Standard.",
+      "Phân tích bảng xếp hạng cho thấy GPT-6.2 Astra và Sol tạo ít token đầu ra và suy luận hơn thế hệ trước, gọi chúng là ngoại lệ suy nghĩ nông."
+    ],
+    "ai-community": [
+      "ShellBench báo cáo các tác tử tiên tiến thất bại hơn một phần ba trong 100 tác vụ hàng ngày, với 15,7% lần chạy vi phạm ít nhất một yêu cầu an toàn.",
+      "Bài đăng dev.to cho thấy xóa cuộc trò chuyện chatbot cần tombstone HMAC mờ và hủy hàng đợi để ngăn handoff thử lại tạo lại ticket đã xóa.",
+      "Phỏng vấn một quản lý cho tỷ lệ đạt chính sách 36,5–50,5% so với 71% của chính sách chuyên gia trên miền hàng không của τ-bench."
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Pi v1.7.0 adds terminal session resume, letting compatible terminals reopen a pi session with original profile and instructions.",
+      "Claude Code Windows issue #64804: Enter inserts a newline instead of submitting, and keybindings.json override is ignored.",
+      "Claude Code issue #111336: 78 requests blocked by a false-positive reasoning_extraction safeguard between 2026-11-13 and 2026-11-20."
+    ],
+    "ai-trending": [
+      "obra/superpowers added 922 stars in a day for its agentic skills framework and software development methodology.",
+      "mvanhorn/last30days-skill gained 675 stars for researching topics across Reddit, X, YouTube, HN, Polymarket and the web."
+    ],
+    "ai-hn": [
+      "OpenAI says a GPT-6.2 billing mistake under-charged usage, so limits now hit 40% faster on Astra and 25% faster on Sol.",
+      "Google will require agent traffic to Workspace to go through its MCP servers from February 2027, with REST API calls falling to Standard-tier quotas.",
+      "A leaderboard analysis finds GPT-6.2 Astra and Sol produce fewer output and reasoning tokens than predecessors, calling them underthinking outliers."
+    ],
+    "ai-community": [
+      "ShellBench reports frontier agents failed over one-third of 100 everyday tasks, with 15.7% of runs breaching at least one safety requirement.",
+      "A dev.to post shows deleting a chatbot conversation required an opaque HMAC tombstone and queue cancel to stop retried handoffs recreating deleted tickets.",
+      "Interviewing a manager produced 36.5–50.5% policy pass rates against an expert policy's 71% on τ-bench's airline domain."
+    ]
+  }
+}
